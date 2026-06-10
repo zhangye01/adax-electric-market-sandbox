@@ -233,7 +233,7 @@ Exit Criteria:
 
 Continue Engineering Hardening Hold.
 
-Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to review `src/styles/010-cockpit-components.css` when cockpit primitives are next touched, then split only if badges, notices, stepper, status pills, and template controls still mix responsibilities. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
+Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to review `src/styles/012-retail.css` or `src/styles/009-flow-mode.css` only when those surfaces are next touched, then split further only if each file still mixes responsibilities. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
 
 ## Project Rescue Triggers
 

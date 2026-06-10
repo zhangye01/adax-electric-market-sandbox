@@ -27,6 +27,10 @@
 @import "./styles/009-flow-role.css";
 @import "./styles/009-flow-lists.css";
 @import "./styles/010-cockpit-components.css";
+@import "./styles/010-cockpit-comparison.css";
+@import "./styles/010-cockpit-feedback.css";
+@import "./styles/010-cockpit-notices.css";
+@import "./styles/010-cockpit-messages.css";
 @import "./styles/011-workspace-command.css";
 @import "./styles/012-retail.css";
 @import "./styles/012-retail-market.css";

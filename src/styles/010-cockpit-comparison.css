@@ -1,0 +1,41 @@
+.cockpit-comparison-row {
+  border-bottom: 1px solid #1d2c43;
+}
+
+.cockpit-comparison-row em {
+  min-width: 70px;
+  text-align: right;
+  font-style: normal;
+  font-variant-numeric: tabular-nums;
+}
+
+.cockpit-comparison-row em.up {
+  color: #34d399;
+}
+
+.cockpit-comparison-row em.down {
+  color: #fb7185;
+}
+
+.cockpit-event-row {
+  display: grid;
+  grid-template-columns: 46px 110px 1fr;
+  gap: 10px;
+  align-items: start;
+  color: #8ea4c1;
+  font-size: 12px;
+}
+
+.cockpit-event-row span {
+  color: #fbbf24;
+  font-weight: 800;
+}
+
+.cockpit-event-row strong {
+  color: #e2e8f0;
+}
+
+.cockpit-event-row em {
+  color: #7086a4;
+  font-style: normal;
+}

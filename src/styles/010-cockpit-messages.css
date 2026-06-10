@@ -1,0 +1,27 @@
+.cockpit-ok,
+.cockpit-template-message {
+  border-radius: 8px;
+  padding: 10px;
+  color: #a7f3d0;
+  background: rgba(16, 185, 129, 0.1);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.cockpit-template-message {
+  margin-top: 10px;
+  color: #a5f3fc;
+  background: rgba(34, 211, 238, 0.08);
+}
+
+.cockpit-error-list {
+  border-radius: 8px;
+  background: rgba(251, 113, 133, 0.1);
+  padding: 10px;
+}
+
+.cockpit-error-list p {
+  color: #fecdd3;
+  font-size: 12px;
+  line-height: 1.6;
+}

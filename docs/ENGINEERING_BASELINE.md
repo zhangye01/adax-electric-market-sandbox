@@ -64,6 +64,11 @@ Active retail flow:
 - `src/styles/009-flow-scenario-confirmation.css`
 - `src/styles/009-flow-role.css`
 - `src/styles/009-flow-lists.css`
+- `src/styles/010-cockpit-components.css`
+- `src/styles/010-cockpit-comparison.css`
+- `src/styles/010-cockpit-feedback.css`
+- `src/styles/010-cockpit-notices.css`
+- `src/styles/010-cockpit-messages.css`
 - `src/styles/012-retail.css`
 - `src/styles/012-retail-market.css`
 - `src/styles/012-retail-market-load.css`
