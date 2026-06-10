@@ -1,0 +1,57 @@
+/* Retail settlement and result-review insight rows. */
+.retail-review-list {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.retail-result-review-side .retail-review-list {
+  margin-bottom: 0;
+}
+
+.retail-review-row {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  border: 1px solid #203451;
+  border-radius: 8px;
+  background: #081321;
+  padding: 10px;
+}
+
+.retail-review-row.tone-positive {
+  border-color: rgba(16, 185, 129, 0.26);
+}
+
+.retail-review-row.tone-watch {
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.retail-review-row.tone-risk {
+  border-color: rgba(244, 63, 94, 0.34);
+}
+
+.retail-review-row span {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: rgba(34, 211, 238, 0.12);
+  color: #67e8f9;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.retail-review-row p {
+  color: #d6e2f2;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.retail-review-row p strong {
+  color: #f8fafc;
+  font-weight: 850;
+}

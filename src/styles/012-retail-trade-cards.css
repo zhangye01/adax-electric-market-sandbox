@@ -13,7 +13,6 @@
 .retail-input-card,
 .retail-choice-card,
 .retail-month-decision-card,
-.retail-result-card,
 .retail-settlement-breakdown,
 .retail-table-card {
   border: 1px solid #203451;
@@ -25,7 +24,6 @@
 .retail-month-card span,
 .retail-input-card span,
 .retail-choice-card span,
-.retail-result-card span,
 .retail-month-decision-card header span,
 .retail-side-facts span {
   color: #8fa4bf;
@@ -52,7 +50,6 @@
 
 .retail-month-card strong,
 .retail-choice-card strong,
-.retail-result-card strong,
 .retail-month-decision-card header strong,
 .retail-side-facts strong {
   display: block;
@@ -64,7 +61,6 @@
 
 .retail-month-card p,
 .retail-choice-card p,
-.retail-result-card p,
 .retail-month-decision-card p {
   margin-top: 8px;
   color: #9fb0c7;

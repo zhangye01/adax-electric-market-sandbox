@@ -68,7 +68,10 @@
 @import "./styles/012-retail-results.css";
 @import "./styles/012-retail-results-settlement.css";
 @import "./styles/012-retail-results-breakdown.css";
-@import "./styles/012-retail-results-review.css";
+@import "./styles/012-retail-results-empty.css";
+@import "./styles/012-retail-results-verdict.css";
+@import "./styles/012-retail-results-insights.css";
+@import "./styles/012-retail-results-diagnostics.css";
 @import "./styles/012-retail-review-prompts.css";
 @import "./styles/012-retail-review-materials.css";
 @import "./styles/012-retail-side-actions.css";

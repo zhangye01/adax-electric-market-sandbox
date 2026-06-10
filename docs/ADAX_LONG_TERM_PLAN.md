@@ -233,7 +233,7 @@ Exit Criteria:
 
 Continue Engineering Hardening Hold.
 
-Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to review `src/styles/012-retail-results-review.css` when execution result-review styles are next touched, then split empty/verdict surfaces, insight rows, diagnostics, and compact result-card layout only if the file still mixes responsibilities. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
+Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to review `src/styles/005-workspace-context.css` when workspace context or step-indicator styles are next touched. First verify whether `workspace-chain-*`, `workspace-context-*`, and `workspace-boundary-*` selectors are still active; then split or remove inactive partitions before adding new layout rules. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
 
 ## Project Rescue Triggers
 

@@ -1,0 +1,22 @@
+/* Execution result-review diagnostics drawer. */
+.retail-diagnostics-drawer {
+  margin-bottom: 2px;
+}
+
+.retail-diagnostics-list {
+  display: grid;
+  gap: 8px;
+}
+
+.retail-diagnostics-list p {
+  border-top: 1px solid #1d304b;
+  color: #aab8cc;
+  padding-top: 8px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.retail-diagnostics-list p:first-child {
+  border-top: 0;
+  padding-top: 0;
+}

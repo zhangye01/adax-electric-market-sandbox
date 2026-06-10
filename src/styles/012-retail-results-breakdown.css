@@ -4,6 +4,10 @@
   gap: 14px;
 }
 
+.retail-settlement-breakdown {
+  margin-top: 14px;
+}
+
 .retail-settlement-board.exposure .retail-settlement-board-grid {
   grid-template-columns: 1fr;
 }
@@ -120,6 +124,10 @@
 
 .retail-month-result-row {
   grid-template-columns: 70px 80px minmax(0, 1fr) auto;
+}
+
+.retail-cost-row {
+  grid-template-columns: minmax(0, 1fr) auto;
 }
 
 .retail-month-result-row.compact {
