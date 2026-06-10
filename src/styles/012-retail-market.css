@@ -1,0 +1,367 @@
+/* Retail market context and situation boards. */
+.retail-market-board {
+  display: grid;
+  gap: 14px;
+  margin-top: 16px;
+  border: 1px solid #24405e;
+  border-radius: 10px;
+  background: #07111f;
+  padding: 16px;
+}
+
+.retail-market-board.compact {
+  margin-top: 0;
+  padding: 14px;
+}
+
+.retail-market-board-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid #1d304b;
+  padding-bottom: 13px;
+}
+
+.retail-market-board-header span,
+.retail-market-panel-title span,
+.retail-load-bar span,
+.retail-load-spread span,
+.retail-market-floor span,
+.retail-market-month-item span,
+.retail-price-curve-stats span {
+  color: #8fa4bf;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.retail-market-board-header h2 {
+  margin-top: 5px;
+  color: #f8fafc;
+  font-size: 20px;
+  font-weight: 850;
+  line-height: 1.25;
+}
+
+.retail-market-price-boundary {
+  display: grid;
+  min-width: 150px;
+  justify-items: end;
+  text-align: right;
+}
+
+.retail-market-price-boundary strong {
+  margin-top: 3px;
+  color: #67e8f9;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.retail-market-price-boundary em {
+  margin-top: 2px;
+  color: #8fa4bf;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.retail-market-board-grid {
+  display: grid;
+  grid-template-columns: minmax(170px, 0.72fr) minmax(320px, 1.45fr) minmax(190px, 0.85fr);
+  gap: 14px;
+  align-items: stretch;
+}
+
+.retail-market-board.compact .retail-market-board-grid {
+  grid-template-columns: 1fr;
+}
+
+.retail-market-load-panel,
+.retail-market-curve-panel,
+.retail-market-month-panel {
+  min-width: 0;
+  border: 1px solid #203451;
+  border-radius: 8px;
+  background: #091524;
+  padding: 14px;
+}
+
+.retail-market-curve-panel {
+  background: #081321;
+}
+
+.retail-market-panel-title {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.retail-market-panel-title strong {
+  color: #dbeafe;
+  font-size: 13px;
+  font-weight: 850;
+  line-height: 1.35;
+  text-align: right;
+}
+
+.retail-load-bars,
+.retail-market-month-list,
+.retail-price-curve-stack {
+  display: grid;
+  gap: 10px;
+}
+
+.retail-load-bar {
+  display: grid;
+  gap: 7px;
+}
+
+.retail-load-bar > div,
+.retail-load-spread,
+.retail-market-floor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.retail-load-bar strong,
+.retail-load-spread strong,
+.retail-market-floor strong {
+  color: #f8fafc;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.retail-load-bar em {
+  display: block;
+  overflow: hidden;
+  height: 9px;
+  border-radius: 999px;
+  background: #12243a;
+}
+
+.retail-load-bar i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #22d3ee;
+}
+
+.retail-load-spread,
+.retail-market-floor {
+  margin-top: 12px;
+  border-top: 1px solid #1d304b;
+  padding-top: 10px;
+}
+
+.retail-market-floor strong {
+  color: #fbbf24;
+}
+
+.retail-price-curve-row {
+  display: grid;
+  grid-template-columns: 108px minmax(0, 1fr) 64px;
+  gap: 10px;
+  align-items: center;
+}
+
+.retail-price-curve-label {
+  min-width: 0;
+}
+
+.retail-price-curve-label span {
+  display: block;
+  color: #67e8f9;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.retail-price-curve-label strong {
+  display: block;
+  margin-top: 4px;
+  color: #d8e6f8;
+  font-size: 12px;
+  font-weight: 850;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.retail-price-bars {
+  display: grid;
+  height: 72px;
+  grid-template-columns: repeat(24, minmax(0, 1fr));
+  align-items: end;
+  gap: 2px;
+  border: 1px solid #1d304b;
+  border-radius: 7px;
+  background: #06101d;
+  padding: 8px 7px;
+}
+
+.retail-market-board.scenario .retail-price-bars {
+  height: 86px;
+}
+
+.retail-price-bars span {
+  min-height: 6px;
+  border-radius: 2px 2px 0 0;
+  background: #22d3ee;
+}
+
+.retail-price-bars span.peak {
+  background: #f59e0b;
+}
+
+.retail-price-bars span.valley {
+  background: #10b981;
+}
+
+.retail-price-curve-stats {
+  display: grid;
+  justify-items: end;
+  gap: 4px;
+  text-align: right;
+}
+
+.retail-price-curve-stats strong {
+  color: #fbbf24;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.retail-market-month-item {
+  display: grid;
+  gap: 6px;
+  border-top: 1px solid #1d304b;
+  padding-top: 9px;
+}
+
+.retail-market-month-item:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.retail-market-month-item > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.retail-market-month-item strong {
+  color: #f8fafc;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 900;
+  text-align: right;
+}
+
+.retail-market-month-item p {
+  color: #9fb0c7;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.retail-market-brief-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.retail-action-fact-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.retail-market-brief-strip > div,
+.retail-action-fact-strip > div,
+.retail-workbench-brief,
+.retail-next-action-strip {
+  border: 1px solid #203451;
+  border-radius: 8px;
+  background: #091524;
+  padding: 14px;
+}
+
+.retail-market-brief-strip span,
+.retail-action-fact-strip span,
+.retail-next-action-strip span {
+  color: #8fa4bf;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.retail-market-brief-strip strong,
+.retail-action-fact-strip strong,
+.retail-next-action-strip strong {
+  display: block;
+  margin-top: 7px;
+  color: #f8fafc;
+  font-size: 15px;
+  font-weight: 850;
+  line-height: 1.35;
+}
+
+.retail-market-brief-strip p {
+  margin-top: 7px;
+  color: #9fb0c7;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.retail-workbench-brief {
+  display: grid;
+  gap: 10px;
+}
+
+.retail-market-action-row {
+  display: grid;
+  grid-template-columns: 58px minmax(120px, 0.8fr) minmax(180px, 1fr) minmax(180px, 1fr);
+  gap: 12px;
+  align-items: center;
+  border-top: 1px solid #1d304b;
+  padding-top: 10px;
+}
+
+.retail-market-action-row:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.retail-market-action-row span {
+  color: #67e8f9;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.retail-market-action-row strong {
+  color: #f8fafc;
+  font-size: 13px;
+  font-weight: 850;
+  line-height: 1.35;
+}
+
+.retail-market-action-row p,
+.retail-market-action-row em {
+  color: #9fb0c7;
+  font-size: 12px;
+  font-style: normal;
+  line-height: 1.55;
+}
+
+.retail-market-action-row em {
+  color: #d8e6f8;
+}
+
+.retail-next-action-strip {
+  border-color: rgba(34, 211, 238, 0.28);
+  background: rgba(14, 165, 233, 0.08);
+}

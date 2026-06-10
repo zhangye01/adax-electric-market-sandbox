@@ -51,6 +51,10 @@ Active retail flow:
 - `src/components/adax/ModeBoundaryNotice.tsx`
 - `src/routes/adaxRoutes.ts`
 - `src/styles/012-retail.css`
+- `src/styles/012-retail-market.css`
+- `src/styles/012-retail-trade.css`
+- `src/styles/012-retail-results.css`
+- `src/styles/012-retail-review.css`
 
 Shared shell and persistence:
 

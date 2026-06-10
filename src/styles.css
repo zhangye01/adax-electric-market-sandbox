@@ -10,4 +10,8 @@
 @import "./styles/010-cockpit-components.css";
 @import "./styles/011-workspace-command.css";
 @import "./styles/012-retail.css";
+@import "./styles/012-retail-market.css";
+@import "./styles/012-retail-trade.css";
+@import "./styles/012-retail-results.css";
+@import "./styles/012-retail-review.css";
 @import "./styles/013-responsive.css";

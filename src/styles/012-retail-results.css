@@ -1,0 +1,605 @@
+/* Retail settlement, exposure, and result-review surfaces. */
+.retail-result-panel {
+  display: grid;
+  gap: 12px;
+}
+
+.retail-result-review-status {
+  display: grid;
+  min-width: 360px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.retail-result-review-status > div {
+  border: 1px solid #203451;
+  border-radius: 8px;
+  background: #081321;
+  padding: 12px;
+}
+
+.retail-result-review-status span {
+  color: #8fa4bf;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.retail-result-review-status strong {
+  display: block;
+  margin-top: 6px;
+  color: #f8fafc;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.retail-result-review-main,
+.retail-result-review-side {
+  min-width: 0;
+}
+
+.retail-output-boundary {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+.retail-output-boundary.compact {
+  margin-top: 10px;
+}
+
+.retail-result-panel .retail-output-boundary {
+  margin: 0;
+}
+
+.retail-empty-result,
+.retail-missing-result {
+  display: grid;
+  justify-items: start;
+}
+
+.retail-empty-result strong,
+.retail-missing-result strong {
+  color: #f8fafc;
+  font-size: 14px;
+}
+
+.retail-empty-result p,
+.retail-missing-result p {
+  color: #b6c5d8;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.retail-compact-hint {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #263c5a;
+  border-radius: 999px;
+  background: #081321;
+  color: #9fb2cd;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.retail-compact-hint span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.retail-result-snapshot {
+  display: grid;
+  gap: 10px;
+  border: 1px solid rgba(34, 211, 238, 0.28);
+  border-radius: 8px;
+  background: rgba(14, 165, 233, 0.08);
+  padding: 12px;
+}
+
+.retail-result-snapshot span,
+.retail-cost-row span,
+.retail-table-row span,
+.retail-month-result-row span {
+  color: #8fa4bf;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.retail-result-snapshot strong,
+.retail-cost-row strong,
+.retail-table-row strong,
+.retail-month-result-row strong {
+  color: #f1f5f9;
+  font-size: 14px;
+  font-weight: 850;
+}
+
+.retail-result-snapshot p {
+  color: #a5f3fc;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.retail-result-snapshot.review {
+  border-color: rgba(245, 158, 11, 0.28);
+  background: rgba(245, 158, 11, 0.08);
+}
+
+.retail-result-snapshot.review p {
+  color: #fde68a;
+}
+
+.retail-settlement-board {
+  display: grid;
+  gap: 14px;
+  border: 1px solid #24405e;
+  border-radius: 10px;
+  background: #07111f;
+  padding: 16px;
+}
+
+.retail-settlement-board.exposure {
+  padding: 14px;
+}
+
+.retail-settlement-board-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid #203451;
+  border-radius: 8px;
+  background: #091524;
+  padding: 14px;
+}
+
+.retail-settlement-board-head.tone-positive {
+  border-color: rgba(16, 185, 129, 0.34);
+}
+
+.retail-settlement-board-head.tone-watch {
+  border-color: rgba(245, 158, 11, 0.34);
+}
+
+.retail-settlement-board-head.tone-risk {
+  border-color: rgba(244, 63, 94, 0.36);
+}
+
+.retail-settlement-board-head span,
+.retail-settlement-signal span,
+.retail-settlement-section-title span,
+.retail-exposure-signal span,
+.retail-cost-stack-item span,
+.retail-settlement-risk-chip span {
+  color: #8fa4bf;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.retail-settlement-board-head h2 {
+  margin-top: 6px;
+  color: #f8fafc;
+  font-size: 21px;
+  font-weight: 850;
+  line-height: 1.25;
+}
+
+.retail-settlement-board-head p,
+.retail-exposure-map > p,
+.retail-cost-stack-map > p {
+  margin-top: 7px;
+  color: #aab8cc;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.retail-settlement-risk-chip {
+  display: grid;
+  min-width: 112px;
+  justify-items: end;
+  text-align: right;
+}
+
+.retail-settlement-risk-chip strong {
+  margin-top: 4px;
+  color: #f8fafc;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.retail-settlement-risk-chip em {
+  margin-top: 5px;
+  color: #67e8f9;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 850;
+}
+
+.retail-settlement-signal-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.retail-settlement-signal {
+  min-width: 0;
+  border: 1px solid #203451;
+  border-radius: 8px;
+  background: #091524;
+  padding: 12px;
+}
+
+.retail-settlement-signal.tone-positive,
+.retail-exposure-signal.tone-positive,
+.retail-cost-stack-item.tone-positive {
+  border-color: rgba(16, 185, 129, 0.28);
+}
+
+.retail-settlement-signal.tone-watch,
+.retail-exposure-signal.tone-watch,
+.retail-cost-stack-item.tone-watch {
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.retail-settlement-signal.tone-risk,
+.retail-exposure-signal.tone-risk,
+.retail-cost-stack-item.tone-risk {
+  border-color: rgba(244, 63, 94, 0.34);
+}
+
+.retail-settlement-signal strong {
+  display: block;
+  margin-top: 6px;
+  color: #f8fafc;
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.retail-settlement-signal p {
+  margin-top: 6px;
+  color: #9fb0c7;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.retail-settlement-board-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(260px, 0.92fr);
+  gap: 14px;
+}
+
+.retail-settlement-board.exposure .retail-settlement-board-grid {
+  grid-template-columns: 1fr;
+}
+
+.retail-exposure-map,
+.retail-cost-stack-map {
+  min-width: 0;
+  border: 1px solid #203451;
+  border-radius: 8px;
+  background: #081321;
+  padding: 14px;
+}
+
+.retail-settlement-section-title {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.retail-settlement-section-title strong {
+  display: block;
+  margin-top: 4px;
+  color: #f8fafc;
+  font-size: 15px;
+  font-weight: 850;
+  line-height: 1.3;
+}
+
+.retail-exposure-signal-list,
+.retail-cost-stack-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.retail-exposure-signal,
+.retail-cost-stack-item {
+  display: grid;
+  gap: 7px;
+  border: 1px solid #203451;
+  border-radius: 8px;
+  background: #091524;
+  padding: 10px;
+}
+
+.retail-exposure-signal > div,
+.retail-cost-stack-item > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.retail-exposure-signal strong,
+.retail-cost-stack-item strong {
+  color: #f8fafc;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 900;
+  text-align: right;
+}
+
+.retail-exposure-signal em,
+.retail-cost-stack-item em {
+  display: block;
+  overflow: hidden;
+  height: 8px;
+  border-radius: 999px;
+  background: #12243a;
+}
+
+.retail-exposure-signal i,
+.retail-cost-stack-item i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #22d3ee;
+}
+
+.retail-exposure-signal.tone-positive i,
+.retail-cost-stack-item.tone-positive i {
+  background: #10b981;
+}
+
+.retail-exposure-signal.tone-watch i,
+.retail-cost-stack-item.tone-watch i {
+  background: #f59e0b;
+}
+
+.retail-exposure-signal.tone-risk i,
+.retail-cost-stack-item.tone-risk i {
+  background: #f43f5e;
+}
+
+.retail-exposure-signal small,
+.retail-cost-stack-item small {
+  color: #9fb0c7;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.retail-table-row,
+.retail-cost-row,
+.retail-month-result-row {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  border-top: 1px solid #1d304b;
+  padding: 10px 0;
+}
+
+.retail-month-result-row {
+  grid-template-columns: 70px 80px minmax(0, 1fr) auto;
+}
+
+.retail-month-result-row.compact {
+  grid-template-columns: 70px 90px minmax(0, 1fr);
+}
+
+.retail-month-result-row.compact em {
+  justify-self: end;
+}
+
+.retail-table-row:first-of-type,
+.retail-cost-row:first-of-type,
+.retail-month-result-row:first-of-type {
+  border-top: 0;
+}
+
+.retail-table-row em,
+.retail-month-result-row em {
+  color: #67e8f9;
+  font-size: 12px;
+  font-style: normal;
+}
+
+.retail-month-result-row p {
+  overflow: hidden;
+  color: #9fb0c7;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.retail-output-empty {
+  display: grid;
+  max-width: 560px;
+  gap: 12px;
+  justify-items: start;
+  padding: 28px;
+}
+
+.retail-output-empty h1 {
+  color: #f8fafc;
+  font-size: 24px;
+  font-weight: 850;
+}
+
+.retail-output-empty p {
+  color: #aab8cc;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.retail-verdict-band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  border: 1px solid rgba(34, 211, 238, 0.25);
+  border-radius: 8px;
+  background: rgba(14, 165, 233, 0.08);
+  padding: 18px;
+}
+
+.retail-verdict-band h2 {
+  margin-top: 10px;
+  color: #f8fafc;
+  font-size: 22px;
+  font-weight: 850;
+}
+
+.retail-verdict-band p {
+  margin-top: 6px;
+  color: #aab8cc;
+  font-size: 13px;
+}
+
+.retail-settlement-breakdown {
+  margin-top: 14px;
+}
+
+.retail-review-list {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.retail-result-review-side .retail-review-list {
+  margin-bottom: 0;
+}
+
+.retail-result-verdict-compact {
+  border: 1px solid #203451;
+  border-radius: 8px;
+  background: #081321;
+  padding: 12px;
+}
+
+.retail-result-verdict-compact.tone-positive {
+  border-color: rgba(16, 185, 129, 0.3);
+  background: rgba(6, 95, 70, 0.13);
+}
+
+.retail-result-verdict-compact.tone-watch {
+  border-color: rgba(245, 158, 11, 0.32);
+  background: rgba(120, 53, 15, 0.14);
+}
+
+.retail-result-verdict-compact.tone-risk {
+  border-color: rgba(244, 63, 94, 0.34);
+  background: rgba(136, 19, 55, 0.14);
+}
+
+.retail-result-verdict-compact span {
+  color: #8fa4bf;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.retail-result-verdict-compact strong {
+  display: block;
+  margin-top: 6px;
+  color: #f8fafc;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.retail-result-verdict-compact p {
+  margin-top: 7px;
+  color: #aab8cc;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.retail-review-row {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  border: 1px solid #203451;
+  border-radius: 8px;
+  background: #081321;
+  padding: 10px;
+}
+
+.retail-review-row.tone-positive {
+  border-color: rgba(16, 185, 129, 0.26);
+}
+
+.retail-review-row.tone-watch {
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.retail-review-row.tone-risk {
+  border-color: rgba(244, 63, 94, 0.34);
+}
+
+.retail-review-row span {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: rgba(34, 211, 238, 0.12);
+  color: #67e8f9;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.retail-review-row p {
+  color: #d6e2f2;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.retail-review-row p strong {
+  color: #f8fafc;
+  font-weight: 850;
+}
+
+.retail-diagnostics-drawer {
+  margin-bottom: 2px;
+}
+
+.retail-diagnostics-list {
+  display: grid;
+  gap: 8px;
+}
+
+.retail-diagnostics-list p {
+  border-top: 1px solid #1d304b;
+  color: #aab8cc;
+  padding-top: 8px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.retail-diagnostics-list p:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.retail-result-card {
+  min-height: 156px;
+}
+
+.retail-result-card.compact {
+  min-height: 116px;
+}
+
+.retail-cost-row {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
