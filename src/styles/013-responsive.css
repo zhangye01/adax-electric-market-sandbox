@@ -4,7 +4,6 @@
   }
 
   .cockpit-topbar,
-  .output-page-grid,
   .records-page-grid {
     grid-template-columns: 1fr;
   }
@@ -51,7 +50,6 @@
   }
 
   .cockpit-left,
-  .output-side-panel,
   .records-side-panel {
     position: static;
     max-height: none;

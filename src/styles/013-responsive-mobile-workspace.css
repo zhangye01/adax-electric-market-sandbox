@@ -1,4 +1,9 @@
 @media (max-width: 760px) {
+  .cockpit-right {
+    position: static;
+    max-height: none;
+  }
+
   .retail-execution-context-bar {
     display: flex;
     gap: 8px;

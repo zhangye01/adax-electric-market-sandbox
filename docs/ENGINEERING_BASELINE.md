@@ -149,7 +149,6 @@ Shared shell and persistence:
 - `src/styles/013-responsive-mobile-pages.css`
 - `src/styles/013-responsive-mobile-grids.css`
 - `src/styles/013-responsive-mobile-workspace.css`
-- `src/styles/013-responsive-mobile-output.css`
 - `src/styles/013-responsive-mobile-flow.css`
 - `src/styles/013-responsive-mobile-market.css`
 - `src/styles/013-responsive-narrow.css`
@@ -230,7 +229,7 @@ Do not treat visual inspection as a replacement for domain tests.
 | GitHub workflow files blocked by token scope | Medium | Current GitHub CLI token lacks `workflow`; do not push `.github/workflows/**` unless authorization and Pages strategy are intentionally changed |
 | `App.tsx` becoming a god component | Reduced | Session state and page rendering are extracted; keep future flow logic out of the entry component |
 | Legacy prototype mixing into ADAX flow | Reduced | Legacy photovoltaic and old ADAX scenario prototypes are isolated under `src/legacy/**` and excluded from active build |
-| Global CSS coupling | Reduced | Styles are split by responsibility; records, cockpit controls, shared flow lists, step indicator, retail review surfaces, and retail result-review surfaces now have separate shell/input/action/template/data/step/helper/prompt/material/progress/empty/verdict/insight/diagnostic partitions, and obsolete review-cockpit/workspace-context CSS has been removed; continue avoiding cross-page selectors |
+| Global CSS coupling | Reduced | Styles are split by responsibility; records, cockpit controls, shared flow lists, step indicator, retail review surfaces, and retail result-review surfaces now have separate shell/input/action/template/data/step/helper/prompt/material/progress/empty/verdict/insight/diagnostic partitions, and obsolete review-cockpit/workspace-context/output CSS has been removed; continue avoiding cross-page selectors |
 | Template import corrupting state | Medium | Runtime parser validation and import tests |
 | Financial-looking results being misunderstood | Reduced | Shared model-boundary contract and result-surface notice |
 | Review mode becoming a generic material cabinet | Reduced | Review material scope and record snapshots are node-bound in `src/domain/retailReviewMaterials.ts` |

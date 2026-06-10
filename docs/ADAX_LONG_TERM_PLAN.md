@@ -233,7 +233,7 @@ Exit Criteria:
 
 Continue Engineering Hardening Hold.
 
-Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to review `src/styles/007-output.css` when output/report styles are next touched. First verify active usage for output grid, verdict band, flow rows, report summary cards, and report diagnosis grid; then split or remove inactive partitions before adding new output-surface rules. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
+Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to review `src/styles/013-responsive-mobile.css` when mobile shell styles are next touched. Split app layout/sidebar, collapsed-sidebar, topbar/context, result-review status, and page-shell rules only if the file still mixes those responsibilities. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
 
 ## Project Rescue Triggers
 

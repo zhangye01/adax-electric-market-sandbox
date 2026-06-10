@@ -18,7 +18,6 @@
 @import "./styles/006-cockpit-template-actions.css";
 @import "./styles/006-cockpit-template-fields.css";
 @import "./styles/006-cockpit-panels.css";
-@import "./styles/007-output.css";
 @import "./styles/008-records.css";
 @import "./styles/008-records-empty.css";
 @import "./styles/008-records-cards.css";
@@ -82,7 +81,6 @@
 @import "./styles/013-responsive-mobile-pages.css";
 @import "./styles/013-responsive-mobile-grids.css";
 @import "./styles/013-responsive-mobile-workspace.css";
-@import "./styles/013-responsive-mobile-output.css";
 @import "./styles/013-responsive-mobile-flow.css";
 @import "./styles/013-responsive-mobile-market.css";
 @import "./styles/013-responsive-narrow.css";
