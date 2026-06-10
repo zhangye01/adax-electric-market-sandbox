@@ -1,0 +1,10 @@
+.records-local-boundary {
+  border: 1px solid #22334c;
+  border-radius: 8px;
+  background: #0b1320;
+  color: #93a9c6;
+  padding: 12px;
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1.6;
+}

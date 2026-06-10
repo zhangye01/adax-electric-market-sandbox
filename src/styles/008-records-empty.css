@@ -1,0 +1,46 @@
+.records-empty-state {
+  display: flex;
+  min-height: 360px;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed #334155;
+  border-radius: 10px;
+  background: #0b1320;
+  padding: 28px;
+}
+
+.records-empty-content {
+  width: min(100%, 420px);
+  text-align: center;
+}
+
+.records-empty-content .cockpit-primary-action {
+  margin-inline: auto;
+}
+
+.records-empty-icon {
+  display: inline-flex;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #24405f;
+  border-radius: 8px;
+  background: #111d2f;
+  color: #67e8f9;
+}
+
+.records-empty-content strong {
+  display: block;
+  margin-top: 16px;
+  color: #f8fafc;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.records-empty-content p {
+  margin-top: 8px;
+  color: #93a9c6;
+  font-size: 13px;
+  line-height: 1.7;
+}

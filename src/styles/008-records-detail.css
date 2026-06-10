@@ -1,0 +1,39 @@
+.records-detail-hero {
+  border-bottom: 1px solid #1d2c43;
+  background:
+    linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(15, 23, 42, 0.02)),
+    #0b1320;
+  padding: 16px;
+}
+
+.records-detail-hero strong {
+  display: block;
+  margin-top: 12px;
+  color: #f8fafc;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.records-detail-hero p {
+  margin-top: 10px;
+  color: #c8d6ea;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.records-detail-hero em {
+  display: block;
+  margin-top: 14px;
+  color: #67e8f9;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.records-detail-grid {
+  display: grid;
+  gap: 10px;
+}

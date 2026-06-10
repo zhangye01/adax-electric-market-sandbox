@@ -1,0 +1,30 @@
+.records-card-grid div,
+.records-side-row {
+  border: 1px solid #22334c;
+  border-radius: 8px;
+  background: #0f1928;
+  padding: 12px;
+}
+
+.records-card-grid span,
+.records-side-row span {
+  color: #8ea4c1;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.records-card-grid strong,
+.records-side-row strong {
+  display: block;
+  margin-top: 7px;
+  color: #f8fafc;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.records-side-row p {
+  margin-top: 6px;
+  color: #8ea4c1;
+  font-size: 12px;
+  line-height: 1.55;
+}

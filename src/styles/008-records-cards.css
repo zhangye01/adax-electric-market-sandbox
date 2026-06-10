@@ -1,0 +1,109 @@
+.records-list {
+  display: grid;
+  gap: 14px;
+}
+
+.records-card {
+  border: 1px solid #22334c;
+  border-radius: 10px;
+  background: #0b1320;
+  padding: 16px;
+}
+
+.records-card.selected {
+  border-color: rgba(34, 211, 238, 0.58);
+  background: rgba(14, 165, 233, 0.08);
+}
+
+.records-card header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.records-card h2 {
+  margin-top: 10px;
+  color: #f8fafc;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.records-card header p {
+  margin-top: 6px;
+  color: #8ea4c1;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.records-card time {
+  flex: 0 0 auto;
+  color: #93a9c6;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.records-card-summary {
+  margin-top: 16px;
+  border: 1px solid #22334c;
+  border-radius: 8px;
+  background: #111d2f;
+  padding: 14px;
+}
+
+.records-card-summary strong {
+  display: block;
+  color: #67e8f9;
+  font-size: 24px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.records-card-summary.compact {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.records-card-summary.compact span {
+  color: #8ea4c1;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.records-card-summary p {
+  margin-top: 10px;
+  color: #c8d6ea;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.records-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.records-detail-button {
+  display: inline-flex;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 14px;
+  border: 1px solid #2a3d59;
+  border-radius: 6px;
+  background: #111d2f;
+  color: #c8d6ea;
+  padding: 0 14px;
+  font-size: 12px;
+  font-weight: 800;
+  transition: 160ms ease;
+}
+
+.records-detail-button:hover {
+  border-color: #22d3ee;
+  color: #67e8f9;
+}

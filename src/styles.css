@@ -18,6 +18,11 @@
 @import "./styles/006-cockpit-review.css";
 @import "./styles/007-output.css";
 @import "./styles/008-records.css";
+@import "./styles/008-records-empty.css";
+@import "./styles/008-records-cards.css";
+@import "./styles/008-records-field-rows.css";
+@import "./styles/008-records-detail.css";
+@import "./styles/008-records-boundary.css";
 @import "./styles/009-flow.css";
 @import "./styles/009-flow-mode.css";
 @import "./styles/009-flow-mode-decision.css";

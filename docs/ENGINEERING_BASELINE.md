@@ -126,6 +126,12 @@ Shared shell and persistence:
 - `src/styles/003-home-sections.css`
 - `src/styles/003-home-records.css`
 - `src/styles/003-home-boundary.css`
+- `src/styles/008-records.css`
+- `src/styles/008-records-empty.css`
+- `src/styles/008-records-cards.css`
+- `src/styles/008-records-field-rows.css`
+- `src/styles/008-records-detail.css`
+- `src/styles/008-records-boundary.css`
 - `src/styles/013-responsive.css`
 - `src/styles/013-responsive-tablet.css`
 - `src/styles/013-responsive-mobile.css`
@@ -213,7 +219,7 @@ Do not treat visual inspection as a replacement for domain tests.
 | GitHub workflow files blocked by token scope | Medium | Current GitHub CLI token lacks `workflow`; do not push `.github/workflows/**` unless authorization and Pages strategy are intentionally changed |
 | `App.tsx` becoming a god component | Reduced | Session state and page rendering are extracted; keep future flow logic out of the entry component |
 | Legacy prototype mixing into ADAX flow | Reduced | Legacy photovoltaic and old ADAX scenario prototypes are isolated under `src/legacy/**` and excluded from active build |
-| Global CSS coupling | Reduced | Styles are split by responsibility; continue avoiding cross-page selectors |
+| Global CSS coupling | Reduced | Styles are split by responsibility; records styles now have separate shell, empty, card, field-row, detail, and boundary partitions; continue avoiding cross-page selectors |
 | Template import corrupting state | Medium | Runtime parser validation and import tests |
 | Financial-looking results being misunderstood | Reduced | Shared model-boundary contract and result-surface notice |
 | Review mode becoming a generic material cabinet | Reduced | Review material scope and record snapshots are node-bound in `src/domain/retailReviewMaterials.ts` |
