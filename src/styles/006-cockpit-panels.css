@@ -25,9 +25,7 @@
   font-weight: 800;
 }
 
-.cockpit-control-grid,
-.review-layer-grid,
-.review-material-grid {
+.cockpit-control-grid {
   display: grid;
   gap: 14px;
 }

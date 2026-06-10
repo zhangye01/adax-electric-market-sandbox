@@ -58,7 +58,6 @@ Active retail flow:
 - `src/styles/006-cockpit-template-actions.css`
 - `src/styles/006-cockpit-template-fields.css`
 - `src/styles/006-cockpit-panels.css`
-- `src/styles/006-cockpit-review.css`
 - `src/styles/009-flow.css`
 - `src/styles/009-flow-mode.css`
 - `src/styles/009-flow-mode-decision.css`
@@ -222,7 +221,7 @@ Do not treat visual inspection as a replacement for domain tests.
 | GitHub workflow files blocked by token scope | Medium | Current GitHub CLI token lacks `workflow`; do not push `.github/workflows/**` unless authorization and Pages strategy are intentionally changed |
 | `App.tsx` becoming a god component | Reduced | Session state and page rendering are extracted; keep future flow logic out of the entry component |
 | Legacy prototype mixing into ADAX flow | Reduced | Legacy photovoltaic and old ADAX scenario prototypes are isolated under `src/legacy/**` and excluded from active build |
-| Global CSS coupling | Reduced | Styles are split by responsibility; records and cockpit controls now have separate shell/input/action/template/detail partitions; continue avoiding cross-page selectors |
+| Global CSS coupling | Reduced | Styles are split by responsibility; records and cockpit controls now have separate shell/input/action/template/detail partitions, and obsolete review-cockpit CSS has been removed; continue avoiding cross-page selectors |
 | Template import corrupting state | Medium | Runtime parser validation and import tests |
 | Financial-looking results being misunderstood | Reduced | Shared model-boundary contract and result-surface notice |
 | Review mode becoming a generic material cabinet | Reduced | Review material scope and record snapshots are node-bound in `src/domain/retailReviewMaterials.ts` |

@@ -233,7 +233,7 @@ Exit Criteria:
 
 Continue Engineering Hardening Hold.
 
-Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to review `src/styles/006-cockpit-review.css` when review cockpit styles are next touched, then split review node summary, material cards/editor, and progress rows only if the file still mixes responsibilities. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
+Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to review `src/styles/009-flow-lists.css` when flow list styles are next touched, then split flow output rows, data rows, step/boundary rows, notes, and side-panel helper rows only if the file still mixes responsibilities. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
 
 ## Project Rescue Triggers
 
