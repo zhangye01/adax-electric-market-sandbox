@@ -32,6 +32,18 @@ Use this protocol for future "继续" turns:
 
 Do not jump to a later phase just because it is more visible. Finish the current phase's guardrails first.
 
+## Current Public Preview
+
+The current public preview is:
+
+```text
+https://zhangye01.github.io/adax-electric-market-sandbox/
+```
+
+Publishing is documented in `docs/ADAX_RELEASE_PROCESS.md`.
+
+The source code branch is `main`; the GitHub Pages branch is `gh-pages`.
+
 ## Phase 0: Engineering Baseline
 
 Status: complete.

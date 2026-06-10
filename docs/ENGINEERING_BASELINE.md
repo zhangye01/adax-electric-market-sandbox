@@ -8,6 +8,8 @@ The current priority is engineering stability, not feature expansion.
 
 Use `docs/ADAX_LONG_TERM_PLAN.md` as the autonomous execution roadmap. This file defines the engineering baseline; the long-term plan defines phase order and next actions. Use `docs/ACTIVE_ARCHITECTURE_MAP.md` for the active source boundary and import map.
 
+Use `docs/ADAX_RELEASE_PROCESS.md` for GitHub Pages publishing. The current production preview is served from the `gh-pages` branch, while the source code stays on `main`.
+
 ## Source Boundaries
 
 Active retail flow:
@@ -107,7 +109,8 @@ Near-term maintenance priorities:
 3. Keep `src/app/createAdaxTrainingActions.ts` as the training action boundary.
 4. Keep `docs/ACTIVE_ARCHITECTURE_MAP.md` current when source boundaries change.
 5. Continue reducing large style partitions only when a page is touched.
-6. Only add new participant workflows after the relevant startup card is confirmed.
+6. Keep `docs/ADAX_RELEASE_PROCESS.md` current when publishing, changing Pages configuration, or changing Vite build paths.
+7. Only add new participant workflows after the relevant startup card is confirmed.
 
 ## Quality Commands
 
@@ -125,6 +128,8 @@ Do not treat visual inspection as a replacement for domain tests.
 | --- | --- | --- |
 | Scope drift into non-retailer workflows | High | Keep `docs/ADAX_MVP_STARTER.md` as source of truth |
 | New participant implementation starting before scope confirmation | High | Require a confirmed participant startup card before code; current renewable card is `docs/ADAX_RENEWABLE_STARTUP_CARD.md` and remains pending confirmation |
+| Preview publishing path drifting from source history | Medium | Keep source on `main`, static build on `gh-pages`, and follow `docs/ADAX_RELEASE_PROCESS.md` |
+| GitHub workflow files blocked by token scope | Medium | Current GitHub CLI token lacks `workflow`; do not push `.github/workflows/**` unless authorization and Pages strategy are intentionally changed |
 | `App.tsx` becoming a god component | Reduced | Session state and page rendering are extracted; keep future flow logic out of the entry component |
 | Legacy prototype mixing into ADAX flow | Reduced | Legacy photovoltaic and old ADAX scenario prototypes are isolated under `src/legacy/**` and excluded from active build |
 | Global CSS coupling | Reduced | Styles are split by responsibility; continue avoiding cross-page selectors |

@@ -15,6 +15,8 @@ Read these files before changing code:
 7. `TEST_CASES.md`
 8. `UI_REQUIREMENTS.md`
 
+Read `docs/ADAX_RELEASE_PROCESS.md` before publishing, changing Pages configuration, changing Vite build base paths, or touching `gh-pages`.
+
 If those files conflict, treat `docs/ADAX_MVP_STARTER.md` as the scope baseline, `docs/ADAX_LONG_TERM_PLAN.md` as the execution roadmap, and update the stale document before continuing feature work.
 
 ## Current Active Scope
@@ -55,6 +57,14 @@ Run these before handing off a code change:
 - `npm run build`
 
 If one cannot be run, state the reason explicitly.
+
+## Publishing Rules
+
+- Public preview URL: `https://zhangye01.github.io/adax-electric-market-sandbox/`.
+- Source code is pushed to `main`.
+- GitHub Pages is served from `gh-pages`.
+- `dist/` remains ignored in the source repo; publish it only through the static release repo described in `docs/ADAX_RELEASE_PROCESS.md`.
+- Do not add or push `.github/workflows/**` unless GitHub CLI has `workflow` scope and the Pages deployment strategy has been intentionally changed.
 
 ## Project Rescue Triggers
 
