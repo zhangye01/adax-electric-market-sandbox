@@ -1,0 +1,92 @@
+/* Main area and topbar context/status surfaces. */
+.app-main-area {
+  min-width: 0;
+}
+
+.app-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  min-height: 70px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid #22334c;
+  background: rgba(13, 22, 38, 0.95);
+  padding: 12px 32px;
+  backdrop-filter: blur(12px);
+}
+
+.app-topbar-main {
+  min-width: 0;
+}
+
+.app-pathline {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.app-topbar h1 {
+  margin-top: 4px;
+  color: #f8fafc;
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.app-flow-context {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 9px;
+}
+
+.app-flow-context span {
+  display: inline-flex;
+  min-width: 0;
+  max-width: 230px;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.62);
+  padding: 5px 9px;
+}
+
+.app-flow-context em {
+  flex: 0 0 auto;
+  color: #64748b;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.app-flow-context strong {
+  min-width: 0;
+  overflow: hidden;
+  color: #cbd5e1;
+  font-size: 12px;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-topbar-status {
+  display: grid;
+  justify-items: end;
+  gap: 8px;
+  flex: 0 0 auto;
+  max-width: 360px;
+}
+
+.app-next-action {
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.5;
+  text-align: right;
+}

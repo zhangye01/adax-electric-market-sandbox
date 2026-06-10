@@ -96,6 +96,9 @@ Shared shell and persistence:
 - `src/styles.css`
 - `src/styles/001-base.css`
 - `src/styles/002-app-layout.css`
+- `src/styles/002-app-sidebar-panel.css`
+- `src/styles/002-app-sidebar-nav.css`
+- `src/styles/002-app-topbar.css`
 - `src/styles/003-home.css`
 - `src/styles/003-home-hero.css`
 - `src/styles/003-home-sections.css`
