@@ -1,0 +1,46 @@
+.retail-node-list {
+  display: grid;
+  gap: 8px;
+}
+
+.retail-node-button {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  border: 1px solid #203451;
+  border-radius: 7px;
+  background: #081321;
+  padding: 11px 10px;
+  text-align: left;
+  transition: 160ms ease;
+}
+
+.retail-node-button:hover,
+.retail-node-button.active {
+  border-color: #22d3ee;
+  background: rgba(8, 145, 178, 0.16);
+}
+
+.retail-node-button span {
+  color: #67e8f9;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.retail-node-button strong {
+  overflow: hidden;
+  color: #d8e6f8;
+  font-size: 13px;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.retail-node-button em {
+  grid-column: 2;
+  color: #6f84a1;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 800;
+}

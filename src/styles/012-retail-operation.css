@@ -1,0 +1,48 @@
+.retail-operation-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid #1d304b;
+  padding-bottom: 14px;
+}
+
+.retail-operation-head p {
+  color: #67e8f9;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.retail-operation-head h2 {
+  margin-top: 5px;
+  color: #f1f5f9;
+  font-size: 22px;
+  font-weight: 850;
+  line-height: 1.25;
+}
+
+.retail-operation-mode {
+  display: inline-flex;
+  min-height: 26px;
+  align-items: center;
+  margin-top: 10px;
+  border: 1px solid rgba(34, 211, 238, 0.34);
+  border-radius: 999px;
+  background: rgba(14, 165, 233, 0.08);
+  color: #a5f3fc;
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.retail-operation-mode.review {
+  border-color: rgba(245, 158, 11, 0.34);
+  background: rgba(245, 158, 11, 0.08);
+  color: #fde68a;
+}
+
+.retail-node-content {
+  display: grid;
+  gap: 16px;
+  padding-top: 16px;
+}

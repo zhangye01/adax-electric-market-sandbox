@@ -1,0 +1,58 @@
+.retail-node-assist {
+  position: relative;
+  display: inline-flex;
+  min-width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid #28405e;
+  border-radius: 7px;
+  background: #101c2e;
+  color: #93c5fd;
+  padding: 0 9px;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.retail-node-assist.review {
+  cursor: pointer;
+  border-color: rgba(245, 158, 11, 0.32);
+  color: #fbbf24;
+}
+
+.retail-node-assist > span {
+  max-width: 72px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.retail-node-assist em {
+  position: absolute;
+  top: 38px;
+  right: 0;
+  z-index: 5;
+  display: none;
+  width: 240px;
+  border: 1px solid #36577d;
+  border-radius: 8px;
+  background: #0b1524;
+  padding: 10px;
+  color: #d8e6f8;
+  font-size: 12px;
+  font-style: normal;
+  line-height: 1.7;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+}
+
+.retail-node-assist:hover em,
+.retail-node-assist:focus em,
+.retail-node-assist:focus-within em {
+  display: block;
+}
+
+.retail-node-assist input {
+  display: none;
+}

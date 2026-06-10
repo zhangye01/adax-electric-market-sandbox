@@ -1,0 +1,12 @@
+.retail-metric-grid,
+.retail-choice-grid,
+.retail-review-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.retail-choice-grid,
+.retail-review-summary-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}

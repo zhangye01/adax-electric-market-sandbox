@@ -15,10 +15,10 @@ npm run audit:source
 
 | Metric | Value |
 | --- | --- |
-| Active source files | 146 |
+| Active source files | 151 |
 | Code files | 85 |
-| Style files | 61 |
-| Total active source lines | 15079 |
+| Style files | 66 |
+| Total active source lines | 15084 |
 | Watch line threshold | 220 code / 400 CSS |
 | High line threshold | 300 code / 800 CSS |
 
@@ -26,7 +26,7 @@ npm run audit:source
 
 | Layer | Files | Lines |
 | --- | --- | --- |
-| `src/styles` | 60 | 6862 |
+| `src/styles` | 65 | 6862 |
 | `src/components` | 34 | 2634 |
 | `src/domain` | 23 | 2625 |
 | `src/pages` | 7 | 1293 |
@@ -34,7 +34,7 @@ npm run audit:source
 | `src/data` | 6 | 399 |
 | `src/services` | 3 | 318 |
 | `src/utils` | 4 | 173 |
-| `src/root` | 4 | 149 |
+| `src/root` | 4 | 154 |
 | `src/routes` | 1 | 56 |
 
 ## Largest Files
@@ -42,7 +42,6 @@ npm run audit:source
 | File | Lines | Layer |
 | --- | --- | --- |
 | `src/domain/retailCalculations.ts` | 455 | `src/domain` |
-| `src/styles/012-retail.css` | 302 | `src/styles` |
 | `src/styles/009-flow-mode.css` | 301 | `src/styles` |
 | `src/pages/RecordsPage.tsx` | 284 | `src/pages` |
 | `src/styles/009-flow-role.css` | 278 | `src/styles` |
@@ -56,6 +55,7 @@ npm run audit:source
 | `src/pages/HomePage.tsx` | 219 | `src/pages` |
 | `src/domain/retailSettlementDisplay.ts` | 214 | `src/domain` |
 | `src/styles/009-flow-lists.css` | 208 | `src/styles` |
+| `src/styles/012-retail-review.css` | 204 | `src/styles` |
 
 ## Import Hotspots
 
@@ -63,7 +63,7 @@ Fan-out pressure:
 
 | File | Import count |
 | --- | --- |
-| `src/styles.css` | 60 |
+| `src/styles.css` | 65 |
 | `src/components/retail/RetailReviewWorkspace.tsx` | 15 |
 | `src/components/retail/RetailExecutionWorkspace.tsx` | 14 |
 | `src/app/createAdaxTrainingActions.ts` | 12 |
@@ -87,7 +87,7 @@ Fan-in pressure:
 2. `src/styles/006-cockpit.css` has been split into cockpit base, summary, layout, controls, panels, and review partitions.
 3. `src/styles/012-retail-results.css` has been split into result base, settlement, breakdown, and result-review partitions.
 4. `src/styles/012-retail-trade.css` has been split into trade base, reference, cards, controls, and feedback partitions.
-5. `src/styles/012-retail.css` has been split into retail shell, market, trade, results, and review partitions.
+5. `src/styles/012-retail.css` has been split into retail shell, node rail, operation, execution context, assist entry, grid primitives, market, trade, results, and review partitions.
 6. `src/styles/009-flow.css` has been split into flow shell, mode, scenario, role, and shared list partitions.
 7. `src/styles/009-flow-scenario.css` has been split into scenario shell, market situation cards, market activity/event cards, and confirmation-side-panel partitions.
 8. `src/styles/003-home.css` has been split into home shell, hero/training path, mode/market sections, chain/records, and boundary-notice partitions.
@@ -101,7 +101,7 @@ Fan-in pressure:
 
 ## Recommended Refactor Queue
 
-1. Review `src/styles/012-retail.css` or `src/styles/009-flow-mode.css` only when those surfaces are next touched; split further only if each file still mixes responsibilities.
+1. Review `src/styles/009-flow-mode.css` when the mode selection surface is next touched; split mode cards, confirmation panels, path stack, and record summary only if the file still mixes responsibilities.
 2. Extract calculation helper modules from `src/domain/retailCalculations.ts` only when the next calculation change requires it.
 3. Keep `src/domain/retailTypes.ts` stable unless a new confirmed participant startup card requires new shared contracts.
 4. Keep workspace components as page-level composition surfaces; move any new derived status, validation, or display contract into `src/domain/**`.

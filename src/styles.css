@@ -33,6 +33,11 @@
 @import "./styles/010-cockpit-messages.css";
 @import "./styles/011-workspace-command.css";
 @import "./styles/012-retail.css";
+@import "./styles/012-retail-node-rail.css";
+@import "./styles/012-retail-operation.css";
+@import "./styles/012-retail-context.css";
+@import "./styles/012-retail-assist.css";
+@import "./styles/012-retail-grids.css";
 @import "./styles/012-retail-market.css";
 @import "./styles/012-retail-market-load.css";
 @import "./styles/012-retail-market-price.css";

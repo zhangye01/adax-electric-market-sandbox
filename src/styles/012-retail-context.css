@@ -1,0 +1,76 @@
+.retail-execution-context-bar {
+  display: grid;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  grid-template-columns: minmax(190px, 1.25fr) minmax(104px, 0.62fr) minmax(120px, 0.68fr) minmax(108px, 0.58fr) minmax(140px, 0.8fr);
+  gap: 10px;
+  align-items: stretch;
+  border-bottom: 1px solid #1d304b;
+  padding: 12px 0 14px;
+}
+
+.retail-execution-context-bar > div {
+  min-width: 0;
+  border: 1px solid #203451;
+  border-radius: 8px;
+  background: #081321;
+  padding: 10px;
+}
+
+.retail-execution-context-bar span {
+  display: block;
+  color: #8fa4bf;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+}
+
+.retail-execution-context-bar strong {
+  display: block;
+  overflow: hidden;
+  margin-top: 5px;
+  color: #f8fafc;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.retail-execution-context-bar p {
+  margin-top: 6px;
+  color: #9fb0c7;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.retail-execution-context-primary {
+  border-color: rgba(34, 211, 238, 0.28) !important;
+  background: rgba(14, 165, 233, 0.08) !important;
+}
+
+.retail-execution-context-primary span,
+.retail-execution-context-primary p {
+  color: #a5f3fc;
+}
+
+.retail-execution-context-bar .status-green {
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.retail-execution-context-bar .status-green strong {
+  color: #a7f3d0;
+}
+
+.retail-execution-context-bar .status-orange {
+  border-color: rgba(245, 158, 11, 0.34);
+}
+
+.retail-execution-context-bar .status-orange strong {
+  color: #fde68a;
+}
+
+.retail-execution-context-bar .status-slate strong {
+  color: #cbd5e1;
+}

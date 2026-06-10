@@ -70,6 +70,11 @@ Active retail flow:
 - `src/styles/010-cockpit-notices.css`
 - `src/styles/010-cockpit-messages.css`
 - `src/styles/012-retail.css`
+- `src/styles/012-retail-node-rail.css`
+- `src/styles/012-retail-operation.css`
+- `src/styles/012-retail-context.css`
+- `src/styles/012-retail-assist.css`
+- `src/styles/012-retail-grids.css`
 - `src/styles/012-retail-market.css`
 - `src/styles/012-retail-market-load.css`
 - `src/styles/012-retail-market-price.css`
