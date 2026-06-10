@@ -182,6 +182,21 @@ Rules:
 - do not regrow broad business utility modules
 - move business rules into `src/domain/**`
 
+### `scripts/**`
+
+Local engineering automation.
+
+Current scripts:
+
+- `publish-pages.mjs`: runs the Pages release procedure for the current static preview.
+
+Rules:
+
+- scripts may coordinate local commands, file copying, release validation, and Git operations
+- scripts must not contain ADAX business rules, settlement math, route logic, or UI behavior
+- scripts must not import from `src/legacy/**`
+- publishing scripts must keep `main` and `gh-pages` responsibilities separated
+
 ### `src/pages/**`
 
 High-level page composition.

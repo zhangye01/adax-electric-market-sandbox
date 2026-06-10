@@ -64,6 +64,8 @@ If one cannot be run, state the reason explicitly.
 - Source code is pushed to `main`.
 - GitHub Pages is served from `gh-pages`.
 - `dist/` remains ignored in the source repo; publish it only through the static release repo described in `docs/ADAX_RELEASE_PROCESS.md`.
+- Use `npm run publish:pages:dry` before a real Pages publish.
+- Use `npm run publish:pages -- --yes` for a real Pages publish.
 - Do not add or push `.github/workflows/**` unless GitHub CLI has `workflow` scope and the Pages deployment strategy has been intentionally changed.
 
 ## Project Rescue Triggers

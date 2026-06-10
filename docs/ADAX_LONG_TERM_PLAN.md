@@ -44,6 +44,8 @@ Publishing is documented in `docs/ADAX_RELEASE_PROCESS.md`.
 
 The source code branch is `main`; the GitHub Pages branch is `gh-pages`.
 
+Use `npm run publish:pages:dry` before publishing and `npm run publish:pages -- --yes` for a real Pages update.
+
 ## Phase 0: Engineering Baseline
 
 Status: complete.

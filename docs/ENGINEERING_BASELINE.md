@@ -71,6 +71,10 @@ Shared shell and persistence:
 - `src/styles/002-app-layout.css`
 - `src/styles/013-responsive.css`
 
+Tooling and release automation:
+
+- `scripts/publish-pages.mjs`
+
 Legacy or inactive prototype areas:
 
 - `src/legacy/photovoltaic/**`
@@ -129,6 +133,7 @@ Do not treat visual inspection as a replacement for domain tests.
 | Scope drift into non-retailer workflows | High | Keep `docs/ADAX_MVP_STARTER.md` as source of truth |
 | New participant implementation starting before scope confirmation | High | Require a confirmed participant startup card before code; current renewable card is `docs/ADAX_RENEWABLE_STARTUP_CARD.md` and remains pending confirmation |
 | Preview publishing path drifting from source history | Medium | Keep source on `main`, static build on `gh-pages`, and follow `docs/ADAX_RELEASE_PROCESS.md` |
+| Manual Pages publishing missing a step | Reduced | Use `npm run publish:pages:dry` before `npm run publish:pages -- --yes`; publishing logic is centralized in `scripts/publish-pages.mjs` |
 | GitHub workflow files blocked by token scope | Medium | Current GitHub CLI token lacks `workflow`; do not push `.github/workflows/**` unless authorization and Pages strategy are intentionally changed |
 | `App.tsx` becoming a god component | Reduced | Session state and page rendering are extracted; keep future flow logic out of the entry component |
 | Legacy prototype mixing into ADAX flow | Reduced | Legacy photovoltaic and old ADAX scenario prototypes are isolated under `src/legacy/**` and excluded from active build |
