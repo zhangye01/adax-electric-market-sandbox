@@ -73,7 +73,9 @@ Active retail flow:
 - `src/styles/009-flow-role-ecosystem.css`
 - `src/styles/009-flow-role-info-pack.css`
 - `src/styles/009-flow-role-seat.css`
-- `src/styles/009-flow-lists.css`
+- `src/styles/009-flow-data-list.css`
+- `src/styles/009-flow-step-list.css`
+- `src/styles/009-flow-side-helpers.css`
 - `src/styles/010-cockpit-components.css`
 - `src/styles/010-cockpit-comparison.css`
 - `src/styles/010-cockpit-feedback.css`
@@ -221,7 +223,7 @@ Do not treat visual inspection as a replacement for domain tests.
 | GitHub workflow files blocked by token scope | Medium | Current GitHub CLI token lacks `workflow`; do not push `.github/workflows/**` unless authorization and Pages strategy are intentionally changed |
 | `App.tsx` becoming a god component | Reduced | Session state and page rendering are extracted; keep future flow logic out of the entry component |
 | Legacy prototype mixing into ADAX flow | Reduced | Legacy photovoltaic and old ADAX scenario prototypes are isolated under `src/legacy/**` and excluded from active build |
-| Global CSS coupling | Reduced | Styles are split by responsibility; records and cockpit controls now have separate shell/input/action/template/detail partitions, and obsolete review-cockpit CSS has been removed; continue avoiding cross-page selectors |
+| Global CSS coupling | Reduced | Styles are split by responsibility; records, cockpit controls, and shared flow lists now have separate shell/input/action/template/data/step/helper partitions, and obsolete review-cockpit CSS has been removed; continue avoiding cross-page selectors |
 | Template import corrupting state | Medium | Runtime parser validation and import tests |
 | Financial-looking results being misunderstood | Reduced | Shared model-boundary contract and result-surface notice |
 | Review mode becoming a generic material cabinet | Reduced | Review material scope and record snapshots are node-bound in `src/domain/retailReviewMaterials.ts` |

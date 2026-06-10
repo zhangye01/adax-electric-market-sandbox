@@ -40,7 +40,9 @@
 @import "./styles/009-flow-role-ecosystem.css";
 @import "./styles/009-flow-role-info-pack.css";
 @import "./styles/009-flow-role-seat.css";
-@import "./styles/009-flow-lists.css";
+@import "./styles/009-flow-data-list.css";
+@import "./styles/009-flow-step-list.css";
+@import "./styles/009-flow-side-helpers.css";
 @import "./styles/010-cockpit-components.css";
 @import "./styles/010-cockpit-comparison.css";
 @import "./styles/010-cockpit-feedback.css";

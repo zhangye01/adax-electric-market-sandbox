@@ -1,0 +1,81 @@
+.flow-step-list {
+  display: grid;
+  gap: 10px;
+}
+
+.launch-step-list {
+  gap: 8px;
+}
+
+.flow-step-row {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  border: 1px solid #22334c;
+  border-radius: 8px;
+  background: #0b1320;
+  padding: 11px;
+}
+
+.flow-step-row span {
+  display: inline-flex;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: #123248;
+  color: #67e8f9;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.flow-step-row strong {
+  color: #e2e8f0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.flow-step-list.compact {
+  gap: 7px;
+}
+
+.flow-step-list.compact .flow-step-row {
+  padding: 9px;
+}
+
+.launch-step-row {
+  border-color: #22334c;
+}
+
+.launch-step-row.done {
+  border-color: rgba(20, 184, 166, 0.32);
+  background: rgba(20, 184, 166, 0.08);
+}
+
+.launch-step-row.active {
+  border-color: rgba(34, 211, 238, 0.58);
+  background: rgba(14, 165, 233, 0.11);
+}
+
+.launch-step-row.done span {
+  background: rgba(20, 184, 166, 0.18);
+  color: #5eead4;
+}
+
+.launch-step-row.active span {
+  background: rgba(14, 165, 233, 0.22);
+  color: #67e8f9;
+}
+
+.launch-step-row.idle strong {
+  color: #cbd5e1;
+}
+
+.flow-step-row p {
+  grid-column: 2;
+  color: #8ea4c1;
+  font-size: 12px;
+  line-height: 1.65;
+}

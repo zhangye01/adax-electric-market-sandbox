@@ -1,0 +1,24 @@
+.flow-side-section-title {
+  margin: 16px 0 10px;
+  color: #dbeafe;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.flow-info-panel .subtle-card {
+  border-color: #22334c;
+  background: #0b1320;
+}
+
+.flow-info-panel .subtle-card p {
+  color: #9fb2cd;
+}
+
+.flow-info-panel .subtle-card p:last-child {
+  color: #e2e8f0;
+}
+
+.flow-info-panel .metric-card {
+  border-color: #22334c;
+  background: #0b1320;
+}
