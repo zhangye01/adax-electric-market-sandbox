@@ -1,0 +1,86 @@
+.cockpit-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.execution-workbench-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.execution-workbench-steps span {
+  border: 1px solid #24405f;
+  border-radius: 6px;
+  background: #0b1320;
+  color: #b8c8dd;
+  padding: 7px 9px;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.execution-workbench-steps.compact {
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.execution-workbench-steps.compact span {
+  padding: 5px 8px;
+  font-size: 11px;
+}
+
+.cockpit-stat {
+  min-width: 0;
+  border: 1px solid #22334c;
+  border-radius: 8px;
+  background: #111d2f;
+  padding: 14px;
+}
+
+.cockpit-stat p {
+  color: #8ea4c1;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.cockpit-stat strong {
+  display: block;
+  margin-top: 8px;
+  color: #f8fafc;
+  font-variant-numeric: tabular-nums;
+  font-size: 23px;
+  line-height: 1;
+}
+
+.cockpit-stat strong span {
+  margin-left: 4px;
+  color: #8ea4c1;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.cockpit-stat em {
+  display: block;
+  margin-top: 8px;
+  color: #8ea4c1;
+  font-size: 12px;
+  font-style: normal;
+}
+
+.cockpit-stat.good strong,
+.cockpit-stat.good em {
+  color: #34d399;
+}
+
+.cockpit-stat.warn strong,
+.cockpit-stat.warn em {
+  color: #fbbf24;
+}
+
+.cockpit-stat.risk strong,
+.cockpit-stat.risk em {
+  color: #fb7185;
+}

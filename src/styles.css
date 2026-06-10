@@ -4,6 +4,11 @@
 @import "./styles/004-about.css";
 @import "./styles/005-workspace-context.css";
 @import "./styles/006-cockpit.css";
+@import "./styles/006-cockpit-summary.css";
+@import "./styles/006-cockpit-layout.css";
+@import "./styles/006-cockpit-controls.css";
+@import "./styles/006-cockpit-panels.css";
+@import "./styles/006-cockpit-review.css";
 @import "./styles/007-output.css";
 @import "./styles/008-records.css";
 @import "./styles/009-flow.css";

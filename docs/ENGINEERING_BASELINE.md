@@ -50,6 +50,12 @@ Active retail flow:
 - `src/components/adax/ModelBoundaryNotice.tsx`
 - `src/components/adax/ModeBoundaryNotice.tsx`
 - `src/routes/adaxRoutes.ts`
+- `src/styles/006-cockpit.css`
+- `src/styles/006-cockpit-summary.css`
+- `src/styles/006-cockpit-layout.css`
+- `src/styles/006-cockpit-controls.css`
+- `src/styles/006-cockpit-panels.css`
+- `src/styles/006-cockpit-review.css`
 - `src/styles/009-flow.css`
 - `src/styles/009-flow-mode.css`
 - `src/styles/009-flow-scenario.css`
