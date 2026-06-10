@@ -1,0 +1,44 @@
+/* Retail review material progress panel. */
+.retail-review-progress {
+  display: grid;
+  gap: 10px;
+  border: 1px solid #203451;
+  border-radius: 8px;
+  background: #081321;
+  padding: 12px;
+}
+
+.retail-review-progress span {
+  color: #8fa4bf;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.retail-review-progress strong {
+  display: block;
+  margin-top: 6px;
+  color: #f1f5f9;
+  font-size: 15px;
+  font-weight: 850;
+}
+
+.retail-review-progress i {
+  display: block;
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #15243a;
+}
+
+.retail-review-progress i em {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #f59e0b;
+}
+
+.retail-review-progress p {
+  color: #9fb0c7;
+  font-size: 12px;
+  line-height: 1.6;
+}

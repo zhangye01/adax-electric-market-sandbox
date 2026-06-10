@@ -1,0 +1,51 @@
+/* Retail review material grid and editor. */
+.retail-review-material-grid {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.retail-review-material-card {
+  display: grid;
+  gap: 10px;
+  border: 1px solid #203451;
+  border-radius: 8px;
+  background: #091524;
+  padding: 12px;
+}
+
+.retail-review-material-card.filled {
+  border-color: rgba(16, 185, 129, 0.32);
+}
+
+.retail-review-material-card > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #dbeafe;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.retail-review-material-card > span .badge {
+  margin-left: auto;
+}
+
+.retail-review-material-card textarea {
+  min-height: 116px;
+  width: 100%;
+  resize: vertical;
+  border: 1px solid #28405e;
+  border-radius: 7px;
+  background: #081321;
+  padding: 10px;
+  color: #eef6ff;
+  font-size: 13px;
+  line-height: 1.7;
+  outline: none;
+}
+
+.retail-review-material-card textarea:focus {
+  border-color: #22d3ee;
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.12);
+}

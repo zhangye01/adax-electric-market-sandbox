@@ -1,0 +1,39 @@
+/* Shared retail side-panel drawers and file actions. */
+.retail-file-action {
+  cursor: pointer;
+}
+
+.retail-file-action input {
+  display: none;
+}
+
+.retail-side-action-drawer {
+  border: 1px solid #203451;
+  border-radius: 8px;
+  background: #081321;
+  padding: 10px;
+}
+
+.retail-side-action-drawer summary {
+  cursor: pointer;
+  color: #c8d6ea;
+  font-size: 12px;
+  font-weight: 850;
+  list-style: none;
+}
+
+.retail-side-action-drawer summary::-webkit-details-marker {
+  display: none;
+}
+
+.retail-side-action-stack {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.retail-panel-microcopy {
+  color: #9fb0c7;
+  font-size: 12px;
+  line-height: 1.6;
+}
