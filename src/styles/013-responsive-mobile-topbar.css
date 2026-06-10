@@ -1,0 +1,71 @@
+@media (max-width: 760px) {
+  .app-topbar {
+    position: sticky;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "title badge"
+      "context context"
+      "next next";
+    align-items: center;
+    gap: 6px 10px;
+    min-height: 0;
+    padding: 8px 12px;
+  }
+
+  .app-topbar-main,
+  .app-topbar-status {
+    display: contents;
+  }
+
+  .app-pathline {
+    display: none;
+  }
+
+  .app-topbar h1 {
+    grid-area: title;
+    min-width: 0;
+    overflow: hidden;
+    margin-top: 0;
+    font-size: 17px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .app-flow-context {
+    grid-area: context;
+    flex-wrap: nowrap;
+    gap: 6px;
+    overflow-x: auto;
+    margin-top: 0;
+    padding-bottom: 1px;
+    scrollbar-width: none;
+  }
+
+  .app-flow-context::-webkit-scrollbar {
+    display: none;
+  }
+
+  .app-flow-context span {
+    flex: 0 0 auto;
+    max-width: 170px;
+    padding: 4px 8px;
+  }
+
+  .app-topbar-status > span:first-child {
+    grid-area: badge;
+    justify-self: end;
+    white-space: nowrap;
+  }
+
+  .app-next-action {
+    grid-area: next;
+    overflow: hidden;
+    color: #7f93af;
+    font-size: 11px;
+    line-height: 1.35;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

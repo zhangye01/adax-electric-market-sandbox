@@ -15,10 +15,10 @@ npm run audit:source
 
 | Metric | Value |
 | --- | --- |
-| Active source files | 171 |
+| Active source files | 174 |
 | Code files | 84 |
-| Style files | 87 |
-| Total active source lines | 14352 |
+| Style files | 90 |
+| Total active source lines | 14361 |
 | Watch line threshold | 220 code / 400 CSS |
 | High line threshold | 300 code / 800 CSS |
 
@@ -26,14 +26,14 @@ npm run audit:source
 
 | Layer | Files | Lines |
 | --- | --- | --- |
-| `src/styles` | 86 | 6168 |
+| `src/styles` | 89 | 6174 |
 | `src/domain` | 23 | 2625 |
 | `src/components` | 33 | 2575 |
 | `src/pages` | 7 | 1293 |
 | `src/app` | 4 | 570 |
 | `src/data` | 6 | 399 |
 | `src/services` | 3 | 318 |
-| `src/root` | 4 | 175 |
+| `src/root` | 4 | 178 |
 | `src/utils` | 4 | 173 |
 | `src/routes` | 1 | 56 |
 
@@ -53,9 +53,9 @@ npm run audit:source
 | `src/services/retailExecutionTemplates.ts` | 184 | `src/services` |
 | `src/components/retail/RetailMonthlyAuctionNode.tsx` | 178 | `src/components` |
 | `src/components/retail/RetailReviewWorkspace.tsx` | 177 | `src/components` |
-| `src/styles/013-responsive-mobile.css` | 169 | `src/styles` |
 | `src/domain/retailValidation.ts` | 168 | `src/domain` |
 | `src/styles/012-retail-trade-cards.css` | 166 | `src/styles` |
+| `src/domain/retailMarketContext.ts` | 165 | `src/domain` |
 
 ## Import Hotspots
 
@@ -63,7 +63,7 @@ Fan-out pressure:
 
 | File | Import count |
 | --- | --- |
-| `src/styles.css` | 86 |
+| `src/styles.css` | 89 |
 | `src/components/retail/RetailReviewWorkspace.tsx` | 15 |
 | `src/components/retail/RetailExecutionWorkspace.tsx` | 14 |
 | `src/app/createAdaxTrainingActions.ts` | 12 |
@@ -105,13 +105,14 @@ Fan-in pressure:
 20. `src/styles/012-retail-results-review.css` has been split into output empty state, compact verdict, insight rows, and diagnostics partitions; unused `retail-verdict-band` and `retail-result-card` selectors were removed.
 21. `src/styles/005-workspace-context.css` has been replaced by `src/styles/005-step-indicator.css`; inactive `workspace-chain-*`, `workspace-context-*`, and `workspace-boundary-*` selectors plus their mobile grid references were removed.
 22. `src/styles/007-output.css`, `src/styles/013-responsive-mobile-output.css`, and unused `OutputFlowRows.tsx` were removed after verification showed their output/report selectors were no longer active in the retail result surfaces.
-23. `src/domain/retailCalculations.ts` is the only high-pressure TypeScript domain file. It is still covered by tests, but future calculation changes should consider extracting annual, monthly, exposure, and margin helpers.
-24. `src/domain/retailTypes.ts` and `src/types.ts` have high fan-in. They are central contracts; changes here should remain conservative and test-backed.
-25. `RetailReviewWorkspace.tsx` and `RetailExecutionWorkspace.tsx` have the highest component fan-out. They should stay composition surfaces and not regain business rules.
+23. `src/styles/013-responsive-mobile.css` has been reduced to mobile shell layout and page padding; mobile sidebar, topbar/context, and result-review status rules now have dedicated partitions.
+24. `src/domain/retailCalculations.ts` is the only high-pressure TypeScript domain file. It is still covered by tests, but future calculation changes should consider extracting annual, monthly, exposure, and margin helpers.
+25. `src/domain/retailTypes.ts` and `src/types.ts` have high fan-in. They are central contracts; changes here should remain conservative and test-backed.
+26. `RetailReviewWorkspace.tsx` and `RetailExecutionWorkspace.tsx` have the highest component fan-out. They should stay composition surfaces and not regain business rules.
 
 ## Recommended Refactor Queue
 
-1. Review `src/styles/013-responsive-mobile.css` when mobile shell styles are next touched; split app layout/sidebar, collapsed-sidebar, topbar/context, result-review status, and page-shell rules only if the file still mixes those responsibilities.
+1. Review `src/styles/012-retail-trade-cards.css` when trade-card styles are next touched; split card primitives, deal rows, choice controls, field heads, and status labels only if the file still mixes those responsibilities.
 2. Extract calculation helper modules from `src/domain/retailCalculations.ts` only when the next calculation change requires it.
 3. Keep `src/domain/retailTypes.ts` stable unless a new confirmed participant startup card requires new shared contracts.
 4. Keep workspace components as page-level composition surfaces; move any new derived status, validation, or display contract into `src/domain/**`.

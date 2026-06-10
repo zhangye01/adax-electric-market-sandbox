@@ -146,6 +146,9 @@ Shared shell and persistence:
 - `src/styles/013-responsive.css`
 - `src/styles/013-responsive-tablet.css`
 - `src/styles/013-responsive-mobile.css`
+- `src/styles/013-responsive-mobile-sidebar.css`
+- `src/styles/013-responsive-mobile-topbar.css`
+- `src/styles/013-responsive-mobile-results.css`
 - `src/styles/013-responsive-mobile-pages.css`
 - `src/styles/013-responsive-mobile-grids.css`
 - `src/styles/013-responsive-mobile-workspace.css`
