@@ -15,10 +15,10 @@ npm run audit:source
 
 | Metric | Value |
 | --- | --- |
-| Active source files | 131 |
+| Active source files | 135 |
 | Code files | 85 |
-| Style files | 46 |
-| Total active source lines | 15051 |
+| Style files | 50 |
+| Total active source lines | 15060 |
 | Watch line threshold | 220 code / 400 CSS |
 | High line threshold | 300 code / 800 CSS |
 
@@ -26,7 +26,7 @@ npm run audit:source
 
 | Layer | Files | Lines |
 | --- | --- | --- |
-| `src/styles` | 45 | 6849 |
+| `src/styles` | 49 | 6854 |
 | `src/components` | 34 | 2634 |
 | `src/domain` | 23 | 2625 |
 | `src/pages` | 7 | 1293 |
@@ -34,7 +34,7 @@ npm run audit:source
 | `src/data` | 6 | 399 |
 | `src/services` | 3 | 318 |
 | `src/utils` | 4 | 173 |
-| `src/root` | 4 | 134 |
+| `src/root` | 4 | 138 |
 | `src/routes` | 1 | 56 |
 
 ## Largest Files
@@ -42,7 +42,6 @@ npm run audit:source
 | File | Lines | Layer |
 | --- | --- | --- |
 | `src/domain/retailCalculations.ts` | 455 | `src/domain` |
-| `src/styles/003-home.css` | 400 | `src/styles` |
 | `src/styles/002-app-layout.css` | 398 | `src/styles` |
 | `src/styles/012-retail-market.css` | 368 | `src/styles` |
 | `src/styles/010-cockpit-components.css` | 337 | `src/styles` |
@@ -56,6 +55,7 @@ npm run audit:source
 | `src/styles/006-cockpit-review.css` | 244 | `src/styles` |
 | `src/components/Layout.tsx` | 237 | `src/components` |
 | `src/app/createAdaxTrainingActions.ts` | 231 | `src/app` |
+| `src/components/retail/RetailExecutionWorkspace.tsx` | 223 | `src/components` |
 
 ## Import Hotspots
 
@@ -63,7 +63,7 @@ Fan-out pressure:
 
 | File | Import count |
 | --- | --- |
-| `src/styles.css` | 45 |
+| `src/styles.css` | 49 |
 | `src/components/retail/RetailReviewWorkspace.tsx` | 15 |
 | `src/components/retail/RetailExecutionWorkspace.tsx` | 14 |
 | `src/app/createAdaxTrainingActions.ts` | 12 |
@@ -90,19 +90,19 @@ Fan-in pressure:
 5. `src/styles/012-retail.css` has been split into retail shell, market, trade, results, and review partitions.
 6. `src/styles/009-flow.css` has been split into flow shell, mode, scenario, role, and shared list partitions.
 7. `src/styles/009-flow-scenario.css` has been split into scenario shell, market situation cards, market activity/event cards, and confirmation-side-panel partitions.
-8. `src/styles/013-responsive.css` has been split by breakpoint and mobile sub-surface partitions; responsive rules no longer dominate the largest style-file list.
-9. `src/domain/retailCalculations.ts` is the only high-pressure TypeScript domain file. It is still covered by tests, but future calculation changes should consider extracting annual, monthly, exposure, and margin helpers.
-10. `src/styles/003-home.css` and `src/styles/002-app-layout.css` are the next style files near or at the CSS watch threshold.
-11. `src/domain/retailTypes.ts` and `src/types.ts` have high fan-in. They are central contracts; changes here should remain conservative and test-backed.
-12. `RetailReviewWorkspace.tsx` and `RetailExecutionWorkspace.tsx` have the highest component fan-out. They should stay composition surfaces and not regain business rules.
+8. `src/styles/003-home.css` has been split into home shell, hero/training path, mode/market sections, chain/records, and boundary-notice partitions.
+9. `src/styles/013-responsive.css` has been split by breakpoint and mobile sub-surface partitions; responsive rules no longer dominate the largest style-file list.
+10. `src/domain/retailCalculations.ts` is the only high-pressure TypeScript domain file. It is still covered by tests, but future calculation changes should consider extracting annual, monthly, exposure, and margin helpers.
+11. `src/styles/002-app-layout.css` is now the largest style file and the next app-shell split candidate.
+12. `src/domain/retailTypes.ts` and `src/types.ts` have high fan-in. They are central contracts; changes here should remain conservative and test-backed.
+13. `RetailReviewWorkspace.tsx` and `RetailExecutionWorkspace.tsx` have the highest component fan-out. They should stay composition surfaces and not regain business rules.
 
 ## Recommended Refactor Queue
 
-1. Review `src/styles/003-home.css` and split it only if entry-page styles are still mixing distinct surfaces; preserve the current home/about product boundary.
-2. Review `src/styles/002-app-layout.css` when app shell layout is next touched; split sidebar/header/content-shell concerns only if the file is still mixing responsibilities.
-3. Extract calculation helper modules from `src/domain/retailCalculations.ts` only when the next calculation change requires it.
-4. Keep `src/domain/retailTypes.ts` stable unless a new confirmed participant startup card requires new shared contracts.
-5. Keep workspace components as page-level composition surfaces; move any new derived status, validation, or display contract into `src/domain/**`.
+1. Review `src/styles/002-app-layout.css` when app shell layout is next touched; split sidebar/header/content-shell concerns only if the file is still mixing responsibilities.
+2. Extract calculation helper modules from `src/domain/retailCalculations.ts` only when the next calculation change requires it.
+3. Keep `src/domain/retailTypes.ts` stable unless a new confirmed participant startup card requires new shared contracts.
+4. Keep workspace components as page-level composition surfaces; move any new derived status, validation, or display contract into `src/domain/**`.
 
 ## How To Use This Audit
 

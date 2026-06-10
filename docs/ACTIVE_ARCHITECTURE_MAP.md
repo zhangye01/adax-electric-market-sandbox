@@ -228,7 +228,7 @@ Responsibility-based CSS partitions imported from `src/styles.css`.
 Current high-level split:
 
 - base and app shell styles
-- home/about/records/flow page styles, with scenario flow split into shell, market cards, activity cards, and confirmation panel
+- home/about/records/flow page styles, with home split into shell/hero/sections/records/boundary and scenario flow split into shell/market/activity/confirmation
 - cockpit base, summary, layout, controls, panels, review, and output surface styles
 - retail shell, market, trade base/reference/cards/controls/feedback, result base, settlement, result breakdown, result-review, and review styles
 - responsive rules split by desktop/tablet/mobile/narrow breakpoints and mobile sub-surfaces

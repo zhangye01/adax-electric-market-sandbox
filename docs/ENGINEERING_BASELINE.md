@@ -96,6 +96,11 @@ Shared shell and persistence:
 - `src/styles.css`
 - `src/styles/001-base.css`
 - `src/styles/002-app-layout.css`
+- `src/styles/003-home.css`
+- `src/styles/003-home-hero.css`
+- `src/styles/003-home-sections.css`
+- `src/styles/003-home-records.css`
+- `src/styles/003-home-boundary.css`
 - `src/styles/013-responsive.css`
 - `src/styles/013-responsive-tablet.css`
 - `src/styles/013-responsive-mobile.css`

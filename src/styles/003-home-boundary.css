@@ -1,0 +1,26 @@
+/* Home model-boundary notice surfaces. */
+.home-boundary {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+  margin-top: 22px;
+  padding: 28px;
+}
+
+.home-boundary-copy {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 14px;
+  align-items: start;
+  border: 1px solid rgba(251, 191, 36, 0.22);
+  border-radius: 8px;
+  background: rgba(180, 83, 9, 0.1);
+  color: #fde68a;
+  padding: 16px;
+}
+
+.home-boundary-copy p {
+  color: #f8e6bd;
+  font-size: 14px;
+  line-height: 1.8;
+}
