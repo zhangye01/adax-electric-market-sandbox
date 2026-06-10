@@ -188,6 +188,7 @@ Local engineering automation.
 
 Current scripts:
 
+- `check-boundaries.mjs`: validates active source import, IO, network, data, and presentation-layer boundaries.
 - `publish-pages.mjs`: runs the Pages release procedure for the current static preview.
 
 Rules:
@@ -195,6 +196,7 @@ Rules:
 - scripts may coordinate local commands, file copying, release validation, and Git operations
 - scripts must not contain ADAX business rules, settlement math, route logic, or UI behavior
 - scripts must not import from `src/legacy/**`
+- boundary scripts may encode current allowed exceptions, but new exceptions require architecture review
 - publishing scripts must keep `main` and `gh-pages` responsibilities separated
 
 ### `docs/**` and `AGENTS.md`

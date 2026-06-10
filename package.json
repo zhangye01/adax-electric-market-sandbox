@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
+    "check:boundaries": "node scripts/check-boundaries.mjs",
     "typecheck": "tsc -b",
     "test": "tsc -p tsconfig.test.json && node tests/support/fix-esm-imports.mjs && node --test tests/domain/retail-domain.test.mjs",
-    "quality": "npm run typecheck && npm run test && npm run build",
+    "quality": "npm run check:boundaries && npm run typecheck && npm run test && npm run build",
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "publish:pages:dry": "node scripts/publish-pages.mjs --dry-run --allow-dirty",

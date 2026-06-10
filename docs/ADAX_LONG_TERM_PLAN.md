@@ -28,7 +28,7 @@ Use this protocol for future "继续" turns:
 3. Identify the current phase and the first unfinished task.
 4. Make a small, reversible change that strengthens the current phase.
 5. Update tests or documentation when the change affects contracts or behavior.
-6. Run `npm run typecheck`, `npm run test`, and `npm run build` for code changes.
+6. Run `npm run check:boundaries`, `npm run typecheck`, `npm run test`, and `npm run build` for code changes.
 7. Report what changed, what passed, what remains, and the next recommended task.
 
 Do not jump to a later phase just because it is more visible. Finish the current phase's guardrails first.
