@@ -221,6 +221,25 @@ Rules:
 - keep checklists short enough to be usable before each change
 - stale docs must be corrected before continuing feature work
 
+### `src/styles/**`
+
+Responsibility-based CSS partitions imported from `src/styles.css`.
+
+Current high-level split:
+
+- base and app shell styles
+- home/about/records/flow page styles
+- cockpit and output surface styles
+- retail shell, market, trade, result, and review styles
+- responsive rules
+
+Rules:
+
+- keep `src/styles.css` as the ordered import entry
+- preserve import order when splitting CSS to avoid visual regressions
+- split large CSS files by surface responsibility, not by arbitrary line count
+- do not place behavior, business rules, or generated CSS output in this layer
+
 ### `src/pages/**`
 
 High-level page composition.

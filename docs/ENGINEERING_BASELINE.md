@@ -50,6 +50,11 @@ Active retail flow:
 - `src/components/adax/ModelBoundaryNotice.tsx`
 - `src/components/adax/ModeBoundaryNotice.tsx`
 - `src/routes/adaxRoutes.ts`
+- `src/styles/009-flow.css`
+- `src/styles/009-flow-mode.css`
+- `src/styles/009-flow-scenario.css`
+- `src/styles/009-flow-role.css`
+- `src/styles/009-flow-lists.css`
 - `src/styles/012-retail.css`
 - `src/styles/012-retail-market.css`
 - `src/styles/012-retail-trade.css`
