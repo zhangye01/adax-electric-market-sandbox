@@ -233,7 +233,7 @@ Exit Criteria:
 
 Continue Engineering Hardening Hold.
 
-Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to reduce the next touched high-pressure style partition, preferably `src/styles/012-retail-results.css` or `src/styles/012-retail-trade.css`, only through responsibility-preserving CSS splits. Treat `src/styles/013-responsive.css` as cross-cutting and split it only with viewport checks. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
+Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to reduce `src/styles/012-retail-trade.css` when trade-node controls are next touched, only through responsibility-preserving CSS splits. Treat `src/styles/013-responsive.css` as cross-cutting and split it only with viewport checks. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
 
 ## Project Rescue Triggers
 

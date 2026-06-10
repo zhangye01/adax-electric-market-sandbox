@@ -1,0 +1,152 @@
+.retail-settlement-board-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(260px, 0.92fr);
+  gap: 14px;
+}
+
+.retail-settlement-board.exposure .retail-settlement-board-grid {
+  grid-template-columns: 1fr;
+}
+
+.retail-exposure-map,
+.retail-cost-stack-map {
+  min-width: 0;
+  border: 1px solid #203451;
+  border-radius: 8px;
+  background: #081321;
+  padding: 14px;
+}
+
+.retail-settlement-section-title {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.retail-settlement-section-title strong {
+  display: block;
+  margin-top: 4px;
+  color: #f8fafc;
+  font-size: 15px;
+  font-weight: 850;
+  line-height: 1.3;
+}
+
+.retail-exposure-signal-list,
+.retail-cost-stack-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.retail-exposure-signal,
+.retail-cost-stack-item {
+  display: grid;
+  gap: 7px;
+  border: 1px solid #203451;
+  border-radius: 8px;
+  background: #091524;
+  padding: 10px;
+}
+
+.retail-exposure-signal > div,
+.retail-cost-stack-item > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.retail-exposure-signal strong,
+.retail-cost-stack-item strong {
+  color: #f8fafc;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 900;
+  text-align: right;
+}
+
+.retail-exposure-signal em,
+.retail-cost-stack-item em {
+  display: block;
+  overflow: hidden;
+  height: 8px;
+  border-radius: 999px;
+  background: #12243a;
+}
+
+.retail-exposure-signal i,
+.retail-cost-stack-item i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #22d3ee;
+}
+
+.retail-exposure-signal.tone-positive i,
+.retail-cost-stack-item.tone-positive i {
+  background: #10b981;
+}
+
+.retail-exposure-signal.tone-watch i,
+.retail-cost-stack-item.tone-watch i {
+  background: #f59e0b;
+}
+
+.retail-exposure-signal.tone-risk i,
+.retail-cost-stack-item.tone-risk i {
+  background: #f43f5e;
+}
+
+.retail-exposure-signal small,
+.retail-cost-stack-item small {
+  color: #9fb0c7;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.retail-table-row,
+.retail-cost-row,
+.retail-month-result-row {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  border-top: 1px solid #1d304b;
+  padding: 10px 0;
+}
+
+.retail-month-result-row {
+  grid-template-columns: 70px 80px minmax(0, 1fr) auto;
+}
+
+.retail-month-result-row.compact {
+  grid-template-columns: 70px 90px minmax(0, 1fr);
+}
+
+.retail-month-result-row.compact em {
+  justify-self: end;
+}
+
+.retail-table-row:first-of-type,
+.retail-cost-row:first-of-type,
+.retail-month-result-row:first-of-type {
+  border-top: 0;
+}
+
+.retail-table-row em,
+.retail-month-result-row em {
+  color: #67e8f9;
+  font-size: 12px;
+  font-style: normal;
+}
+
+.retail-month-result-row p {
+  overflow: hidden;
+  color: #9fb0c7;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

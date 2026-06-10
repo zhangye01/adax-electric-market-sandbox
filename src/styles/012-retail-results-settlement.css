@@ -1,0 +1,134 @@
+.retail-settlement-board {
+  display: grid;
+  gap: 14px;
+  border: 1px solid #24405e;
+  border-radius: 10px;
+  background: #07111f;
+  padding: 16px;
+}
+
+.retail-settlement-board.exposure {
+  padding: 14px;
+}
+
+.retail-settlement-board-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid #203451;
+  border-radius: 8px;
+  background: #091524;
+  padding: 14px;
+}
+
+.retail-settlement-board-head.tone-positive {
+  border-color: rgba(16, 185, 129, 0.34);
+}
+
+.retail-settlement-board-head.tone-watch {
+  border-color: rgba(245, 158, 11, 0.34);
+}
+
+.retail-settlement-board-head.tone-risk {
+  border-color: rgba(244, 63, 94, 0.36);
+}
+
+.retail-settlement-board-head span,
+.retail-settlement-signal span,
+.retail-settlement-section-title span,
+.retail-exposure-signal span,
+.retail-cost-stack-item span,
+.retail-settlement-risk-chip span {
+  color: #8fa4bf;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.retail-settlement-board-head h2 {
+  margin-top: 6px;
+  color: #f8fafc;
+  font-size: 21px;
+  font-weight: 850;
+  line-height: 1.25;
+}
+
+.retail-settlement-board-head p,
+.retail-exposure-map > p,
+.retail-cost-stack-map > p {
+  margin-top: 7px;
+  color: #aab8cc;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.retail-settlement-risk-chip {
+  display: grid;
+  min-width: 112px;
+  justify-items: end;
+  text-align: right;
+}
+
+.retail-settlement-risk-chip strong {
+  margin-top: 4px;
+  color: #f8fafc;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.retail-settlement-risk-chip em {
+  margin-top: 5px;
+  color: #67e8f9;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 850;
+}
+
+.retail-settlement-signal-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.retail-settlement-signal {
+  min-width: 0;
+  border: 1px solid #203451;
+  border-radius: 8px;
+  background: #091524;
+  padding: 12px;
+}
+
+.retail-settlement-signal.tone-positive,
+.retail-exposure-signal.tone-positive,
+.retail-cost-stack-item.tone-positive {
+  border-color: rgba(16, 185, 129, 0.28);
+}
+
+.retail-settlement-signal.tone-watch,
+.retail-exposure-signal.tone-watch,
+.retail-cost-stack-item.tone-watch {
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.retail-settlement-signal.tone-risk,
+.retail-exposure-signal.tone-risk,
+.retail-cost-stack-item.tone-risk {
+  border-color: rgba(244, 63, 94, 0.34);
+}
+
+.retail-settlement-signal strong {
+  display: block;
+  margin-top: 6px;
+  color: #f8fafc;
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.retail-settlement-signal p {
+  margin-top: 6px;
+  color: #9fb0c7;
+  font-size: 12px;
+  line-height: 1.55;
+}

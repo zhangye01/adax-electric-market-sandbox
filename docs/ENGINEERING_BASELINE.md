@@ -65,6 +65,9 @@ Active retail flow:
 - `src/styles/012-retail-market.css`
 - `src/styles/012-retail-trade.css`
 - `src/styles/012-retail-results.css`
+- `src/styles/012-retail-results-settlement.css`
+- `src/styles/012-retail-results-breakdown.css`
+- `src/styles/012-retail-results-review.css`
 - `src/styles/012-retail-review.css`
 
 Shared shell and persistence:

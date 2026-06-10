@@ -22,5 +22,8 @@
 @import "./styles/012-retail-market.css";
 @import "./styles/012-retail-trade.css";
 @import "./styles/012-retail-results.css";
+@import "./styles/012-retail-results-settlement.css";
+@import "./styles/012-retail-results-breakdown.css";
+@import "./styles/012-retail-results-review.css";
 @import "./styles/012-retail-review.css";
 @import "./styles/013-responsive.css";
