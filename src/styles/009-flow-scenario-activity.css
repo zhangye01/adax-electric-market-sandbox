@@ -1,0 +1,75 @@
+/* Scenario data sections and market event cards. */
+.flow-scenario-section {
+  margin-top: 18px;
+  border: 1px solid #22334c;
+  border-radius: 10px;
+  background: rgba(11, 19, 32, 0.72);
+  padding: 16px;
+}
+
+.flow-data-list.scenario {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.flow-event-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.flow-event-card {
+  min-width: 0;
+  border: 1px solid #22334c;
+  border-radius: 8px;
+  background: #0b1320;
+  padding: 14px;
+}
+
+.flow-event-card span {
+  display: inline-flex;
+  min-height: 24px;
+  align-items: center;
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.12);
+  color: #fcd34d;
+  padding: 0 9px;
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.flow-event-card strong {
+  display: block;
+  margin-top: 11px;
+  color: #f8fafc;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.flow-event-card p {
+  margin-top: 7px;
+  color: #9fb2cd;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.flow-chart-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.flow-chart-heading h2 {
+  color: #f8fafc;
+  font-size: 18px;
+  font-weight: 850;
+  line-height: 1.3;
+}
+
+.flow-chart-heading p {
+  margin-top: 5px;
+  color: #9fb2cd;
+  font-size: 13px;
+  line-height: 1.6;
+}

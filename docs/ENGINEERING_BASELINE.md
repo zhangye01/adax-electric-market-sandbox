@@ -59,6 +59,9 @@ Active retail flow:
 - `src/styles/009-flow.css`
 - `src/styles/009-flow-mode.css`
 - `src/styles/009-flow-scenario.css`
+- `src/styles/009-flow-scenario-market.css`
+- `src/styles/009-flow-scenario-activity.css`
+- `src/styles/009-flow-scenario-confirmation.css`
 - `src/styles/009-flow-role.css`
 - `src/styles/009-flow-lists.css`
 - `src/styles/012-retail.css`

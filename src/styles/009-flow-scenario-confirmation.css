@@ -1,0 +1,70 @@
+/* Scenario confirmation side panel and selected-scenario rows. */
+.flow-scenario-confirmation {
+  border: 1px solid rgba(34, 211, 238, 0.28);
+  border-radius: 10px;
+  background: rgba(14, 165, 233, 0.09);
+  padding: 16px;
+}
+
+.flow-scenario-confirmation span {
+  color: #67e8f9;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.flow-scenario-confirmation strong {
+  display: block;
+  margin-top: 8px;
+  color: #f8fafc;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.flow-scenario-confirmation p {
+  margin-top: 9px;
+  color: #aab8cc;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.flow-side-panel .status-notice {
+  margin-top: 14px;
+}
+
+.flow-side-panel .status-notice + .cockpit-primary-action {
+  margin-top: 14px;
+}
+
+.flow-confirm-list {
+  display: grid;
+  gap: 8px;
+}
+
+.flow-confirm-row {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  border: 1px solid #22334c;
+  border-radius: 8px;
+  background: #0b1320;
+  padding: 10px;
+}
+
+.flow-confirm-row span {
+  display: inline-flex;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: #123248;
+  color: #67e8f9;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.flow-confirm-row strong {
+  color: #dbeafe;
+  font-size: 13px;
+  line-height: 1.45;
+}

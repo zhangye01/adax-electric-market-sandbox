@@ -14,6 +14,9 @@
 @import "./styles/009-flow.css";
 @import "./styles/009-flow-mode.css";
 @import "./styles/009-flow-scenario.css";
+@import "./styles/009-flow-scenario-market.css";
+@import "./styles/009-flow-scenario-activity.css";
+@import "./styles/009-flow-scenario-confirmation.css";
 @import "./styles/009-flow-role.css";
 @import "./styles/009-flow-lists.css";
 @import "./styles/010-cockpit-components.css";

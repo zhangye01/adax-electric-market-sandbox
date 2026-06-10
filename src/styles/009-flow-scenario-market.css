@@ -1,0 +1,138 @@
+/* Scenario market situation cards, monthly windows, and typical-day curves. */
+.scenario-annual-grid,
+.scenario-month-grid,
+.scenario-typical-day-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.scenario-annual-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.scenario-month-grid,
+.scenario-typical-day-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.scenario-market-fact,
+.scenario-month-card,
+.scenario-typical-day-card {
+  min-width: 0;
+  border: 1px solid #22334c;
+  border-radius: 8px;
+  background: #0b1320;
+  padding: 14px;
+}
+
+.scenario-market-fact.warn {
+  border-color: rgba(245, 158, 11, 0.34);
+  background: rgba(245, 158, 11, 0.07);
+}
+
+.scenario-market-fact span,
+.scenario-month-stat-row span,
+.scenario-typical-day-head span,
+.scenario-day-extremes span {
+  color: #8fa4bf;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.scenario-market-fact strong {
+  display: block;
+  margin-top: 7px;
+  color: #f8fafc;
+  font-size: 18px;
+  font-weight: 850;
+  line-height: 1.25;
+}
+
+.scenario-market-fact p,
+.scenario-month-card p {
+  margin-top: 8px;
+  color: #9fb2cd;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.scenario-month-card {
+  display: grid;
+  gap: 11px;
+}
+
+.scenario-month-card-head,
+.scenario-typical-day-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+}
+
+.scenario-month-card-head svg,
+.scenario-typical-day-head svg {
+  margin-top: 1px;
+  color: #67e8f9;
+}
+
+.scenario-month-card-head strong,
+.scenario-typical-day-head strong {
+  color: #f8fafc;
+  font-size: 14px;
+  font-weight: 850;
+  line-height: 1.35;
+}
+
+.scenario-month-stat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid #1d304b;
+  padding-top: 9px;
+}
+
+.scenario-month-stat-row strong {
+  color: #dbeafe;
+  font-size: 12px;
+  font-weight: 850;
+  text-align: right;
+}
+
+.scenario-typical-day-card {
+  display: grid;
+  gap: 12px;
+}
+
+.scenario-typical-day-head > div {
+  min-width: 0;
+}
+
+.scenario-typical-day-head span {
+  display: block;
+  margin-top: 4px;
+}
+
+.scenario-hourly-bars {
+  display: grid;
+  height: 104px;
+  grid-template-columns: repeat(24, minmax(0, 1fr));
+  align-items: end;
+  gap: 3px;
+  border: 1px solid #1d304b;
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(34, 211, 238, 0.08), transparent),
+    #081321;
+  padding: 10px 9px;
+}
+
+.scenario-hourly-bars span {
+  min-height: 8px;
+  border-radius: 3px 3px 0 0;
+  background: linear-gradient(180deg, #22d3ee, #0f766e);
+}
+
+.scenario-day-extremes {
+  display: grid;
+  gap: 6px;
+}
