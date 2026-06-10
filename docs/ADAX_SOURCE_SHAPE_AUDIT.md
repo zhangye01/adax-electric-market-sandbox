@@ -18,7 +18,7 @@ npm run audit:source
 | Active source files | 174 |
 | Code files | 85 |
 | Style files | 89 |
-| Total active source lines | 14762 |
+| Total active source lines | 14606 |
 | Watch line threshold | 220 code / 400 CSS |
 | High line threshold | 300 code / 800 CSS |
 
@@ -26,7 +26,7 @@ npm run audit:source
 
 | Layer | Files | Lines |
 | --- | --- | --- |
-| `src/styles` | 88 | 6517 |
+| `src/styles` | 88 | 6361 |
 | `src/components` | 34 | 2634 |
 | `src/domain` | 23 | 2625 |
 | `src/pages` | 7 | 1293 |
@@ -51,11 +51,11 @@ npm run audit:source
 | `src/domain/retailSettlementDisplay.ts` | 214 | `src/domain` |
 | `src/pages/RolePage.tsx` | 199 | `src/pages` |
 | `src/services/retailExecutionTemplates.ts` | 184 | `src/services` |
-| `src/styles/005-workspace-context.css` | 181 | `src/styles` |
 | `src/components/retail/RetailMonthlyAuctionNode.tsx` | 178 | `src/components` |
 | `src/components/retail/RetailReviewWorkspace.tsx` | 177 | `src/components` |
 | `src/styles/007-output.css` | 176 | `src/styles` |
 | `src/styles/013-responsive-mobile.css` | 169 | `src/styles` |
+| `src/domain/retailValidation.ts` | 168 | `src/domain` |
 
 ## Import Hotspots
 
@@ -103,13 +103,14 @@ Fan-in pressure:
 18. `src/styles/009-flow-lists.css` has been replaced by data-list, step-list, and side-helper partitions; unused flow output, boundary, and note selectors were removed.
 19. `src/styles/012-retail-review.css` has been split into review prompt drawer, review material editor, shared side-action drawer, and review progress partitions.
 20. `src/styles/012-retail-results-review.css` has been split into output empty state, compact verdict, insight rows, and diagnostics partitions; unused `retail-verdict-band` and `retail-result-card` selectors were removed.
-21. `src/domain/retailCalculations.ts` is the only high-pressure TypeScript domain file. It is still covered by tests, but future calculation changes should consider extracting annual, monthly, exposure, and margin helpers.
-22. `src/domain/retailTypes.ts` and `src/types.ts` have high fan-in. They are central contracts; changes here should remain conservative and test-backed.
-23. `RetailReviewWorkspace.tsx` and `RetailExecutionWorkspace.tsx` have the highest component fan-out. They should stay composition surfaces and not regain business rules.
+21. `src/styles/005-workspace-context.css` has been replaced by `src/styles/005-step-indicator.css`; inactive `workspace-chain-*`, `workspace-context-*`, and `workspace-boundary-*` selectors plus their mobile grid references were removed.
+22. `src/domain/retailCalculations.ts` is the only high-pressure TypeScript domain file. It is still covered by tests, but future calculation changes should consider extracting annual, monthly, exposure, and margin helpers.
+23. `src/domain/retailTypes.ts` and `src/types.ts` have high fan-in. They are central contracts; changes here should remain conservative and test-backed.
+24. `RetailReviewWorkspace.tsx` and `RetailExecutionWorkspace.tsx` have the highest component fan-out. They should stay composition surfaces and not regain business rules.
 
 ## Recommended Refactor Queue
 
-1. Review `src/styles/005-workspace-context.css` when workspace context or step-indicator styles are next touched; verify whether `workspace-chain-*`, `workspace-context-*`, and `workspace-boundary-*` selectors are still active, then split or remove inactive partitions before adding new layout rules.
+1. Review `src/styles/007-output.css` when output/report styles are next touched; verify active usage for output grid, verdict band, flow rows, report summary cards, and report diagnosis grid, then split or remove inactive partitions before adding new output-surface rules.
 2. Extract calculation helper modules from `src/domain/retailCalculations.ts` only when the next calculation change requires it.
 3. Keep `src/domain/retailTypes.ts` stable unless a new confirmed participant startup card requires new shared contracts.
 4. Keep workspace components as page-level composition surfaces; move any new derived status, validation, or display contract into `src/domain/**`.

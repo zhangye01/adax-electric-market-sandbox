@@ -1,0 +1,27 @@
+/* Shared training-flow step indicator. */
+.step-indicator {
+  overflow: hidden;
+}
+
+.step-indicator-track {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.step-indicator-item {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 0;
+  align-items: center;
+}
+
+.step-indicator-item:last-child {
+  flex: 0 0 auto;
+}
+
+.step-indicator-line {
+  height: 1px;
+  margin: 0 16px;
+  flex: 1 1 0;
+}
