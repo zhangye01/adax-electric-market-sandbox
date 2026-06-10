@@ -20,6 +20,10 @@
 @import "./styles/008-records.css";
 @import "./styles/009-flow.css";
 @import "./styles/009-flow-mode.css";
+@import "./styles/009-flow-mode-decision.css";
+@import "./styles/009-flow-mode-confirmation.css";
+@import "./styles/009-flow-mode-path.css";
+@import "./styles/009-flow-mode-records.css";
 @import "./styles/009-flow-scenario.css";
 @import "./styles/009-flow-scenario-market.css";
 @import "./styles/009-flow-scenario-activity.css";

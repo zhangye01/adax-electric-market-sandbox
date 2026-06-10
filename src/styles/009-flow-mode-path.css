@@ -1,0 +1,39 @@
+.mode-path-stack {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.mode-path-stack div {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  border: 1px solid #22334c;
+  border-radius: 8px;
+  background: #0b1320;
+  padding: 10px;
+}
+
+.mode-path-stack div.active {
+  border-color: rgba(34, 211, 238, 0.58);
+  background: rgba(14, 165, 233, 0.09);
+}
+
+.mode-path-stack span {
+  display: inline-flex;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: #123248;
+  color: #67e8f9;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.mode-path-stack strong {
+  color: #dbeafe;
+  font-size: 13px;
+  line-height: 1.45;
+}

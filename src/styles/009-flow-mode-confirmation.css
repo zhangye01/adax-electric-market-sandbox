@@ -1,0 +1,37 @@
+.mode-commitment-panel {
+  border: 1px solid rgba(34, 211, 238, 0.28);
+  border-radius: 10px;
+  background: rgba(14, 165, 233, 0.09);
+  padding: 16px;
+}
+
+.mode-commitment-panel span {
+  color: #67e8f9;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.mode-commitment-panel strong {
+  display: block;
+  margin-top: 8px;
+  color: #f8fafc;
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+.mode-commitment-panel p {
+  margin-top: 9px;
+  color: #aab8cc;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.mode-confirm-action {
+  width: 100%;
+  margin-top: 14px;
+}
+
+.mode-confirm-action:disabled {
+  cursor: not-allowed;
+  opacity: 0.52;
+}
