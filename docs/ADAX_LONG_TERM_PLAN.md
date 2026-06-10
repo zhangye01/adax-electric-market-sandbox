@@ -217,6 +217,7 @@ Use this holding pattern when the user asks to continue engineering, harden the 
 Active tasks:
 
 - Keep `docs/ADAX_CHANGE_GATE_CHECKLIST.md` current as the pre-change gate.
+- Keep `docs/ADAX_SOURCE_SHAPE_AUDIT.md` current when source size or import pressure changes materially.
 - Keep `docs/ACTIVE_ARCHITECTURE_MAP.md` current when source boundaries change.
 - Keep `docs/ENGINEERING_BASELINE.md` risk controls current as new automation or checks are added.
 - Prefer guardrails, tests, and small refactors over new business scope.
@@ -232,7 +233,7 @@ Exit Criteria:
 
 Continue Engineering Hardening Hold.
 
-Next recommended task: audit current source boundaries against `docs/ADAX_CHANGE_GATE_CHECKLIST.md` and add lightweight checks or tests where the checklist identifies weak evidence. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
+Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to reduce the largest style partitions, starting with `src/styles/012-retail.css`, only through responsibility-preserving CSS splits. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
 
 ## Project Rescue Triggers
 

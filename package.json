@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
+    "audit:source": "node scripts/audit-source-shape.mjs",
     "check:boundaries": "node scripts/check-boundaries.mjs",
     "typecheck": "tsc -b",
     "test": "tsc -p tsconfig.test.json && node tests/support/fix-esm-imports.mjs && node --test tests/domain/retail-domain.test.mjs",

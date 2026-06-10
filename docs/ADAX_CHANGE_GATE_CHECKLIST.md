@@ -88,6 +88,7 @@ Choose tests based on the touched behavior.
 | UI composition only | Run `npm run typecheck` and `npm run build`; add domain tests only if behavior changes |
 | Visual layout or responsive structure | Run build and perform desktop/mobile visual QA; update visual QA log if material |
 | Architecture, import, IO, or source-boundary rule | Run `npm run check:boundaries` |
+| Broad refactor or source-size concern | Run `npm run audit:source` |
 | Release process | Run `npm run publish:pages:dry` |
 | Docs only | Run `git diff --check`; run broader checks if commands, scripts, or contracts changed |
 

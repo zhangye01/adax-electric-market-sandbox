@@ -188,6 +188,7 @@ Local engineering automation.
 
 Current scripts:
 
+- `audit-source-shape.mjs`: reports active source line pressure, layer size, and import fan-in/fan-out hotspots.
 - `check-boundaries.mjs`: validates active source import, IO, network, data, and presentation-layer boundaries.
 - `publish-pages.mjs`: runs the Pages release procedure for the current static preview.
 
@@ -210,6 +211,7 @@ Current entry and gate documents:
 - `docs/ADAX_LONG_TERM_PLAN.md`: autonomous execution roadmap.
 - `docs/ENGINEERING_BASELINE.md`: maintainability baseline and risk register.
 - `docs/ADAX_CHANGE_GATE_CHECKLIST.md`: pre-change classification, rescue gate, layer placement, and test selection.
+- `docs/ADAX_SOURCE_SHAPE_AUDIT.md`: source size and import hotspot audit for refactor prioritization.
 - `docs/ADAX_RELEASE_PROCESS.md`: Pages publishing process.
 
 Rules:
