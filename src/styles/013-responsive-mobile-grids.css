@@ -1,0 +1,52 @@
+@media (max-width: 760px) {
+  .cockpit-summary-grid,
+  .cockpit-bottom-grid,
+  .cockpit-mode-choice-grid,
+  .output-metric-grid,
+  .output-verdict-band,
+  .report-summary-grid,
+  .report-diagnosis-grid,
+  .records-card-grid,
+  .mode-record-summary,
+  .flow-scenario-hero,
+  .flow-scenario-metrics,
+  .scenario-annual-grid,
+  .scenario-month-grid,
+  .scenario-typical-day-grid,
+  .role-operation-boundary,
+  .role-customer-pack,
+  .flow-data-list.scenario,
+  .flow-event-grid,
+  .workspace-chain-list,
+  .workspace-context-grid,
+  .workspace-boundary-list,
+  .review-node-summary,
+  .review-layer-grid,
+  .review-material-grid,
+  .cockpit-grid,
+  .flow-mode-grid,
+  .flow-role-grid,
+  .flow-data-row,
+  .flow-info-panel > .grid,
+  .workspace-fact-strip,
+  .retail-metric-grid,
+  .retail-choice-grid,
+  .retail-month-card-grid,
+  .retail-market-brief-strip,
+  .retail-action-fact-strip,
+  .retail-form-grid,
+  .retail-form-grid.two,
+  .retail-mix-reference-list,
+  .retail-summary-strip,
+  .retail-review-prompt-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .retail-node-footer {
+    grid-template-columns: 1fr;
+  }
+
+  .retail-node-actions {
+    grid-template-columns: 1fr;
+  }
+}

@@ -81,3 +81,36 @@ Observed mobile limitation:
 ## Console Logs
 
 No browser console errors were observed in the final workspace-density and node-action-hierarchy passes.
+
+## Responsive Split Check
+
+Scope: engineering hardening pass for `src/styles/013-responsive.css` split by breakpoint and mobile sub-surface.
+
+Commands:
+
+- `npm run quality`: passed, including boundary check, typecheck, 36 tests, and build.
+- Playwright viewport check against local Vite server at `http://127.0.0.1:5178/`.
+
+Routes checked:
+
+- `/`
+- `/scenarios?mode=execution`
+- `/workspace?mode=execution&scenario=SCN-A-STD-001&participant=retailer`
+
+Desktop viewport: `1512 x 745`.
+
+- All checked routes loaded with the expected ADAX page title.
+- Home, scenario, and workspace pages reported no page-level horizontal overflow.
+- Scenario route rendered market board evidence.
+- Workspace route rendered both market board and workspace evidence.
+
+Mobile viewport: `390 x 844`.
+
+- All checked routes loaded with the expected ADAX page title.
+- Home, scenario, and workspace pages reported `scrollWidth` equal to viewport width.
+- Scenario route rendered market board evidence.
+- Workspace route rendered both market board and workspace evidence.
+
+Console:
+
+- Playwright console check reported `Errors: 0, Warnings: 0`.

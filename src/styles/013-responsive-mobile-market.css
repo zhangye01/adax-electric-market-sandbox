@@ -1,0 +1,64 @@
+@media (max-width: 760px) {
+  .cockpit-topbar {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .cockpit-topbar h1 {
+    font-size: 20px !important;
+    line-height: 1.2;
+  }
+
+  .cockpit-topbar .execution-workbench-steps {
+    display: none;
+  }
+
+  .cockpit-topbar .cockpit-summary-grid {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+
+  .cockpit-topbar .cockpit-summary-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cockpit-topbar .cockpit-summary-grid > * {
+    min-width: 168px;
+  }
+
+  .retail-market-board-header,
+  .retail-market-panel-title,
+  .retail-settlement-board-head,
+  .retail-settlement-section-title,
+  .retail-market-month-item > div {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .retail-market-price-boundary,
+  .retail-settlement-risk-chip,
+  .retail-market-panel-title strong {
+    justify-items: start;
+    text-align: left;
+  }
+
+  .retail-price-curve-row {
+    grid-template-columns: 1fr;
+  }
+
+  .retail-price-curve-stats {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .flow-main-panel,
+  .flow-side-panel,
+  .flow-info-panel,
+  .flow-chart-panel {
+    padding: 14px;
+  }
+}

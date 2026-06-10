@@ -233,7 +233,7 @@ Exit Criteria:
 
 Continue Engineering Hardening Hold.
 
-Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to assess `src/styles/013-responsive.css` before any split; only split it with explicit desktop/mobile viewport checks. If responsive isolation is not warranted, continue with the next touched high-pressure surface such as `src/styles/009-flow-scenario.css`. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
+Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to reduce `src/styles/009-flow-scenario.css` when scenario-selection layout is next touched, only through responsibility-preserving CSS splits. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
 
 ## Project Rescue Triggers
 

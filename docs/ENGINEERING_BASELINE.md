@@ -94,6 +94,15 @@ Shared shell and persistence:
 - `src/styles/001-base.css`
 - `src/styles/002-app-layout.css`
 - `src/styles/013-responsive.css`
+- `src/styles/013-responsive-tablet.css`
+- `src/styles/013-responsive-mobile.css`
+- `src/styles/013-responsive-mobile-pages.css`
+- `src/styles/013-responsive-mobile-grids.css`
+- `src/styles/013-responsive-mobile-workspace.css`
+- `src/styles/013-responsive-mobile-output.css`
+- `src/styles/013-responsive-mobile-flow.css`
+- `src/styles/013-responsive-mobile-market.css`
+- `src/styles/013-responsive-narrow.css`
 
 Tooling and release automation:
 

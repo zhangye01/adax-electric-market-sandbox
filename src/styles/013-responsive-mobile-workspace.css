@@ -1,0 +1,70 @@
+@media (max-width: 760px) {
+  .retail-execution-context-bar {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 10px 0 12px;
+    scrollbar-width: none;
+  }
+
+  .retail-execution-context-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .retail-execution-context-bar > div {
+    flex: 0 0 138px;
+    padding: 9px;
+  }
+
+  .retail-execution-context-primary {
+    flex-basis: 220px !important;
+  }
+
+  .retail-execution-context-bar p {
+    line-height: 1.45;
+  }
+
+  .workspace-command-bar {
+    gap: 10px;
+    margin-bottom: 12px;
+    padding: 12px;
+  }
+
+  .workspace-command-bar h1 {
+    margin-top: 4px;
+    font-size: 20px;
+  }
+
+  .workspace-command-bar .execution-workbench-steps {
+    display: none;
+  }
+
+  .workspace-fact-strip {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+
+  .workspace-fact-strip::-webkit-scrollbar {
+    display: none;
+  }
+
+  .workspace-fact-strip div {
+    min-width: 118px;
+    padding: 8px;
+  }
+
+  .retail-operation-panel {
+    order: 1;
+  }
+
+  .retail-result-panel {
+    order: 2;
+  }
+
+  .retail-node-rail {
+    order: 3;
+  }
+}

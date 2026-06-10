@@ -1,0 +1,41 @@
+@media (max-width: 760px) {
+  .home-page {
+    padding: 24px 16px 52px;
+  }
+
+  .about-page {
+    padding: 24px 16px 52px;
+  }
+
+  .home-hero,
+  .home-mode-grid,
+  .home-chain,
+  .home-boundary,
+  .home-record-card,
+  .about-meaning-grid,
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-hero-copy h1 {
+    font-size: 34px;
+  }
+
+  .home-flow-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .home-flow-caption {
+    text-align: left;
+  }
+
+  .about-hero h1 {
+    font-size: 34px;
+  }
+
+  .home-market-row {
+    grid-template-columns: 1fr;
+  }
+}

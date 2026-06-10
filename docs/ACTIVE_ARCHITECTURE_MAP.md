@@ -231,7 +231,7 @@ Current high-level split:
 - home/about/records/flow page styles
 - cockpit base, summary, layout, controls, panels, review, and output surface styles
 - retail shell, market, trade base/reference/cards/controls/feedback, result base, settlement, result breakdown, result-review, and review styles
-- responsive rules
+- responsive rules split by desktop/tablet/mobile/narrow breakpoints and mobile sub-surfaces
 
 Rules:
 

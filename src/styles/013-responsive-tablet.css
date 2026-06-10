@@ -1,0 +1,32 @@
+@media (max-width: 1120px) {
+  .workspace-command-bar,
+  .flow-page-header,
+  .flow-page-grid,
+  .retail-output-grid,
+  .retail-workbench {
+    grid-template-columns: 1fr;
+  }
+
+  .flow-side-panel,
+  .retail-node-rail,
+  .retail-result-panel {
+    position: static;
+    max-height: none;
+  }
+
+  .retail-output-grid.result-review {
+    grid-template-columns: 1fr;
+  }
+
+  .flow-header-aside {
+    min-height: auto;
+  }
+
+  .workspace-fact-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .retail-trade-node-workbench {
+    grid-template-columns: 1fr;
+  }
+}
