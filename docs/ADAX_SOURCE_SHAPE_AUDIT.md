@@ -1,6 +1,6 @@
 # ADAX Source Shape Audit
 
-日期：2026-06-10
+日期：2026-06-11
 状态：当前工程化保持期基线。
 
 本审计用于量化源码体积、导入热点和后续重构优先级。它不是功能验收报告，也不是业务范围扩展依据。
@@ -15,10 +15,10 @@ npm run audit:source
 
 | Metric | Value |
 | --- | --- |
-| Active source files | 184 |
+| Active source files | 189 |
 | Code files | 84 |
-| Style files | 100 |
-| Total active source lines | 14415 |
+| Style files | 105 |
+| Total active source lines | 14425 |
 | Watch line threshold | 220 code / 400 CSS |
 | High line threshold | 300 code / 800 CSS |
 
@@ -26,14 +26,14 @@ npm run audit:source
 
 | Layer | Files | Lines |
 | --- | --- | --- |
-| `src/styles` | 99 | 6218 |
+| `src/styles` | 104 | 6223 |
 | `src/domain` | 23 | 2625 |
 | `src/components` | 33 | 2575 |
 | `src/pages` | 7 | 1293 |
 | `src/app` | 4 | 570 |
 | `src/data` | 6 | 399 |
 | `src/services` | 3 | 318 |
-| `src/root` | 4 | 188 |
+| `src/root` | 4 | 193 |
 | `src/utils` | 4 | 173 |
 | `src/routes` | 1 | 56 |
 
@@ -63,7 +63,7 @@ Fan-out pressure:
 
 | File | Import count |
 | --- | --- |
-| `src/styles.css` | 99 |
+| `src/styles.css` | 104 |
 | `src/components/retail/RetailReviewWorkspace.tsx` | 15 |
 | `src/components/retail/RetailExecutionWorkspace.tsx` | 14 |
 | `src/app/createAdaxTrainingActions.ts` | 12 |
@@ -109,13 +109,14 @@ Fan-in pressure:
 24. `src/styles/012-retail-trade-cards.css` has been reduced to shared trade-card containers and base card typography; form grids, choice-card labels, field/month status capsules, and trade inputs now have dedicated partitions, while result/table cards stay in result styles and side facts stay with summary/control styles.
 25. `src/styles/012-retail-results-breakdown.css` has been reduced to settlement board layout and spacing; exposure/cost maps, progress-bar tone styles, and table/month result rows now have dedicated partitions.
 26. `src/styles/003-home-hero.css` has been reduced to home hero layout and copy; home actions, flow-card structure, and shared flow/chain/market row primitives now have dedicated partitions.
-27. `src/domain/retailCalculations.ts` is the only high-pressure TypeScript domain file. It is still covered by tests, but future calculation changes should consider extracting annual, monthly, exposure, and margin helpers.
-28. `src/domain/retailTypes.ts` and `src/types.ts` have high fan-in. They are central contracts; changes here should remain conservative and test-backed.
-29. `RetailReviewWorkspace.tsx` and `RetailExecutionWorkspace.tsx` have the highest component fan-out. They should stay composition surfaces and not regain business rules.
+27. `src/styles/004-about.css` has been split into about page shell, hero, panel grid/cards, sections, meaning cards, and list-row partitions.
+28. `src/domain/retailCalculations.ts` is the only high-pressure TypeScript domain file. It is still covered by tests, but future calculation changes should consider extracting annual, monthly, exposure, and margin helpers.
+29. `src/domain/retailTypes.ts` and `src/types.ts` have high fan-in. They are central contracts; changes here should remain conservative and test-backed.
+30. `RetailReviewWorkspace.tsx` and `RetailExecutionWorkspace.tsx` have the highest component fan-out. They should stay composition surfaces and not regain business rules.
 
 ## Recommended Refactor Queue
 
-1. Review `src/styles/004-about.css` when about-page styles are next touched; split about page shell, hero, panel grid/cards, meaning cards, and list rows only if the file still mixes those responsibilities.
+1. Review `src/styles/002-app-sidebar-panel.css` when sidebar styles are next touched; split collapse control, brand/market mark, collapsed-state rules, and mode-card rules only if the file still mixes those responsibilities.
 2. Extract calculation helper modules from `src/domain/retailCalculations.ts` only when the next calculation change requires it.
 3. Keep `src/domain/retailTypes.ts` stable unless a new confirmed participant startup card requires new shared contracts.
 4. Keep workspace components as page-level composition surfaces; move any new derived status, validation, or display contract into `src/domain/**`.

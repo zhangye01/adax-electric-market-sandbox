@@ -12,6 +12,11 @@
 @import "./styles/003-home-records.css";
 @import "./styles/003-home-boundary.css";
 @import "./styles/004-about.css";
+@import "./styles/004-about-hero.css";
+@import "./styles/004-about-panels.css";
+@import "./styles/004-about-sections.css";
+@import "./styles/004-about-meaning.css";
+@import "./styles/004-about-list.css";
 @import "./styles/005-step-indicator.css";
 @import "./styles/006-cockpit.css";
 @import "./styles/006-cockpit-summary.css";

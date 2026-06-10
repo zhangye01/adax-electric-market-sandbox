@@ -1,0 +1,19 @@
+.about-hero {
+  padding: 34px;
+}
+
+.about-hero h1 {
+  margin-top: 14px;
+  color: #f8fafc;
+  font-size: 40px;
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+
+.about-hero p:not(.home-kicker) {
+  margin-top: 16px;
+  max-width: 880px;
+  color: #9fb2cd;
+  font-size: 15px;
+  line-height: 1.9;
+}

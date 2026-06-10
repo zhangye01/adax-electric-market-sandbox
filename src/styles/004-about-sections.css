@@ -1,0 +1,24 @@
+.about-section {
+  margin-top: 22px;
+  padding: 26px;
+}
+
+.about-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #67e8f9;
+}
+
+.about-section h2 {
+  color: #f8fafc;
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.about-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}

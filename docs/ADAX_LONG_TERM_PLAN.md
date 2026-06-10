@@ -233,7 +233,7 @@ Exit Criteria:
 
 Continue Engineering Hardening Hold.
 
-Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to review `src/styles/004-about.css` when about-page styles are next touched. Split about page shell, hero, panel grid/cards, meaning cards, and list rows only if the file still mixes those responsibilities. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
+Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to review `src/styles/002-app-sidebar-panel.css` when sidebar styles are next touched. Split collapse control, brand/market mark, collapsed-state rules, and mode-card rules only if the file still mixes those responsibilities. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
 
 ## Project Rescue Triggers
 
