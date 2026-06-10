@@ -1,0 +1,16 @@
+.retail-choice-card-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.retail-choice-card-label em {
+  border: 1px solid #28405e;
+  border-radius: 999px;
+  color: #9fb2cd;
+  padding: 3px 7px;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 850;
+}

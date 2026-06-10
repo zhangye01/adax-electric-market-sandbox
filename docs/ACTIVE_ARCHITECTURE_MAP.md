@@ -230,7 +230,7 @@ Current high-level split:
 - base and app shell styles, with app shell split into grid/sidebar shell, sidebar panel, sidebar navigation, and topbar
 - home/about/records/flow page styles, with home split into shell/hero/sections/records/boundary, records split into shell/empty/cards/field-rows/detail/boundary, mode flow split into base/decision/confirmation/path/records, role flow split into cards/details/ecosystem/info-pack/seat-summary, scenario flow split into shell/market/activity/confirmation, shared flow rows split into data-list/step-list/side-helper partitions, and step indicator styles isolated from inactive workspace-context styles
 - cockpit base, summary, layout, form controls, action buttons, template actions, template field guides, panels, mode-card, comparison/event, feedback, notice, and message surface styles
-- retail shell, node rail, operation head/content, execution context, assist entry, grid primitives, market board/load/price/months/briefs, trade base/reference/cards/controls/feedback, result base, settlement, result breakdown, result empty/verdict/insight/diagnostic, review prompt/material/progress, and shared side-action styles
+- retail shell, node rail, operation head/content, execution context, assist entry, grid primitives, market board/load/price/months/briefs, trade base/reference/form-grid/card/choice-card/field-status/input/control/feedback, result base, settlement, result breakdown, result empty/verdict/insight/diagnostic, review prompt/material/progress, and shared side-action styles
 - responsive rules split by desktop/tablet/mobile/narrow breakpoints, with mobile shell, sidebar, topbar, result status, page, grid, workspace, flow, and market sub-surfaces separated
 
 Rules:

@@ -4,6 +4,14 @@
   gap: 12px;
 }
 
+.retail-settlement-breakdown,
+.retail-table-card {
+  border: 1px solid #203451;
+  border-radius: 8px;
+  background: #091524;
+  padding: 14px;
+}
+
 .retail-result-review-status {
   display: grid;
   min-width: 360px;

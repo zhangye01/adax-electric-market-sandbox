@@ -1,0 +1,63 @@
+.retail-field-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.retail-field-head > span {
+  min-width: 0;
+}
+
+.retail-field-head em,
+.retail-month-status em {
+  display: inline-flex;
+  min-height: 23px;
+  align-items: center;
+  margin-top: 0;
+  border: 1px solid #2a3d59;
+  border-radius: 999px;
+  background: #111d2f;
+  color: #9fb2cd;
+  padding: 0 8px;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 850;
+  line-height: 1;
+}
+
+.retail-field-head em.done,
+.retail-month-status em.done {
+  border-color: rgba(16, 185, 129, 0.35);
+  background: rgba(16, 185, 129, 0.08);
+  color: #a7f3d0;
+}
+
+.retail-field-head em.warning,
+.retail-month-status em.skipped {
+  border-color: rgba(245, 158, 11, 0.35);
+  background: rgba(245, 158, 11, 0.08);
+  color: #fde68a;
+}
+
+.retail-field-head em.pending,
+.retail-month-status em.pending {
+  border-color: #2a3d59;
+  background: #111d2f;
+  color: #9fb2cd;
+}
+
+.retail-month-status {
+  display: grid;
+  justify-items: end;
+  gap: 7px;
+  color: #8fa4bf;
+  text-align: right;
+}
+
+.retail-month-status small {
+  color: #67e8f9;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.3;
+}
