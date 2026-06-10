@@ -71,6 +71,9 @@
 @import "./styles/012-retail-results.css";
 @import "./styles/012-retail-results-settlement.css";
 @import "./styles/012-retail-results-breakdown.css";
+@import "./styles/012-retail-results-maps.css";
+@import "./styles/012-retail-results-bars.css";
+@import "./styles/012-retail-results-rows.css";
 @import "./styles/012-retail-results-empty.css";
 @import "./styles/012-retail-results-verdict.css";
 @import "./styles/012-retail-results-insights.css";

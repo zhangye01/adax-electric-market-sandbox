@@ -15,10 +15,10 @@ npm run audit:source
 
 | Metric | Value |
 | --- | --- |
-| Active source files | 178 |
+| Active source files | 181 |
 | Code files | 84 |
-| Style files | 94 |
-| Total active source lines | 14383 |
+| Style files | 97 |
+| Total active source lines | 14406 |
 | Watch line threshold | 220 code / 400 CSS |
 | High line threshold | 300 code / 800 CSS |
 
@@ -26,14 +26,14 @@ npm run audit:source
 
 | Layer | Files | Lines |
 | --- | --- | --- |
-| `src/styles` | 93 | 6192 |
+| `src/styles` | 96 | 6212 |
 | `src/domain` | 23 | 2625 |
 | `src/components` | 33 | 2575 |
 | `src/pages` | 7 | 1293 |
 | `src/app` | 4 | 570 |
 | `src/data` | 6 | 399 |
 | `src/services` | 3 | 318 |
-| `src/root` | 4 | 182 |
+| `src/root` | 4 | 185 |
 | `src/utils` | 4 | 173 |
 | `src/routes` | 1 | 56 |
 
@@ -63,7 +63,7 @@ Fan-out pressure:
 
 | File | Import count |
 | --- | --- |
-| `src/styles.css` | 93 |
+| `src/styles.css` | 96 |
 | `src/components/retail/RetailReviewWorkspace.tsx` | 15 |
 | `src/components/retail/RetailExecutionWorkspace.tsx` | 14 |
 | `src/app/createAdaxTrainingActions.ts` | 12 |
@@ -85,7 +85,7 @@ Fan-in pressure:
 
 1. `src/styles/**` remains the main maintainability pressure, but former large CSS files are now being reduced by responsibility instead of page-level accumulation.
 2. `src/styles/006-cockpit.css` has been split into cockpit base, summary, layout, controls, actions, template actions, template fields, and panels partitions.
-3. `src/styles/012-retail-results.css` has been split into result base, settlement, breakdown, empty-state, verdict, insight-list, and diagnostics partitions.
+3. `src/styles/012-retail-results.css` has been split into result base, settlement, board layout, exposure/cost maps, bar tones, row layouts, empty-state, verdict, insight-list, and diagnostics partitions.
 4. `src/styles/012-retail-trade.css` has been split into trade base, reference, form-grid, card, choice-card, field-status, input, control, and feedback partitions.
 5. `src/styles/012-retail.css` has been split into retail shell, node rail, operation, execution context, assist entry, grid primitives, market, trade, results, and review partitions.
 6. `src/styles/009-flow.css` has been split into flow shell, mode, scenario, role, data-list, step-list, and side-helper partitions.
@@ -107,13 +107,14 @@ Fan-in pressure:
 22. `src/styles/007-output.css`, `src/styles/013-responsive-mobile-output.css`, and unused `OutputFlowRows.tsx` were removed after verification showed their output/report selectors were no longer active in the retail result surfaces.
 23. `src/styles/013-responsive-mobile.css` has been reduced to mobile shell layout and page padding; mobile sidebar, topbar/context, and result-review status rules now have dedicated partitions.
 24. `src/styles/012-retail-trade-cards.css` has been reduced to shared trade-card containers and base card typography; form grids, choice-card labels, field/month status capsules, and trade inputs now have dedicated partitions, while result/table cards stay in result styles and side facts stay with summary/control styles.
-25. `src/domain/retailCalculations.ts` is the only high-pressure TypeScript domain file. It is still covered by tests, but future calculation changes should consider extracting annual, monthly, exposure, and margin helpers.
-26. `src/domain/retailTypes.ts` and `src/types.ts` have high fan-in. They are central contracts; changes here should remain conservative and test-backed.
-27. `RetailReviewWorkspace.tsx` and `RetailExecutionWorkspace.tsx` have the highest component fan-out. They should stay composition surfaces and not regain business rules.
+25. `src/styles/012-retail-results-breakdown.css` has been reduced to settlement board layout and spacing; exposure/cost maps, progress-bar tone styles, and table/month result rows now have dedicated partitions.
+26. `src/domain/retailCalculations.ts` is the only high-pressure TypeScript domain file. It is still covered by tests, but future calculation changes should consider extracting annual, monthly, exposure, and margin helpers.
+27. `src/domain/retailTypes.ts` and `src/types.ts` have high fan-in. They are central contracts; changes here should remain conservative and test-backed.
+28. `RetailReviewWorkspace.tsx` and `RetailExecutionWorkspace.tsx` have the highest component fan-out. They should stay composition surfaces and not regain business rules.
 
 ## Recommended Refactor Queue
 
-1. Review `src/styles/012-retail-results-breakdown.css` when settlement breakdown styles are next touched; split settlement board layout, exposure/cost maps, progress-bar tone styles, table rows, and monthly result rows only if the file still mixes those responsibilities.
+1. Review `src/styles/003-home-hero.css` when home hero styles are next touched; split hero copy/layout, home action buttons, flow-card header/list, and shared chain/market row rules only if the file still mixes those responsibilities.
 2. Extract calculation helper modules from `src/domain/retailCalculations.ts` only when the next calculation change requires it.
 3. Keep `src/domain/retailTypes.ts` stable unless a new confirmed participant startup card requires new shared contracts.
 4. Keep workspace components as page-level composition surfaces; move any new derived status, validation, or display contract into `src/domain/**`.

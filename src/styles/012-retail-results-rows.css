@@ -1,0 +1,47 @@
+.retail-table-row,
+.retail-cost-row,
+.retail-month-result-row {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  border-top: 1px solid #1d304b;
+  padding: 10px 0;
+}
+
+.retail-month-result-row {
+  grid-template-columns: 70px 80px minmax(0, 1fr) auto;
+}
+
+.retail-cost-row {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.retail-month-result-row.compact {
+  grid-template-columns: 70px 90px minmax(0, 1fr);
+}
+
+.retail-month-result-row.compact em {
+  justify-self: end;
+}
+
+.retail-table-row:first-of-type,
+.retail-cost-row:first-of-type,
+.retail-month-result-row:first-of-type {
+  border-top: 0;
+}
+
+.retail-table-row em,
+.retail-month-result-row em {
+  color: #67e8f9;
+  font-size: 12px;
+  font-style: normal;
+}
+
+.retail-month-result-row p {
+  overflow: hidden;
+  color: #9fb0c7;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -233,7 +233,7 @@ Exit Criteria:
 
 Continue Engineering Hardening Hold.
 
-Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to review `src/styles/012-retail-results-breakdown.css` when settlement breakdown styles are next touched. Split settlement board layout, exposure/cost maps, progress-bar tone styles, table rows, and monthly result rows only if the file still mixes those responsibilities. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
+Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to review `src/styles/003-home-hero.css` when home hero styles are next touched. Split hero copy/layout, home action buttons, flow-card header/list, and shared chain/market row rules only if the file still mixes those responsibilities. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
 
 ## Project Rescue Triggers
 
