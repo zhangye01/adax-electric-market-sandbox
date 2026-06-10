@@ -1,0 +1,47 @@
+.template-field-guide {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+  border-top: 1px solid #20334d;
+  padding-top: 12px;
+}
+
+.template-field-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: #7dd3fc;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+}
+
+.template-field-heading strong {
+  color: #cbd5e1;
+  font-size: 12px;
+  letter-spacing: 0;
+}
+
+.template-field-row {
+  display: grid;
+  grid-template-columns: minmax(112px, 0.65fr) minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+
+.template-field-row code {
+  overflow-wrap: anywhere;
+  border-radius: 6px;
+  background: rgba(15, 23, 42, 0.72);
+  padding: 5px 7px;
+  color: #bae6fd;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.template-field-row p {
+  color: #aab8cc;
+  font-size: 12px;
+  line-height: 1.55;
+}

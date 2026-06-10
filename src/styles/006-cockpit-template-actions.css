@@ -1,0 +1,46 @@
+.template-action-block {
+  margin-top: 12px;
+}
+
+.template-action-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.template-action-grid .cockpit-secondary-action,
+.cockpit-import-action {
+  gap: 6px;
+}
+
+.cockpit-import-action {
+  display: inline-flex;
+  width: 100%;
+  min-height: 38px;
+  margin-top: 8px;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed rgba(34, 211, 238, 0.38);
+  border-radius: 6px;
+  background: rgba(14, 165, 233, 0.1);
+  color: #a5f3fc;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 850;
+  line-height: 1.35;
+  text-align: center;
+  transition: 160ms ease;
+}
+
+.cockpit-import-action:hover {
+  border-color: #22d3ee;
+  background: rgba(14, 165, 233, 0.16);
+  color: #ecfeff;
+}
+
+.template-boundary-note {
+  margin-top: 9px;
+  color: #8ca2bd;
+  font-size: 12px;
+  line-height: 1.65;
+}

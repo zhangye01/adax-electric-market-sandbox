@@ -1,0 +1,51 @@
+.cockpit-primary-action,
+.cockpit-secondary-action,
+.cockpit-danger-action {
+  display: inline-flex;
+  width: 100%;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 800;
+  transition: 160ms ease;
+}
+
+.cockpit-primary-action {
+  background: #0891b2;
+  color: #ecfeff;
+}
+
+.cockpit-primary-action:hover:not(:disabled) {
+  background: #06b6d4;
+}
+
+.cockpit-primary-action:disabled,
+.cockpit-secondary-action:disabled,
+.cockpit-danger-action:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.cockpit-secondary-action {
+  border: 1px solid #2a3d59;
+  background: #111d2f;
+  color: #c8d6ea;
+}
+
+.cockpit-secondary-action:hover:not(:disabled) {
+  border-color: #22d3ee;
+  color: #67e8f9;
+}
+
+.cockpit-danger-action {
+  border: 1px solid rgba(248, 113, 113, 0.35);
+  background: rgba(127, 29, 29, 0.24);
+  color: #fecaca;
+}
+
+.cockpit-danger-action:hover:not(:disabled) {
+  border-color: #fb7185;
+  color: #ffe4e6;
+}
