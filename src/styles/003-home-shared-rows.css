@@ -1,0 +1,25 @@
+.home-flow-step,
+.home-chain-item,
+.home-market-row {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 12px;
+  align-items: center;
+  border: 1px solid #22334c;
+  border-radius: 8px;
+  background: #0b1320;
+  padding: 12px;
+}
+
+.home-flow-step span,
+.home-chain-item span {
+  color: #67e8f9;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.home-flow-step strong,
+.home-chain-item strong {
+  color: #dbeafe;
+  font-size: 14px;
+}

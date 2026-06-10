@@ -5,6 +5,9 @@
 @import "./styles/002-app-topbar.css";
 @import "./styles/003-home.css";
 @import "./styles/003-home-hero.css";
+@import "./styles/003-home-actions.css";
+@import "./styles/003-home-flow-card.css";
+@import "./styles/003-home-shared-rows.css";
 @import "./styles/003-home-sections.css";
 @import "./styles/003-home-records.css";
 @import "./styles/003-home-boundary.css";

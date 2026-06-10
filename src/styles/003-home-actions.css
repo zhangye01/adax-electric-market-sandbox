@@ -1,0 +1,46 @@
+.home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.home-primary-button,
+.home-secondary-button,
+.home-text-button {
+  display: inline-flex;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 6px;
+  padding: 0 16px;
+  font-size: 13px;
+  font-weight: 800;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.home-primary-button {
+  background: #0891b2;
+  color: #ecfeff;
+}
+
+.home-primary-button:hover {
+  background: #06b6d4;
+}
+
+.home-secondary-button,
+.home-text-button {
+  border: 1px solid #2a3d59;
+  background: #111d2f;
+  color: #c8d6ea;
+}
+
+.home-secondary-button:hover,
+.home-text-button:hover {
+  border-color: #22d3ee;
+  color: #67e8f9;
+}

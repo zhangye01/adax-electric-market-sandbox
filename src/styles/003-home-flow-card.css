@@ -1,0 +1,46 @@
+.home-flow-card {
+  border: 1px solid #22334c;
+  border-radius: 8px;
+  background: #111d2f;
+  padding: 20px;
+}
+
+.home-flow-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.home-flow-header > span:first-child {
+  color: #f8fafc;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.home-flow-caption {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+  color: #9fb2cd;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: right;
+}
+
+.home-flow-caption::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: #22d3ee;
+}
+
+.home-flow-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}

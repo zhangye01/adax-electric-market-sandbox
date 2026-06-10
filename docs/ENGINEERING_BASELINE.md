@@ -140,6 +140,9 @@ Shared shell and persistence:
 - `src/styles/002-app-topbar.css`
 - `src/styles/003-home.css`
 - `src/styles/003-home-hero.css`
+- `src/styles/003-home-actions.css`
+- `src/styles/003-home-flow-card.css`
+- `src/styles/003-home-shared-rows.css`
 - `src/styles/003-home-sections.css`
 - `src/styles/003-home-records.css`
 - `src/styles/003-home-boundary.css`
