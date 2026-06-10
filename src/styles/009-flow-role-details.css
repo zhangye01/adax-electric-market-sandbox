@@ -1,0 +1,53 @@
+.flow-participant-ecosystem,
+.flow-role-support {
+  margin-top: 20px;
+  border: 1px solid #22334c;
+  border-radius: 10px;
+  background: rgba(11, 19, 32, 0.72);
+  padding: 16px;
+}
+
+.flow-participant-ecosystem summary,
+.flow-role-support summary {
+  display: flex;
+  cursor: pointer;
+  list-style: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #dbeafe;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.flow-participant-ecosystem summary::-webkit-details-marker,
+.flow-role-support summary::-webkit-details-marker {
+  display: none;
+}
+
+.flow-participant-ecosystem summary::after,
+.flow-role-support summary::after {
+  content: "展开";
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.flow-participant-ecosystem[open] summary,
+.flow-role-support[open] summary {
+  margin-bottom: 14px;
+}
+
+.flow-participant-ecosystem[open] summary::after,
+.flow-role-support[open] summary::after {
+  content: "收起";
+}
+
+.flow-role-support-body {
+  display: grid;
+  gap: 12px;
+}
+
+.flow-role-support-body .flow-info-panel {
+  margin-top: 0;
+}

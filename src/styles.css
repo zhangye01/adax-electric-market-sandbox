@@ -29,6 +29,10 @@
 @import "./styles/009-flow-scenario-activity.css";
 @import "./styles/009-flow-scenario-confirmation.css";
 @import "./styles/009-flow-role.css";
+@import "./styles/009-flow-role-details.css";
+@import "./styles/009-flow-role-ecosystem.css";
+@import "./styles/009-flow-role-info-pack.css";
+@import "./styles/009-flow-role-seat.css";
 @import "./styles/009-flow-lists.css";
 @import "./styles/010-cockpit-components.css";
 @import "./styles/010-cockpit-comparison.css";

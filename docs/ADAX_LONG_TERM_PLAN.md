@@ -233,7 +233,7 @@ Exit Criteria:
 
 Continue Engineering Hardening Hold.
 
-Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to review `src/styles/009-flow-role.css` when the participant selection surface is next touched, then split role cards, ecosystem seats, support/info packages, and seat summary only if the file still mixes responsibilities. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
+Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to review `src/styles/008-records.css` when the records surface is next touched, then split records page shell, empty state, record cards, detail panel, and local boundary notice only if the file still mixes responsibilities. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
 
 ## Project Rescue Triggers
 

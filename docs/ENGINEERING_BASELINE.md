@@ -67,6 +67,10 @@ Active retail flow:
 - `src/styles/009-flow-scenario-activity.css`
 - `src/styles/009-flow-scenario-confirmation.css`
 - `src/styles/009-flow-role.css`
+- `src/styles/009-flow-role-details.css`
+- `src/styles/009-flow-role-ecosystem.css`
+- `src/styles/009-flow-role-info-pack.css`
+- `src/styles/009-flow-role-seat.css`
 - `src/styles/009-flow-lists.css`
 - `src/styles/010-cockpit-components.css`
 - `src/styles/010-cockpit-comparison.css`

@@ -1,0 +1,40 @@
+.flow-seat-summary {
+  border: 1px solid rgba(34, 211, 238, 0.28);
+  border-radius: 10px;
+  background: rgba(14, 165, 233, 0.09);
+  padding: 16px;
+}
+
+.flow-seat-summary span {
+  color: #67e8f9;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.flow-seat-summary strong {
+  display: block;
+  margin-top: 8px;
+  color: #f8fafc;
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+.flow-seat-summary p {
+  margin-top: 9px;
+  color: #aab8cc;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.flow-focus-list span {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  border: 1px solid #2a3d59;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.62);
+  color: #c8d6ea;
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 800;
+}

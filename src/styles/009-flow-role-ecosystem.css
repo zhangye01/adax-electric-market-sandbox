@@ -1,0 +1,42 @@
+.flow-future-role-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.flow-future-role-card {
+  min-width: 0;
+  border: 1px solid #22334c;
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.56);
+  padding: 12px;
+  opacity: 0.72;
+}
+
+.flow-future-role-card svg {
+  color: #8ea4c1;
+}
+
+.flow-future-role-card strong {
+  display: block;
+  margin-top: 10px;
+  color: #dbeafe;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.flow-future-role-card > span:not(.badge) {
+  display: block;
+  margin-top: 6px;
+  color: #aab8cc;
+  font-size: 12px;
+  font-weight: 850;
+  line-height: 1.45;
+}
+
+.flow-future-role-card p {
+  margin-top: 7px;
+  color: #879bb6;
+  font-size: 12px;
+  line-height: 1.6;
+}
