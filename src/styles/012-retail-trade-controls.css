@@ -1,0 +1,88 @@
+.retail-summary-strip,
+.retail-side-facts,
+.retail-stat-table {
+  display: grid;
+  gap: 10px;
+  border: 1px solid #203451;
+  border-radius: 8px;
+  background: #081321;
+  padding: 12px;
+}
+
+.retail-summary-strip {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.retail-summary-strip span {
+  display: block;
+  color: #8fa4bf;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.retail-summary-strip strong {
+  display: block;
+  margin-top: 5px;
+  color: #f8fafc;
+  font-size: 15px;
+  font-weight: 850;
+}
+
+.retail-choice-card {
+  min-height: 118px;
+  text-align: left;
+  transition: 160ms ease;
+}
+
+.retail-choice-card:hover,
+.retail-choice-card.active {
+  border-color: #22d3ee;
+  background: rgba(8, 145, 178, 0.14);
+}
+
+.retail-segment-block {
+  display: grid;
+  gap: 8px;
+}
+
+.retail-segment-block > span,
+.retail-month-input-grid label > span {
+  color: #8fa4bf;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.retail-segmented,
+.retail-participation-toggle {
+  display: inline-grid;
+  grid-auto-flow: column;
+  gap: 6px;
+  justify-content: start;
+  border: 1px solid #223754;
+  border-radius: 8px;
+  background: #081321;
+  padding: 5px;
+}
+
+.retail-segmented button,
+.retail-participation-toggle button {
+  min-width: 84px;
+  border-radius: 6px;
+  padding: 8px 10px;
+  color: #b9c8dc;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.retail-segmented button.active,
+.retail-participation-toggle button.active {
+  background: #0891b2;
+  color: #ecfeff;
+}
+
+.retail-choice-state-note {
+  color: #8fa4bf;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 800;
+}

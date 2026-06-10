@@ -64,6 +64,10 @@ Active retail flow:
 - `src/styles/012-retail.css`
 - `src/styles/012-retail-market.css`
 - `src/styles/012-retail-trade.css`
+- `src/styles/012-retail-trade-reference.css`
+- `src/styles/012-retail-trade-cards.css`
+- `src/styles/012-retail-trade-controls.css`
+- `src/styles/012-retail-trade-feedback.css`
 - `src/styles/012-retail-results.css`
 - `src/styles/012-retail-results-settlement.css`
 - `src/styles/012-retail-results-breakdown.css`

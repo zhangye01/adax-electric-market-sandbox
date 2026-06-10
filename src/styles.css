@@ -21,6 +21,10 @@
 @import "./styles/012-retail.css";
 @import "./styles/012-retail-market.css";
 @import "./styles/012-retail-trade.css";
+@import "./styles/012-retail-trade-reference.css";
+@import "./styles/012-retail-trade-cards.css";
+@import "./styles/012-retail-trade-controls.css";
+@import "./styles/012-retail-trade-feedback.css";
 @import "./styles/012-retail-results.css";
 @import "./styles/012-retail-results-settlement.css";
 @import "./styles/012-retail-results-breakdown.css";

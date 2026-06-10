@@ -230,7 +230,7 @@ Current high-level split:
 - base and app shell styles
 - home/about/records/flow page styles
 - cockpit base, summary, layout, controls, panels, review, and output surface styles
-- retail shell, market, trade, result base, settlement, result breakdown, result-review, and review styles
+- retail shell, market, trade base/reference/cards/controls/feedback, result base, settlement, result breakdown, result-review, and review styles
 - responsive rules
 
 Rules:

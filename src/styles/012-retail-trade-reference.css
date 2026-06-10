@@ -1,0 +1,120 @@
+.retail-reference-facts {
+  display: grid;
+  gap: 8px;
+}
+
+.retail-reference-facts > div {
+  border: 1px solid #203451;
+  border-radius: 8px;
+  background: #091524;
+  padding: 11px;
+}
+
+.retail-reference-facts span {
+  display: block;
+  color: #8fa4bf;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.retail-reference-facts strong {
+  display: block;
+  margin-top: 5px;
+  color: #f8fafc;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.retail-month-window-reference-list {
+  display: grid;
+  gap: 8px;
+}
+
+.retail-month-window-reference-list > div {
+  border-top: 1px solid #1d304b;
+  padding-top: 9px;
+}
+
+.retail-month-window-reference-list > div:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.retail-month-window-reference-list span {
+  color: #67e8f9;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.retail-month-window-reference-list strong {
+  display: block;
+  margin-top: 4px;
+  color: #f8fafc;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.retail-month-window-reference-list p {
+  margin-top: 5px;
+  color: #9fb0c7;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.retail-mix-reference-list,
+.retail-segment-risk-list,
+.retail-package-reference-list {
+  display: grid;
+  gap: 8px;
+}
+
+.retail-mix-reference-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.retail-mix-reference-list > div,
+.retail-segment-risk-list > div,
+.retail-package-reference-list > div,
+.retail-selected-package-note {
+  border: 1px solid #203451;
+  border-radius: 8px;
+  background: #091524;
+  padding: 10px;
+}
+
+.retail-mix-reference-list span,
+.retail-segment-risk-list span,
+.retail-package-reference-list span,
+.retail-selected-package-note span {
+  display: block;
+  color: #8fa4bf;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.retail-mix-reference-list strong,
+.retail-package-reference-list strong {
+  display: block;
+  margin-top: 5px;
+  color: #f8fafc;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.retail-segment-risk-list p,
+.retail-selected-package-note p {
+  margin-top: 6px;
+  color: #9fb0c7;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.retail-segment-risk-list > div,
+.retail-package-reference-list > div {
+  border-color: #1d304b;
+  background: #07111f;
+}
