@@ -1,0 +1,72 @@
+/* Retail market 24-hour price curve rows and bar chart primitives. */
+.retail-price-curve-row {
+  display: grid;
+  grid-template-columns: 108px minmax(0, 1fr) 64px;
+  gap: 10px;
+  align-items: center;
+}
+
+.retail-price-curve-label {
+  min-width: 0;
+}
+
+.retail-price-curve-label span {
+  display: block;
+  color: #67e8f9;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.retail-price-curve-label strong {
+  display: block;
+  margin-top: 4px;
+  color: #d8e6f8;
+  font-size: 12px;
+  font-weight: 850;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.retail-price-bars {
+  display: grid;
+  height: 72px;
+  grid-template-columns: repeat(24, minmax(0, 1fr));
+  align-items: end;
+  gap: 2px;
+  border: 1px solid #1d304b;
+  border-radius: 7px;
+  background: #06101d;
+  padding: 8px 7px;
+}
+
+.retail-market-board.scenario .retail-price-bars {
+  height: 86px;
+}
+
+.retail-price-bars span {
+  min-height: 6px;
+  border-radius: 2px 2px 0 0;
+  background: #22d3ee;
+}
+
+.retail-price-bars span.peak {
+  background: #f59e0b;
+}
+
+.retail-price-bars span.valley {
+  background: #10b981;
+}
+
+.retail-price-curve-stats {
+  display: grid;
+  justify-items: end;
+  gap: 4px;
+  text-align: right;
+}
+
+.retail-price-curve-stats strong {
+  color: #fbbf24;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 900;
+}

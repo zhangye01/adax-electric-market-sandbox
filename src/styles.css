@@ -30,6 +30,10 @@
 @import "./styles/011-workspace-command.css";
 @import "./styles/012-retail.css";
 @import "./styles/012-retail-market.css";
+@import "./styles/012-retail-market-load.css";
+@import "./styles/012-retail-market-price.css";
+@import "./styles/012-retail-market-months.css";
+@import "./styles/012-retail-market-briefs.css";
 @import "./styles/012-retail-trade.css";
 @import "./styles/012-retail-trade-reference.css";
 @import "./styles/012-retail-trade-cards.css";

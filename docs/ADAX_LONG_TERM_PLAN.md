@@ -233,7 +233,7 @@ Exit Criteria:
 
 Continue Engineering Hardening Hold.
 
-Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to review `src/styles/012-retail-market.css` when the retail market situation board is next touched, then split only if annual context, monthly windows, typical-day curves, and chart primitives still mix responsibilities. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
+Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to review `src/styles/010-cockpit-components.css` when cockpit primitives are next touched, then split only if badges, notices, stepper, status pills, and template controls still mix responsibilities. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
 
 ## Project Rescue Triggers
 

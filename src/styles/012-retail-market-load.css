@@ -1,0 +1,49 @@
+/* Retail market annual load, spread, and counterparty floor indicators. */
+.retail-load-bar {
+  display: grid;
+  gap: 7px;
+}
+
+.retail-load-bar > div,
+.retail-load-spread,
+.retail-market-floor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.retail-load-bar strong,
+.retail-load-spread strong,
+.retail-market-floor strong {
+  color: #f8fafc;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.retail-load-bar em {
+  display: block;
+  overflow: hidden;
+  height: 9px;
+  border-radius: 999px;
+  background: #12243a;
+}
+
+.retail-load-bar i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #22d3ee;
+}
+
+.retail-load-spread,
+.retail-market-floor {
+  margin-top: 12px;
+  border-top: 1px solid #1d304b;
+  padding-top: 10px;
+}
+
+.retail-market-floor strong {
+  color: #fbbf24;
+}

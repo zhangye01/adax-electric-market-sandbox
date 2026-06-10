@@ -1,0 +1,97 @@
+/* Retail market brief strips, workbench action rows, and next-action panels. */
+.retail-market-brief-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.retail-action-fact-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.retail-market-brief-strip > div,
+.retail-action-fact-strip > div,
+.retail-workbench-brief,
+.retail-next-action-strip {
+  border: 1px solid #203451;
+  border-radius: 8px;
+  background: #091524;
+  padding: 14px;
+}
+
+.retail-market-brief-strip span,
+.retail-action-fact-strip span,
+.retail-next-action-strip span {
+  color: #8fa4bf;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.retail-market-brief-strip strong,
+.retail-action-fact-strip strong,
+.retail-next-action-strip strong {
+  display: block;
+  margin-top: 7px;
+  color: #f8fafc;
+  font-size: 15px;
+  font-weight: 850;
+  line-height: 1.35;
+}
+
+.retail-market-brief-strip p {
+  margin-top: 7px;
+  color: #9fb0c7;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.retail-workbench-brief {
+  display: grid;
+  gap: 10px;
+}
+
+.retail-market-action-row {
+  display: grid;
+  grid-template-columns: 58px minmax(120px, 0.8fr) minmax(180px, 1fr) minmax(180px, 1fr);
+  gap: 12px;
+  align-items: center;
+  border-top: 1px solid #1d304b;
+  padding-top: 10px;
+}
+
+.retail-market-action-row:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.retail-market-action-row span {
+  color: #67e8f9;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.retail-market-action-row strong {
+  color: #f8fafc;
+  font-size: 13px;
+  font-weight: 850;
+  line-height: 1.35;
+}
+
+.retail-market-action-row p,
+.retail-market-action-row em {
+  color: #9fb0c7;
+  font-size: 12px;
+  font-style: normal;
+  line-height: 1.55;
+}
+
+.retail-market-action-row em {
+  color: #d8e6f8;
+}
+
+.retail-next-action-strip {
+  border-color: rgba(34, 211, 238, 0.28);
+  background: rgba(14, 165, 233, 0.08);
+}

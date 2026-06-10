@@ -1,0 +1,33 @@
+/* Retail market monthly trading window summaries. */
+.retail-market-month-item {
+  display: grid;
+  gap: 6px;
+  border-top: 1px solid #1d304b;
+  padding-top: 9px;
+}
+
+.retail-market-month-item:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.retail-market-month-item > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.retail-market-month-item strong {
+  color: #f8fafc;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 900;
+  text-align: right;
+}
+
+.retail-market-month-item p {
+  color: #9fb0c7;
+  font-size: 12px;
+  line-height: 1.5;
+}
