@@ -197,6 +197,26 @@ Rules:
 - scripts must not import from `src/legacy/**`
 - publishing scripts must keep `main` and `gh-pages` responsibilities separated
 
+### `docs/**` and `AGENTS.md`
+
+Project operating system and engineering guardrails.
+
+Current entry and gate documents:
+
+- `AGENTS.md`: required entry point for future ADAX coding work.
+- `docs/ADAX_MVP_STARTER.md`: scope baseline.
+- `docs/ADAX_LONG_TERM_PLAN.md`: autonomous execution roadmap.
+- `docs/ENGINEERING_BASELINE.md`: maintainability baseline and risk register.
+- `docs/ADAX_CHANGE_GATE_CHECKLIST.md`: pre-change classification, rescue gate, layer placement, and test selection.
+- `docs/ADAX_RELEASE_PROCESS.md`: Pages publishing process.
+
+Rules:
+
+- update these documents when source boundaries, phase order, release flow, or guardrail rules change
+- do not use docs to justify hidden scope expansion; update the startup card first
+- keep checklists short enough to be usable before each change
+- stale docs must be corrected before continuing feature work
+
 ### `src/pages/**`
 
 High-level page composition.

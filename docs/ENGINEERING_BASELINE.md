@@ -10,6 +10,8 @@ Use `docs/ADAX_LONG_TERM_PLAN.md` as the autonomous execution roadmap. This file
 
 Use `docs/ADAX_RELEASE_PROCESS.md` for GitHub Pages publishing. The current production preview is served from the `gh-pages` branch, while the source code stays on `main`.
 
+Use `docs/ADAX_CHANGE_GATE_CHECKLIST.md` as the pre-change gate before starting non-trivial work. It defines how to classify requests, when to switch to Project Rescue, where responsibilities belong, and which checks prove completion.
+
 ## Source Boundaries
 
 Active retail flow:
@@ -108,13 +110,14 @@ The current queue is maintained in `docs/ADAX_LONG_TERM_PLAN.md`.
 
 Near-term maintenance priorities:
 
-1. Keep `src/app/AdaxPageRenderer.tsx` as the page composition boundary; do not move flow state back into `App.tsx`.
-2. Keep `src/app/useAdaxBrowserRouteSync.ts` as the browser route synchronization boundary.
-3. Keep `src/app/createAdaxTrainingActions.ts` as the training action boundary.
-4. Keep `docs/ACTIVE_ARCHITECTURE_MAP.md` current when source boundaries change.
-5. Continue reducing large style partitions only when a page is touched.
-6. Keep `docs/ADAX_RELEASE_PROCESS.md` current when publishing, changing Pages configuration, or changing Vite build paths.
-7. Only add new participant workflows after the relevant startup card is confirmed.
+1. Apply `docs/ADAX_CHANGE_GATE_CHECKLIST.md` before non-trivial changes.
+2. Keep `src/app/AdaxPageRenderer.tsx` as the page composition boundary; do not move flow state back into `App.tsx`.
+3. Keep `src/app/useAdaxBrowserRouteSync.ts` as the browser route synchronization boundary.
+4. Keep `src/app/createAdaxTrainingActions.ts` as the training action boundary.
+5. Keep `docs/ACTIVE_ARCHITECTURE_MAP.md` current when source boundaries change.
+6. Continue reducing large style partitions only when a page is touched.
+7. Keep `docs/ADAX_RELEASE_PROCESS.md` current when publishing, changing Pages configuration, or changing Vite build paths.
+8. Only add new participant workflows after the relevant startup card is confirmed.
 
 ## Quality Commands
 
@@ -131,6 +134,7 @@ Do not treat visual inspection as a replacement for domain tests.
 | Risk | Current Level | Control |
 | --- | --- | --- |
 | Scope drift into non-retailer workflows | High | Keep `docs/ADAX_MVP_STARTER.md` as source of truth |
+| Open-ended change requests bypassing architecture judgment | Reduced | Use `docs/ADAX_CHANGE_GATE_CHECKLIST.md` to classify scope, target layer, rescue triggers, and required evidence before editing |
 | New participant implementation starting before scope confirmation | High | Require a confirmed participant startup card before code; current renewable card is `docs/ADAX_RENEWABLE_STARTUP_CARD.md` and remains pending confirmation |
 | Preview publishing path drifting from source history | Medium | Keep source on `main`, static build on `gh-pages`, and follow `docs/ADAX_RELEASE_PROCESS.md` |
 | Manual Pages publishing missing a step | Reduced | Use `npm run publish:pages:dry` before `npm run publish:pages -- --yes`; publishing logic is centralized in `scripts/publish-pages.mjs` |

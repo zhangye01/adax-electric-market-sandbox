@@ -9,11 +9,12 @@ Read these files before changing code:
 1. `docs/ADAX_MVP_STARTER.md`
 2. `docs/ADAX_LONG_TERM_PLAN.md`
 3. `docs/ENGINEERING_BASELINE.md`
-4. `docs/ACTIVE_ARCHITECTURE_MAP.md`
-5. `PROJECT_SPEC.md`
-6. `GUARDRAILS.md`
-7. `TEST_CASES.md`
-8. `UI_REQUIREMENTS.md`
+4. `docs/ADAX_CHANGE_GATE_CHECKLIST.md`
+5. `docs/ACTIVE_ARCHITECTURE_MAP.md`
+6. `PROJECT_SPEC.md`
+7. `GUARDRAILS.md`
+8. `TEST_CASES.md`
+9. `UI_REQUIREMENTS.md`
 
 Read `docs/ADAX_RELEASE_PROCESS.md` before publishing, changing Pages configuration, changing Vite build base paths, or touching `gh-pages`.
 
@@ -39,6 +40,7 @@ Other participant types may appear as product seats or planning context, but the
 
 - Do not add new business scope while engineering baseline work is in progress.
 - For an open-ended "继续", follow `docs/ADAX_LONG_TERM_PLAN.md` and continue the current phase's next action.
+- Use `docs/ADAX_CHANGE_GATE_CHECKLIST.md` before starting any non-trivial change.
 - Keep business rules in `src/domain/**`.
 - Keep browser persistence and template IO in `src/services/**` or `src/utils/**`.
 - Keep page components focused on flow and composition.

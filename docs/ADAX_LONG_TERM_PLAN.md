@@ -24,11 +24,12 @@ The product should help users experience transaction organization, transaction m
 Use this protocol for future "继续" turns:
 
 1. Read `AGENTS.md`, `docs/ADAX_MVP_STARTER.md`, `docs/ENGINEERING_BASELINE.md`, and this file.
-2. Identify the current phase and the first unfinished task.
-3. Make a small, reversible change that strengthens the current phase.
-4. Update tests or documentation when the change affects contracts or behavior.
-5. Run `npm run typecheck`, `npm run test`, and `npm run build` for code changes.
-6. Report what changed, what passed, what remains, and the next recommended task.
+2. Use `docs/ADAX_CHANGE_GATE_CHECKLIST.md` to classify the requested change before editing.
+3. Identify the current phase and the first unfinished task.
+4. Make a small, reversible change that strengthens the current phase.
+5. Update tests or documentation when the change affects contracts or behavior.
+6. Run `npm run typecheck`, `npm run test`, and `npm run build` for code changes.
+7. Report what changed, what passed, what remains, and the next recommended task.
 
 Do not jump to a later phase just because it is more visible. Finish the current phase's guardrails first.
 
@@ -205,11 +206,33 @@ Planning Artifacts:
 - 新能源 startup card created: `docs/ADAX_RENEWABLE_STARTUP_CARD.md`.
 - Status: pending user confirmation. Do not implement renewable code until the startup card is confirmed.
 
+## Engineering Hardening Hold
+
+Status: active by user direction.
+
+Goal: keep strengthening maintainability before entering new participant implementation.
+
+Use this holding pattern when the user asks to continue engineering, harden the project, avoid code pile-up, or improve long-term maintainability.
+
+Active tasks:
+
+- Keep `docs/ADAX_CHANGE_GATE_CHECKLIST.md` current as the pre-change gate.
+- Keep `docs/ACTIVE_ARCHITECTURE_MAP.md` current when source boundaries change.
+- Keep `docs/ENGINEERING_BASELINE.md` risk controls current as new automation or checks are added.
+- Prefer guardrails, tests, and small refactors over new business scope.
+- Do not enter Phase 5 until the user explicitly confirms a participant startup card and says to resume feature expansion.
+
+Exit Criteria:
+
+- The user explicitly confirms the project is ready to resume feature expansion.
+- The target participant startup card is confirmed.
+- Current quality gates pass.
+
 ## Current Next Action
 
-Confirm Phase 5 entry scope.
+Continue Engineering Hardening Hold.
 
-Next recommended task: review and confirm `docs/ADAX_RENEWABLE_STARTUP_CARD.md`. If confirmed, implement only the first renewable engineering slice: domain types, state, validation, calculations, chain contract, and tests. Do not expose a clickable renewable operating flow before the renewable workspace is complete enough to pass its own checks.
+Next recommended task: audit current source boundaries against `docs/ADAX_CHANGE_GATE_CHECKLIST.md` and add lightweight checks or tests where the checklist identifies weak evidence. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
 
 ## Project Rescue Triggers
 
