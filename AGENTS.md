@@ -1,0 +1,68 @@
+# ADAX Agent Rules
+
+This file is the required entry point for any future ADAX coding work.
+
+## Read Before Editing
+
+Read these files before changing code:
+
+1. `docs/ADAX_MVP_STARTER.md`
+2. `docs/ADAX_LONG_TERM_PLAN.md`
+3. `docs/ENGINEERING_BASELINE.md`
+4. `docs/ACTIVE_ARCHITECTURE_MAP.md`
+5. `PROJECT_SPEC.md`
+6. `GUARDRAILS.md`
+7. `TEST_CASES.md`
+8. `UI_REQUIREMENTS.md`
+
+If those files conflict, treat `docs/ADAX_MVP_STARTER.md` as the scope baseline, `docs/ADAX_LONG_TERM_PLAN.md` as the execution roadmap, and update the stale document before continuing feature work.
+
+## Current Active Scope
+
+ADAX v0.1 is a local React/Vite prototype for electricity market transaction training.
+
+The active implementation scope is:
+
+- 售电公司 execution mode.
+- 售电公司 review mode.
+- One unified virtual provincial market.
+- Eight shared retail trade nodes.
+- Template import/export for the retail execution state.
+- Review materials stored by scenario, participant, and trade node.
+- Training records stored in browser localStorage.
+
+Other participant types may appear as product seats or planning context, but they are not active operational flows in v0.1.
+
+## Engineering Rules
+
+- Do not add new business scope while engineering baseline work is in progress.
+- For an open-ended "继续", follow `docs/ADAX_LONG_TERM_PLAN.md` and continue the current phase's next action.
+- Keep business rules in `src/domain/**`.
+- Keep browser persistence and template IO in `src/services/**` or `src/utils/**`.
+- Keep page components focused on flow and composition.
+- Do not place calculation logic inside React components.
+- Do not use real province data, real customer data, real bids, real transaction records, or external market APIs.
+- Do not make review mode a separate product flow; it must stay attached to the same scenario, participant, and trade-node chain as execution mode.
+- Do not import legacy photovoltaic prototype code into the ADAX retail flow.
+- Do not edit `dist/`, `node_modules/`, or generated temporary output.
+
+## Required Checks
+
+Run these before handing off a code change:
+
+- `npm run typecheck`
+- `npm run test`
+- `npm run build`
+
+If one cannot be run, state the reason explicitly.
+
+## Project Rescue Triggers
+
+Pause feature work and switch to Project Rescue if any of these happen:
+
+- The requested change expands v0.1 beyond the confirmed active scope.
+- The implementation starts mixing legacy prototype pages into the retail flow.
+- A new feature requires backend storage, login, network APIs, or real market data.
+- Calculations become difficult to explain in user-facing review.
+- Execution mode and review mode diverge into different scenario or participant chains.
+- UI additions make the operation surface explanation-heavy instead of action-focused.

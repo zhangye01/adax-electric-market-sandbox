@@ -1,0 +1,336 @@
+.cockpit-mode-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.cockpit-mode-card {
+  min-height: 245px;
+  border: 1px solid #2a3d59;
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(15, 23, 42, 0.1), rgba(15, 23, 42, 0.42)),
+    #0b1320;
+  padding: 22px;
+  text-align: left;
+  transition:
+    border-color 160ms ease,
+    transform 160ms ease,
+    background 160ms ease;
+}
+
+.cockpit-mode-card:hover {
+  border-color: #22d3ee;
+  transform: translateY(-2px);
+  background:
+    linear-gradient(180deg, rgba(14, 165, 233, 0.12), rgba(15, 23, 42, 0.5)),
+    #0b1320;
+}
+
+.cockpit-mode-card.review:hover {
+  border-color: #f59e0b;
+  background:
+    linear-gradient(180deg, rgba(245, 158, 11, 0.12), rgba(15, 23, 42, 0.5)),
+    #0b1320;
+}
+
+.cockpit-mode-label {
+  display: inline-flex;
+  border: 1px solid #2a3d59;
+  border-radius: 6px;
+  background: #111d2f;
+  color: #8ea4c1;
+  padding: 5px 9px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.cockpit-mode-card.execution .cockpit-mode-label {
+  border-color: rgba(52, 211, 153, 0.35);
+  color: #a7f3d0;
+}
+
+.cockpit-mode-card.review .cockpit-mode-label {
+  border-color: rgba(251, 191, 36, 0.35);
+  color: #fde68a;
+}
+
+.cockpit-mode-card strong {
+  display: block;
+  margin-top: 24px;
+  color: #f8fafc;
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+
+.cockpit-mode-card p {
+  margin-top: 14px;
+  color: #9fb2cd;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.cockpit-mode-card em {
+  display: inline-flex;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24px;
+  border-radius: 6px;
+  background: #0891b2;
+  color: #ecfeff;
+  padding: 0 14px;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.cockpit-mode-card.review em {
+  background: #c2410c;
+}
+
+.cockpit-comparison-row {
+  border-bottom: 1px solid #1d2c43;
+}
+
+.cockpit-comparison-row em {
+  min-width: 70px;
+  text-align: right;
+  font-style: normal;
+  font-variant-numeric: tabular-nums;
+}
+
+.cockpit-comparison-row em.up {
+  color: #34d399;
+}
+
+.cockpit-comparison-row em.down {
+  color: #fb7185;
+}
+
+.cockpit-event-row {
+  display: grid;
+  grid-template-columns: 46px 110px 1fr;
+  gap: 10px;
+  align-items: start;
+  color: #8ea4c1;
+  font-size: 12px;
+}
+
+.cockpit-event-row span {
+  color: #fbbf24;
+  font-weight: 800;
+}
+
+.cockpit-event-row strong {
+  color: #e2e8f0;
+}
+
+.cockpit-event-row em {
+  color: #7086a4;
+  font-style: normal;
+}
+
+.cockpit-verdict {
+  border: 1px solid #22334c;
+  border-radius: 8px;
+  background: #0b1320;
+  padding: 14px;
+}
+
+.cockpit-verdict span {
+  color: #8ea4c1;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.cockpit-verdict strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 30px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.cockpit-verdict p {
+  margin-top: 10px;
+  color: #9fb2cd;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.cockpit-verdict.good strong {
+  color: #34d399;
+}
+
+.cockpit-verdict.risk strong {
+  color: #fb7185;
+}
+
+.cockpit-feedback-metric {
+  border: 1px solid #22334c;
+  border-radius: 8px;
+  background: #111d2f;
+  padding: 12px;
+}
+
+.cockpit-feedback-metric span {
+  color: #8ea4c1;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.cockpit-feedback-metric strong {
+  display: block;
+  margin-top: 7px;
+  color: #f8fafc;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.cockpit-diagnosis {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  gap: 10px;
+  border: 1px solid #22334c;
+  border-radius: 8px;
+  background: #0b1320;
+  padding: 11px;
+}
+
+.cockpit-diagnosis span {
+  display: flex;
+  width: 22px;
+  height: 22px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #1e3a5f;
+  color: #bae6fd;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.cockpit-diagnosis p {
+  color: #c8d6ea;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.status-notice {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  border: 1px solid #243957;
+  border-radius: 8px;
+  background: #0d1828;
+  padding: 11px 12px;
+}
+
+.status-notice + .cockpit-feedback-metric {
+  margin-top: 10px;
+}
+
+.status-notice.success {
+  border-color: rgba(16, 185, 129, 0.34);
+  background: rgba(16, 185, 129, 0.09);
+}
+
+.status-notice.warning {
+  border-color: rgba(245, 158, 11, 0.38);
+  background: rgba(245, 158, 11, 0.1);
+}
+
+.status-notice.danger {
+  border-color: rgba(248, 113, 113, 0.38);
+  background: rgba(127, 29, 29, 0.18);
+}
+
+.status-notice.info {
+  border-color: rgba(34, 211, 238, 0.26);
+  background: rgba(14, 165, 233, 0.08);
+}
+
+.status-notice-icon {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  background: rgba(148, 163, 184, 0.1);
+  color: #cbd5e1;
+}
+
+.status-notice.success .status-notice-icon {
+  background: rgba(16, 185, 129, 0.14);
+  color: #86efac;
+}
+
+.status-notice.warning .status-notice-icon {
+  background: rgba(245, 158, 11, 0.14);
+  color: #fcd34d;
+}
+
+.status-notice.danger .status-notice-icon {
+  background: rgba(248, 113, 113, 0.14);
+  color: #fecaca;
+}
+
+.status-notice.info .status-notice-icon {
+  background: rgba(34, 211, 238, 0.12);
+  color: #67e8f9;
+}
+
+.status-notice-title {
+  color: #e5edf8;
+  font-size: 12px;
+  font-weight: 850;
+  line-height: 1.45;
+}
+
+.status-notice-body {
+  margin-top: 3px;
+  color: #aab8cc;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.status-notice-list {
+  display: grid;
+  gap: 3px;
+}
+
+.status-notice-list p {
+  color: #fecdd3;
+}
+
+.cockpit-ok,
+.cockpit-template-message {
+  border-radius: 8px;
+  padding: 10px;
+  color: #a7f3d0;
+  background: rgba(16, 185, 129, 0.1);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.cockpit-template-message {
+  margin-top: 10px;
+  color: #a5f3fc;
+  background: rgba(34, 211, 238, 0.08);
+}
+
+.cockpit-error-list {
+  border-radius: 8px;
+  background: rgba(251, 113, 133, 0.1);
+  padding: 10px;
+}
+
+.cockpit-error-list p {
+  color: #fecdd3;
+  font-size: 12px;
+  line-height: 1.6;
+}

@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #dbeafe;
+  background: #0b1220;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.page-shell {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 30px 32px 64px;
+}
+
+.card {
+  border: 1px solid #22334c;
+  border-radius: 8px;
+  background: #101a2a;
+  box-shadow: none;
+}
+
+.subtle-card {
+  border: 1px solid #22334c;
+  border-radius: 8px;
+  background: #111d2f;
+}
+
+.report-band {
+  border: 1px solid #22334c;
+  border-radius: 8px;
+  background:
+    linear-gradient(90deg, rgba(20, 184, 166, 0.08), rgba(14, 165, 233, 0.05)),
+    #0f1928;
+}
+
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #22d3ee;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.section-kicker::before {
+  content: "";
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: #22d3ee;
+}
+
+.chart-card {
+  border: 1px solid #22334c;
+  border-radius: 8px;
+  background: #0b1320;
+  padding: 12px 8px 4px;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.data-table th {
+  background: #111d2f;
+  color: #8ea4c1;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.data-table td,
+.data-table th {
+  border-bottom: 1px solid #22334c;
+}
+
+.table-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #b8c5d8 transparent;
+}
+
+.table-scroll::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.table-scroll::-webkit-scrollbar-thumb {
+  background: #b8c5d8;
+  border-radius: 999px;
+}
+
+.recharts-cartesian-axis-tick text {
+  fill: #8fa4c2;
+  font-size: 12px;
+}
+
+.recharts-default-legend {
+  color: #a8bad4;
+  font-size: 12px;
+}

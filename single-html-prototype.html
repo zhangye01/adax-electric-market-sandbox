@@ -1,0 +1,1916 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>电力市场多主体交易训练沙盘｜单 HTML 原型</title>
+  <style>
+    :root {
+      --bg: #f4f7fa;
+      --panel: #ffffff;
+      --panel-soft: #f8fafc;
+      --ink: #172033;
+      --muted: #627089;
+      --subtle: #8a97aa;
+      --line: #dfe7f1;
+      --line-strong: #c8d4e3;
+      --brand: #1f4e79;
+      --brand-deep: #16395e;
+      --teal: #0f766e;
+      --green: #15803d;
+      --amber: #b86b00;
+      --red: #b42318;
+      --blue-soft: #edf5ff;
+      --teal-soft: #eaf7f5;
+      --amber-soft: #fff4df;
+      --red-soft: #fff0ee;
+      --shadow: 0 18px 44px rgba(23, 32, 51, 0.08);
+      --radius: 8px;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        linear-gradient(135deg, rgba(31, 78, 121, 0.08), rgba(15, 118, 110, 0.04) 42%, rgba(184, 107, 0, 0.06)),
+        var(--bg);
+      font-family: var(--font);
+      font-size: 14px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .app-shell {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 20px 18px;
+      border-right: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(18px);
+      overflow: auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 6px 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius);
+      color: #fff;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--brand), var(--teal));
+      box-shadow: 0 12px 24px rgba(15, 118, 110, 0.22);
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 15px;
+      line-height: 1.25;
+      color: #101828;
+    }
+
+    .brand span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .side-label {
+      margin: 20px 6px 8px;
+      color: var(--subtle);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .side-nav {
+      display: grid;
+      gap: 8px;
+    }
+
+    .side-nav a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 38px;
+      padding: 9px 10px;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      color: #344054;
+      text-decoration: none;
+      transition: 0.18s ease;
+    }
+
+    .side-nav a:hover,
+    .side-nav a.active {
+      border-color: #cfe0f5;
+      color: var(--brand);
+      background: var(--blue-soft);
+    }
+
+    .icon {
+      width: 17px;
+      height: 17px;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      flex: 0 0 auto;
+    }
+
+    .side-note {
+      margin-top: 18px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .side-note strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #101828;
+    }
+
+    .side-note span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .main {
+      min-width: 0;
+      padding: 22px 24px 42px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .title-block {
+      min-width: 0;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .kicker::before {
+      content: "";
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--teal);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      margin-top: 4px;
+      font-size: clamp(24px, 3.3vw, 38px);
+      line-height: 1.18;
+      letter-spacing: 0;
+      color: #101828;
+    }
+
+    .title-block p {
+      margin-top: 8px;
+      max-width: 880px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .top-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 38px;
+      padding: 8px 12px;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      color: #26354d;
+      background: #fff;
+      transition: 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      border-color: #b8c8db;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(23, 32, 51, 0.08);
+    }
+
+    .btn.primary {
+      border-color: var(--brand);
+      color: #fff;
+      background: var(--brand);
+    }
+
+    .btn.primary:hover {
+      background: var(--brand-deep);
+    }
+
+    .btn.ghost {
+      border-color: transparent;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .btn.small {
+      min-height: 32px;
+      padding: 6px 9px;
+      font-size: 12px;
+    }
+
+    .btn[disabled] {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .segmented {
+      display: inline-grid;
+      grid-template-columns: repeat(2, minmax(118px, 1fr));
+      gap: 4px;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .segment {
+      min-height: 34px;
+      padding: 6px 12px;
+      border: 0;
+      border-radius: 6px;
+      color: #53627a;
+      background: transparent;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .segment.active {
+      color: #fff;
+      background: var(--brand);
+      box-shadow: 0 8px 18px rgba(31, 78, 121, 0.18);
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: var(--shadow);
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 18px 18px 0;
+    }
+
+    .panel-title {
+      min-width: 0;
+    }
+
+    .panel-title h2 {
+      font-size: 18px;
+      line-height: 1.32;
+      color: #101828;
+    }
+
+    .panel-title p {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .panel-body {
+      padding: 18px;
+    }
+
+    .status-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 26px;
+      padding: 4px 9px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #475467;
+      background: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .pill.teal {
+      border-color: #ccebe5;
+      color: #087064;
+      background: var(--teal-soft);
+    }
+
+    .pill.amber {
+      border-color: #f0d7a7;
+      color: var(--amber);
+      background: var(--amber-soft);
+    }
+
+    .pill.red {
+      border-color: #f4c9c3;
+      color: var(--red);
+      background: var(--red-soft);
+    }
+
+    .subject-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(112px, 1fr));
+      gap: 10px;
+    }
+
+    .subject {
+      display: grid;
+      align-content: start;
+      min-height: 86px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: #344054;
+      background: #fff;
+      text-align: left;
+      transition: 0.18s ease;
+    }
+
+    .subject:hover {
+      border-color: #b8c8db;
+      transform: translateY(-1px);
+    }
+
+    .subject.active {
+      border-color: rgba(31, 78, 121, 0.5);
+      color: var(--brand);
+      background: var(--blue-soft);
+      box-shadow: 0 12px 24px rgba(31, 78, 121, 0.08);
+    }
+
+    .subject strong {
+      display: block;
+      font-size: 14px;
+      color: currentColor;
+    }
+
+    .subject span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .scenario-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 190px;
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .scenario-copy {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, #ffffff, #f7fbff);
+    }
+
+    .scenario-copy h2 {
+      font-size: 21px;
+      color: #101828;
+    }
+
+    .scenario-copy p {
+      margin-top: 8px;
+      color: var(--muted);
+    }
+
+    .scenario-stat {
+      display: grid;
+      align-content: center;
+      justify-items: start;
+      padding: 16px;
+      border: 1px solid #d8e8e5;
+      border-radius: var(--radius);
+      background: var(--teal-soft);
+    }
+
+    .scenario-stat span {
+      color: #087064;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .scenario-stat strong {
+      margin-top: 4px;
+      color: #063f39;
+      font-size: 25px;
+      line-height: 1.1;
+    }
+
+    .chart-wrap {
+      margin-top: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .chart-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      background: #fbfcfe;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--brand);
+    }
+
+    .dot.teal {
+      background: var(--teal);
+    }
+
+    .dot.amber {
+      background: var(--amber);
+    }
+
+    .chart-canvas {
+      width: 100%;
+      aspect-ratio: 2.7 / 1;
+      min-height: 210px;
+      display: block;
+    }
+
+    .workbench {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr) 330px;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .steps {
+      display: grid;
+      gap: 8px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr);
+      gap: 10px;
+      width: 100%;
+      min-height: 62px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: #344054;
+      background: #fff;
+      text-align: left;
+      transition: 0.18s ease;
+    }
+
+    .step.active {
+      border-color: rgba(15, 118, 110, 0.45);
+      background: var(--teal-soft);
+    }
+
+    .step-num {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      color: var(--brand);
+      background: var(--blue-soft);
+      font-weight: 800;
+    }
+
+    .step.active .step-num {
+      color: #fff;
+      background: var(--teal);
+    }
+
+    .step strong {
+      display: block;
+      font-size: 13px;
+      color: #101828;
+    }
+
+    .step span {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .metric {
+      min-height: 92px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 8px;
+      color: #101828;
+      font-size: 22px;
+      line-height: 1.12;
+    }
+
+    .metric small {
+      display: block;
+      margin-top: 8px;
+      color: var(--subtle);
+      font-size: 12px;
+    }
+
+    .decision-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.85fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .control-group {
+      display: grid;
+      gap: 12px;
+    }
+
+    .field {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .field-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .field label {
+      color: #344054;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .field output {
+      color: var(--brand);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--brand);
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 86px;
+      resize: vertical;
+      padding: 10px;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      color: var(--ink);
+      background: #fff;
+    }
+
+    textarea:focus,
+    input:focus {
+      outline: 3px solid rgba(31, 78, 121, 0.13);
+      border-color: var(--brand);
+    }
+
+    .result-box {
+      min-height: 100%;
+      padding: 14px;
+      border: 1px solid #d8e8e5;
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #f4fbfa, #fff);
+    }
+
+    .score-ring {
+      display: grid;
+      place-items: center;
+      width: 136px;
+      height: 136px;
+      margin: 4px auto 14px;
+      border-radius: 50%;
+      background: conic-gradient(var(--teal) calc(var(--score) * 1%), #dce8e6 0);
+    }
+
+    .score-ring-inner {
+      display: grid;
+      place-items: center;
+      width: 102px;
+      height: 102px;
+      border-radius: 50%;
+      background: #fff;
+      text-align: center;
+    }
+
+    .score-ring-inner strong {
+      font-size: 28px;
+      line-height: 1;
+      color: #063f39;
+    }
+
+    .score-ring-inner span {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .result-copy {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .benchmark {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .benchmark-row {
+      display: grid;
+      grid-template-columns: 60px minmax(0, 1fr) 58px;
+      gap: 8px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .bar {
+      height: 8px;
+      border-radius: 999px;
+      background: #edf1f6;
+      overflow: hidden;
+    }
+
+    .bar i {
+      display: block;
+      height: 100%;
+      width: var(--w);
+      border-radius: inherit;
+      background: var(--teal);
+    }
+
+    .assist-stack {
+      display: grid;
+      gap: 10px;
+    }
+
+    .assist-card {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .assist-card strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #101828;
+      font-size: 13px;
+    }
+
+    .assist-card p,
+    .assist-card li {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .assist-card ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .material-actions {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .record-list {
+      display: grid;
+      gap: 8px;
+      max-height: 278px;
+      overflow: auto;
+      padding-right: 2px;
+    }
+
+    .record-item {
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .record-item strong {
+      display: block;
+      color: #101828;
+      font-size: 13px;
+    }
+
+    .record-item span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 360px;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .table-wrap {
+      overflow: auto;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    table {
+      width: 100%;
+      min-width: 720px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #edf1f6;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    th {
+      color: #53627a;
+      background: #f7f9fc;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    td {
+      color: #344054;
+      font-size: 13px;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .empty {
+      padding: 18px;
+      border: 1px dashed var(--line-strong);
+      border-radius: var(--radius);
+      color: var(--muted);
+      background: #fbfcfe;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .toast {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 30;
+      max-width: min(360px, calc(100vw - 44px));
+      padding: 12px 14px;
+      border: 1px solid #ccebe5;
+      border-radius: var(--radius);
+      color: #063f39;
+      background: #f2fbf9;
+      box-shadow: var(--shadow);
+      transform: translateY(16px);
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.18s ease;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    @media (max-width: 1240px) {
+      .overview-grid,
+      .workbench,
+      .bottom-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .workbench .panel:first-child {
+        order: 1;
+      }
+
+      .steps {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .app-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+        height: auto;
+      }
+
+      .side-nav {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .topbar,
+      .scenario-head,
+      .decision-grid {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+
+      .top-actions {
+        justify-content: start;
+      }
+
+      .subject-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .metric-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 620px) {
+      .main {
+        padding: 16px 14px 30px;
+      }
+
+      .sidebar {
+        padding: 16px 14px;
+      }
+
+      .side-nav,
+      .subject-grid,
+      .steps,
+      .metric-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .segmented {
+        width: 100%;
+        grid-template-columns: 1fr;
+      }
+
+      .chart-canvas {
+        aspect-ratio: 1.45 / 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">PM</div>
+        <div>
+          <strong>交易训练沙盘</strong>
+          <span>多主体 · 本地化 · 可复盘</span>
+        </div>
+      </div>
+
+      <div class="side-label">工作区</div>
+      <nav class="side-nav" aria-label="原型导航">
+        <a class="active" href="#overview">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h7v8H3z"/><path d="M14 3h7v5h-7z"/><path d="M14 12h7v9h-7z"/><path d="M3 15h7v6H3z"/></svg>
+          总览
+        </a>
+        <a href="#training">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2v8H2"/><path d="M22 12h-8v10"/><path d="M2 10a8 8 0 0 1 8-8"/><path d="M14 22a8 8 0 0 0 8-8"/></svg>
+          训练
+        </a>
+        <a href="#materials">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+          材料
+        </a>
+        <a href="#records">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></svg>
+          记录
+        </a>
+      </nav>
+
+      <div class="side-label">当前设定</div>
+      <div class="side-note">
+        <strong id="sideMode">标准引导训练</strong>
+        <span id="sideSubject">光伏场站 · 日前申报与偏差复盘</span>
+      </div>
+      <div class="side-note">
+        <strong>第一阶段边界</strong>
+        <span>离线场景、训练级测算、材料关联、记录沉淀。不接真实交易接口。</span>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar" id="overview">
+        <div class="title-block">
+          <div class="kicker">单 HTML 可交互原型</div>
+          <h1>电力市场多主体交易训练与学习沙盘</h1>
+          <p>把原始速览页中的产品定位、双模式、流程训练、本地测算、材料增强和复盘记录，收敛成一个可直接演示的工作台界面。</p>
+        </div>
+        <div class="top-actions">
+          <div class="segmented" aria-label="训练模式">
+            <button class="segment active" type="button" data-mode="guided">标准引导训练</button>
+            <button class="segment" type="button" data-mode="material">材料增强训练</button>
+          </div>
+          <button class="btn primary" type="button" id="saveRecord">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg>
+            保存复盘
+          </button>
+        </div>
+      </header>
+
+      <section class="overview-grid">
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <h2>主体与场景</h2>
+              <p>五类典型主体共用同一套训练骨架，切换主体后会更新任务、数据和测算边界。</p>
+            </div>
+            <span class="pill teal">本地场景包</span>
+          </div>
+          <div class="panel-body">
+            <div class="subject-grid" id="subjectGrid"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <h2>训练能力结构</h2>
+              <p>产品能力按认知、支持、流程、辅助内容和本地能力组织。</p>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="metric-grid">
+              <div class="metric"><span>训练主体</span><strong>5 类</strong><small>发电侧、用电侧、售电侧</small></div>
+              <div class="metric"><span>流程节点</span><strong>6 步</strong><small>任务到复盘的闭环</small></div>
+              <div class="metric"><span>训练模式</span><strong>2 套</strong><small>提示卡或自有材料</small></div>
+              <div class="metric"><span>运行方式</span><strong>本地</strong><small>可保存、可导出</small></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="training">
+        <div class="panel-header">
+          <div class="panel-title">
+            <h2 id="scenarioTitle">光伏场站日前申报训练</h2>
+            <p id="scenarioSubtitle">围绕高出力低价日，练习申报、偏差控制和收益复盘。</p>
+          </div>
+          <div class="status-row">
+            <span class="pill teal" id="modePill">标准引导</span>
+            <span class="pill amber" id="riskPill">偏差风险中</span>
+            <span class="pill" id="assetPill">100 MW</span>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="scenario-head">
+            <div class="scenario-copy">
+              <h2 id="missionTitle">今日任务</h2>
+              <p id="missionCopy">在午间低价与下午云量波动之间，形成一条兼顾收益和偏差的日前申报策略。</p>
+            </div>
+            <div class="scenario-stat">
+              <span>预测出清均价</span>
+              <strong id="clearingPrice">¥286/MWh</strong>
+            </div>
+          </div>
+
+          <div class="chart-wrap">
+            <div class="chart-toolbar">
+              <strong>日内曲线</strong>
+              <div class="legend">
+                <span><i class="dot teal"></i> 可用/负荷预测</span>
+                <span><i class="dot"></i> 申报电量</span>
+                <span><i class="dot amber"></i> 价格</span>
+              </div>
+            </div>
+            <div id="marketChart" class="chart-canvas" aria-label="市场曲线图"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="workbench" aria-label="训练工作台">
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <h2>流程训练</h2>
+              <p>同一套流程骨架支撑不同主体。</p>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="steps" id="stepList"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <h2 id="workspaceTitle">交易决策</h2>
+              <p id="workspaceHint">调整申报电量、申报价、预测置信度和对冲比例，查看训练级测算结果。</p>
+            </div>
+            <button class="btn small" type="button" id="resetDecision">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 3v6h6"/></svg>
+              重置
+            </button>
+          </div>
+          <div class="panel-body">
+            <div class="metric-grid">
+              <div class="metric"><span>综合净收益</span><strong id="profitMetric">¥0</strong><small id="profitHint">较均衡策略 +0%</small></div>
+              <div class="metric"><span>偏差率</span><strong id="deviationMetric">0%</strong><small id="deviationHint">容忍阈值 5%</small></div>
+              <div class="metric"><span>风险暴露</span><strong id="riskMetric">中</strong><small id="riskHint">由置信度和偏差决定</small></div>
+              <div class="metric"><span>训练评分</span><strong id="scoreMetric">0</strong><small id="scoreHint">流程与策略综合评价</small></div>
+            </div>
+
+            <div class="decision-grid">
+              <div class="control-group">
+                <div class="field">
+                  <div class="field-head">
+                    <label for="quantityInput">申报电量</label>
+                    <output id="quantityOut">0 MWh</output>
+                  </div>
+                  <input id="quantityInput" type="range" min="40" max="520" step="1">
+                </div>
+                <div class="field">
+                  <div class="field-head">
+                    <label for="priceInput">申报价</label>
+                    <output id="priceOut">0 元/MWh</output>
+                  </div>
+                  <input id="priceInput" type="range" min="120" max="720" step="1">
+                </div>
+                <div class="field">
+                  <div class="field-head">
+                    <label for="confidenceInput">预测置信度</label>
+                    <output id="confidenceOut">0%</output>
+                  </div>
+                  <input id="confidenceInput" type="range" min="45" max="98" step="1">
+                </div>
+                <div class="field">
+                  <div class="field-head">
+                    <label for="hedgeInput">对冲/锁定比例</label>
+                    <output id="hedgeOut">0%</output>
+                  </div>
+                  <input id="hedgeInput" type="range" min="0" max="100" step="5">
+                </div>
+              </div>
+
+              <div class="result-box">
+                <div class="score-ring" id="scoreRing" style="--score: 0">
+                  <div class="score-ring-inner">
+                    <div>
+                      <strong id="ringScore">0</strong>
+                      <span>训练得分</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="result-copy" id="resultNarrative">完成一次策略调整后，系统会生成收益、偏差和风险的训练级反馈。</p>
+                <div class="benchmark" id="benchmarkList"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <h2 id="assistTitle">系统提示卡</h2>
+              <p id="assistSubtitle">当前节点的讲解、判断依据和复盘口径。</p>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="assist-stack" id="assistStack"></div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="bottom-grid" id="materials">
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <h2>内容管理口径</h2>
+              <p>普通使用者重点管理“我的材料”和“我的记录”，训练内容默认随系统提供。</p>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>使用者看到的名称</th>
+                    <th>主要含义</th>
+                    <th>使用特点</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>训练内容</td>
+                    <td>系统提供的主体、流程、数据、规则、提示卡和计算逻辑</td>
+                    <td>默认提供，弱感知</td>
+                  </tr>
+                  <tr>
+                    <td>我的材料</td>
+                    <td>课件、案例、机制图、说明文档、复盘材料等</td>
+                    <td>用于材料增强训练，强感知</td>
+                  </tr>
+                  <tr>
+                    <td>我的记录</td>
+                    <td>训练结果、笔记、材料关联关系、收藏和复盘内容</td>
+                    <td>自动保存，可查看、导出和备份</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" id="records">
+          <div class="panel-header">
+            <div class="panel-title">
+              <h2>我的记录</h2>
+              <p>最近保存的复盘结果。</p>
+            </div>
+            <button class="btn small" type="button" id="exportRecords">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+              导出
+            </button>
+          </div>
+          <div class="panel-body">
+            <div class="record-list" id="recordList"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const STORAGE_KEY = "power-market-sandbox-prototype";
+
+    const steps = [
+      { id: "task", title: "任务理解", desc: "明确主体目标和约束", titleText: "任务理解", hint: "识别本主体的收益目标、风险约束和本轮训练重点。" },
+      { id: "data", title: "数据查看", desc: "读取价格、负荷和预测", titleText: "数据查看", hint: "观察出力/负荷、价格与置信度之间的关系，找到高风险时段。" },
+      { id: "strategy", title: "策略判断", desc: "选择稳健或积极方向", titleText: "策略判断", hint: "在收益捕捉和偏差控制之间做取舍，并形成可解释的策略。" },
+      { id: "decision", title: "交易决策", desc: "形成申报与价格参数", titleText: "交易决策", hint: "调整申报电量、申报价、预测置信度和对冲比例，查看训练级测算结果。" },
+      { id: "result", title: "结果测算", desc: "拆解收益、偏差和风险", titleText: "结果测算", hint: "对比基准策略，查看本轮净收益、偏差率和风险暴露。" },
+      { id: "review", title: "复盘总结", desc: "沉淀记录与材料", titleText: "复盘总结", hint: "把本轮判断、结果和可复用材料沉淀为训练记录。" }
+    ];
+
+    const subjects = [
+      {
+        id: "thermal",
+        name: "火电企业",
+        short: "火电",
+        asset: "660 MW",
+        title: "火电机组日前报价训练",
+        subtitle: "围绕燃料成本、爬坡约束和高峰收益，练习报价策略与利润复盘。",
+        mission: "在晚高峰负荷抬升前，平衡启停成本、爬坡能力和出清概率，形成一组可解释的日前报价。",
+        clearingPrice: 428,
+        baselinePrice: 392,
+        variableCost: 286,
+        baseQuantity: 390,
+        baseConfidence: 84,
+        baseHedge: 35,
+        risk: "爬坡风险中",
+        forecastLabel: "可发能力",
+        forecast: [280,260,250,250,260,300,360,420,440,430,410,390,380,390,410,440,480,520,560,590,540,470,380,320],
+        price: [310,300,292,286,288,320,370,410,390,360,335,318,305,320,352,386,438,520,610,650,580,490,405,350],
+        prompts: [
+          ["成本边界", "先确认燃煤、启停和爬坡成本，再判断报价是否覆盖边际成本。"],
+          ["高峰策略", "晚高峰价格高，但爬坡不足会影响出清和履约，建议保留可执行余量。"],
+          ["复盘口径", "重点比较高峰收益增加是否覆盖偏差与运行约束带来的成本。"]
+        ],
+        materials: ["燃煤成本敏感性表", "机组爬坡约束说明", "晚高峰报价案例"]
+      },
+      {
+        id: "wind",
+        name: "风电场站",
+        short: "风电",
+        asset: "150 MW",
+        title: "风电波动日申报训练",
+        subtitle: "围绕低置信度时段、弃风风险和偏差费用，练习稳健申报。",
+        mission: "在夜间高风和午后预测波动之间，形成兼顾电量收益与偏差费用的申报曲线。",
+        clearingPrice: 318,
+        baselinePrice: 300,
+        variableCost: 58,
+        baseQuantity: 210,
+        baseConfidence: 68,
+        baseHedge: 20,
+        risk: "预测风险高",
+        forecastLabel: "风功率预测",
+        forecast: [96,104,112,118,120,116,108,92,75,68,72,84,96,110,122,135,128,118,112,126,140,136,120,108],
+        price: [300,292,286,280,284,310,340,380,355,320,285,260,248,252,278,315,360,430,510,540,480,410,350,320],
+        prompts: [
+          ["预测置信度", "低置信度时段不宜简单贴近预测上沿，偏差费用会迅速放大。"],
+          ["价格窗口", "晚高峰价格较高，若风功率稳定可适度提高申报捕捉收益。"],
+          ["复盘口径", "重点拆解低置信度时段的偏差贡献和高价时段的收益捕捉。"]
+        ],
+        materials: ["风功率预测误差案例", "偏差考核规则摘要", "夜间高风日复盘记录"]
+      },
+      {
+        id: "pv",
+        name: "光伏场站",
+        short: "光伏",
+        asset: "100 MW",
+        title: "光伏场站日前申报训练",
+        subtitle: "围绕高出力低价日，练习申报、偏差控制和收益复盘。",
+        mission: "在午间低价与下午云量波动之间，形成一条兼顾收益和偏差的日前申报策略。",
+        clearingPrice: 286,
+        baselinePrice: 274,
+        variableCost: 42,
+        baseQuantity: 270,
+        baseConfidence: 78,
+        baseHedge: 15,
+        risk: "偏差风险中",
+        forecastLabel: "光伏预测",
+        forecast: [0,0,0,0,0,0,8,22,46,68,82,92,96,90,76,58,38,18,4,0,0,0,0,0],
+        price: [310,300,295,292,290,305,330,360,310,245,205,175,158,152,168,205,320,465,590,610,560,470,390,340],
+        prompts: [
+          ["低价高出力", "午间出力高但价格低，过度追量会让收益效率下降。"],
+          ["云量波动", "下午低置信度时段建议收窄申报，控制偏差费用。"],
+          ["复盘口径", "比较午间保守、均衡、积极三种申报对净收益的影响。"]
+        ],
+        materials: ["光伏日前申报课件", "云量波动案例", "新能源偏差费用说明"]
+      },
+      {
+        id: "user",
+        name: "批发用户",
+        short: "用户",
+        asset: "80 MW",
+        title: "批发用户购电组合训练",
+        subtitle: "围绕负荷预测、价格风险和合同锁定比例，练习购电决策。",
+        mission: "在高峰负荷和价格波动下，决定日前采购量与锁定比例，控制综合购电成本。",
+        clearingPrice: 465,
+        baselinePrice: 438,
+        variableCost: 398,
+        baseQuantity: 310,
+        baseConfidence: 86,
+        baseHedge: 55,
+        risk: "价格风险中",
+        forecastLabel: "负荷预测",
+        forecast: [42,40,39,38,40,46,58,68,72,74,70,68,66,70,76,82,88,94,98,92,80,68,56,48],
+        price: [330,315,305,300,308,340,390,450,430,398,372,360,355,366,392,430,500,610,690,640,560,470,405,360],
+        prompts: [
+          ["负荷预测", "先确认高峰负荷和可中断空间，再决定日前采购量。"],
+          ["锁定比例", "高价风险明显时，锁定比例可以降低波动，但会牺牲部分低价机会。"],
+          ["复盘口径", "重点比较采购成本、偏差电量和合同锁定收益。"]
+        ],
+        materials: ["用户负荷曲线样例", "合同锁价条款", "高峰购电成本复盘"]
+      },
+      {
+        id: "retailer",
+        name: "售电公司",
+        short: "售电",
+        asset: "320 GWh",
+        title: "售电公司客户组合训练",
+        subtitle: "围绕客户组合、价格传导和风险敞口，练习组合报价。",
+        mission: "在客户负荷差异和批发价格波动下，设计零售报价与批发侧采购策略。",
+        clearingPrice: 396,
+        baselinePrice: 368,
+        variableCost: 315,
+        baseQuantity: 340,
+        baseConfidence: 80,
+        baseHedge: 45,
+        risk: "组合风险中",
+        forecastLabel: "组合负荷",
+        forecast: [170,164,158,154,160,184,230,276,292,284,270,262,258,268,286,318,350,382,392,370,330,284,238,198],
+        price: [318,306,296,292,302,336,390,442,410,380,348,330,322,340,372,420,500,590,650,620,540,460,390,342],
+        prompts: [
+          ["客户组合", "区分刚性负荷、可调负荷和高敏感客户，避免一个报价覆盖所有客户。"],
+          ["价格传导", "批发侧价格波动需要通过合同结构和零售套餐传导。"],
+          ["复盘口径", "重点看客户毛利、批发采购偏差和组合风险敞口。"]
+        ],
+        materials: ["客户分群模板", "零售套餐测算表", "组合报价复盘卡"]
+      }
+    ];
+
+    let state = {
+      mode: "guided",
+      subject: "pv",
+      step: "decision",
+      quantity: 270,
+      price: 286,
+      confidence: 78,
+      hedge: 15,
+      records: [],
+      materials: []
+    };
+
+    const els = {
+      subjectGrid: document.getElementById("subjectGrid"),
+      stepList: document.getElementById("stepList"),
+      scenarioTitle: document.getElementById("scenarioTitle"),
+      scenarioSubtitle: document.getElementById("scenarioSubtitle"),
+      missionCopy: document.getElementById("missionCopy"),
+      clearingPrice: document.getElementById("clearingPrice"),
+      modePill: document.getElementById("modePill"),
+      riskPill: document.getElementById("riskPill"),
+      assetPill: document.getElementById("assetPill"),
+      sideMode: document.getElementById("sideMode"),
+      sideSubject: document.getElementById("sideSubject"),
+      marketChart: document.getElementById("marketChart"),
+      workspaceTitle: document.getElementById("workspaceTitle"),
+      workspaceHint: document.getElementById("workspaceHint"),
+      quantityInput: document.getElementById("quantityInput"),
+      priceInput: document.getElementById("priceInput"),
+      confidenceInput: document.getElementById("confidenceInput"),
+      hedgeInput: document.getElementById("hedgeInput"),
+      quantityOut: document.getElementById("quantityOut"),
+      priceOut: document.getElementById("priceOut"),
+      confidenceOut: document.getElementById("confidenceOut"),
+      hedgeOut: document.getElementById("hedgeOut"),
+      profitMetric: document.getElementById("profitMetric"),
+      profitHint: document.getElementById("profitHint"),
+      deviationMetric: document.getElementById("deviationMetric"),
+      deviationHint: document.getElementById("deviationHint"),
+      riskMetric: document.getElementById("riskMetric"),
+      riskHint: document.getElementById("riskHint"),
+      scoreMetric: document.getElementById("scoreMetric"),
+      scoreHint: document.getElementById("scoreHint"),
+      scoreRing: document.getElementById("scoreRing"),
+      ringScore: document.getElementById("ringScore"),
+      resultNarrative: document.getElementById("resultNarrative"),
+      benchmarkList: document.getElementById("benchmarkList"),
+      assistTitle: document.getElementById("assistTitle"),
+      assistSubtitle: document.getElementById("assistSubtitle"),
+      assistStack: document.getElementById("assistStack"),
+      recordList: document.getElementById("recordList"),
+      toast: document.getElementById("toast")
+    };
+
+    function loadState() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+        state = { ...state, ...saved };
+      } catch (error) {
+        state.records = [];
+        state.materials = [];
+      }
+      const subject = getSubject();
+      state.quantity = Number(state.quantity || subject.baseQuantity);
+      state.price = Number(state.price || subject.clearingPrice);
+      state.confidence = Number(state.confidence || subject.baseConfidence);
+      state.hedge = Number(state.hedge || subject.baseHedge);
+    }
+
+    function saveState() {
+      const serializable = {
+        mode: state.mode,
+        subject: state.subject,
+        step: state.step,
+        quantity: state.quantity,
+        price: state.price,
+        confidence: state.confidence,
+        hedge: state.hedge,
+        records: state.records,
+        materials: state.materials
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(serializable));
+    }
+
+    function getSubject() {
+      return subjects.find((item) => item.id === state.subject) || subjects[2];
+    }
+
+    function yuan(value) {
+      return "¥" + Math.round(value).toLocaleString("zh-CN");
+    }
+
+    function percent(value, digits = 1) {
+      return value.toFixed(digits) + "%";
+    }
+
+    function clamp(value, min, max) {
+      return Math.min(Math.max(value, min), max);
+    }
+
+    function calc(input = state, includeBenchmark = true) {
+      const subject = getSubject();
+      const q = Number(input.quantity);
+      const p = Number(input.price);
+      const conf = Number(input.confidence);
+      const hedge = Number(input.hedge);
+      const expected = subject.forecast.reduce((sum, val) => sum + val, 0) / 4;
+      const priceGap = p - subject.clearingPrice;
+      const clearRate = priceGap <= 0 ? 0.96 : priceGap <= 55 ? 0.76 : priceGap <= 120 ? 0.58 : 0.42;
+      const cleared = q * clearRate;
+      const hedgeBoost = cleared * subject.clearingPrice * (hedge / 100) * 0.035;
+      const revenue = cleared * subject.clearingPrice + hedgeBoost;
+      const cost = q * subject.variableCost * (subject.id === "user" ? 0.9 : 1);
+      const deviation = Math.abs(q - expected) * (1 - conf / 100) + Math.max(0, priceGap) * 0.08;
+      const deviationRate = q > 0 ? deviation / q : 0;
+      const penalty = Math.max(0, deviationRate - 0.05) * q * subject.clearingPrice * 0.85;
+      const profit = subject.id === "user"
+        ? Math.max(0, subject.baselinePrice * q - revenue - penalty + hedgeBoost)
+        : revenue - cost - penalty;
+      const benchmarkProfit = includeBenchmark ? benchmark("balanced").profit : 0;
+      const score = clamp(
+        100
+        - Math.max(0, deviationRate - 0.05) * 210
+        - Math.max(0, Math.abs(q - expected) / Math.max(expected, 1) - 0.22) * 36
+        - Math.max(0, priceGap / 180) * 12
+        + hedge * 0.07,
+        45,
+        98
+      );
+      const riskScore = clamp((1 - conf / 100) * 72 + Math.max(0, deviationRate - 0.05) * 160 + Math.max(0, priceGap) / 12, 0, 100);
+
+      return {
+        expected,
+        cleared,
+        revenue,
+        cost,
+        deviation,
+        deviationRate,
+        penalty,
+        profit,
+        benchmarkProfit,
+        score,
+        riskScore,
+        riskLabel: riskScore < 32 ? "低" : riskScore < 66 ? "中" : "高"
+      };
+    }
+
+    function benchmark(type) {
+      const subject = getSubject();
+      const ratios = {
+        steady: { q: 0.86, price: -22, confidence: 88, hedge: 45 },
+        balanced: { q: 1, price: 0, confidence: subject.baseConfidence, hedge: subject.baseHedge },
+        aggressive: { q: 1.15, price: 38, confidence: Math.max(55, subject.baseConfidence - 8), hedge: 10 }
+      };
+      const conf = ratios[type];
+      const snapshot = {
+        quantity: subject.baseQuantity * conf.q,
+        price: subject.clearingPrice + conf.price,
+        confidence: conf.confidence,
+        hedge: conf.hedge
+      };
+      return calc(snapshot, false);
+    }
+
+    function renderSubjects() {
+      els.subjectGrid.innerHTML = subjects.map((subject) => `
+        <button class="subject ${subject.id === state.subject ? "active" : ""}" type="button" data-subject="${subject.id}">
+          <strong>${subject.name}</strong>
+          <span>${subject.subtitle}</span>
+        </button>
+      `).join("");
+
+      els.subjectGrid.querySelectorAll("[data-subject]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const subject = subjects.find((item) => item.id === button.dataset.subject);
+          state.subject = subject.id;
+          state.quantity = subject.baseQuantity;
+          state.price = subject.clearingPrice;
+          state.confidence = subject.baseConfidence;
+          state.hedge = subject.baseHedge;
+          saveState();
+          render();
+        });
+      });
+    }
+
+    function renderSteps() {
+      els.stepList.innerHTML = steps.map((step, index) => `
+        <button class="step ${step.id === state.step ? "active" : ""}" type="button" data-step="${step.id}">
+          <span class="step-num">${index + 1}</span>
+          <span>
+            <strong>${step.title}</strong>
+            <span>${step.desc}</span>
+          </span>
+        </button>
+      `).join("");
+
+      els.stepList.querySelectorAll("[data-step]").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.step = button.dataset.step;
+          saveState();
+          render();
+        });
+      });
+    }
+
+    function renderScenario() {
+      const subject = getSubject();
+      els.scenarioTitle.textContent = subject.title;
+      els.scenarioSubtitle.textContent = subject.subtitle;
+      els.missionCopy.textContent = subject.mission;
+      els.clearingPrice.textContent = `${yuan(subject.clearingPrice)}/MWh`;
+      els.modePill.textContent = state.mode === "guided" ? "标准引导" : "材料增强";
+      els.riskPill.textContent = subject.risk;
+      els.assetPill.textContent = subject.asset;
+      els.sideMode.textContent = state.mode === "guided" ? "标准引导训练" : "材料增强训练";
+      els.sideSubject.textContent = `${subject.name} · ${subject.subtitle}`;
+      drawChart();
+    }
+
+    function drawChart() {
+      const subject = getSubject();
+      const width = 760;
+      const height = 276;
+      const padX = 38;
+      const padY = 28;
+      const maxForecast = Math.max(...subject.forecast, state.quantity / 3, 1);
+      const maxPrice = Math.max(...subject.price, subject.clearingPrice, 1);
+      const x = (index) => padX + index * ((width - padX * 2) / (subject.forecast.length - 1));
+      const yForecast = (value) => height - padY - (value / maxForecast) * (height - padY * 2);
+      const yPrice = (value) => height - padY - (value / maxPrice) * (height - padY * 2);
+      const forecastPoints = subject.forecast.map((value, index) => `${x(index)},${yForecast(value)}`).join(" ");
+      const pricePoints = subject.price.map((value, index) => `${x(index)},${yPrice(value)}`).join(" ");
+      const declarationLevel = yForecast(Math.min(maxForecast, state.quantity / 3));
+      const bands = [0, 4, 8, 12, 16, 20, 23].map((hour) => `
+        <text x="${x(hour)}" y="${height - 7}" fill="#8a97aa" font-size="10" text-anchor="middle">${String(hour).padStart(2, "0")}</text>
+      `).join("");
+      const bars = subject.forecast.map((value, index) => {
+        const barH = Math.max(3, (value / maxForecast) * (height - padY * 2));
+        const barW = 13;
+        const barX = x(index) - barW / 2;
+        const barY = height - padY - barH;
+        return `<rect x="${barX}" y="${barY}" width="${barW}" height="${barH}" rx="3" fill="${index >= 11 && index <= 14 ? "#f4c06a" : "#9fd7d1"}" opacity="0.45"/>`;
+      }).join("");
+
+      els.marketChart.innerHTML = `
+        <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${subject.name}日内曲线">
+          <defs>
+            <linearGradient id="areaFill" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#0f766e" stop-opacity="0.18"/>
+              <stop offset="100%" stop-color="#0f766e" stop-opacity="0.02"/>
+            </linearGradient>
+          </defs>
+          <rect width="${width}" height="${height}" fill="#ffffff"/>
+          <g>
+            <path d="M ${padX} ${padY} H ${width - padX} M ${padX} ${height / 2} H ${width - padX} M ${padX} ${height - padY} H ${width - padX}" stroke="#edf1f6" stroke-width="1"/>
+            ${bars}
+            <polyline points="${forecastPoints}" fill="none" stroke="#0f766e" stroke-width="3"/>
+            <polyline points="${pricePoints}" fill="none" stroke="#b86b00" stroke-width="2.5" stroke-dasharray="6 5"/>
+            <line x1="${padX}" y1="${declarationLevel}" x2="${width - padX}" y2="${declarationLevel}" stroke="#1f4e79" stroke-width="2" stroke-dasharray="8 6"/>
+            <text x="${padX}" y="${declarationLevel - 8}" fill="#1f4e79" font-size="11" font-weight="700">当前申报参考线</text>
+            ${bands}
+          </g>
+        </svg>
+      `;
+    }
+
+    function renderControls() {
+      const activeStep = steps.find((step) => step.id === state.step) || steps[3];
+      els.workspaceTitle.textContent = activeStep.titleText;
+      els.workspaceHint.textContent = activeStep.hint;
+      els.quantityInput.value = state.quantity;
+      els.priceInput.value = state.price;
+      els.confidenceInput.value = state.confidence;
+      els.hedgeInput.value = state.hedge;
+      els.quantityOut.textContent = `${Math.round(state.quantity)} MWh`;
+      els.priceOut.textContent = `${Math.round(state.price)} 元/MWh`;
+      els.confidenceOut.textContent = `${Math.round(state.confidence)}%`;
+      els.hedgeOut.textContent = `${Math.round(state.hedge)}%`;
+    }
+
+    function renderResult() {
+      const result = calc();
+      const diff = result.benchmarkProfit === 0 ? 0 : ((result.profit - result.benchmarkProfit) / Math.abs(result.benchmarkProfit)) * 100;
+      const score = Math.round(result.score);
+
+      els.profitMetric.textContent = yuan(result.profit);
+      els.profitHint.textContent = `较均衡策略 ${diff >= 0 ? "+" : ""}${percent(diff)}`;
+      els.deviationMetric.textContent = percent(result.deviationRate * 100);
+      els.deviationHint.textContent = `偏差电量约 ${result.deviation.toFixed(1)} MWh`;
+      els.riskMetric.textContent = result.riskLabel;
+      els.riskHint.textContent = result.riskScore >= 66 ? "建议收窄申报或提高锁定比例" : result.riskScore >= 32 ? "关注低置信度与高价偏差" : "风险处于可控区间";
+      els.scoreMetric.textContent = String(score);
+      els.scoreHint.textContent = score >= 88 ? "可作为优秀样例复盘" : score >= 76 ? "适合课堂讨论" : "建议再做一轮调整";
+      els.scoreRing.style.setProperty("--score", score);
+      els.ringScore.textContent = String(score);
+      els.resultNarrative.textContent = `本轮${getSubject().short}策略净收益为 ${yuan(result.profit)}，偏差率 ${percent(result.deviationRate * 100)}，风险暴露为${result.riskLabel}。建议复盘申报价与${getSubject().forecastLabel}之间的匹配关系。`;
+
+      const rows = [
+        ["稳健", benchmark("steady")],
+        ["均衡", benchmark("balanced")],
+        ["积极", benchmark("aggressive")]
+      ];
+      const maxProfit = Math.max(...rows.map(([, item]) => item.profit), result.profit, 1);
+      els.benchmarkList.innerHTML = rows.map(([label, item]) => {
+        const w = clamp(Math.abs(item.profit) / Math.abs(maxProfit) * 100, 8, 100);
+        return `
+          <div class="benchmark-row">
+            <span>${label}</span>
+            <span class="bar"><i style="--w:${w}%"></i></span>
+            <span>${yuan(item.profit)}</span>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderAssist() {
+      const subject = getSubject();
+      if (state.mode === "guided") {
+        els.assistTitle.textContent = "系统提示卡";
+        els.assistSubtitle.textContent = "当前主体的判断依据与复盘口径。";
+        els.assistStack.innerHTML = subject.prompts.map(([title, copy]) => `
+          <div class="assist-card">
+            <strong>${title}</strong>
+            <p>${copy}</p>
+          </div>
+        `).join("");
+        return;
+      }
+
+      els.assistTitle.textContent = "我的材料";
+      els.assistSubtitle.textContent = "材料增强模式下，提示卡位置切换为材料承载区。";
+      const materialItems = [...subject.materials, ...state.materials.map((item) => item.title)];
+      els.assistStack.innerHTML = `
+        <div class="assist-card">
+          <strong>已关联材料</strong>
+          <ul>
+            ${materialItems.map((item) => `<li>${item}</li>`).join("")}
+          </ul>
+        </div>
+        <div class="assist-card">
+          <strong>添加材料摘要</strong>
+          <textarea id="materialText" placeholder="例如：午间低价时段不建议满额申报，下午云量波动需控制偏差。"></textarea>
+          <div class="material-actions">
+            <button class="btn small primary" type="button" id="addMaterial">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+              添加材料
+            </button>
+          </div>
+        </div>
+      `;
+
+      document.getElementById("addMaterial").addEventListener("click", () => {
+        const textarea = document.getElementById("materialText");
+        const text = textarea.value.trim();
+        if (!text) {
+          showToast("请先输入材料摘要。");
+          return;
+        }
+        state.materials.unshift({
+          title: text.length > 24 ? `${text.slice(0, 24)}...` : text,
+          body: text,
+          subject: state.subject,
+          createdAt: new Date().toISOString()
+        });
+        state.materials = state.materials.slice(0, 8);
+        textarea.value = "";
+        saveState();
+        renderAssist();
+        showToast("材料已添加到当前训练。");
+      });
+    }
+
+    function renderRecords() {
+      if (!state.records.length) {
+        els.recordList.innerHTML = `<div class="empty">暂无记录。保存一次复盘后会出现在这里。</div>`;
+        return;
+      }
+
+      els.recordList.innerHTML = state.records.map((record) => `
+        <div class="record-item">
+          <strong>${record.subjectName} · ${record.score} 分 · ${yuan(record.profit)}</strong>
+          <span>${record.modeName} ｜ 偏差率 ${percent(record.deviationRate * 100)} ｜ ${record.time}</span>
+        </div>
+      `).join("");
+    }
+
+    function renderModeButtons() {
+      document.querySelectorAll("[data-mode]").forEach((button) => {
+        button.classList.toggle("active", button.dataset.mode === state.mode);
+      });
+    }
+
+    function render() {
+      renderModeButtons();
+      renderSubjects();
+      renderSteps();
+      renderScenario();
+      renderControls();
+      renderResult();
+      renderAssist();
+      renderRecords();
+    }
+
+    function showToast(message) {
+      els.toast.textContent = message;
+      els.toast.classList.add("show");
+      window.clearTimeout(showToast.timer);
+      showToast.timer = window.setTimeout(() => {
+        els.toast.classList.remove("show");
+      }, 2200);
+    }
+
+    function attachEvents() {
+      document.querySelectorAll("[data-mode]").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.mode = button.dataset.mode;
+          saveState();
+          render();
+        });
+      });
+
+      [
+        ["quantityInput", "quantity"],
+        ["priceInput", "price"],
+        ["confidenceInput", "confidence"],
+        ["hedgeInput", "hedge"]
+      ].forEach(([elementId, key]) => {
+        document.getElementById(elementId).addEventListener("input", (event) => {
+          state[key] = Number(event.target.value);
+          saveState();
+          renderControls();
+          renderResult();
+          drawChart();
+        });
+      });
+
+      document.getElementById("resetDecision").addEventListener("click", () => {
+        const subject = getSubject();
+        state.quantity = subject.baseQuantity;
+        state.price = subject.clearingPrice;
+        state.confidence = subject.baseConfidence;
+        state.hedge = subject.baseHedge;
+        saveState();
+        render();
+        showToast("已恢复当前主体的默认训练参数。");
+      });
+
+      document.getElementById("saveRecord").addEventListener("click", () => {
+        const subject = getSubject();
+        const result = calc();
+        const now = new Date();
+        state.records.unshift({
+          subject: subject.id,
+          subjectName: subject.name,
+          mode: state.mode,
+          modeName: state.mode === "guided" ? "标准引导" : "材料增强",
+          score: Math.round(result.score),
+          profit: Math.round(result.profit),
+          deviationRate: result.deviationRate,
+          quantity: state.quantity,
+          price: state.price,
+          confidence: state.confidence,
+          hedge: state.hedge,
+          time: now.toLocaleString("zh-CN", { month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" })
+        });
+        state.records = state.records.slice(0, 12);
+        saveState();
+        renderRecords();
+        showToast("复盘记录已保存到本地浏览器。");
+      });
+
+      document.getElementById("exportRecords").addEventListener("click", () => {
+        if (!state.records.length) {
+          showToast("暂无可导出的记录。");
+          return;
+        }
+        const blob = new Blob([JSON.stringify(state.records, null, 2)], { type: "application/json;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "power-market-training-records.json";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      });
+    }
+
+    loadState();
+    attachEvents();
+    render();
+  </script>
+</body>
+</html>
