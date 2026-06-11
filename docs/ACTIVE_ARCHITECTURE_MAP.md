@@ -352,9 +352,9 @@ Forbidden:
 
 ## Test Coverage Map
 
-Current no-dependency tests live in `tests/domain/retail-domain.test.mjs`.
+Current no-dependency domain tests live in `tests/domain/retail-domain.test.mjs`.
 
-Script-level guardrail tests live in `tests/scripts/check-boundaries.test.mjs`.
+Script-level guardrail tests live in `tests/scripts/*.test.mjs`.
 
 Covered:
 
@@ -379,6 +379,8 @@ Covered:
 - review material scope, invalid material filtering, empty-save blocking, review record snapshot, and review revisit target
 - training-record export JSON boundary and batch export count
 - reviewed `retailTypes.ts` and `src/types.ts` export groups and order through `npm run check:domain-contracts`
+- domain-contract checker negative fixtures for unreviewed, reordered, and missing central exports
+- source-shape checker negative fixtures for unbudgeted large files and budgeted file growth
 - review-mode vs execution-result-review boundary
 - route helpers
 - route-sync decisions

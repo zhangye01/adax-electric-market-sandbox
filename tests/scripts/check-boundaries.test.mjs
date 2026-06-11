@@ -1,31 +1,9 @@
 import assert from "node:assert/strict";
-import { spawnSync } from "node:child_process";
-import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
-import { tmpdir } from "node:os";
-import { dirname, resolve } from "node:path";
 import test from "node:test";
-import { fileURLToPath } from "node:url";
-
-const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
-const boundaryScript = resolve(repoRoot, "scripts/check-boundaries.mjs");
+import { runScriptFixture } from "./script-fixtures.mjs";
 
 function runBoundaryFixture(files) {
-  const fixtureRoot = mkdtempSync(resolve(tmpdir(), "adax-boundary-"));
-
-  try {
-    for (const [filePath, content] of Object.entries(files)) {
-      const absolutePath = resolve(fixtureRoot, filePath);
-      mkdirSync(dirname(absolutePath), { recursive: true });
-      writeFileSync(absolutePath, content);
-    }
-
-    return spawnSync(process.execPath, [boundaryScript], {
-      cwd: fixtureRoot,
-      encoding: "utf8"
-    });
-  } finally {
-    rmSync(fixtureRoot, { recursive: true, force: true });
-  }
+  return runScriptFixture("scripts/check-boundaries.mjs", files);
 }
 
 test("boundary checker accepts a minimal clean active source tree", () => {
