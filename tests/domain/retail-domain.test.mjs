@@ -76,6 +76,10 @@ import {
   saveRetailExecutionTrainingRecord,
   saveRetailReviewTrainingRecord
 } from "../../.test-build/src/services/adaxTrainingRecords.js";
+import {
+  buildRecordExportJson,
+  buildRecordsExportJson
+} from "../../.test-build/src/services/adaxTrainingRecordExports.js";
 import { upsertUserMaterial } from "../../.test-build/src/services/adaxUserMaterials.js";
 import {
   getAdaxUserMaterials,
@@ -771,6 +775,20 @@ test("training record storage filters invalid data and keeps latest twenty recor
     assert.equal(records.some((record) => record.id === "record-0"), false);
     assert.equal(getAdaxRecordRevisitTarget(records[0]), null);
   });
+});
+
+test("training record export JSON preserves sandbox boundary", () => {
+  const record = basicTrainingRecord("export-1");
+  const singleExport = JSON.parse(buildRecordExportJson(record));
+  const batchExport = JSON.parse(buildRecordsExportJson([record]));
+
+  assert.equal(singleExport.exportType, "ADAX_TRAINING_RECORD");
+  assert.equal(singleExport.record.id, "export-1");
+  assert.match(singleExport.boundary, /local training sandbox/);
+  assert.equal(batchExport.exportType, "ADAX_TRAINING_RECORDS");
+  assert.equal(batchExport.count, 1);
+  assert.equal(batchExport.records[0].id, "export-1");
+  assert.match(batchExport.boundary, /real market settlement/);
 });
 
 test("retail review materials stay scoped to scenario participant node and material type", () => {

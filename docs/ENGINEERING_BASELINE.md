@@ -136,6 +136,8 @@ Shared shell and persistence:
 - `src/app/useAdaxTrainingSession.ts`
 - `src/pages/AboutPage.tsx`
 - `src/pages/HomePage.tsx`
+- `src/components/records/**`
+- `src/services/adaxTrainingRecordExports.ts`
 - `src/services/adaxTrainingRecords.ts`
 - `src/services/adaxUserMaterials.ts`
 - `src/utils/adaxStorage.ts`

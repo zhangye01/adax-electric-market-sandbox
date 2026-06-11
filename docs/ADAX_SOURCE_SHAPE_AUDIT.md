@@ -16,10 +16,10 @@ npm run check:source-shape
 
 | Metric | Value |
 | --- | --- |
-| Active source files | 209 |
-| Code files | 90 |
+| Active source files | 214 |
+| Code files | 95 |
 | Style files | 119 |
-| Total active source lines | 14549 |
+| Total active source lines | 14577 |
 | Watch line threshold | 220 code / 400 CSS |
 | High line threshold | 300 code / 800 CSS |
 
@@ -28,12 +28,12 @@ npm run check:source-shape
 | Layer | Files | Lines |
 | --- | --- | --- |
 | `src/styles` | 118 | 6263 |
+| `src/components` | 37 | 2733 |
 | `src/domain` | 29 | 2695 |
-| `src/components` | 33 | 2575 |
-| `src/pages` | 7 | 1293 |
+| `src/pages` | 7 | 1129 |
 | `src/app` | 4 | 570 |
 | `src/data` | 6 | 399 |
-| `src/services` | 3 | 318 |
+| `src/services` | 4 | 352 |
 | `src/root` | 4 | 207 |
 | `src/utils` | 4 | 173 |
 | `src/routes` | 1 | 56 |
@@ -42,7 +42,6 @@ npm run check:source-shape
 
 | File | Lines | Layer |
 | --- | --- | --- |
-| `src/pages/RecordsPage.tsx` | 284 | `src/pages` |
 | `src/domain/retailTypes.ts` | 257 | `src/domain` |
 | `src/components/Layout.tsx` | 237 | `src/components` |
 | `src/app/createAdaxTrainingActions.ts` | 231 | `src/app` |
@@ -57,6 +56,7 @@ npm run check:source-shape
 | `src/domain/retailMarketContext.ts` | 165 | `src/domain` |
 | `src/domain/adaxNavigation.ts` | 163 | `src/domain` |
 | `src/pages/WorkspacePage.tsx` | 157 | `src/pages` |
+| `src/domain/retailScenarioSamples.ts` | 153 | `src/domain` |
 
 ## Import Hotspots
 
@@ -71,17 +71,26 @@ Fan-out pressure:
 | `src/app/createAdaxTrainingActions.ts` | 12 |
 | `src/app/AdaxPageRenderer.tsx` | 11 |
 | `src/components/retail/RetailSettlementPage.tsx` | 11 |
+| `src/pages/WorkspacePage.tsx` | 10 |
+| `src/app/useAdaxTrainingSession.ts` | 9 |
+| `src/components/retail/RetailExecutionResultPanel.tsx` | 9 |
+| `src/components/retail/RetailResultReviewPage.tsx` | 9 |
+| `src/pages/RecordsPage.tsx` | 9 |
 
 Fan-in pressure:
 
 | Imported file | Importer count |
 | --- | --- |
 | `src/domain/retailTypes.ts` | 44 |
-| `src/types.ts` | 28 |
+| `src/types.ts` | 31 |
 | `src/data/retailMarketData.ts` | 17 |
-| `src/components/Badge.tsx` | 14 |
+| `src/components/Badge.tsx` | 16 |
 | `src/utils/formatters.ts` | 10 |
 | `src/data/retailTrainingNodes.ts` | 8 |
+| `src/data/adaxScenarioMeta.ts` | 7 |
+| `src/components/StepIndicator.tsx` | 6 |
+| `src/domain/retailCalculations.ts` | 6 |
+| `src/domain/retailState.ts` | 6 |
 
 ## Findings
 
@@ -118,15 +127,18 @@ Fan-in pressure:
 31. `src/styles/002-app-sidebar-nav.css` has been reduced to navigation container and section structure; navigation item states, status dots, footer notice, and collapsed-navigation layout now have dedicated partitions.
 32. `src/domain/retailCalculations.ts` has been reduced from the only high-pressure TypeScript domain file into a settlement facade; customer, revenue, contract, exposure, and risk-diagnostic calculation helpers now live in dedicated domain modules.
 33. `scripts/check-boundaries.mjs` now treats those calculation helper modules as reviewed domain-rule targets, so components and pages cannot bypass the calculation facade without an explicit architecture exception.
-34. `src/domain/retailTypes.ts` and `src/types.ts` have high fan-in. They are central contracts; changes here should remain conservative and test-backed.
-35. `RetailReviewWorkspace.tsx` and `RetailExecutionWorkspace.tsx` have the highest component fan-out. They should stay composition surfaces and not regain business rules.
+34. `src/pages/RecordsPage.tsx` has been reduced from a budgeted page-pressure file to a page coordinator. Archive list, detail panel, and empty state now live in `src/components/records/**`, and record export JSON preparation now lives in `src/services/adaxTrainingRecordExports.ts`.
+35. Training-record export JSON has a service-level contract test for export type, boundary text, batch count, and record identity.
+36. `src/domain/retailTypes.ts` and `src/types.ts` have high fan-in. They are central contracts; changes here should remain conservative and test-backed.
+37. `RetailReviewWorkspace.tsx` and `RetailExecutionWorkspace.tsx` have the highest component fan-out. They should stay composition surfaces and not regain business rules.
 
 ## Recommended Refactor Queue
 
-1. Review `src/pages/RecordsPage.tsx` only when records UI changes; split archive list, detail panel coordination, and empty/local boundary sections if the page keeps growing.
-2. Review `src/styles/009-flow-scenario-market.css` when scenario market styles are next touched; split annual fact cards, monthly window cards, and typical-day price bars only if that surface needs visual work.
-3. Keep `src/domain/retailTypes.ts` stable unless a new confirmed participant startup card requires new shared contracts.
+1. Keep `src/domain/retailTypes.ts` stable unless a new confirmed participant startup card requires new shared contracts.
+2. Review `src/components/Layout.tsx` only when app shell or navigation changes; split sidebar/topbar coordination before adding business concerns.
+3. Review `src/app/createAdaxTrainingActions.ts` only when training action orchestration changes; keep domain rules in `src/domain/**`.
 4. Keep workspace components as page-level composition surfaces; move any new derived status, validation, or display contract into `src/domain/**`.
+5. Review `src/styles/009-flow-scenario-market.css` when scenario market styles are next touched; split annual fact cards, monthly window cards, and typical-day price bars only if that surface needs visual work.
 
 ## Source Shape Budgets
 
@@ -134,7 +146,6 @@ Fan-in pressure:
 
 | File | Budgeted Lines | Reason |
 | --- | --- | --- |
-| `src/pages/RecordsPage.tsx` | 284 | Existing records composition surface; split only when records UI changes. |
 | `src/domain/retailTypes.ts` | 257 | Central shared contract; keep stable unless confirmed participant scope requires contract changes. |
 | `src/components/Layout.tsx` | 237 | App shell composition; avoid adding business rules. |
 | `src/app/createAdaxTrainingActions.ts` | 231 | Action orchestration boundary; avoid adding domain rules. |

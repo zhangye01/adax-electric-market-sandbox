@@ -163,12 +163,14 @@ Current modules:
 
 - `retailExecutionTemplates.ts`
 - `adaxTrainingRecords.ts`
+- `adaxTrainingRecordExports.ts`
 - `adaxUserMaterials.ts`
 
 Allowed:
 
 - local template parsing and export preparation
 - localStorage record/material coordination
+- training-record export JSON preparation
 - runtime validation before applying imported templates
 
 Not allowed:
@@ -273,6 +275,7 @@ Rules:
 - pages may compose components and pass callbacks
 - pages may present active data
 - pages must not own settlement math, template parsing, or route guards
+- `RecordsPage.tsx` coordinates records state and actions; archive list, detail panel, empty state, and export JSON preparation live in components/services
 - mobile sidebar collapse and shell-level responsive navigation stay in `Layout.tsx` and app-layout styles, not individual pages
 
 ### `src/components/**`
@@ -294,6 +297,7 @@ Rules:
 - mobile retail workspace ordering is a responsive layout concern: current operation panel comes before result feedback and node rail so the active market/operation board is not buried below navigation
 - retail execution action nodes are split by node: package, annual bilateral, and monthly auction
 - retail review is split into workspace composition, material grid, and output panel
+- records archive, detail, and empty-state rendering live in `src/components/records/**`; `RecordsPage.tsx` remains a composition surface
 
 ## Active Data Flow
 
@@ -360,6 +364,7 @@ Covered:
 - retail execution template round trip and invalid import rejection
 - execution record snapshot, localStorage filtering, latest-20 cap, and saved-record revisit target
 - review material scope, invalid material filtering, empty-save blocking, review record snapshot, and review revisit target
+- training-record export JSON boundary and batch export count
 - review-mode vs execution-result-review boundary
 - route helpers
 - route-sync decisions

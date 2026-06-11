@@ -234,7 +234,7 @@ Exit Criteria:
 
 Continue Engineering Hardening Hold.
 
-Next recommended task: keep the source-shape budget check in the normal quality gate. For code structure work, use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to review `src/pages/RecordsPage.tsx` only when records UI changes, and split archive list, detail panel coordination, and empty/local boundary sections if the page keeps growing. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
+Next recommended task: keep the source-shape budget check in the normal quality gate. For code structure work, keep `src/domain/retailTypes.ts` stable unless a confirmed participant startup card requires shared contracts, review `src/components/Layout.tsx` only when app shell/navigation changes, and keep `src/app/createAdaxTrainingActions.ts` as the action orchestration boundary. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
 
 ## Project Rescue Triggers
 
