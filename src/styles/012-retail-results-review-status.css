@@ -1,0 +1,29 @@
+/* Retail execution result-review status chips. */
+.retail-result-review-status {
+  display: grid;
+  min-width: 360px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.retail-result-review-status > div {
+  border: 1px solid #203451;
+  border-radius: 8px;
+  background: #081321;
+  padding: 12px;
+}
+
+.retail-result-review-status span {
+  color: #8fa4bf;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.retail-result-review-status strong {
+  display: block;
+  margin-top: 6px;
+  color: #f8fafc;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1.35;
+}

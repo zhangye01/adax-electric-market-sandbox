@@ -1,0 +1,19 @@
+/* Retail result empty and missing states. */
+.retail-empty-result,
+.retail-missing-result {
+  display: grid;
+  justify-items: start;
+}
+
+.retail-empty-result strong,
+.retail-missing-result strong {
+  color: #f8fafc;
+  font-size: 14px;
+}
+
+.retail-empty-result p,
+.retail-missing-result p {
+  color: #b6c5d8;
+  font-size: 12px;
+  line-height: 1.65;
+}

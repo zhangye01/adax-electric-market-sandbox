@@ -1,0 +1,13 @@
+/* Retail result boundary notice spacing. */
+.retail-output-boundary {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+.retail-output-boundary.compact {
+  margin-top: 10px;
+}
+
+.retail-result-panel .retail-output-boundary {
+  margin: 0;
+}

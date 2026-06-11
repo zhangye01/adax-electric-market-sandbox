@@ -233,7 +233,7 @@ Exit Criteria:
 
 Continue Engineering Hardening Hold.
 
-Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to review `src/styles/012-retail-results.css` when retail result styles are next touched. Split result panel base, result-review status, output-boundary spacing, empty/missing result states, compact hint, and result snapshot rules only if the file still mixes those responsibilities. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
+Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to review `src/styles/002-app-sidebar-nav.css` when sidebar navigation styles are next touched. Split navigation container/section headings, nav item states, status dots, footer notice, and collapsed-nav overrides only if the file still mixes those responsibilities. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
 
 ## Project Rescue Triggers
 

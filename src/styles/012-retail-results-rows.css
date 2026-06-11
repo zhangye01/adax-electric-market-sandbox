@@ -31,6 +31,22 @@
   border-top: 0;
 }
 
+.retail-cost-row span,
+.retail-table-row span,
+.retail-month-result-row span {
+  color: #8fa4bf;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.retail-cost-row strong,
+.retail-table-row strong,
+.retail-month-result-row strong {
+  color: #f1f5f9;
+  font-size: 14px;
+  font-weight: 850;
+}
+
 .retail-table-row em,
 .retail-month-result-row em {
   color: #67e8f9;

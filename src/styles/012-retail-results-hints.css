@@ -1,0 +1,21 @@
+/* Retail compact result hints. */
+.retail-compact-hint {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #263c5a;
+  border-radius: 999px;
+  background: #081321;
+  color: #9fb2cd;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.retail-compact-hint span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
