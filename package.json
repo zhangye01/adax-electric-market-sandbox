@@ -10,7 +10,7 @@
     "check:source-shape": "node scripts/check-source-shape.mjs",
     "check:boundaries": "node scripts/check-boundaries.mjs",
     "typecheck": "tsc -b",
-    "test": "tsc -p tsconfig.test.json && node tests/support/fix-esm-imports.mjs && node --test tests/domain/retail-domain.test.mjs tests/app/adax-training-actions.test.mjs tests/scripts/check-boundaries.test.mjs tests/scripts/check-source-shape.test.mjs tests/scripts/check-domain-contracts.test.mjs",
+    "test": "tsc -p tsconfig.test.json && node tests/support/fix-esm-imports.mjs && node --test tests/domain/retail-domain.test.mjs tests/app/adax-training-actions.test.mjs tests/app/adax-route-sync-decisions.test.mjs tests/scripts/check-boundaries.test.mjs tests/scripts/check-source-shape.test.mjs tests/scripts/check-domain-contracts.test.mjs",
     "quality": "npm run check:boundaries && npm run check:domain-contracts && npm run check:source-shape && npm run typecheck && npm run test && npm run build",
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 127.0.0.1",

@@ -137,6 +137,7 @@ Fan-in pressure:
 41. `src/components/retail/RetailExecutionWorkspace.tsx` has been reduced from a budgeted workspace pressure file to a 147-line composition surface. Execution context bar and node footer rendering now live in dedicated retail components, while active-node validation mapping lives in `src/domain/retailNodeValidation.ts`.
 42. `RetailReviewWorkspace.tsx` and `RetailExecutionWorkspace.tsx` have the highest component fan-out. They should stay composition surfaces and not regain business rules.
 43. `src/app/createAdaxTrainingActions.ts` now has direct app-layer tests for mode reset, execution result/save guards, and node-bound review material saves in `tests/app/adax-training-actions.test.mjs`, so these session decisions are not protected only by browser navigation behavior.
+44. `src/app/useAdaxBrowserRouteSync.ts` now delegates output-page fallback and settlement-viewed decisions to `src/app/adaxRouteSyncDecisions.ts`, with direct tests in `tests/app/adax-route-sync-decisions.test.mjs`.
 
 ## Recommended Refactor Queue
 

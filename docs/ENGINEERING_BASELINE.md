@@ -133,6 +133,7 @@ Shared shell and persistence:
 
 - `src/App.tsx`
 - `src/app/AdaxPageRenderer.tsx`
+- `src/app/adaxRouteSyncDecisions.ts`
 - `src/app/createAdaxNavigationActions.ts`
 - `src/app/createAdaxTrainingActions.ts`
 - `src/app/useAdaxBrowserRouteSync.ts`
@@ -280,6 +281,7 @@ Do not treat visual inspection as a replacement for domain tests.
 | GitHub workflow files blocked by token scope | Medium | Current GitHub CLI token lacks `workflow`; do not push `.github/workflows/**` unless authorization and Pages strategy are intentionally changed |
 | `App.tsx` becoming a god component | Reduced | Session state and page rendering are extracted; keep future flow logic out of the entry component |
 | `Layout.tsx` becoming an app-shell god component | Reduced | Sidebar, topbar, and market-clearing brand mark now live under `src/components/layout/**`; keep shell state in `Layout.tsx` |
+| Route-sync output guards becoming hidden hook behavior | Reduced | Output-route decisions now live in `src/app/adaxRouteSyncDecisions.ts`; `tests/app/adax-route-sync-decisions.test.mjs` covers settlement viewed marking, blocked execution outputs, review-mode output blocking, and no-mode fallback |
 | Training action orchestration becoming a mixed route/action god module | Reduced | Navigation actions now live in `src/app/createAdaxNavigationActions.ts`; keep record/material/template coordination in `createAdaxTrainingActions.ts`; `tests/app/adax-training-actions.test.mjs` covers mode reset, execution result/save guards, and node-bound review material saves without browser history |
 | Retail execution workspace regrowing mixed validation and UI chrome | Reduced | Node validation routing now lives in `src/domain/retailNodeValidation.ts`, and execution context/footer chrome lives in dedicated retail components |
 | Legacy prototype mixing into ADAX flow | Reduced | Legacy photovoltaic and old ADAX scenario prototypes are isolated under `src/legacy/**` and excluded from active build |

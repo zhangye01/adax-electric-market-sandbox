@@ -1,5 +1,5 @@
 import { useEffect, type Dispatch, type SetStateAction } from "react";
-import { canAccessAdaxPage, fallbackAdaxPage, type AdaxFlowAccessState } from "../domain/adaxFlowGuards";
+import type { AdaxFlowAccessState } from "../domain/adaxFlowGuards";
 import {
   pathForPage,
   routeFromLocation,
@@ -7,6 +7,7 @@ import {
   shouldReplaceMissingRetailParticipant
 } from "../routes/adaxRoutes";
 import type { AdaxPageId, AdaxTrainingMode } from "../types";
+import { getAdaxOutputRouteSyncDecision } from "./adaxRouteSyncDecisions";
 
 export type AdaxRouteWriter = (page: AdaxPageId, nextMode?: AdaxTrainingMode | null, nextRole?: "retailer") => void;
 
@@ -65,16 +66,22 @@ export function useAdaxBrowserRouteSync({
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (currentPage !== "settlement" && currentPage !== "review") return;
-    if (currentPage === "settlement" && canAccessAdaxPage("settlement", flowAccessState)) {
-      if (!settlementViewed) setSettlementViewed(true);
+    const decision = getAdaxOutputRouteSyncDecision({
+      currentPage,
+      mode,
+      selectedRole,
+      flowAccessState,
+      settlementViewed
+    });
+
+    if (decision.kind === "none") return;
+    if (decision.kind === "markSettlementViewed") {
+      setSettlementViewed(true);
       return;
     }
-    if (canAccessAdaxPage(currentPage, flowAccessState)) return;
 
-    const fallbackPage = fallbackAdaxPage(currentPage, flowAccessState);
-    setCurrentPage(fallbackPage);
-    replaceRoute(fallbackPage, mode, selectedRole);
+    setCurrentPage(decision.page);
+    replaceRoute(decision.page, decision.mode, decision.role);
     scrollToTop();
   }, [currentPage, flowAccessState, mode, selectedRole, setCurrentPage, setSettlementViewed, settlementViewed]);
 
