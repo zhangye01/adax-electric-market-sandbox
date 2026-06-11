@@ -24,6 +24,8 @@ Read `docs/ADAX_ENGINEERING_READINESS_AUDIT.md` before changing Engineering Hard
 
 Read `docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md` before deciding whether Engineering Hardening Hold can be lifted.
 
+Read `docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md` before preparing any feature-expansion implementation plan.
+
 Read `docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md` before selecting any Phase 5 participant candidate or leaving Engineering Hardening Hold for participant expansion.
 
 Read `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md` before entering Phase 5 or implementing any new participant workflow.

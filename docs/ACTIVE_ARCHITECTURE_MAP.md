@@ -241,6 +241,7 @@ Current entry and gate documents:
 - `docs/ENGINEERING_BASELINE.md`: maintainability baseline and risk register.
 - `docs/ADAX_ENGINEERING_READINESS_AUDIT.md`: current engineering-hardening handoff baseline.
 - `docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md`: engineering-hardening exit audit; ready for user decision, not implementation approval.
+- `docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md`: required decision sequence before feature-expansion planning.
 - `docs/ADAX_CHANGE_GATE_CHECKLIST.md`: pre-change classification, rescue gate, layer placement, and test selection.
 - `docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md`: one-page Phase 5 candidate readiness gate; not implementation approval.
 - `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md`: new-participant entry gate rehearsal before Phase 5 implementation.

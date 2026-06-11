@@ -13,6 +13,7 @@ const requiredFiles = [
   "docs/ACTIVE_ARCHITECTURE_MAP.md",
   "docs/ADAX_ENGINEERING_READINESS_AUDIT.md",
   "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
+  "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
   "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
   "docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md",
   "docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md",
@@ -33,6 +34,7 @@ const requiredReferences = [
     references: [
       "docs/ADAX_ENGINEERING_READINESS_AUDIT.md",
       "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
+      "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md",
       "docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md",
@@ -54,6 +56,7 @@ const requiredReferences = [
     references: [
       "docs/ADAX_ENGINEERING_READINESS_AUDIT.md",
       "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
+      "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md",
       "docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md",
@@ -67,6 +70,7 @@ const requiredReferences = [
     file: "docs/ADAX_LONG_TERM_PLAN.md",
     references: [
       "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
+      "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md",
       "docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md",
@@ -82,6 +86,7 @@ const requiredReferences = [
     file: "docs/ADAX_ENGINEERING_READINESS_AUDIT.md",
     references: [
       "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
+      "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "scripts/check-engineering-guardrails.mjs",
       "tests/scripts/check-engineering-guardrails.test.mjs"
@@ -91,6 +96,7 @@ const requiredReferences = [
     file: "docs/ACTIVE_ARCHITECTURE_MAP.md",
     references: [
       "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
+      "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "scripts/check-engineering-guardrails.mjs"
     ]
@@ -106,6 +112,15 @@ const requiredReferences = [
 ];
 
 const requiredPhrases = [
+  {
+    file: "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
+    phrases: [
+      "Status: decision checklist active. It does not lift Engineering Hardening Hold.",
+      "Phase 5 remains closed until this checklist is completed and the user confirms the selected participant startup card.",
+      "Do not write feature code from this checklist alone.",
+      "Exactly one participant may enter implementation in the next wave."
+    ]
+  },
   {
     file: "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
     phrases: [

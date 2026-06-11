@@ -46,6 +46,7 @@ Still closed:
 | Change gate | `docs/ADAX_CHANGE_GATE_CHECKLIST.md` | Non-trivial changes have a pre-edit classification path. |
 | Engineering baseline | `docs/ENGINEERING_BASELINE.md` | Maintainability risks and controls are tracked. |
 | Current readiness | `docs/ADAX_ENGINEERING_READINESS_AUDIT.md` | Hardening hold status and feature-expansion gate are explicit. |
+| Feature resumption decision | `docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md` | Resume-development decisions must be explicit and ordered. |
 | Phase 5 gate | `docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md` | Candidate comparison exists; implementation remains closed. |
 | Phase 5 rehearsal | `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md` | Entry decision can be rehearsed before code. |
 | Phase 5 scope control | `docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md` | Only one future participant may be selected per wave. |
@@ -98,6 +99,7 @@ Allowed during Engineering Hardening Hold:
 
 Allowed only after user confirmation:
 
+- use `docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md`
 - select exactly one Phase 5 participant
 - confirm the relevant startup card
 - prepare a code-level implementation plan for that participant
