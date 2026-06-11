@@ -9,6 +9,7 @@
 
 ```bash
 npm run audit:source
+npm run check:source-shape
 ```
 
 ## Summary
@@ -125,8 +126,22 @@ Fan-in pressure:
 3. Keep `src/domain/retailTypes.ts` stable unless a new confirmed participant startup card requires new shared contracts.
 4. Keep workspace components as page-level composition surfaces; move any new derived status, validation, or display contract into `src/domain/**`.
 
+## Source Shape Budgets
+
+`npm run check:source-shape` is part of `npm run quality`. It allows the current watch/high-pressure files to exist, but it fails if a pressure file grows beyond the recorded budget or if a new active file crosses the watch threshold without being reviewed here.
+
+| File | Budgeted Lines | Reason |
+| --- | --- | --- |
+| `src/domain/retailCalculations.ts` | 455 | Existing high-pressure calculation module; split annual, monthly, exposure, and margin helpers when calculation work resumes. |
+| `src/pages/RecordsPage.tsx` | 284 | Existing records composition surface; split only when records UI changes. |
+| `src/domain/retailTypes.ts` | 257 | Central shared contract; keep stable unless confirmed participant scope requires contract changes. |
+| `src/components/Layout.tsx` | 237 | App shell composition; avoid adding business rules. |
+| `src/app/createAdaxTrainingActions.ts` | 231 | Action orchestration boundary; avoid adding domain rules. |
+| `src/components/retail/RetailExecutionWorkspace.tsx` | 223 | Workspace composition surface; move derived logic into `src/domain/**`. |
+
 ## How To Use This Audit
 
 - Run `npm run audit:source` before broad refactors or after substantial UI/domain changes.
+- Run `npm run check:source-shape` before handoff when a change touches large files or source budgets.
 - Do not use line count alone as a reason to refactor. Refactor when a large file is also being changed or when the file starts mixing responsibilities.
 - Treat new files crossing the watch threshold as a signal to consider extraction before adding more behavior.

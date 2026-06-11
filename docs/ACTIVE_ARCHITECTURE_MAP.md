@@ -189,6 +189,7 @@ Local engineering automation.
 Current scripts:
 
 - `audit-source-shape.mjs`: reports active source line pressure, layer size, and import fan-in/fan-out hotspots.
+- `check-source-shape.mjs`: fails quality when new or already-budgeted large active files cross the source-shape budget without an audit update.
 - `check-boundaries.mjs`: validates active source import, IO, network, data, and presentation-layer boundaries.
 - `publish-pages.mjs`: runs the Pages release procedure for the current static preview.
 
