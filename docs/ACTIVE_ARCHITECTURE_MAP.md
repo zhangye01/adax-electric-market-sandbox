@@ -206,9 +206,12 @@ Rules:
 
 Local engineering automation.
 
+Path-level script inventory includes `scripts/check-engineering-guardrails.mjs` and the other scripts listed in `docs/ENGINEERING_BASELINE.md`.
+
 Current scripts:
 
 - `audit-source-shape.mjs`: reports active source line pressure, layer size, and import fan-in/fan-out hotspots.
+- `check-engineering-guardrails.mjs`: fails quality when required engineering docs are disconnected or Phase 5 candidate gates stop saying implementation is closed.
 - `check-domain-contracts.mjs`: fails quality when central domain/app contract exports, reviewed groups, or export order change without an explicit review update.
 - `check-source-shape.mjs`: fails quality when new or already-budgeted large active files cross the source-shape budget without an audit update.
 - `check-boundaries.mjs`: validates active source import, IO, network, data, and presentation-layer boundaries.
@@ -219,6 +222,7 @@ Rules:
 - scripts may coordinate local commands, file copying, release validation, and Git operations
 - scripts must not contain ADAX business rules, settlement math, route logic, or UI behavior
 - scripts must not import from `src/legacy/**`
+- engineering guardrail checks may encode required governance files, cross-document references, and Phase 5 closed-gate phrases; intentional changes require audit and test updates
 - domain-contract checks may encode reviewed central exports from `src/domain/retailTypes.ts` and `src/types.ts`, but any changed export list, group, or order requires audit and test review
 - boundary scripts may encode current allowed exceptions, but new exceptions require architecture review
 - publishing scripts must keep `main` and `gh-pages` responsibilities separated

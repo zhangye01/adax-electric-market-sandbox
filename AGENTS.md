@@ -70,6 +70,7 @@ Other participant types may appear as product seats or planning context, but the
 
 Run these before handing off a code change:
 
+- `npm run check:engineering-guardrails`
 - `npm run check:boundaries`
 - `npm run typecheck`
 - `npm run test`
