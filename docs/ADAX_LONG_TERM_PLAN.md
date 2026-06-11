@@ -235,7 +235,7 @@ Exit Criteria:
 
 Continue Engineering Hardening Hold.
 
-Next recommended task: keep source-shape, domain-contract, boundary-checker, app-action, and route-sync decision guardrails in the normal quality gate. For code structure work, keep `src/domain/retailTypes.ts` stable under `docs/ADAX_RETAIL_CONTRACT_GOVERNANCE.md` unless a confirmed participant startup card requires shared contracts. Next code-focused hardening should review `useAdaxTrainingSession` composition boundaries before any feature expansion. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
+Next recommended task: keep source-shape, domain-contract, boundary-checker, app-action, route-sync decision, and session-derivation guardrails in the normal quality gate. For code structure work, keep `src/domain/retailTypes.ts` stable under `docs/ADAX_RETAIL_CONTRACT_GOVERNANCE.md` unless a confirmed participant startup card requires shared contracts. Next code-focused hardening should extract shared retail test fixtures before app-level tests grow further. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
 
 ## Project Rescue Triggers
 

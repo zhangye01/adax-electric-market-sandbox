@@ -1,13 +1,13 @@
 import { useMemo, useState } from "react";
-import { calculateRetailSettlement } from "../domain/retailCalculations";
 import { createEmptyRetailTrainingState } from "../domain/retailState";
-import type { RetailSettlementResult, RetailTrainingState } from "../domain/retailTypes";
+import type { RetailTrainingState } from "../domain/retailTypes";
 import { validateRetailTrainingState } from "../domain/retailValidation";
 import type { AdaxPageId, AdaxTrainingMode, AdaxTrainingRecord, UserMaterial } from "../types";
 import {
   getAdaxTrainingRecords,
   getAdaxUserMaterials
 } from "../utils/adaxStorage";
+import { getAdaxSessionFlowAccessState, getRetailSessionSettlement } from "./adaxSessionDerivations";
 import { createAdaxTrainingActions } from "./createAdaxTrainingActions";
 import { readInitialAdaxRoute, useAdaxBrowserRouteSync } from "./useAdaxBrowserRouteSync";
 
@@ -29,19 +29,15 @@ export function useAdaxTrainingSession() {
     [retailTrainingState]
   );
 
-  const retailDomainSettlement = useMemo<RetailSettlementResult | null>(() => {
-    if (!retailTrainingValidation.ok) return null;
-    try {
-      return calculateRetailSettlement(retailTrainingState);
-    } catch {
-      return null;
-    }
-  }, [retailTrainingState, retailTrainingValidation.ok]);
+  const retailDomainSettlement = useMemo(
+    () => getRetailSessionSettlement(retailTrainingState, retailTrainingValidation),
+    [retailTrainingState, retailTrainingValidation]
+  );
 
   const flowAccessState = useMemo(
-    () => ({
+    () => getAdaxSessionFlowAccessState({
       mode,
-      hasRetailSettlement: Boolean(retailDomainSettlement),
+      retailDomainSettlement,
       executionResultGenerated,
       settlementViewed
     }),
