@@ -189,3 +189,21 @@ test("engineering guardrail checker rejects missing script test targets", () => 
   assert.match(result.stderr, /required-test-target-missing/);
   assert.match(result.stderr, /check-engineering-guardrails\.test\.mjs/);
 });
+
+test("engineering guardrail checker rejects closed Phase 5 runtime files", () => {
+  const result = runGuardrailFixture({
+    "src/domain/thermalTypes.ts": "export type ThermalOffer = { price: number };\n"
+  });
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /phase-5-runtime-code-must-stay-closed/);
+  assert.match(result.stderr, /src\/domain\/thermalTypes\.ts/);
+});
+
+test("engineering guardrail checker allows legacy Phase 5 reference files", () => {
+  const result = runGuardrailFixture({
+    "src/legacy/thermalTypes.ts": "export type ThermalOffer = { price: number };\n"
+  });
+
+  assert.equal(result.status, 0, result.stderr);
+});

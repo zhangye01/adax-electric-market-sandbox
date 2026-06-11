@@ -1,5 +1,5 @@
-import { existsSync, readFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
+import { relative, resolve, sep } from "node:path";
 
 const rootDir = process.cwd();
 
@@ -176,6 +176,12 @@ const requiredTestTargets = [
   "tests/scripts/check-domain-contracts.test.mjs"
 ];
 
+const phase5ClosedForbiddenRuntimePatterns = [
+  /^src\/(?:app|data|domain|routes|services)\/(?:renewable|storage|thermal)[A-Z/._-]/i,
+  /^src\/components\/(?:renewable|storage|thermal)\//i,
+  /^src\/pages\/(?:Renewable|Storage|Thermal)[A-Za-z0-9_-]*\.(?:ts|tsx|js|jsx)$/i
+];
+
 const violations = [];
 
 function log(message = "") {
@@ -184,6 +190,10 @@ function log(message = "") {
 
 function readText(projectPath) {
   return readFileSync(resolve(rootDir, projectPath), "utf8");
+}
+
+function toProjectPath(path) {
+  return relative(rootDir, path).split(sep).join("/");
 }
 
 function addViolation(file, rule, detail) {
@@ -201,6 +211,18 @@ function parseJsonFile(projectPath) {
     addViolation(projectPath, "required-json-invalid", error.message);
     return null;
   }
+}
+
+function listFiles(directory) {
+  if (!existsSync(directory)) return [];
+
+  return readdirSync(directory).flatMap((entry) => {
+    const path = resolve(directory, entry);
+    const stats = statSync(path);
+    if (stats.isDirectory()) return listFiles(path);
+    if (!stats.isFile()) return [];
+    return [path];
+  });
 }
 
 for (const file of requiredFiles) {
@@ -275,6 +297,20 @@ if (fileExists("package.json")) {
   }
 }
 
+for (const file of listFiles(resolve(rootDir, "src"))) {
+  const projectPath = toProjectPath(file);
+  if (projectPath.startsWith("src/legacy/")) continue;
+
+  const isForbiddenPhase5RuntimeFile = phase5ClosedForbiddenRuntimePatterns.some((pattern) => pattern.test(projectPath));
+  if (isForbiddenPhase5RuntimeFile) {
+    addViolation(
+      projectPath,
+      "phase-5-runtime-code-must-stay-closed",
+      "Phase 5 is closed; confirm one participant startup card before adding renewable, storage, or thermal runtime files"
+    );
+  }
+}
+
 if (violations.length > 0) {
   console.error("\nEngineering guardrail check failed:\n");
 
@@ -290,4 +326,4 @@ if (violations.length > 0) {
 }
 
 log(`${requiredFiles.length} required files checked.`);
-log("engineering guardrails are connected, quality pipeline is intact, and Phase 5 remains closed.");
+log("engineering guardrails are connected, quality pipeline is intact, active runtime scope is retail-only, and Phase 5 remains closed.");
