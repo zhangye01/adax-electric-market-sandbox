@@ -2,6 +2,8 @@ import type { AdaxTrainingRecord, UserMaterial } from "../types";
 
 const STORAGE_KEY = "adax-training-records-v0-1";
 const MATERIALS_KEY = "adax-user-materials-v0-1";
+const ACTIVE_RECORD_ROLE = "retailer";
+const ACTIVE_MATERIAL_PARTICIPANT = "retailer";
 
 export function getAdaxTrainingRecords(): AdaxTrainingRecord[] {
   if (typeof window === "undefined") return [];
@@ -11,13 +13,14 @@ export function getAdaxTrainingRecords(): AdaxTrainingRecord[] {
     if (!raw) return [];
     const parsed = JSON.parse(raw) as unknown;
     if (!Array.isArray(parsed)) return [];
-    return parsed.filter(isAdaxTrainingRecord);
+    return parsed.filter(isActiveTrainingRecord);
   } catch {
     return [];
   }
 }
 
 export function saveAdaxTrainingRecord(record: AdaxTrainingRecord) {
+  if (!isActiveTrainingRecord(record)) return getAdaxTrainingRecords();
   if (typeof window === "undefined") return [record];
   const records = getAdaxTrainingRecords();
   const nextRecords = [record, ...records.filter((item) => item.id !== record.id)].slice(0, 20);
@@ -39,15 +42,15 @@ export function getAdaxUserMaterials(): UserMaterial[] {
     if (!raw) return [];
     const parsed = JSON.parse(raw) as unknown;
     if (!Array.isArray(parsed)) return [];
-    return parsed.filter(isUserMaterial);
+    return parsed.filter(isActiveUserMaterial);
   } catch {
     return [];
   }
 }
 
 export function saveAdaxUserMaterials(materials: UserMaterial[]) {
-  if (typeof window === "undefined") return materials.filter(isUserMaterial);
-  const nextMaterials = materials.filter(isUserMaterial);
+  if (typeof window === "undefined") return materials.filter(isActiveUserMaterial);
+  const nextMaterials = materials.filter(isActiveUserMaterial);
   window.localStorage.setItem(MATERIALS_KEY, JSON.stringify(nextMaterials));
   return nextMaterials;
 }
@@ -68,6 +71,10 @@ function isAdaxTrainingRecord(value: unknown): value is AdaxTrainingRecord {
   );
 }
 
+function isActiveTrainingRecord(value: unknown): value is AdaxTrainingRecord {
+  return isAdaxTrainingRecord(value) && value.roleId === ACTIVE_RECORD_ROLE;
+}
+
 function isUserMaterial(value: unknown): value is UserMaterial {
   if (!isRecord(value)) return false;
   return (
@@ -83,6 +90,10 @@ function isUserMaterial(value: unknown): value is UserMaterial {
     typeof value.createdAt === "string" &&
     typeof value.updatedAt === "string"
   );
+}
+
+function isActiveUserMaterial(value: unknown): value is UserMaterial {
+  return isUserMaterial(value) && value.participantType === ACTIVE_MATERIAL_PARTICIPANT;
 }
 
 function isAdaxRoleId(value: string) {

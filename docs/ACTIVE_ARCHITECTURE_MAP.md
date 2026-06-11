@@ -177,6 +177,8 @@ Allowed:
 - localStorage record/material coordination
 - training-record export JSON preparation
 - runtime validation before applying imported templates
+- active training-record persistence keeps only `retailer` records while Phase 5 remains closed
+- active user-material persistence keeps only `retailer` materials while Phase 5 remains closed
 
 Not allowed:
 

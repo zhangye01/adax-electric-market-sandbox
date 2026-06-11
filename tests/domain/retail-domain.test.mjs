@@ -690,8 +690,15 @@ test("training record storage filters invalid data and keeps latest twenty recor
     assert.deepEqual(getAdaxTrainingRecords(), []);
 
     const valid = basicTrainingRecord("valid");
-    store.set("adax-training-records-v0-1", JSON.stringify([valid, { id: "invalid" }, { ...valid, id: "nan", grossMargin: Number.NaN }]));
+    const closedParticipantRecord = { ...valid, id: "closed-role", roleId: "thermal", roleName: "火电机组" };
+    store.set(
+      "adax-training-records-v0-1",
+      JSON.stringify([valid, closedParticipantRecord, { id: "invalid" }, { ...valid, id: "nan", grossMargin: Number.NaN }])
+    );
     assert.deepEqual(getAdaxTrainingRecords(), [valid]);
+
+    const ignoredClosedParticipant = saveAdaxTrainingRecord(closedParticipantRecord);
+    assert.deepEqual(ignoredClosedParticipant, [valid]);
 
     for (let index = 0; index < 21; index += 1) {
       saveAdaxTrainingRecord(basicTrainingRecord(`record-${index}`));
@@ -798,6 +805,7 @@ test("retail review records snapshot materials and expose review revisit target"
 test("review material storage filters invalid data and blank upserts remove stale slots", () => {
   withFakeWindow(({ store }) => {
     const valid = basicReviewMaterial();
+    const closedParticipantMaterial = basicReviewMaterial({ id: "closed-role", participantType: "thermal" });
 
     store.set("adax-user-materials-v0-1", "{bad json");
     assert.deepEqual(getAdaxUserMaterials(), []);
@@ -809,6 +817,7 @@ test("review material storage filters invalid data and blank upserts remove stal
       "adax-user-materials-v0-1",
       JSON.stringify([
         valid,
+        closedParticipantMaterial,
         { id: "invalid" },
         basicReviewMaterial({ id: "bad-role", participantType: "unknown" }),
         basicReviewMaterial({ id: "bad-type", materialType: "链接" })
@@ -818,6 +827,19 @@ test("review material storage filters invalid data and blank upserts remove stal
 
     const saved = saveAdaxUserMaterials([valid, { id: "invalid" }]);
     assert.deepEqual(saved, [valid]);
+
+    const savedWithClosedParticipant = saveAdaxUserMaterials([valid, closedParticipantMaterial]);
+    assert.deepEqual(savedWithClosedParticipant, [valid]);
+
+    const ignoredClosedParticipant = upsertUserMaterial({
+      materials: [valid],
+      scenarioId: valid.scenarioId,
+      participantType: "thermal",
+      node: { id: valid.nodeId, title: valid.title },
+      materialType: valid.materialType,
+      content: "火电材料不应在 Phase 5 关闭时进入 active 材料池。"
+    });
+    assert.deepEqual(ignoredClosedParticipant, [valid]);
 
     const removed = upsertUserMaterial({
       materials: [valid],

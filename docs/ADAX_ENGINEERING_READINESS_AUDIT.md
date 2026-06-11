@@ -86,6 +86,7 @@ npm run quality
 | New participant implementation starts before scope confirmation | High | Keep Phase 5 closed until user confirms feature expansion and the participant startup card. |
 | Closed Phase 5 participant runtime files appear silently | High | `npm run check:engineering-guardrails` fails if active source adds renewable, independent-storage, or thermal runtime files while Phase 5 remains closed. |
 | Closed participant id leaks into generated active URLs | Medium | `pathForPage` normalizes generated participant URLs back to `retailer`; `tests/domain/retail-domain.test.mjs` covers closed participant inputs. |
+| Closed participant records or materials enter active localStorage | Medium | `getAdaxTrainingRecords`, `saveAdaxTrainingRecord`, `getAdaxUserMaterials`, `saveAdaxUserMaterials`, and `upsertUserMaterial` keep active persisted data limited to `retailer`; `tests/domain/retail-domain.test.mjs` covers closed participant records and materials. |
 | Engineering status becomes chat-memory-only | Medium | Keep this audit current and link it from `AGENTS.md`, `docs/ENGINEERING_BASELINE.md`, and `docs/ADAX_LONG_TERM_PLAN.md`. |
 | Preview publishing path drifts from source branch | Medium | Use `docs/ADAX_RELEASE_PROCESS.md`; do not touch `gh-pages` or Pages config without an explicit publishing task. |
 | GitHub workflow files are added without token/workflow-scope confirmation | Medium | Keep `.github/workflows/**` blocked unless the deployment strategy intentionally changes. |

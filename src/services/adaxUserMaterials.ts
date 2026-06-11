@@ -1,6 +1,8 @@
 import type { UserMaterial } from "../types";
 import { saveAdaxUserMaterials } from "../utils/adaxStorage";
 
+const ACTIVE_MATERIAL_PARTICIPANT = "retailer";
+
 interface UpsertUserMaterialInput {
   materials: UserMaterial[];
   scenarioId: string;
@@ -21,6 +23,10 @@ export function upsertUserMaterial({
   materialType,
   content
 }: UpsertUserMaterialInput) {
+  if (participantType !== ACTIVE_MATERIAL_PARTICIPANT) {
+    return saveAdaxUserMaterials(materials);
+  }
+
   const now = new Date().toISOString();
   const id = `${scenarioId}-${participantType}-${node.id}-${materialType}`;
   const existing = materials.find((item) => item.id === id);
