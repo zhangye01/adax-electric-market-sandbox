@@ -30,6 +30,8 @@ Read `docs/ADAX_PHASE_5_RENEWABLE_ENTRY_DRY_RUN.md` before implementing the rene
 
 Read `docs/ADAX_PHASE_5_STORAGE_ENTRY_DRY_RUN.md` before implementing the independent-storage candidate.
 
+Read `docs/ADAX_PHASE_5_THERMAL_ENTRY_DRY_RUN.md` before implementing the thermal candidate.
+
 If those files conflict, treat `docs/ADAX_MVP_STARTER.md` as the scope baseline, `docs/ADAX_LONG_TERM_PLAN.md` as the execution roadmap, and update the stale document before continuing feature work.
 
 ## Current Active Scope

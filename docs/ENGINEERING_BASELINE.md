@@ -22,6 +22,8 @@ Use `docs/ADAX_PHASE_5_RENEWABLE_ENTRY_DRY_RUN.md` before implementing the renew
 
 Use `docs/ADAX_PHASE_5_STORAGE_ENTRY_DRY_RUN.md` before implementing the independent-storage candidate.
 
+Use `docs/ADAX_PHASE_5_THERMAL_ENTRY_DRY_RUN.md` before implementing the thermal candidate.
+
 ## Source Boundaries
 
 Active retail flow:

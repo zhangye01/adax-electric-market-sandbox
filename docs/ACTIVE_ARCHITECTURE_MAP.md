@@ -239,6 +239,7 @@ Current entry and gate documents:
 - `docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md`: side-by-side scope control for Phase 5 candidate participants.
 - `docs/ADAX_PHASE_5_RENEWABLE_ENTRY_DRY_RUN.md`: renewable-specific entry dry run; not implementation approval.
 - `docs/ADAX_PHASE_5_STORAGE_ENTRY_DRY_RUN.md`: independent-storage-specific entry dry run; not implementation approval.
+- `docs/ADAX_PHASE_5_THERMAL_ENTRY_DRY_RUN.md`: thermal-specific entry dry run; not implementation approval.
 - `docs/ADAX_RENEWABLE_STARTUP_CARD.md`, `docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md`, and `docs/ADAX_THERMAL_STARTUP_CARD.md`: pending participant startup cards; not implementation approval.
 - `docs/ADAX_RETAIL_CONTRACT_GOVERNANCE.md`: central retail/app contract groups, change rules, and split triggers.
 - `docs/ADAX_SOURCE_SHAPE_AUDIT.md`: source size and import hotspot audit for refactor prioritization.

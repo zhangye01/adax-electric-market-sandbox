@@ -54,6 +54,7 @@ Candidate entry dry runs:
 
 - 新能源: `docs/ADAX_PHASE_5_RENEWABLE_ENTRY_DRY_RUN.md`.
 - 独立储能: `docs/ADAX_PHASE_5_STORAGE_ENTRY_DRY_RUN.md`.
+- 火电: `docs/ADAX_PHASE_5_THERMAL_ENTRY_DRY_RUN.md`.
 
 If the user confirms only one card, implement only that card. Do not opportunistically prepare shared runtime code for the other candidates.
 
