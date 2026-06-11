@@ -279,6 +279,7 @@ Rules:
 - pages must not own settlement math, template parsing, or route guards
 - `RecordsPage.tsx` coordinates records state and actions; archive list, detail panel, empty state, and export JSON preparation live in components/services
 - mobile sidebar collapse and shell-level responsive navigation stay in `Layout.tsx` and app-layout styles, not individual pages
+- `Layout.tsx` owns only shell collapsed-state coordination and app-frame assembly; sidebar, topbar, and brand mark rendering live in `src/components/layout/**`
 
 ### `src/components/**`
 
@@ -300,6 +301,7 @@ Rules:
 - retail execution action nodes are split by node: package, annual bilateral, and monthly auction
 - retail review is split into workspace composition, material grid, and output panel
 - records archive, detail, and empty-state rendering live in `src/components/records/**`; `RecordsPage.tsx` remains a composition surface
+- app shell sidebar, topbar, and market-clearing brand mark live in `src/components/layout/**`; navigation decisions remain in `src/domain/adaxNavigation.ts`
 
 ## Active Data Flow
 

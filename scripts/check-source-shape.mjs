@@ -14,7 +14,6 @@ const cssHighLineLimit = 800;
 
 const lineBudgets = new Map([
   ["src/domain/retailTypes.ts", 257],
-  ["src/components/Layout.tsx", 237],
   ["src/app/createAdaxTrainingActions.ts", 231],
   ["src/components/retail/RetailExecutionWorkspace.tsx", 223]
 ]);
