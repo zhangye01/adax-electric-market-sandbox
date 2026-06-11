@@ -1,0 +1,19 @@
+/* Sidebar current-mode card. */
+.sidebar-mode-card {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 16px 4px 18px;
+  border: 1px solid #22334c;
+  border-radius: 8px;
+  background: #111d2f;
+  padding: 12px;
+}
+
+.sidebar-mode-card > span {
+  color: #8ea4c1;
+  font-size: 12px;
+  font-weight: 800;
+}

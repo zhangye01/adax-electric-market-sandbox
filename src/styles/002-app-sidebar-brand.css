@@ -1,0 +1,64 @@
+/* Sidebar product brand and market-clearing mark. */
+.sidebar-brand {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 12px;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: left;
+  transition: background 160ms ease;
+}
+
+.sidebar-brand:hover {
+  background: #111d2f;
+}
+
+.sidebar-brand-mark {
+  display: flex;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: #f8fafc;
+  color: #047857;
+}
+
+.market-clearing-mark {
+  width: 31px;
+  height: 31px;
+}
+
+.market-clearing-bar {
+  fill: #0f4ea6;
+}
+
+.market-clearing-trend {
+  fill: none;
+  stroke: #16a34a;
+  stroke-linecap: square;
+  stroke-linejoin: round;
+  stroke-width: 4;
+}
+
+.market-clearing-arrow {
+  fill: #16a34a;
+}
+
+.sidebar-brand strong {
+  display: block;
+  color: #f8fafc;
+  font-size: 17px;
+  line-height: 1.1;
+}
+
+.sidebar-brand span span {
+  display: block;
+  margin-top: 4px;
+  color: #8ea4c1;
+  font-size: 12px;
+  line-height: 1.45;
+}

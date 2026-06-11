@@ -1,0 +1,23 @@
+/* Sidebar collapse button. */
+.sidebar-collapse-button {
+  display: inline-flex;
+  width: 38px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+  border: 1px solid #22334c;
+  border-radius: 8px;
+  background: #0b1320;
+  color: #9fb2cd;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    color 160ms ease;
+}
+
+.sidebar-collapse-button:hover {
+  border-color: #22d3ee;
+  background: rgba(14, 165, 233, 0.12);
+  color: #67e8f9;
+}

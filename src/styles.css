@@ -1,6 +1,9 @@
 @import "./styles/001-base.css";
 @import "./styles/002-app-layout.css";
-@import "./styles/002-app-sidebar-panel.css";
+@import "./styles/002-app-sidebar-collapse.css";
+@import "./styles/002-app-sidebar-brand.css";
+@import "./styles/002-app-sidebar-mode.css";
+@import "./styles/002-app-sidebar-collapsed.css";
 @import "./styles/002-app-sidebar-nav.css";
 @import "./styles/002-app-topbar.css";
 @import "./styles/003-home.css";
