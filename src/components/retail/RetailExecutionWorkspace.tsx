@@ -1,29 +1,20 @@
-import {
-  AlertTriangle,
-  ArrowRight,
-  CheckCircle2,
-  RotateCcw,
-} from "lucide-react";
 import { useState, type Dispatch, type SetStateAction } from "react";
+import { RetailExecutionContextBar } from "./RetailExecutionContextBar";
+import { RetailExecutionNodeFooter } from "./RetailExecutionNodeFooter";
 import { RetailExecutionNodeContent } from "./RetailExecutionNodeContent";
 import { RetailExecutionResultPanel } from "./RetailExecutionResultPanel";
 import { RetailNodeAssist } from "./RetailNodeAssist";
 import { RetailNodeRail } from "./RetailNodeRail";
 import { retailTrainingNodes } from "../../data/retailTrainingNodes";
 import { calculateAnnualServiceMwh, calculateCustomerMix } from "../../domain/retailCalculations";
-import { buildRetailExecutionWorkbenchContext, type RetailExecutionWorkbenchContext } from "../../domain/retailExecutionWorkbench";
+import { buildRetailExecutionWorkbenchContext } from "../../domain/retailExecutionWorkbench";
+import { getRetailNodeValidationErrors } from "../../domain/retailNodeValidation";
 import { createEmptyRetailTrainingState } from "../../domain/retailState";
 import type {
   RetailNodeId,
   RetailSettlementResult,
   RetailTrainingState
 } from "../../domain/retailTypes";
-import {
-  validateAnnualBilateral,
-  validateCustomerContracts,
-  validateMonthlyAuctions,
-  validateRetailPackage
-} from "../../domain/retailValidation";
 import { createRetailExecutionTemplateJson, parseRetailExecutionTemplate } from "../../services/retailExecutionTemplates";
 import { downloadTextFile } from "../../utils/download";
 
@@ -52,7 +43,7 @@ export function RetailExecutionWorkspace({
 }: RetailExecutionWorkspaceProps) {
   const [activeNodeId, setActiveNodeId] = useState<RetailNodeId>("marketBrief");
   const activeNode = retailTrainingNodes.find((node) => node.id === activeNodeId) ?? retailTrainingNodes[0];
-  const activeErrors = validationErrorsForNode(activeNode.id, state, validationErrors);
+  const activeErrors = getRetailNodeValidationErrors(activeNode.id, state, validationErrors);
   const annualServiceMwh = calculateAnnualServiceMwh(state);
   const customerMix = calculateCustomerMix(state);
   const currentNodeIndex = retailTrainingNodes.findIndex((node) => node.id === activeNode.id);
@@ -129,26 +120,14 @@ export function RetailExecutionWorkspace({
           onChange={updateState}
         />
 
-        <div className="retail-node-footer">
-          <ValidationBlock errors={activeErrors} />
-          <div className="retail-node-actions">
-            <button type="button" data-action="reset-retail-state" className="cockpit-secondary-action" onClick={() => updateState(createEmptyRetailTrainingState())}>
-              <RotateCcw size={15} />
-              重置
-            </button>
-            {nextNode ? (
-              <button type="button" data-action="next-retail-node" className="cockpit-primary-action" onClick={moveNextNode}>
-                下一节点
-                <ArrowRight size={15} />
-              </button>
-            ) : (
-              <button type="button" data-action="enter-settlement" className="cockpit-primary-action" disabled={!settlement || !resultGenerated} onClick={onNext}>
-                进入结算结果
-                <ArrowRight size={15} />
-              </button>
-            )}
-          </div>
-        </div>
+        <RetailExecutionNodeFooter
+          errors={activeErrors}
+          hasNextNode={Boolean(nextNode)}
+          canEnterSettlement={Boolean(settlement && resultGenerated)}
+          onReset={() => updateState(createEmptyRetailTrainingState())}
+          onNextNode={moveNextNode}
+          onEnterSettlement={onNext}
+        />
       </main>
 
       <RetailExecutionResultPanel
@@ -165,58 +144,4 @@ export function RetailExecutionWorkspace({
       />
     </section>
   );
-}
-
-function RetailExecutionContextBar({ context }: { context: RetailExecutionWorkbenchContext }) {
-  return (
-    <div className="retail-execution-context-bar" aria-label="当前交易节点上下文">
-      <div className="retail-execution-context-primary">
-        <span>{context.nodePositionLabel}</span>
-        <strong>{context.nodeTitle}</strong>
-        <p>{context.actionLabel}</p>
-      </div>
-      <div>
-        <span>业务阶段</span>
-        <strong>{context.stageLabel}</strong>
-      </div>
-      <div>
-        <span>输入 / 输出</span>
-        <strong>{context.artifactLabel}</strong>
-      </div>
-      <div className={`status-${context.statusTone}`}>
-        <span>节点状态</span>
-        <strong>{context.statusLabel}</strong>
-      </div>
-      <div>
-        <span>下一动作</span>
-        <strong>{context.nextActionLabel}</strong>
-      </div>
-    </div>
-  );
-}
-
-function ValidationBlock({ errors }: { errors: string[] }) {
-  if (errors.length === 0) {
-    return (
-      <div className="retail-validation ok">
-        <CheckCircle2 size={16} />
-        <span>当前节点校验通过</span>
-      </div>
-    );
-  }
-  return (
-    <div className="retail-validation error">
-      <AlertTriangle size={16} />
-      <span>{errors[0]}</span>
-    </div>
-  );
-}
-
-function validationErrorsForNode(id: RetailNodeId, state: RetailTrainingState, allErrors: string[]) {
-  if (id === "marketBrief") return [];
-  if (id === "customerLoad") return validateCustomerContracts(state).errors;
-  if (id === "retailPackage") return validateRetailPackage(state).errors;
-  if (id === "annualBilateral") return validateAnnualBilateral(state).errors;
-  if (id === "monthlyAuction") return validateMonthlyAuctions(state).errors;
-  return allErrors;
 }

@@ -13,8 +13,7 @@ const cssWatchLineLimit = 400;
 const cssHighLineLimit = 800;
 
 const lineBudgets = new Map([
-  ["src/domain/retailTypes.ts", 257],
-  ["src/components/retail/RetailExecutionWorkspace.tsx", 223]
+  ["src/domain/retailTypes.ts", 257]
 ]);
 
 const violations = [];

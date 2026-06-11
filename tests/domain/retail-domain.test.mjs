@@ -61,6 +61,7 @@ import {
   getRetailReviewMaterialStats,
   mergeRetailReviewSnapshotMaterials
 } from "../../.test-build/src/domain/retailReviewMaterials.js";
+import { getRetailNodeValidationErrors } from "../../.test-build/src/domain/retailNodeValidation.js";
 import { createEmptyRetailTrainingState, retailTypicalMonths } from "../../.test-build/src/domain/retailState.js";
 import {
   validateAnnualBilateral,
@@ -284,6 +285,24 @@ test("retail execution workbench context keeps node status and next action centr
 
   assert.equal(reviewContext.statusLabel, "记录已保存");
   assert.equal(reviewContext.nextActionLabel, "查看训练记录");
+});
+
+test("retail node validation maps active nodes to domain validators", () => {
+  const empty = createEmptyRetailTrainingState();
+  assert.deepEqual(getRetailNodeValidationErrors("marketBrief", empty, ["全局错误"]), []);
+  assert.ok(getRetailNodeValidationErrors("customerLoad", empty, []).some((error) => error.includes("工业稳定型签约电量")));
+  assert.deepEqual(getRetailNodeValidationErrors("retailPackage", empty, []), ["请选择零售套餐。"]);
+
+  const invalidAnnual = completeRetailState();
+  invalidAnnual.annualBilateral.bidPrice = 300;
+  assert.ok(getRetailNodeValidationErrors("annualBilateral", invalidAnnual, []).some((error) => error.includes("对手方不接受")));
+
+  const invalidMonthly = completeRetailState();
+  invalidMonthly.monthlyAuctions.december.participates = null;
+  assert.ok(getRetailNodeValidationErrors("monthlyAuction", invalidMonthly, []).some((error) => error.includes("12 月")));
+
+  assert.deepEqual(getRetailNodeValidationErrors("settlement", empty, ["全局错误"]), ["全局错误"]);
+  assert.deepEqual(getRetailNodeValidationErrors("resultReview", empty, ["全局错误"]), ["全局错误"]);
 });
 
 test("retail market context organizes annual monthly and typical-day inputs", () => {

@@ -33,6 +33,7 @@ Active retail flow:
 - `src/domain/retailExposureCalculations.ts`
 - `src/domain/retailRiskDiagnostics.ts`
 - `src/domain/retailMarketContext.ts`
+- `src/domain/retailNodeValidation.ts`
 - `src/domain/retailRecords.ts`
 - `src/domain/retailResultDisplay.ts`
 - `src/domain/retailSettlementDisplay.ts`
@@ -278,6 +279,7 @@ Do not treat visual inspection as a replacement for domain tests.
 | `App.tsx` becoming a god component | Reduced | Session state and page rendering are extracted; keep future flow logic out of the entry component |
 | `Layout.tsx` becoming an app-shell god component | Reduced | Sidebar, topbar, and market-clearing brand mark now live under `src/components/layout/**`; keep shell state in `Layout.tsx` |
 | Training action orchestration becoming a mixed route/action god module | Reduced | Navigation actions now live in `src/app/createAdaxNavigationActions.ts`; keep record/material/template coordination in `createAdaxTrainingActions.ts` |
+| Retail execution workspace regrowing mixed validation and UI chrome | Reduced | Node validation routing now lives in `src/domain/retailNodeValidation.ts`, and execution context/footer chrome lives in dedicated retail components |
 | Legacy prototype mixing into ADAX flow | Reduced | Legacy photovoltaic and old ADAX scenario prototypes are isolated under `src/legacy/**` and excluded from active build |
 | Global CSS coupling | Reduced | Styles are split by responsibility; sidebar, home, about, records, cockpit controls, shared flow lists, step indicator, retail review surfaces, and retail result-review surfaces now have separate shell/collapse/brand/mode/market/hero/panel/section/list/input/action/template/data/step/helper/prompt/material/progress/status/boundary/snapshot/empty/verdict/insight/diagnostic partitions, and obsolete review-cockpit/workspace-context/output CSS has been removed; continue avoiding cross-page selectors |
 | Template import corrupting state | Medium | Runtime parser validation and import tests |

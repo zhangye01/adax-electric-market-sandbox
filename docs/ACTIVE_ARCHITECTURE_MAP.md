@@ -105,6 +105,7 @@ Current modules:
 - `retailExposureCalculations.ts`
 - `retailRiskDiagnostics.ts`
 - `retailMarketContext.ts`
+- `retailNodeValidation.ts`
 - `retailRecords.ts`
 - `retailResultDisplay.ts`
 - `retailSettlementDisplay.ts`
@@ -295,6 +296,8 @@ Rules:
 - `RetailMarketSituationBoard.tsx` renders the shared market context for scenario and retail workspace pages; market context derivation stays in `src/domain/retailMarketContext.ts`
 - `RetailSettlementSignalBoard.tsx` renders shared exposure and settlement result signals across workspace, settlement, and execution result-review surfaces; exposure/cost-stack display interpretation stays in `src/domain/retailSettlementDisplay.ts`
 - execution workspace node context, status, input/output artifact counts, and next-action labels stay in `src/domain/retailExecutionWorkbench.ts`; `RetailExecutionWorkspace.tsx` renders that contract
+- execution workspace active-node validation mapping stays in `src/domain/retailNodeValidation.ts`; `RetailExecutionWorkspace.tsx` uses the result instead of owning validator routing
+- execution workspace chrome is split into `RetailExecutionContextBar.tsx` and `RetailExecutionNodeFooter.tsx`; `RetailExecutionWorkspace.tsx` remains a composition surface
 - customer load node segment progress, customer mix, available capacity, and status copy stay in `src/domain/retailCustomerLoadDisplay.ts`; `RetailCustomerLoadNode.tsx` renders that contract in a primary-action plus reference-feedback layout
 - retail package node option list, price text, selected package feedback, and status copy stay in `src/domain/retailPackageDisplay.ts`; `RetailPackageNode.tsx` renders that contract in the same primary-action plus reference-feedback layout
 - annual bilateral node deal tone, completion count, reference bounds, and status copy stay in `src/domain/retailAnnualBilateralDisplay.ts`; `RetailAnnualBilateralNode.tsx` renders that contract in a primary-action plus reference-feedback layout
@@ -363,6 +366,7 @@ Covered:
 - market situation context for annual boundary, three monthly windows, and three 24-hour typical-day curves
 - settlement display hierarchy for result signals, exposure signals, and cost-stack items
 - execution workspace context contract for node status and next action
+- execution active-node validation mapping
 - customer load display contract for segment progress and mix status
 - retail package display contract for option status and price text
 - annual bilateral display contract for primary action status and counterparty feedback

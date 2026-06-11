@@ -235,7 +235,7 @@ Exit Criteria:
 
 Continue Engineering Hardening Hold.
 
-Next recommended task: keep the source-shape and domain-contract checks in the normal quality gate. For code structure work, keep `src/domain/retailTypes.ts` stable unless a confirmed participant startup card requires shared contracts, and keep `src/components/retail/RetailExecutionWorkspace.tsx` as a workspace composition surface. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
+Next recommended task: keep the source-shape and domain-contract checks in the normal quality gate. For code structure work, keep `src/domain/retailTypes.ts` stable unless a confirmed participant startup card requires shared contracts, and monitor workspace fan-out so composition files do not regain validation, settlement, or display-contract logic. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
 
 ## Project Rescue Triggers
 
