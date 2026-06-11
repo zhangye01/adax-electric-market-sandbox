@@ -21,6 +21,7 @@ Authoritative inputs for this rehearsal:
 - `docs/ADAX_CHANGE_GATE_CHECKLIST.md`
 - `docs/ADAX_ENGINEERING_READINESS_AUDIT.md`
 - `docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md`
+- `docs/ADAX_PHASE_5_RENEWABLE_ENTRY_DRY_RUN.md`
 - `docs/ADAX_RENEWABLE_STARTUP_CARD.md`
 - `docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md`
 - `docs/ADAX_THERMAL_STARTUP_CARD.md`
@@ -47,7 +48,7 @@ Use `docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md` to compare candidates before sel
 
 | Candidate | Current artifact | Entry result | Why |
 | --- | --- | --- | --- |
-| 新能源 | `docs/ADAX_RENEWABLE_STARTUP_CARD.md` exists, status pending user confirmation | Not ready | The card is a draft; user confirmation and final answers are still required before code. |
+| 新能源 | `docs/ADAX_RENEWABLE_STARTUP_CARD.md` and `docs/ADAX_PHASE_5_RENEWABLE_ENTRY_DRY_RUN.md` exist, status pending user confirmation | Not ready | The card is a draft; the dry run confirms open questions and no implementation approval. |
 | 独立储能 | `docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md` exists, status pending user confirmation | Not ready | The card is a draft; user confirmation and final answers are still required before code. |
 | 火电 | `docs/ADAX_THERMAL_STARTUP_CARD.md` exists, status pending user confirmation | Not ready | The card is a draft; user confirmation and separate ten-segment offer-rule confirmation are still required before code. |
 

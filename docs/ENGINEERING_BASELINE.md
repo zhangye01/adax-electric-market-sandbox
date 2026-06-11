@@ -18,6 +18,8 @@ Use `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md` before deciding whether any new 
 
 Use `docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md` before choosing between renewable, independent storage, and thermal implementation candidates.
 
+Use `docs/ADAX_PHASE_5_RENEWABLE_ENTRY_DRY_RUN.md` before implementing the renewable candidate.
+
 ## Source Boundaries
 
 Active retail flow:

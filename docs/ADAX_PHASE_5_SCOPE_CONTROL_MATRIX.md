@@ -50,6 +50,8 @@ All Phase 5 candidates must preserve these constraints:
 | 独立储能 | training period, charge/discharge declaration granularity, same-hour charge/discharge rule, execution-result model, efficiency-loss visibility, whether it is the second Phase 5 candidate |
 | 火电 | spot-only ten-segment scope, capacity segmentation rule, price monotonicity rule, clearing-feedback model, cost-range visibility, whether it is the third Phase 5 candidate |
 
+Renewable entry dry run: `docs/ADAX_PHASE_5_RENEWABLE_ENTRY_DRY_RUN.md`.
+
 If the user confirms only one card, implement only that card. Do not opportunistically prepare shared runtime code for the other candidates.
 
 ## Selection Rules

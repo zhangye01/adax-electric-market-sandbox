@@ -26,6 +26,8 @@ Read `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md` before entering Phase 5 or impl
 
 Read `docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md` before choosing between renewable, independent storage, and thermal implementation.
 
+Read `docs/ADAX_PHASE_5_RENEWABLE_ENTRY_DRY_RUN.md` before implementing the renewable candidate.
+
 If those files conflict, treat `docs/ADAX_MVP_STARTER.md` as the scope baseline, `docs/ADAX_LONG_TERM_PLAN.md` as the execution roadmap, and update the stale document before continuing feature work.
 
 ## Current Active Scope
