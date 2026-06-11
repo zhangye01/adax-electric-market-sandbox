@@ -24,6 +24,8 @@ Read `docs/ADAX_ENGINEERING_READINESS_AUDIT.md` before changing Engineering Hard
 
 Read `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md` before entering Phase 5 or implementing any new participant workflow.
 
+Read `docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md` before choosing between renewable, independent storage, and thermal implementation.
+
 If those files conflict, treat `docs/ADAX_MVP_STARTER.md` as the scope baseline, `docs/ADAX_LONG_TERM_PLAN.md` as the execution roadmap, and update the stale document before continuing feature work.
 
 ## Current Active Scope

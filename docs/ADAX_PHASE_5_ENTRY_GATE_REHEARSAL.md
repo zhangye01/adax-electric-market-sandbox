@@ -20,6 +20,7 @@ Authoritative inputs for this rehearsal:
 - `docs/ADAX_LONG_TERM_PLAN.md`
 - `docs/ADAX_CHANGE_GATE_CHECKLIST.md`
 - `docs/ADAX_ENGINEERING_READINESS_AUDIT.md`
+- `docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md`
 - `docs/ADAX_RENEWABLE_STARTUP_CARD.md`
 - `docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md`
 - `docs/ADAX_THERMAL_STARTUP_CARD.md`
@@ -41,6 +42,8 @@ Authoritative inputs for this rehearsal:
 | No Project Rescue trigger is active | No drift into real trading, detached review mode, or explanation-heavy operation pages | Satisfied for rehearsal only |
 
 ## Candidate Participant Readiness
+
+Use `docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md` to compare candidates before selecting one target card.
 
 | Candidate | Current artifact | Entry result | Why |
 | --- | --- | --- | --- |

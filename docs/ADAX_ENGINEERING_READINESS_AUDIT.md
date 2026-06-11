@@ -70,7 +70,7 @@ npm run quality
 | --- | --- |
 | Scope and drift | `AGENTS.md`, `docs/ADAX_MVP_STARTER.md`, `docs/ADAX_CHANGE_GATE_CHECKLIST.md` |
 | Long-term execution | `docs/ADAX_LONG_TERM_PLAN.md` |
-| Phase 5 entry | `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md` |
+| Phase 5 entry | `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md`, `docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md` |
 | Source boundaries | `docs/ACTIVE_ARCHITECTURE_MAP.md`, `scripts/check-boundaries.mjs`, `tests/scripts/check-boundaries.test.mjs` |
 | Central contracts | `docs/ADAX_RETAIL_CONTRACT_GOVERNANCE.md`, `scripts/check-domain-contracts.mjs`, `tests/scripts/check-domain-contracts.test.mjs` |
 | Source shape | `docs/ADAX_SOURCE_SHAPE_AUDIT.md`, `scripts/check-source-shape.mjs`, `tests/scripts/check-source-shape.test.mjs` |
@@ -106,4 +106,4 @@ Keep Engineering Hardening Hold active.
 
 If continuing autonomously, use `docs/ADAX_CHANGE_GATE_CHECKLIST.md` before each change and keep this audit current when a guardrail, quality gate, source-shape budget, or active risk changes.
 
-Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md`, `docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md`, or `docs/ADAX_THERMAL_STARTUP_CARD.md` until the user explicitly resumes participant expansion. Use `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md` before deciding whether any new participant is ready for code.
+Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md`, `docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md`, or `docs/ADAX_THERMAL_STARTUP_CARD.md` until the user explicitly resumes participant expansion. Use `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md` and `docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md` before deciding whether any new participant is ready for code.

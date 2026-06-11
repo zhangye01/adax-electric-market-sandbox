@@ -16,6 +16,8 @@ Use `docs/ADAX_ENGINEERING_READINESS_AUDIT.md` as the current maintainability sn
 
 Use `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md` before deciding whether any new participant workflow may enter implementation.
 
+Use `docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md` before choosing between renewable, independent storage, and thermal implementation candidates.
+
 ## Source Boundaries
 
 Active retail flow:
