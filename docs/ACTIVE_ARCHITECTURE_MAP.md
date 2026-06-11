@@ -354,6 +354,8 @@ Forbidden:
 
 Current no-dependency tests live in `tests/domain/retail-domain.test.mjs`.
 
+Script-level guardrail tests live in `tests/scripts/check-boundaries.test.mjs`.
+
 Covered:
 
 - retail state validation
@@ -383,6 +385,7 @@ Covered:
 - flow guards
 - navigation shell rules
 - app-layer navigation action side effects for product-route reset and review-output guarding
+- boundary-checker negative fixtures for component validation imports, domain browser APIs, and real province runtime data
 
 Next useful coverage:
 

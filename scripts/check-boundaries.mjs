@@ -237,7 +237,6 @@ function checkPresentationBusinessBoundaries() {
   ];
   const allowedDomainRuleImports = new Set([
     "src/components/retail/RetailExecutionWorkspace.tsx -> src/domain/retailCalculations",
-    "src/components/retail/RetailExecutionWorkspace.tsx -> src/domain/retailValidation",
     "src/components/retail/RetailExecutionResultPanel.tsx -> src/domain/retailCalculations"
   ]);
 
