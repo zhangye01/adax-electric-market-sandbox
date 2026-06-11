@@ -130,7 +130,7 @@ Fan-in pressure:
 34. `src/pages/RecordsPage.tsx` has been reduced from a budgeted page-pressure file to a page coordinator. Archive list, detail panel, and empty state now live in `src/components/records/**`, and record export JSON preparation now lives in `src/services/adaxTrainingRecordExports.ts`.
 35. Training-record export JSON has a service-level contract test for export type, boundary text, batch count, and record identity.
 36. `src/domain/retailTypes.ts` and `src/types.ts` have high fan-in. They are central contracts; changes here should remain conservative and test-backed.
-37. `scripts/check-domain-contracts.mjs` now guards the reviewed `retailTypes.ts` export list so accidental contract expansion or renaming cannot pass `npm run quality` unnoticed.
+37. `scripts/check-domain-contracts.mjs` now guards the reviewed `retailTypes.ts` and `src/types.ts` export lists so accidental contract expansion or renaming cannot pass `npm run quality` unnoticed.
 38. `RetailReviewWorkspace.tsx` and `RetailExecutionWorkspace.tsx` have the highest component fan-out. They should stay composition surfaces and not regain business rules.
 
 ## Recommended Refactor Queue

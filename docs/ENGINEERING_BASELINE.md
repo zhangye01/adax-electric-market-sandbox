@@ -256,7 +256,7 @@ Every handoff should run:
 - `npm run test`
 - `npm run build`
 
-`npm run quality` runs the boundary check, domain-contract check, and source-shape budget check before typecheck, tests, and build.
+`npm run quality` runs the boundary check, central contract check, and source-shape budget check before typecheck, tests, and build.
 
 Do not treat visual inspection as a replacement for domain tests.
 

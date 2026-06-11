@@ -218,7 +218,7 @@ Active tasks:
 
 - Keep `docs/ADAX_CHANGE_GATE_CHECKLIST.md` current as the pre-change gate.
 - Keep `docs/ADAX_SOURCE_SHAPE_AUDIT.md` current when source size or import pressure changes materially.
-- Keep `npm run check:domain-contracts` current when central domain contract exports intentionally change.
+- Keep `npm run check:domain-contracts` current when central domain or app contract exports intentionally change.
 - Keep `npm run check:source-shape` budgets current when a pressure file is intentionally refactored or explicitly allowed to grow.
 - Keep `docs/ACTIVE_ARCHITECTURE_MAP.md` current when source boundaries change.
 - Keep `docs/ENGINEERING_BASELINE.md` risk controls current as new automation or checks are added.

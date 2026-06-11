@@ -3,40 +3,58 @@ import { resolve } from "node:path";
 
 const rootDir = process.cwd();
 
-const expectedRetailTypeExports = [
-  "RetailCustomerSegment",
-  "RetailPackageType",
-  "AnnualContractCurveType",
-  "MonthlyContractCurveType",
-  "RetailTypicalMonth",
-  "RetailTypicalDay",
-  "RetailRiskLevel",
-  "RetailPricePosition",
-  "RetailNodeId",
-  "RetailHourlyCurve",
-  "RetailTrainingState",
-  "MonthlyAuctionDecision",
-  "RetailValidationResult",
-  "RetailAnnualMarketData",
-  "RetailCustomerPoolItem",
-  "RetailPackageConfig",
-  "RetailFixedPackageConfig",
-  "RetailTouPackageConfig",
-  "RetailSpotLinkedPackageConfig",
-  "RetailPackageDefinition",
-  "RetailTypicalMonthData",
-  "RetailTypicalDayData",
-  "RetailMarketData",
-  "CustomerMixResult",
-  "AnnualBilateralDealResult",
-  "AnnualContractResult",
-  "MonthlyAuctionResult",
-  "RetailMonthlyAuctionResults",
-  "HourlyExposurePoint",
-  "TypicalDayExposureResult",
-  "CurveMismatchRiskResult",
-  "RetailSettlementResult",
-  "RetailExecutionRecord"
+const reviewedContracts = [
+  {
+    path: "src/domain/retailTypes.ts",
+    exports: [
+      "RetailCustomerSegment",
+      "RetailPackageType",
+      "AnnualContractCurveType",
+      "MonthlyContractCurveType",
+      "RetailTypicalMonth",
+      "RetailTypicalDay",
+      "RetailRiskLevel",
+      "RetailPricePosition",
+      "RetailNodeId",
+      "RetailHourlyCurve",
+      "RetailTrainingState",
+      "MonthlyAuctionDecision",
+      "RetailValidationResult",
+      "RetailAnnualMarketData",
+      "RetailCustomerPoolItem",
+      "RetailPackageConfig",
+      "RetailFixedPackageConfig",
+      "RetailTouPackageConfig",
+      "RetailSpotLinkedPackageConfig",
+      "RetailPackageDefinition",
+      "RetailTypicalMonthData",
+      "RetailTypicalDayData",
+      "RetailMarketData",
+      "CustomerMixResult",
+      "AnnualBilateralDealResult",
+      "AnnualContractResult",
+      "MonthlyAuctionResult",
+      "RetailMonthlyAuctionResults",
+      "HourlyExposurePoint",
+      "TypicalDayExposureResult",
+      "CurveMismatchRiskResult",
+      "RetailSettlementResult",
+      "RetailExecutionRecord"
+    ]
+  },
+  {
+    path: "src/types.ts",
+    exports: [
+      "AdaxPageId",
+      "AdaxTrainingStep",
+      "AdaxTrainingMode",
+      "AdaxRoleId",
+      "UserMaterial",
+      "AdaxReviewRecordSnapshot",
+      "AdaxRecordRevisitTarget",
+      "AdaxTrainingRecord"
+    ]
+  }
 ];
 
 function log(message = "") {
@@ -52,25 +70,30 @@ function difference(left, right) {
   return left.filter((item) => !rightSet.has(item));
 }
 
-const retailTypesPath = resolve(rootDir, "src/domain/retailTypes.ts");
-const actualRetailTypeExports = extractExportedContracts(readFileSync(retailTypesPath, "utf8"));
+const violations = [];
 
-const missingExports = difference(expectedRetailTypeExports, actualRetailTypeExports);
-const unreviewedExports = difference(actualRetailTypeExports, expectedRetailTypeExports);
+for (const contract of reviewedContracts) {
+  const actualExports = extractExportedContracts(readFileSync(resolve(rootDir, contract.path), "utf8"));
+  const missingExports = difference(contract.exports, actualExports);
+  const unreviewedExports = difference(actualExports, contract.exports);
 
-log(`retailTypes exports checked: ${actualRetailTypeExports.length}`);
-
-if (missingExports.length > 0 || unreviewedExports.length > 0) {
-  console.error("\nDomain contract check failed:\n");
+  log(`${contract.path} exports checked: ${actualExports.length}`);
 
   if (missingExports.length > 0) {
-    console.error("- Missing reviewed exports:");
-    for (const name of missingExports) console.error(`  - ${name}`);
+    violations.push({ path: contract.path, kind: "Missing reviewed exports", exports: missingExports });
   }
 
   if (unreviewedExports.length > 0) {
-    console.error("- New or renamed exports that need review:");
-    for (const name of unreviewedExports) console.error(`  - ${name}`);
+    violations.push({ path: contract.path, kind: "New or renamed exports that need review", exports: unreviewedExports });
+  }
+}
+
+if (violations.length > 0) {
+  console.error("\nDomain contract check failed:\n");
+
+  for (const violation of violations) {
+    console.error(`- ${violation.path}: ${violation.kind}`);
+    for (const name of violation.exports) console.error(`  - ${name}`);
   }
 
   console.error(
@@ -79,4 +102,4 @@ if (missingExports.length > 0 || unreviewedExports.length > 0) {
   process.exit(1);
 }
 
-log("all domain contract exports are reviewed.");
+log("all central contract exports are reviewed.");
