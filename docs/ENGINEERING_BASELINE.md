@@ -145,6 +145,10 @@ Shared shell and persistence:
 - `src/styles/002-app-sidebar-mode.css`
 - `src/styles/002-app-sidebar-collapsed.css`
 - `src/styles/002-app-sidebar-nav.css`
+- `src/styles/002-app-sidebar-nav-items.css`
+- `src/styles/002-app-sidebar-status.css`
+- `src/styles/002-app-sidebar-footer.css`
+- `src/styles/002-app-sidebar-nav-collapsed.css`
 - `src/styles/002-app-topbar.css`
 - `src/styles/003-home.css`
 - `src/styles/003-home-hero.css`

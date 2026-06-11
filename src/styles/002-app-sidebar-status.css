@@ -1,0 +1,23 @@
+/* Sidebar navigation completion status dots. */
+.sidebar-status {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  border: 1px solid #334155;
+}
+
+.sidebar-status.active {
+  border-color: #22d3ee;
+  background: #22d3ee;
+}
+
+.sidebar-status.done {
+  border-color: #34d399;
+  background: #34d399;
+}
+
+.sidebar-status.locked {
+  border-color: #475569;
+  background: transparent;
+}

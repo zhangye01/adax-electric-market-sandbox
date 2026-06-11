@@ -233,7 +233,7 @@ Exit Criteria:
 
 Continue Engineering Hardening Hold.
 
-Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to review `src/styles/002-app-sidebar-nav.css` when sidebar navigation styles are next touched. Split navigation container/section headings, nav item states, status dots, footer notice, and collapsed-nav overrides only if the file still mixes those responsibilities. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
+Next recommended task: use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to review `src/styles/009-flow-scenario-market.css` when scenario market styles are next touched. Split annual fact cards, monthly window cards, and typical-day price bars only if that surface needs visual work. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
 
 ## Project Rescue Triggers
 

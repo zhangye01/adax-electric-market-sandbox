@@ -5,6 +5,10 @@
 @import "./styles/002-app-sidebar-mode.css";
 @import "./styles/002-app-sidebar-collapsed.css";
 @import "./styles/002-app-sidebar-nav.css";
+@import "./styles/002-app-sidebar-nav-items.css";
+@import "./styles/002-app-sidebar-status.css";
+@import "./styles/002-app-sidebar-footer.css";
+@import "./styles/002-app-sidebar-nav-collapsed.css";
 @import "./styles/002-app-topbar.css";
 @import "./styles/003-home.css";
 @import "./styles/003-home-hero.css";
