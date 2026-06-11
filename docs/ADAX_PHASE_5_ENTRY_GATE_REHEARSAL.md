@@ -22,6 +22,7 @@ Authoritative inputs for this rehearsal:
 - `docs/ADAX_ENGINEERING_READINESS_AUDIT.md`
 - `docs/ADAX_RENEWABLE_STARTUP_CARD.md`
 - `docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md`
+- `docs/ADAX_THERMAL_STARTUP_CARD.md`
 - `docs/ACTIVE_ARCHITECTURE_MAP.md`
 
 ## Universal Entry Gate
@@ -30,12 +31,12 @@ Authoritative inputs for this rehearsal:
 | --- | --- | --- |
 | User explicitly resumes feature expansion | Clear user instruction to leave Engineering Hardening Hold and implement a target participant | Not satisfied |
 | Target participant startup card is confirmed | Confirmed card for the exact participant being implemented | Not satisfied |
-| Scope has explicit non-goals | Startup card lists what is excluded | Partly satisfied for renewable and independent storage only |
-| Transaction chain is defined | Node list, mode alignment, operation/result boundaries | Partly satisfied for renewable and independent storage only |
+| Scope has explicit non-goals | Startup card lists what is excluded | Partly satisfied for renewable, independent storage, and thermal only |
+| Transaction chain is defined | Node list, mode alignment, operation/result boundaries | Partly satisfied for renewable, independent storage, and thermal only |
 | Data boundary is defined | Virtual data levels, no real province/customer/bid records | Satisfied as a global rule |
-| Rule boundary is defined | Validation and calculation responsibilities identified before UI | Partly satisfied for renewable and independent storage only |
-| Storage and template boundary is defined | localStorage, import/export shape, invalid-data behavior | Partly satisfied for renewable and independent storage only |
-| Test plan is defined | Normal, boundary, and abnormal cases before code | Partly satisfied for renewable and independent storage only |
+| Rule boundary is defined | Validation and calculation responsibilities identified before UI | Partly satisfied for renewable, independent storage, and thermal only |
+| Storage and template boundary is defined | localStorage, import/export shape, invalid-data behavior | Partly satisfied for renewable, independent storage, and thermal only |
+| Test plan is defined | Normal, boundary, and abnormal cases before code | Partly satisfied for renewable, independent storage, and thermal only |
 | Current baseline is green | `npm run quality` passes before implementation starts | Must be rerun at entry time |
 | No Project Rescue trigger is active | No drift into real trading, detached review mode, or explanation-heavy operation pages | Satisfied for rehearsal only |
 
@@ -45,7 +46,7 @@ Authoritative inputs for this rehearsal:
 | --- | --- | --- | --- |
 | 新能源 | `docs/ADAX_RENEWABLE_STARTUP_CARD.md` exists, status pending user confirmation | Not ready | The card is a draft; user confirmation and final answers are still required before code. |
 | 独立储能 | `docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md` exists, status pending user confirmation | Not ready | The card is a draft; user confirmation and final answers are still required before code. |
-| 火电 | No startup card | Not ready | Ten-segment offer rules must be scoped separately before any thermal implementation. |
+| 火电 | `docs/ADAX_THERMAL_STARTUP_CARD.md` exists, status pending user confirmation | Not ready | The card is a draft; user confirmation and separate ten-segment offer-rule confirmation are still required before code. |
 
 ## Startup Card Acceptance Checklist
 
@@ -97,4 +98,4 @@ Switch to Project Rescue instead of coding if:
 
 Keep Engineering Hardening Hold active.
 
-If the user says to resume feature expansion, ask them to confirm the target participant startup card first. For the current candidate order, the likely first confirmation target is `docs/ADAX_RENEWABLE_STARTUP_CARD.md`; the independent-storage confirmation target is `docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md`.
+If the user says to resume feature expansion, ask them to confirm the target participant startup card first. For the current candidate order, the likely first confirmation target is `docs/ADAX_RENEWABLE_STARTUP_CARD.md`; the independent-storage confirmation target is `docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md`; the thermal confirmation target is `docs/ADAX_THERMAL_STARTUP_CARD.md`.

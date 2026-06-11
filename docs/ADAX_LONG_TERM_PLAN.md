@@ -205,8 +205,9 @@ Planning Artifacts:
 
 - 新能源 startup card created: `docs/ADAX_RENEWABLE_STARTUP_CARD.md`.
 - 独立储能 startup card created: `docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md`.
+- 火电 startup card created: `docs/ADAX_THERMAL_STARTUP_CARD.md`.
 - Phase 5 entry gate rehearsal created: `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md`.
-- Status: pending user confirmation. Do not implement renewable or independent-storage code until the target startup card is confirmed.
+- Status: pending user confirmation. Do not implement renewable, independent-storage, or thermal code until the target startup card is confirmed. Thermal also requires separate confirmation of ten-segment offer rules.
 
 ## Engineering Hardening Hold
 
@@ -239,7 +240,7 @@ Continue Engineering Hardening Hold.
 
 Current readiness baseline: `docs/ADAX_ENGINEERING_READINESS_AUDIT.md`.
 
-Next recommended task: keep the engineering-readiness audit current and use it with `docs/ADAX_CHANGE_GATE_CHECKLIST.md` and `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md` before any new feature work. Keep source-shape, domain-contract, boundary-checker, app-action, route-sync decision, session-derivation, and shared-fixture guardrails in the normal quality gate. For code structure work, keep `src/domain/retailTypes.ts` stable under `docs/ADAX_RETAIL_CONTRACT_GOVERNANCE.md` unless a confirmed participant startup card requires shared contracts. Next code-focused hardening should extract app action test harnesses only if more stateful action scenarios are added. Do not enter Phase 5, or review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` or `docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md`, until the user explicitly resumes participant expansion and confirms the target participant startup card.
+Next recommended task: keep the engineering-readiness audit current and use it with `docs/ADAX_CHANGE_GATE_CHECKLIST.md` and `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md` before any new feature work. Keep source-shape, domain-contract, boundary-checker, app-action, route-sync decision, session-derivation, and shared-fixture guardrails in the normal quality gate. For code structure work, keep `src/domain/retailTypes.ts` stable under `docs/ADAX_RETAIL_CONTRACT_GOVERNANCE.md` unless a confirmed participant startup card requires shared contracts. Next code-focused hardening should extract app action test harnesses only if more stateful action scenarios are added. Do not enter Phase 5, or review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md`, `docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md`, or `docs/ADAX_THERMAL_STARTUP_CARD.md`, until the user explicitly resumes participant expansion and confirms the target participant startup card.
 
 ## Project Rescue Triggers
 
