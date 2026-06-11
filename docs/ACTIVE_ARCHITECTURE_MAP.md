@@ -326,12 +326,13 @@ Rules:
 ## Active Data Flow
 
 1. `routeFromLocation` reads current browser URL into `{ page, mode, role }`.
-2. `useAdaxBrowserRouteSync` keeps route state, legacy merged product paths, participant query params, and guarded output URLs synchronized.
-3. `useAdaxTrainingSession` composes React state and derives validation/settlement.
-4. `createAdaxTrainingActions` updates state, records, materials, and routes in response to user actions.
-5. Retail validation and settlement come from `src/domain/**`.
-6. Records and review materials persist through `src/services/**` and `src/utils/adaxStorage.ts`.
-7. `AdaxPageRenderer` renders the active page and passes only the needed props.
+2. `pathForPage` only emits the active `retailer` participant while Phase 5 remains closed, even if a closed participant id is passed in.
+3. `useAdaxBrowserRouteSync` keeps route state, legacy merged product paths, participant query params, and guarded output URLs synchronized.
+4. `useAdaxTrainingSession` composes React state and derives validation/settlement.
+5. `createAdaxTrainingActions` updates state, records, materials, and routes in response to user actions.
+6. Retail validation and settlement come from `src/domain/**`.
+7. Records and review materials persist through `src/services/**` and `src/utils/adaxStorage.ts`.
+8. `AdaxPageRenderer` renders the active page and passes only the needed props.
 
 ## Import Rules
 

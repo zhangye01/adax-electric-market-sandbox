@@ -918,6 +918,8 @@ test("route helpers preserve active retail flow URLs", () => {
   assert.equal(pathForPage("scenario", "execution"), "/scenarios?mode=execution");
   assert.equal(pathForPage("about", null), "/about");
   assert.equal(pathForPage("review", "execution", "retailer"), "/report?mode=execution&scenario=SCN-A-STD-001&participant=retailer");
+  assert.equal(pathForPage("strategy", "review", "thermal"), "/workspace?mode=review&scenario=SCN-A-STD-001&participant=retailer");
+  assert.equal(pathForPage("settlement", "execution", "storage"), "/result?mode=execution&scenario=SCN-A-STD-001&participant=retailer");
   assert.deepEqual(routeFromLocation({ pathname: "/about", search: "" }), {
     page: "about",
     mode: null
