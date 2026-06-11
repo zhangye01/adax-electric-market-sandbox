@@ -4,6 +4,7 @@ import { resolve } from "node:path";
 const rootDir = process.cwd();
 
 const requiredFiles = [
+  "package.json",
   "AGENTS.md",
   "docs/ADAX_MVP_STARTER.md",
   "docs/ADAX_LONG_TERM_PLAN.md",
@@ -36,7 +37,14 @@ const requiredReferences = [
       "docs/ADAX_PHASE_5_RENEWABLE_ENTRY_DRY_RUN.md",
       "docs/ADAX_PHASE_5_STORAGE_ENTRY_DRY_RUN.md",
       "docs/ADAX_PHASE_5_THERMAL_ENTRY_DRY_RUN.md",
-      "docs/ADAX_RELEASE_PROCESS.md"
+      "docs/ADAX_RELEASE_PROCESS.md",
+      "npm run check:engineering-guardrails",
+      "npm run check:boundaries",
+      "npm run check:domain-contracts",
+      "npm run check:source-shape",
+      "npm run typecheck",
+      "npm run test",
+      "npm run build"
     ]
   },
   {
@@ -142,6 +150,32 @@ const requiredPhrases = [
   }
 ];
 
+const requiredPackageScripts = {
+  "check:engineering-guardrails": "node scripts/check-engineering-guardrails.mjs",
+  "check:boundaries": "node scripts/check-boundaries.mjs",
+  "check:domain-contracts": "node scripts/check-domain-contracts.mjs",
+  "check:source-shape": "node scripts/check-source-shape.mjs",
+  "typecheck": "tsc -b",
+  "build": "tsc -b && vite build"
+};
+
+const requiredQualityCommands = [
+  "npm run check:engineering-guardrails",
+  "npm run check:boundaries",
+  "npm run check:domain-contracts",
+  "npm run check:source-shape",
+  "npm run typecheck",
+  "npm run test",
+  "npm run build"
+];
+
+const requiredTestTargets = [
+  "tests/scripts/check-engineering-guardrails.test.mjs",
+  "tests/scripts/check-boundaries.test.mjs",
+  "tests/scripts/check-source-shape.test.mjs",
+  "tests/scripts/check-domain-contracts.test.mjs"
+];
+
 const violations = [];
 
 function log(message = "") {
@@ -158,6 +192,15 @@ function addViolation(file, rule, detail) {
 
 function fileExists(projectPath) {
   return existsSync(resolve(rootDir, projectPath));
+}
+
+function parseJsonFile(projectPath) {
+  try {
+    return JSON.parse(readText(projectPath));
+  } catch (error) {
+    addViolation(projectPath, "required-json-invalid", error.message);
+    return null;
+  }
 }
 
 for (const file of requiredFiles) {
@@ -188,6 +231,50 @@ for (const { file, phrases } of requiredPhrases) {
   }
 }
 
+if (fileExists("package.json")) {
+  const packageJson = parseJsonFile("package.json");
+  const scripts = packageJson?.scripts && typeof packageJson.scripts === "object" ? packageJson.scripts : null;
+
+  if (!scripts) {
+    addViolation("package.json", "required-package-scripts-missing", "scripts object is missing");
+  } else {
+    for (const [scriptName, expectedCommand] of Object.entries(requiredPackageScripts)) {
+      if (!Object.hasOwn(scripts, scriptName)) {
+        addViolation("package.json", "required-package-script-missing", `missing ${scriptName}`);
+      } else if (scripts[scriptName] !== expectedCommand) {
+        addViolation("package.json", "required-package-script-mismatch", `${scriptName} should be ${expectedCommand}`);
+      }
+    }
+
+    const qualityScript = scripts.quality;
+    if (typeof qualityScript !== "string") {
+      addViolation("package.json", "required-package-script-missing", "missing quality");
+    } else {
+      let previousIndex = -1;
+      for (const command of requiredQualityCommands) {
+        const index = qualityScript.indexOf(command);
+        if (index < 0) {
+          addViolation("package.json", "required-quality-command-missing", `quality missing ${command}`);
+        } else if (index <= previousIndex) {
+          addViolation("package.json", "required-quality-command-order", `${command} appears out of order`);
+        }
+        previousIndex = Math.max(previousIndex, index);
+      }
+    }
+
+    const testScript = scripts.test;
+    if (typeof testScript !== "string") {
+      addViolation("package.json", "required-package-script-missing", "missing test");
+    } else {
+      for (const target of requiredTestTargets) {
+        if (!testScript.includes(target)) {
+          addViolation("package.json", "required-test-target-missing", `test missing ${target}`);
+        }
+      }
+    }
+  }
+}
+
 if (violations.length > 0) {
   console.error("\nEngineering guardrail check failed:\n");
 
@@ -203,4 +290,4 @@ if (violations.length > 0) {
 }
 
 log(`${requiredFiles.length} required files checked.`);
-log("engineering guardrails are connected and Phase 5 remains closed.");
+log("engineering guardrails are connected, quality pipeline is intact, and Phase 5 remains closed.");

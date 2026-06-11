@@ -279,7 +279,7 @@ Every handoff should run:
 - `npm run test`
 - `npm run build`
 
-`npm run quality` runs the engineering guardrail check, boundary check, central contract check, and source-shape budget check before typecheck, tests, and build.
+`npm run quality` runs the engineering guardrail check, boundary check, central contract check, and source-shape budget check before typecheck, tests, and build. The engineering guardrail check also verifies that the package quality pipeline still contains the required commands and script-level tests.
 
 Do not treat visual inspection as a replacement for domain tests.
 
@@ -289,7 +289,7 @@ Do not treat visual inspection as a replacement for domain tests.
 | --- | --- | --- |
 | Scope drift into non-retailer workflows | High | Keep `docs/ADAX_MVP_STARTER.md` as source of truth |
 | Open-ended change requests bypassing architecture judgment | Reduced | Use `docs/ADAX_CHANGE_GATE_CHECKLIST.md` to classify scope, target layer, rescue triggers, and required evidence before editing |
-| Engineering gate docs drifting or Phase 5 opening accidentally | Reduced | `npm run check:engineering-guardrails` fails if required governance docs are missing, key entry documents lose required references, or Phase 5 candidate gates stop saying implementation is closed; `tests/scripts/check-engineering-guardrails.test.mjs` proves missing-doc, missing-reference, and accidental-opening fixtures fail |
+| Engineering gate docs or quality pipeline drifting | Reduced | `npm run check:engineering-guardrails` fails if required governance docs are missing, key entry documents lose required references, `package.json` loses required quality commands or script-level tests, or Phase 5 candidate gates stop saying implementation is closed; `tests/scripts/check-engineering-guardrails.test.mjs` proves missing-doc, missing-reference, accidental-opening, missing-quality-command, and missing-test-target fixtures fail |
 | Architecture boundary drift going unnoticed | Reduced | `npm run check:boundaries` fails on active legacy imports, forbidden domain dependencies, misplaced localStorage/history writes, network/backend APIs, real-province runtime data, and unreviewed component-level calculation, validation, and calculation-helper imports; `tests/scripts/check-boundaries.test.mjs` now proves representative negative fixtures fail |
 | Large files growing without review | Reduced | `npm run audit:source` identifies line pressure and import hotspots; `npm run check:source-shape` fails when new or already-budgeted large active files grow without an audit update; `tests/scripts/check-source-shape.test.mjs` proves unbudgeted and over-budget fixtures fail |
 | Central contract drift becoming invisible | Reduced | `npm run check:domain-contracts` now checks reviewed export groups and order; contract governance lives in `docs/ADAX_RETAIL_CONTRACT_GOVERNANCE.md`; `tests/scripts/check-domain-contracts.test.mjs` proves unreviewed, reordered, and missing export fixtures fail |

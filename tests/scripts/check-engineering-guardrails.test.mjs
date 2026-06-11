@@ -13,8 +13,31 @@ const requiredDocPaths = [
   "docs/ADAX_SOURCE_SHAPE_AUDIT.md"
 ];
 
+function makePackageJson(overrides = {}) {
+  return `${JSON.stringify(
+    {
+      scripts: {
+        "check:engineering-guardrails": "node scripts/check-engineering-guardrails.mjs",
+        "check:boundaries": "node scripts/check-boundaries.mjs",
+        "check:domain-contracts": "node scripts/check-domain-contracts.mjs",
+        "check:source-shape": "node scripts/check-source-shape.mjs",
+        typecheck: "tsc -b",
+        test:
+          "tsc -p tsconfig.test.json && node tests/support/fix-esm-imports.mjs && node --test tests/scripts/check-engineering-guardrails.test.mjs tests/scripts/check-boundaries.test.mjs tests/scripts/check-source-shape.test.mjs tests/scripts/check-domain-contracts.test.mjs",
+        quality:
+          "npm run check:engineering-guardrails && npm run check:boundaries && npm run check:domain-contracts && npm run check:source-shape && npm run typecheck && npm run test && npm run build",
+        build: "tsc -b && vite build",
+        ...overrides
+      }
+    },
+    null,
+    2
+  )}\n`;
+}
+
 function runGuardrailFixture(overrides = {}, omitted = []) {
   const files = {
+    "package.json": makePackageJson(),
     "AGENTS.md": [
       "docs/ADAX_ENGINEERING_READINESS_AUDIT.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
@@ -23,7 +46,14 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
       "docs/ADAX_PHASE_5_RENEWABLE_ENTRY_DRY_RUN.md",
       "docs/ADAX_PHASE_5_STORAGE_ENTRY_DRY_RUN.md",
       "docs/ADAX_PHASE_5_THERMAL_ENTRY_DRY_RUN.md",
-      "docs/ADAX_RELEASE_PROCESS.md"
+      "docs/ADAX_RELEASE_PROCESS.md",
+      "npm run check:engineering-guardrails",
+      "npm run check:boundaries",
+      "npm run check:domain-contracts",
+      "npm run check:source-shape",
+      "npm run typecheck",
+      "npm run test",
+      "npm run build"
     ].join("\n"),
     "docs/ENGINEERING_BASELINE.md": [
       "docs/ADAX_ENGINEERING_READINESS_AUDIT.md",
@@ -134,4 +164,28 @@ test("engineering guardrail checker rejects accidental Phase 5 opening language"
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /required-phase-gate-phrase-missing/);
   assert.match(result.stderr, /Phase 5 remains closed/);
+});
+
+test("engineering guardrail checker rejects missing quality commands", () => {
+  const result = runGuardrailFixture({
+    "package.json": makePackageJson({
+      quality: "npm run check:engineering-guardrails && npm run typecheck && npm run test && npm run build"
+    })
+  });
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /required-quality-command-missing/);
+  assert.match(result.stderr, /check:boundaries/);
+});
+
+test("engineering guardrail checker rejects missing script test targets", () => {
+  const result = runGuardrailFixture({
+    "package.json": makePackageJson({
+      test: "tsc -p tsconfig.test.json && node --test tests/scripts/check-boundaries.test.mjs"
+    })
+  });
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /required-test-target-missing/);
+  assert.match(result.stderr, /check-engineering-guardrails\.test\.mjs/);
 });

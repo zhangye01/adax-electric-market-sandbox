@@ -72,9 +72,13 @@ Run these before handing off a code change:
 
 - `npm run check:engineering-guardrails`
 - `npm run check:boundaries`
+- `npm run check:domain-contracts`
+- `npm run check:source-shape`
 - `npm run typecheck`
 - `npm run test`
 - `npm run build`
+
+Preferred combined gate: `npm run quality`.
 
 If one cannot be run, state the reason explicitly.
 
