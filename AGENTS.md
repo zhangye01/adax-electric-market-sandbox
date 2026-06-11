@@ -22,6 +22,8 @@ Read `docs/ADAX_RETAIL_CONTRACT_GOVERNANCE.md` before changing `src/domain/retai
 
 Read `docs/ADAX_ENGINEERING_READINESS_AUDIT.md` before changing Engineering Hardening Hold status or resuming feature expansion.
 
+Read `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md` before entering Phase 5 or implementing any new participant workflow.
+
 If those files conflict, treat `docs/ADAX_MVP_STARTER.md` as the scope baseline, `docs/ADAX_LONG_TERM_PLAN.md` as the execution roadmap, and update the stale document before continuing feature work.
 
 ## Current Active Scope

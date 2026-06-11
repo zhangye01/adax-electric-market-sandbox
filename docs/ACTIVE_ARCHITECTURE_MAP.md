@@ -235,6 +235,7 @@ Current entry and gate documents:
 - `docs/ENGINEERING_BASELINE.md`: maintainability baseline and risk register.
 - `docs/ADAX_ENGINEERING_READINESS_AUDIT.md`: current engineering-hardening handoff baseline.
 - `docs/ADAX_CHANGE_GATE_CHECKLIST.md`: pre-change classification, rescue gate, layer placement, and test selection.
+- `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md`: new-participant entry gate rehearsal before Phase 5 implementation.
 - `docs/ADAX_RETAIL_CONTRACT_GOVERNANCE.md`: central retail/app contract groups, change rules, and split triggers.
 - `docs/ADAX_SOURCE_SHAPE_AUDIT.md`: source size and import hotspot audit for refactor prioritization.
 - `docs/ADAX_RELEASE_PROCESS.md`: Pages publishing process.
