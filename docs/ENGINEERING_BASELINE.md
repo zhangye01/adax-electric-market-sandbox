@@ -20,6 +20,8 @@ Use `docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md` before choosing between renewabl
 
 Use `docs/ADAX_PHASE_5_RENEWABLE_ENTRY_DRY_RUN.md` before implementing the renewable candidate.
 
+Use `docs/ADAX_PHASE_5_STORAGE_ENTRY_DRY_RUN.md` before implementing the independent-storage candidate.
+
 ## Source Boundaries
 
 Active retail flow:
