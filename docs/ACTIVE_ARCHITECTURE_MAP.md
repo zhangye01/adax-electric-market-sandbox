@@ -207,7 +207,7 @@ Local engineering automation.
 Current scripts:
 
 - `audit-source-shape.mjs`: reports active source line pressure, layer size, and import fan-in/fan-out hotspots.
-- `check-domain-contracts.mjs`: fails quality when central domain/app contract exports change without an explicit review update.
+- `check-domain-contracts.mjs`: fails quality when central domain/app contract exports, reviewed groups, or export order change without an explicit review update.
 - `check-source-shape.mjs`: fails quality when new or already-budgeted large active files cross the source-shape budget without an audit update.
 - `check-boundaries.mjs`: validates active source import, IO, network, data, and presentation-layer boundaries.
 - `publish-pages.mjs`: runs the Pages release procedure for the current static preview.
@@ -217,7 +217,7 @@ Rules:
 - scripts may coordinate local commands, file copying, release validation, and Git operations
 - scripts must not contain ADAX business rules, settlement math, route logic, or UI behavior
 - scripts must not import from `src/legacy/**`
-- domain-contract checks may encode reviewed central exports from `src/domain/retailTypes.ts` and `src/types.ts`, but any changed export list requires audit and test review
+- domain-contract checks may encode reviewed central exports from `src/domain/retailTypes.ts` and `src/types.ts`, but any changed export list, group, or order requires audit and test review
 - boundary scripts may encode current allowed exceptions, but new exceptions require architecture review
 - publishing scripts must keep `main` and `gh-pages` responsibilities separated
 
@@ -232,6 +232,7 @@ Current entry and gate documents:
 - `docs/ADAX_LONG_TERM_PLAN.md`: autonomous execution roadmap.
 - `docs/ENGINEERING_BASELINE.md`: maintainability baseline and risk register.
 - `docs/ADAX_CHANGE_GATE_CHECKLIST.md`: pre-change classification, rescue gate, layer placement, and test selection.
+- `docs/ADAX_RETAIL_CONTRACT_GOVERNANCE.md`: central retail/app contract groups, change rules, and split triggers.
 - `docs/ADAX_SOURCE_SHAPE_AUDIT.md`: source size and import hotspot audit for refactor prioritization.
 - `docs/ADAX_RELEASE_PROCESS.md`: Pages publishing process.
 
@@ -375,7 +376,7 @@ Covered:
 - execution record snapshot, localStorage filtering, latest-20 cap, and saved-record revisit target
 - review material scope, invalid material filtering, empty-save blocking, review record snapshot, and review revisit target
 - training-record export JSON boundary and batch export count
-- reviewed `retailTypes.ts` and `src/types.ts` export contracts through `npm run check:domain-contracts`
+- reviewed `retailTypes.ts` and `src/types.ts` export groups and order through `npm run check:domain-contracts`
 - review-mode vs execution-result-review boundary
 - route helpers
 - route-sync decisions

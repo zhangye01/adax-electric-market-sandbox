@@ -245,9 +245,10 @@ Near-term maintenance priorities:
 4. Keep `src/app/useAdaxBrowserRouteSync.ts` as the browser route synchronization boundary.
 5. Keep `src/app/createAdaxTrainingActions.ts` as the training action boundary.
 6. Keep `docs/ACTIVE_ARCHITECTURE_MAP.md` current when source boundaries change.
-7. Continue reducing large style partitions only when a page is touched.
-8. Keep `docs/ADAX_RELEASE_PROCESS.md` current when publishing, changing Pages configuration, or changing Vite build paths.
-9. Only add new participant workflows after the relevant startup card is confirmed.
+7. Keep `docs/ADAX_RETAIL_CONTRACT_GOVERNANCE.md` current when central retail/app contracts change.
+8. Continue reducing large style partitions only when a page is touched.
+9. Keep `docs/ADAX_RELEASE_PROCESS.md` current when publishing, changing Pages configuration, or changing Vite build paths.
+10. Only add new participant workflows after the relevant startup card is confirmed.
 
 ## Quality Commands
 
@@ -272,6 +273,7 @@ Do not treat visual inspection as a replacement for domain tests.
 | Open-ended change requests bypassing architecture judgment | Reduced | Use `docs/ADAX_CHANGE_GATE_CHECKLIST.md` to classify scope, target layer, rescue triggers, and required evidence before editing |
 | Architecture boundary drift going unnoticed | Reduced | `npm run check:boundaries` fails on active legacy imports, forbidden domain dependencies, misplaced localStorage/history writes, network/backend APIs, real-province runtime data, and unreviewed component-level calculation, validation, and calculation-helper imports |
 | Large files growing without review | Reduced | `npm run audit:source` identifies line pressure and import hotspots; `npm run check:source-shape` fails when new or already-budgeted large active files grow without an audit update |
+| Central contract drift becoming invisible | Reduced | `npm run check:domain-contracts` now checks reviewed export groups and order; contract governance lives in `docs/ADAX_RETAIL_CONTRACT_GOVERNANCE.md` |
 | New participant implementation starting before scope confirmation | High | Require a confirmed participant startup card before code; current renewable card is `docs/ADAX_RENEWABLE_STARTUP_CARD.md` and remains pending confirmation |
 | Preview publishing path drifting from source history | Medium | Keep source on `main`, static build on `gh-pages`, and follow `docs/ADAX_RELEASE_PROCESS.md` |
 | Manual Pages publishing missing a step | Reduced | Use `npm run publish:pages:dry` before `npm run publish:pages -- --yes`; publishing logic is centralized in `scripts/publish-pages.mjs` |

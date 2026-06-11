@@ -130,7 +130,7 @@ Fan-in pressure:
 34. `src/pages/RecordsPage.tsx` has been reduced from a budgeted page-pressure file to a page coordinator. Archive list, detail panel, and empty state now live in `src/components/records/**`, and record export JSON preparation now lives in `src/services/adaxTrainingRecordExports.ts`.
 35. Training-record export JSON has a service-level contract test for export type, boundary text, batch count, and record identity.
 36. `src/domain/retailTypes.ts` and `src/types.ts` have high fan-in. They are central contracts; changes here should remain conservative and test-backed.
-37. `scripts/check-domain-contracts.mjs` now guards the reviewed `retailTypes.ts` and `src/types.ts` export lists so accidental contract expansion or renaming cannot pass `npm run quality` unnoticed.
+37. `scripts/check-domain-contracts.mjs` now guards the reviewed `retailTypes.ts` and `src/types.ts` export groups and order so accidental contract expansion, renaming, or category drift cannot pass `npm run quality` unnoticed. Contract governance is documented in `docs/ADAX_RETAIL_CONTRACT_GOVERNANCE.md`.
 38. `src/components/Layout.tsx` has been reduced from a budgeted app-shell pressure file to a shell coordinator. Sidebar navigation, topbar context, and the market-clearing brand mark now live in `src/components/layout/**`.
 39. `src/app/createAdaxTrainingActions.ts` has been reduced from a budgeted action-orchestration pressure file to the training/material/record action boundary. Page navigation, flow fallback, and output-state route coordination now live in `src/app/createAdaxNavigationActions.ts`.
 40. `src/components/retail/RetailExecutionWorkspace.tsx` has been reduced from a budgeted workspace pressure file to a 147-line composition surface. Execution context bar and node footer rendering now live in dedicated retail components, while active-node validation mapping lives in `src/domain/retailNodeValidation.ts`.
@@ -138,7 +138,7 @@ Fan-in pressure:
 
 ## Recommended Refactor Queue
 
-1. Keep `src/domain/retailTypes.ts` stable unless a new confirmed participant startup card requires new shared contracts.
+1. Keep `src/domain/retailTypes.ts` stable unless a new confirmed participant startup card requires new shared contracts; follow `docs/ADAX_RETAIL_CONTRACT_GOVERNANCE.md` before changing central exports.
 2. Keep workspace components as page-level composition surfaces; high fan-out is acceptable only while imports are narrow child components and domain display contracts.
 3. Move any new derived status, validation, or display contract into `src/domain/**`.
 4. Review `src/styles/009-flow-scenario-market.css` when scenario market styles are next touched; split annual fact cards, monthly window cards, and typical-day price bars only if that surface needs visual work.

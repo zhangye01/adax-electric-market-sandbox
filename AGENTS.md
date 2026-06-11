@@ -18,6 +18,8 @@ Read these files before changing code:
 
 Read `docs/ADAX_RELEASE_PROCESS.md` before publishing, changing Pages configuration, changing Vite build base paths, or touching `gh-pages`.
 
+Read `docs/ADAX_RETAIL_CONTRACT_GOVERNANCE.md` before changing `src/domain/retailTypes.ts`, `src/types.ts`, or `scripts/check-domain-contracts.mjs`.
+
 If those files conflict, treat `docs/ADAX_MVP_STARTER.md` as the scope baseline, `docs/ADAX_LONG_TERM_PLAN.md` as the execution roadmap, and update the stale document before continuing feature work.
 
 ## Current Active Scope
