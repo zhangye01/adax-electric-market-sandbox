@@ -197,6 +197,7 @@ Shared shell and persistence:
 Tooling and release automation:
 
 - `scripts/audit-source-shape.mjs`
+- `scripts/check-domain-contracts.mjs`
 - `scripts/check-source-shape.mjs`
 - `scripts/check-boundaries.mjs`
 - `scripts/publish-pages.mjs`
@@ -249,12 +250,13 @@ Near-term maintenance priorities:
 Every handoff should run:
 
 - `npm run check:boundaries`
+- `npm run check:domain-contracts`
 - `npm run check:source-shape`
 - `npm run typecheck`
 - `npm run test`
 - `npm run build`
 
-`npm run quality` runs the boundary check and source-shape budget check before typecheck, tests, and build.
+`npm run quality` runs the boundary check, domain-contract check, and source-shape budget check before typecheck, tests, and build.
 
 Do not treat visual inspection as a replacement for domain tests.
 

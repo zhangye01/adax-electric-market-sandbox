@@ -28,7 +28,7 @@ Use this protocol for future "继续" turns:
 3. Identify the current phase and the first unfinished task.
 4. Make a small, reversible change that strengthens the current phase.
 5. Update tests or documentation when the change affects contracts or behavior.
-6. Run `npm run quality` for code changes. It includes boundary checks, source-shape budgets, typecheck, tests, and build.
+6. Run `npm run quality` for code changes. It includes boundary checks, central domain contract checks, source-shape budgets, typecheck, tests, and build.
 7. Report what changed, what passed, what remains, and the next recommended task.
 
 Do not jump to a later phase just because it is more visible. Finish the current phase's guardrails first.
@@ -218,6 +218,7 @@ Active tasks:
 
 - Keep `docs/ADAX_CHANGE_GATE_CHECKLIST.md` current as the pre-change gate.
 - Keep `docs/ADAX_SOURCE_SHAPE_AUDIT.md` current when source size or import pressure changes materially.
+- Keep `npm run check:domain-contracts` current when central domain contract exports intentionally change.
 - Keep `npm run check:source-shape` budgets current when a pressure file is intentionally refactored or explicitly allowed to grow.
 - Keep `docs/ACTIVE_ARCHITECTURE_MAP.md` current when source boundaries change.
 - Keep `docs/ENGINEERING_BASELINE.md` risk controls current as new automation or checks are added.
@@ -234,7 +235,7 @@ Exit Criteria:
 
 Continue Engineering Hardening Hold.
 
-Next recommended task: keep the source-shape budget check in the normal quality gate. For code structure work, keep `src/domain/retailTypes.ts` stable unless a confirmed participant startup card requires shared contracts, review `src/components/Layout.tsx` only when app shell/navigation changes, and keep `src/app/createAdaxTrainingActions.ts` as the action orchestration boundary. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
+Next recommended task: keep the source-shape and domain-contract checks in the normal quality gate. For code structure work, keep `src/domain/retailTypes.ts` stable unless a confirmed participant startup card requires shared contracts, review `src/components/Layout.tsx` only when app shell/navigation changes, and keep `src/app/createAdaxTrainingActions.ts` as the action orchestration boundary. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
 
 ## Project Rescue Triggers
 

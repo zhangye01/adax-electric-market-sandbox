@@ -204,6 +204,7 @@ Local engineering automation.
 Current scripts:
 
 - `audit-source-shape.mjs`: reports active source line pressure, layer size, and import fan-in/fan-out hotspots.
+- `check-domain-contracts.mjs`: fails quality when central domain contract exports change without an explicit review update.
 - `check-source-shape.mjs`: fails quality when new or already-budgeted large active files cross the source-shape budget without an audit update.
 - `check-boundaries.mjs`: validates active source import, IO, network, data, and presentation-layer boundaries.
 - `publish-pages.mjs`: runs the Pages release procedure for the current static preview.
@@ -213,6 +214,7 @@ Rules:
 - scripts may coordinate local commands, file copying, release validation, and Git operations
 - scripts must not contain ADAX business rules, settlement math, route logic, or UI behavior
 - scripts must not import from `src/legacy/**`
+- domain-contract checks may encode reviewed central exports, but any changed export list requires audit and test review
 - boundary scripts may encode current allowed exceptions, but new exceptions require architecture review
 - publishing scripts must keep `main` and `gh-pages` responsibilities separated
 
@@ -365,6 +367,7 @@ Covered:
 - execution record snapshot, localStorage filtering, latest-20 cap, and saved-record revisit target
 - review material scope, invalid material filtering, empty-save blocking, review record snapshot, and review revisit target
 - training-record export JSON boundary and batch export count
+- reviewed `retailTypes.ts` export contract through `npm run check:domain-contracts`
 - review-mode vs execution-result-review boundary
 - route helpers
 - route-sync decisions
