@@ -33,7 +33,7 @@ flowchart TD
   Services --> Storage["utils/adaxStorage.ts"]
 
   Session --> Validation["domain/retailValidation.ts"]
-  Session --> Calculation["domain/retailCalculations.ts"]
+  Session --> Calculation["domain/retailCalculations.ts + calculation helpers"]
   Validation --> Settlement["Retail settlement result"]
   Calculation --> Settlement
 
@@ -95,6 +95,12 @@ Current modules:
 - `retailMonthlyAuctionDisplay.ts`
 - `retailValidation.ts`
 - `retailCalculations.ts`
+- `retailCalculationUtils.ts`
+- `retailCustomerCalculations.ts`
+- `retailRevenueCalculations.ts`
+- `retailContractCalculations.ts`
+- `retailExposureCalculations.ts`
+- `retailRiskDiagnostics.ts`
 - `retailMarketContext.ts`
 - `retailRecords.ts`
 - `retailResultDisplay.ts`

@@ -234,7 +234,7 @@ Exit Criteria:
 
 Continue Engineering Hardening Hold.
 
-Next recommended task: keep the source-shape budget check in the normal quality gate. For code structure work, use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to review `src/styles/009-flow-scenario-market.css` when scenario market styles are next touched, and split annual fact cards, monthly window cards, and typical-day price bars only if that surface needs visual work. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
+Next recommended task: keep the source-shape budget check in the normal quality gate. For code structure work, use `docs/ADAX_SOURCE_SHAPE_AUDIT.md` to review `src/pages/RecordsPage.tsx` only when records UI changes, and split archive list, detail panel coordination, and empty/local boundary sections if the page keeps growing. Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion.
 
 ## Project Rescue Triggers
 

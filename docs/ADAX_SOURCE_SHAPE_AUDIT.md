@@ -16,10 +16,10 @@ npm run check:source-shape
 
 | Metric | Value |
 | --- | --- |
-| Active source files | 203 |
-| Code files | 84 |
+| Active source files | 209 |
+| Code files | 90 |
 | Style files | 119 |
-| Total active source lines | 14479 |
+| Total active source lines | 14549 |
 | Watch line threshold | 220 code / 400 CSS |
 | High line threshold | 300 code / 800 CSS |
 
@@ -28,7 +28,7 @@ npm run check:source-shape
 | Layer | Files | Lines |
 | --- | --- | --- |
 | `src/styles` | 118 | 6263 |
-| `src/domain` | 23 | 2625 |
+| `src/domain` | 29 | 2695 |
 | `src/components` | 33 | 2575 |
 | `src/pages` | 7 | 1293 |
 | `src/app` | 4 | 570 |
@@ -42,7 +42,6 @@ npm run check:source-shape
 
 | File | Lines | Layer |
 | --- | --- | --- |
-| `src/domain/retailCalculations.ts` | 455 | `src/domain` |
 | `src/pages/RecordsPage.tsx` | 284 | `src/pages` |
 | `src/domain/retailTypes.ts` | 257 | `src/domain` |
 | `src/components/Layout.tsx` | 237 | `src/components` |
@@ -57,6 +56,7 @@ npm run check:source-shape
 | `src/domain/retailValidation.ts` | 168 | `src/domain` |
 | `src/domain/retailMarketContext.ts` | 165 | `src/domain` |
 | `src/domain/adaxNavigation.ts` | 163 | `src/domain` |
+| `src/pages/WorkspacePage.tsx` | 157 | `src/pages` |
 
 ## Import Hotspots
 
@@ -67,6 +67,7 @@ Fan-out pressure:
 | `src/styles.css` | 118 |
 | `src/components/retail/RetailReviewWorkspace.tsx` | 15 |
 | `src/components/retail/RetailExecutionWorkspace.tsx` | 14 |
+| `src/domain/retailCalculations.ts` | 13 |
 | `src/app/createAdaxTrainingActions.ts` | 12 |
 | `src/app/AdaxPageRenderer.tsx` | 11 |
 | `src/components/retail/RetailSettlementPage.tsx` | 11 |
@@ -75,10 +76,10 @@ Fan-in pressure:
 
 | Imported file | Importer count |
 | --- | --- |
-| `src/domain/retailTypes.ts` | 38 |
+| `src/domain/retailTypes.ts` | 44 |
 | `src/types.ts` | 28 |
+| `src/data/retailMarketData.ts` | 17 |
 | `src/components/Badge.tsx` | 14 |
-| `src/data/retailMarketData.ts` | 14 |
 | `src/utils/formatters.ts` | 10 |
 | `src/data/retailTrainingNodes.ts` | 8 |
 
@@ -115,14 +116,14 @@ Fan-in pressure:
 29. `src/styles/003-home-sections.css` has been reduced to home section shell and headings; mode cards, virtual-market rows, recent-record empty state, and model-boundary heading now have dedicated partitions.
 30. `src/styles/012-retail-results.css` has been reduced to result panel base containers; result-review status chips, output-boundary spacing, empty/missing states, compact hints, result snapshots, and row text styles now have dedicated partitions.
 31. `src/styles/002-app-sidebar-nav.css` has been reduced to navigation container and section structure; navigation item states, status dots, footer notice, and collapsed-navigation layout now have dedicated partitions.
-32. `src/domain/retailCalculations.ts` is the only high-pressure TypeScript domain file. It is still covered by tests, but future calculation changes should consider extracting annual, monthly, exposure, and margin helpers.
+32. `src/domain/retailCalculations.ts` has been reduced from the only high-pressure TypeScript domain file into a settlement facade; customer, revenue, contract, exposure, and risk-diagnostic calculation helpers now live in dedicated domain modules.
 33. `src/domain/retailTypes.ts` and `src/types.ts` have high fan-in. They are central contracts; changes here should remain conservative and test-backed.
 34. `RetailReviewWorkspace.tsx` and `RetailExecutionWorkspace.tsx` have the highest component fan-out. They should stay composition surfaces and not regain business rules.
 
 ## Recommended Refactor Queue
 
-1. Review `src/styles/009-flow-scenario-market.css` when scenario market styles are next touched; split annual fact cards, monthly window cards, and typical-day price bars only if that surface needs visual work.
-2. Extract calculation helper modules from `src/domain/retailCalculations.ts` only when the next calculation change requires it.
+1. Review `src/pages/RecordsPage.tsx` only when records UI changes; split archive list, detail panel coordination, and empty/local boundary sections if the page keeps growing.
+2. Review `src/styles/009-flow-scenario-market.css` when scenario market styles are next touched; split annual fact cards, monthly window cards, and typical-day price bars only if that surface needs visual work.
 3. Keep `src/domain/retailTypes.ts` stable unless a new confirmed participant startup card requires new shared contracts.
 4. Keep workspace components as page-level composition surfaces; move any new derived status, validation, or display contract into `src/domain/**`.
 
@@ -132,7 +133,6 @@ Fan-in pressure:
 
 | File | Budgeted Lines | Reason |
 | --- | --- | --- |
-| `src/domain/retailCalculations.ts` | 455 | Existing high-pressure calculation module; split annual, monthly, exposure, and margin helpers when calculation work resumes. |
 | `src/pages/RecordsPage.tsx` | 284 | Existing records composition surface; split only when records UI changes. |
 | `src/domain/retailTypes.ts` | 257 | Central shared contract; keep stable unless confirmed participant scope requires contract changes. |
 | `src/components/Layout.tsx` | 237 | App shell composition; avoid adding business rules. |

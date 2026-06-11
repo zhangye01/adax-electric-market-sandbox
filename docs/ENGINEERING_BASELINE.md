@@ -26,6 +26,12 @@ Active retail flow:
 - `src/domain/retailMonthlyAuctionDisplay.ts`
 - `src/domain/retailValidation.ts`
 - `src/domain/retailCalculations.ts`
+- `src/domain/retailCalculationUtils.ts`
+- `src/domain/retailCustomerCalculations.ts`
+- `src/domain/retailRevenueCalculations.ts`
+- `src/domain/retailContractCalculations.ts`
+- `src/domain/retailExposureCalculations.ts`
+- `src/domain/retailRiskDiagnostics.ts`
 - `src/domain/retailMarketContext.ts`
 - `src/domain/retailRecords.ts`
 - `src/domain/retailResultDisplay.ts`
