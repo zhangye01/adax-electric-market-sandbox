@@ -16,6 +16,16 @@
   gap: 12px;
 }
 
+.home-empty-records {
+  border: 1px solid #2a3d59;
+  border-radius: 8px;
+  background: #0b1320;
+  color: #c8d6ea;
+  padding: 14px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
 .home-record-card {
   display: grid;
   grid-template-columns: minmax(220px, 0.45fr) 1fr auto;

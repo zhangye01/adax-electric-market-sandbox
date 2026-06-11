@@ -1,0 +1,31 @@
+/* Home virtual-market card rows and boundary note. */
+.home-market-card {
+  display: grid;
+  gap: 10px;
+}
+
+.home-market-row {
+  grid-template-columns: 160px 1fr;
+}
+
+.home-market-row span {
+  color: #8ea4c1;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.home-market-row strong {
+  color: #e2e8f0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.home-market-boundary {
+  border: 1px solid #2a3d59;
+  border-radius: 8px;
+  background: #0b1320;
+  color: #c8d6ea;
+  padding: 14px;
+  font-size: 14px;
+  line-height: 1.7;
+}

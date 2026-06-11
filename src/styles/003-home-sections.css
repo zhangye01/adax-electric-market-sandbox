@@ -1,4 +1,4 @@
-/* Home mode and virtual-market content sections. */
+/* Home content section shell and headings. */
 .home-section {
   margin-top: 22px;
   padding: 28px;
@@ -16,8 +16,7 @@
   gap: 16px;
 }
 
-.home-section-heading h2,
-.home-boundary h2 {
+.home-section-heading h2 {
   margin-top: 8px;
   color: #f8fafc;
   font-size: 28px;
@@ -30,113 +29,4 @@
   color: #9fb2cd;
   font-size: 14px;
   line-height: 1.8;
-}
-
-.home-mode-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.home-mode-card {
-  border: 1px solid #22334c;
-  border-radius: 8px;
-  background: #111d2f;
-  padding: 22px;
-}
-
-.home-mode-icon {
-  display: flex;
-  width: 42px;
-  height: 42px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  background: rgba(8, 145, 178, 0.16);
-  color: #67e8f9;
-}
-
-.home-mode-icon.amber {
-  background: rgba(180, 83, 9, 0.18);
-  color: #fcd34d;
-}
-
-.home-mode-card h3 {
-  margin-top: 16px;
-  color: #f8fafc;
-  font-size: 22px;
-  letter-spacing: 0;
-}
-
-.home-mode-card p {
-  margin-top: 12px;
-  color: #9fb2cd;
-  font-size: 14px;
-  line-height: 1.8;
-}
-
-.home-use-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 16px;
-}
-
-.home-use-list span {
-  border: 1px solid #2a3d59;
-  border-radius: 6px;
-  color: #c8d6ea;
-  padding: 6px 9px;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.home-mode-note {
-  display: inline-flex;
-  margin-top: 22px;
-  border: 1px solid rgba(34, 211, 238, 0.3);
-  border-radius: 6px;
-  background: rgba(8, 145, 178, 0.1);
-  color: #a5f3fc;
-  padding: 8px 10px;
-  font-size: 12px;
-  font-weight: 800;
-}
-
-.home-mode-note.amber {
-  border-color: rgba(251, 191, 36, 0.32);
-  background: rgba(180, 83, 9, 0.12);
-  color: #fde68a;
-}
-
-.home-market-card {
-  display: grid;
-  gap: 10px;
-}
-
-.home-market-row {
-  grid-template-columns: 160px 1fr;
-}
-
-.home-market-row span {
-  color: #8ea4c1;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.home-market-row strong {
-  color: #e2e8f0;
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.home-market-boundary,
-.home-empty-records {
-  border: 1px solid #2a3d59;
-  border-radius: 8px;
-  background: #0b1320;
-  color: #c8d6ea;
-  padding: 14px;
-  font-size: 14px;
-  line-height: 1.7;
 }

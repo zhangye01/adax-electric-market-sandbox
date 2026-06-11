@@ -7,6 +7,14 @@
   padding: 28px;
 }
 
+.home-boundary h2 {
+  margin-top: 8px;
+  color: #f8fafc;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
 .home-boundary-copy {
   display: grid;
   grid-template-columns: 34px 1fr;
