@@ -4,79 +4,11 @@ import test from "node:test";
 import { createAdaxTrainingActions } from "../../.test-build/src/app/createAdaxTrainingActions.js";
 import { calculateRetailSettlement } from "../../.test-build/src/domain/retailCalculations.js";
 import { createEmptyRetailTrainingState } from "../../.test-build/src/domain/retailState.js";
-
-function completeRetailState() {
-  const state = createEmptyRetailTrainingState();
-  state.customerContracts = {
-    industrialStableMwh: 60000,
-    commercialPeakMwh: 30000,
-    volatileLoadMwh: 15000
-  };
-  state.retailPackage.packageType = "fixed";
-  state.annualBilateral = {
-    coverageRatio: 100,
-    bidPrice: 420,
-    curveType: "industrial",
-    counterpartyFloorPrice: 405,
-    dealAccepted: null
-  };
-  state.monthlyAuctions = {
-    march: {
-      participates: true,
-      coverageRatio: 10,
-      bidPrice: 330,
-      curveType: "typicalMonth"
-    },
-    july: {
-      participates: false,
-      coverageRatio: null,
-      bidPrice: null,
-      curveType: null
-    },
-    december: {
-      participates: true,
-      coverageRatio: 12,
-      bidPrice: 500,
-      curveType: "flat"
-    }
-  };
-  return state;
-}
+import { withFakeWindow } from "../support/browser-fixtures.mjs";
+import { completeRetailState } from "../support/retail-fixtures.mjs";
 
 function resolveStateAction(currentValue, nextValue) {
   return typeof nextValue === "function" ? nextValue(currentValue) : nextValue;
-}
-
-function withFakeWindow(callback) {
-  const previousWindow = globalThis.window;
-  const store = new Map();
-  const fakeWindow = {
-    localStorage: {
-      getItem(key) {
-        return store.has(key) ? store.get(key) : null;
-      },
-      setItem(key, value) {
-        store.set(key, String(value));
-      },
-      removeItem(key) {
-        store.delete(key);
-      }
-    },
-    confirm() {
-      return true;
-    }
-  };
-
-  globalThis.window = fakeWindow;
-  try {
-    return callback({ store, window: fakeWindow });
-  } finally {
-    if (previousWindow === undefined) {
-      delete globalThis.window;
-    } else {
-      globalThis.window = previousWindow;
-    }
-  }
 }
 
 function createHarness(overrides = {}) {

@@ -7,44 +7,7 @@ import {
 } from "../../.test-build/src/app/adaxSessionDerivations.js";
 import { createEmptyRetailTrainingState } from "../../.test-build/src/domain/retailState.js";
 import { validateRetailTrainingState } from "../../.test-build/src/domain/retailValidation.js";
-
-function completeRetailState() {
-  const state = createEmptyRetailTrainingState();
-  state.customerContracts = {
-    industrialStableMwh: 60000,
-    commercialPeakMwh: 30000,
-    volatileLoadMwh: 15000
-  };
-  state.retailPackage.packageType = "fixed";
-  state.annualBilateral = {
-    coverageRatio: 100,
-    bidPrice: 420,
-    curveType: "industrial",
-    counterpartyFloorPrice: 405,
-    dealAccepted: null
-  };
-  state.monthlyAuctions = {
-    march: {
-      participates: true,
-      coverageRatio: 10,
-      bidPrice: 330,
-      curveType: "typicalMonth"
-    },
-    july: {
-      participates: false,
-      coverageRatio: null,
-      bidPrice: null,
-      curveType: null
-    },
-    december: {
-      participates: true,
-      coverageRatio: 12,
-      bidPrice: 500,
-      curveType: "flat"
-    }
-  };
-  return state;
-}
+import { completeRetailState } from "../support/retail-fixtures.mjs";
 
 test("session derivation skips settlement calculation when retail validation fails", () => {
   const state = createEmptyRetailTrainingState();

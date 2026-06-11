@@ -358,6 +358,8 @@ Current no-dependency domain tests live in `tests/domain/retail-domain.test.mjs`
 
 App-layer action tests live in `tests/app/*.test.mjs`.
 
+Shared test fixtures live in `tests/support/*.mjs`.
+
 Script-level guardrail tests live in `tests/scripts/*.test.mjs`.
 
 Covered:
@@ -390,6 +392,7 @@ Covered:
 - route-sync decisions
 - output-route sync decisions for settlement viewed marking, blocked execution outputs, review-mode output blocking, and no-mode fallback
 - session derivations for validation-gated settlement, calculation exception fallback, and flow access state
+- shared retail/browser test fixtures for complete retail state, local records/materials, and fake browser storage setup
 - flow guards
 - navigation shell rules
 - app-layer navigation action side effects for product-route reset and review-output guarding
@@ -398,7 +401,7 @@ Covered:
 
 Next useful coverage:
 
-- shared test fixtures for repeated retail complete-state setup before app tests grow further
+- app test harness extraction if action tests add more stateful scenarios
 - browser visual QA for professional market immersion changes
 
 ## Current Risk

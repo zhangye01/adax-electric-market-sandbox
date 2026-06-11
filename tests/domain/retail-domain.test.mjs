@@ -96,103 +96,12 @@ import {
   validateRetailExecutionChainContracts
 } from "../../.test-build/src/domain/retailExecutionChain.js";
 import { buildRetailExecutionWorkbenchContext } from "../../.test-build/src/domain/retailExecutionWorkbench.js";
-
-function completeRetailState() {
-  const state = createEmptyRetailTrainingState();
-  state.customerContracts = {
-    industrialStableMwh: 60000,
-    commercialPeakMwh: 30000,
-    volatileLoadMwh: 15000
-  };
-  state.retailPackage.packageType = "fixed";
-  state.annualBilateral = {
-    coverageRatio: 100,
-    bidPrice: 420,
-    curveType: "industrial",
-    counterpartyFloorPrice: 405,
-    dealAccepted: null
-  };
-  state.monthlyAuctions = {
-    march: {
-      participates: true,
-      coverageRatio: 10,
-      bidPrice: 330,
-      curveType: "typicalMonth"
-    },
-    july: {
-      participates: false,
-      coverageRatio: null,
-      bidPrice: null,
-      curveType: null
-    },
-    december: {
-      participates: true,
-      coverageRatio: 12,
-      bidPrice: 500,
-      curveType: "flat"
-    }
-  };
-  return state;
-}
-
-function basicTrainingRecord(id) {
-  return {
-    id,
-    mode: "execution",
-    scenarioId: "SCN-A-STD-001",
-    scenarioName: "虚拟省级市场 A | 标准年度场景",
-    roleId: "retailer",
-    roleName: "售电公司",
-    savedAt: "06/10 10:00",
-    grossMargin: 1000,
-    summary: "测试记录",
-    diagnostics: ["测试诊断"]
-  };
-}
-
-function basicReviewMaterial(overrides = {}) {
-  return {
-    id: "SCN-A-STD-001-retailer-marketBrief-我的理解",
-    nodeId: "marketBrief",
-    scenarioId: "SCN-A-STD-001",
-    participantType: "retailer",
-    title: "市场行情",
-    materialType: "我的理解",
-    content: "年度供需和典型日价格会影响售电公司采购节奏。",
-    createdAt: "2026-06-10T00:00:00.000Z",
-    updatedAt: "2026-06-10T00:00:00.000Z",
-    ...overrides
-  };
-}
-
-function withFakeWindow(callback) {
-  const previousWindow = globalThis.window;
-  const store = new Map();
-  const fakeWindow = {
-    localStorage: {
-      getItem(key) {
-        return store.has(key) ? store.get(key) : null;
-      },
-      setItem(key, value) {
-        store.set(key, String(value));
-      },
-      removeItem(key) {
-        store.delete(key);
-      }
-    }
-  };
-
-  globalThis.window = fakeWindow;
-  try {
-    return callback({ store, window: fakeWindow });
-  } finally {
-    if (previousWindow === undefined) {
-      delete globalThis.window;
-    } else {
-      globalThis.window = previousWindow;
-    }
-  }
-}
+import { withFakeWindow } from "../support/browser-fixtures.mjs";
+import {
+  basicReviewMaterial,
+  basicTrainingRecord,
+  completeRetailState
+} from "../support/retail-fixtures.mjs";
 
 test("retail baseline state validates and calculates settlement", () => {
   const state = completeRetailState();
