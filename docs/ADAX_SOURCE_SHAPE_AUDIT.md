@@ -16,10 +16,10 @@ npm run check:source-shape
 
 | Metric | Value |
 | --- | --- |
-| Active source files | 217 |
-| Code files | 98 |
+| Active source files | 218 |
+| Code files | 99 |
 | Style files | 119 |
-| Total active source lines | 14623 |
+| Total active source lines | 14675 |
 | Watch line threshold | 220 code / 400 CSS |
 | High line threshold | 300 code / 800 CSS |
 
@@ -31,7 +31,7 @@ npm run check:source-shape
 | `src/components` | 40 | 2779 |
 | `src/domain` | 29 | 2695 |
 | `src/pages` | 7 | 1129 |
-| `src/app` | 4 | 570 |
+| `src/app` | 5 | 622 |
 | `src/data` | 6 | 399 |
 | `src/services` | 4 | 352 |
 | `src/root` | 4 | 207 |
@@ -43,11 +43,11 @@ npm run check:source-shape
 | File | Lines | Layer |
 | --- | --- | --- |
 | `src/domain/retailTypes.ts` | 257 | `src/domain` |
-| `src/app/createAdaxTrainingActions.ts` | 231 | `src/app` |
 | `src/components/retail/RetailExecutionWorkspace.tsx` | 223 | `src/components` |
 | `src/pages/HomePage.tsx` | 219 | `src/pages` |
 | `src/domain/retailSettlementDisplay.ts` | 214 | `src/domain` |
 | `src/pages/RolePage.tsx` | 199 | `src/pages` |
+| `src/app/createAdaxTrainingActions.ts` | 193 | `src/app` |
 | `src/services/retailExecutionTemplates.ts` | 184 | `src/services` |
 | `src/components/retail/RetailMonthlyAuctionNode.tsx` | 178 | `src/components` |
 | `src/components/retail/RetailReviewWorkspace.tsx` | 177 | `src/components` |
@@ -67,8 +67,8 @@ Fan-out pressure:
 | `src/styles.css` | 118 |
 | `src/components/retail/RetailReviewWorkspace.tsx` | 15 |
 | `src/components/retail/RetailExecutionWorkspace.tsx` | 14 |
+| `src/app/createAdaxTrainingActions.ts` | 13 |
 | `src/domain/retailCalculations.ts` | 13 |
-| `src/app/createAdaxTrainingActions.ts` | 12 |
 | `src/app/AdaxPageRenderer.tsx` | 11 |
 | `src/components/retail/RetailSettlementPage.tsx` | 11 |
 | `src/pages/WorkspacePage.tsx` | 10 |
@@ -82,7 +82,7 @@ Fan-in pressure:
 | Imported file | Importer count |
 | --- | --- |
 | `src/domain/retailTypes.ts` | 44 |
-| `src/types.ts` | 33 |
+| `src/types.ts` | 34 |
 | `src/components/Badge.tsx` | 17 |
 | `src/data/retailMarketData.ts` | 17 |
 | `src/utils/formatters.ts` | 10 |
@@ -132,14 +132,14 @@ Fan-in pressure:
 36. `src/domain/retailTypes.ts` and `src/types.ts` have high fan-in. They are central contracts; changes here should remain conservative and test-backed.
 37. `scripts/check-domain-contracts.mjs` now guards the reviewed `retailTypes.ts` and `src/types.ts` export lists so accidental contract expansion or renaming cannot pass `npm run quality` unnoticed.
 38. `src/components/Layout.tsx` has been reduced from a budgeted app-shell pressure file to a shell coordinator. Sidebar navigation, topbar context, and the market-clearing brand mark now live in `src/components/layout/**`.
-39. `RetailReviewWorkspace.tsx` and `RetailExecutionWorkspace.tsx` have the highest component fan-out. They should stay composition surfaces and not regain business rules.
+39. `src/app/createAdaxTrainingActions.ts` has been reduced from a budgeted action-orchestration pressure file to the training/material/record action boundary. Page navigation, flow fallback, and output-state route coordination now live in `src/app/createAdaxNavigationActions.ts`.
+40. `RetailReviewWorkspace.tsx` and `RetailExecutionWorkspace.tsx` have the highest component fan-out. They should stay composition surfaces and not regain business rules.
 
 ## Recommended Refactor Queue
 
 1. Keep `src/domain/retailTypes.ts` stable unless a new confirmed participant startup card requires new shared contracts.
-2. Review `src/app/createAdaxTrainingActions.ts` only when training action orchestration changes; keep domain rules in `src/domain/**`.
-3. Keep workspace components as page-level composition surfaces; move any new derived status, validation, or display contract into `src/domain/**`.
-4. Review `src/styles/009-flow-scenario-market.css` when scenario market styles are next touched; split annual fact cards, monthly window cards, and typical-day price bars only if that surface needs visual work.
+2. Keep workspace components as page-level composition surfaces; move any new derived status, validation, or display contract into `src/domain/**`.
+3. Review `src/styles/009-flow-scenario-market.css` when scenario market styles are next touched; split annual fact cards, monthly window cards, and typical-day price bars only if that surface needs visual work.
 
 ## Source Shape Budgets
 
@@ -148,7 +148,6 @@ Fan-in pressure:
 | File | Budgeted Lines | Reason |
 | --- | --- | --- |
 | `src/domain/retailTypes.ts` | 257 | Central shared contract; keep stable unless confirmed participant scope requires contract changes. |
-| `src/app/createAdaxTrainingActions.ts` | 231 | Action orchestration boundary; avoid adding domain rules. |
 | `src/components/retail/RetailExecutionWorkspace.tsx` | 223 | Workspace composition surface; move derived logic into `src/domain/**`. |
 
 ## How To Use This Audit

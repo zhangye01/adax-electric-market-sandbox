@@ -70,11 +70,13 @@ Application orchestration.
 - `useAdaxTrainingSession.ts`: owns state composition and derived settlement/validation values.
 - `useAdaxBrowserRouteSync.ts`: owns browser URL, history, popstate, route normalization, and output-page route fallback.
 - `createAdaxTrainingActions.ts`: owns user action handlers that coordinate state updates, records, review materials, and route writers.
+- `createAdaxNavigationActions.ts`: owns page-navigation actions, flow fallback, and output-state route coordination.
 - `AdaxPageRenderer.tsx`: owns page composition and page-level prop wiring.
 
 Rules:
 
 - browser history writes stay in `useAdaxBrowserRouteSync.ts`
+- page navigation actions stay in `createAdaxNavigationActions.ts`
 - training action implementations stay in `createAdaxTrainingActions.ts`
 - page imports stay in `AdaxPageRenderer.tsx`
 - `useAdaxTrainingSession.ts` should remain a composition hook
@@ -375,10 +377,11 @@ Covered:
 - route-sync decisions
 - flow guards
 - navigation shell rules
+- app-layer navigation action side effects for product-route reset and review-output guarding
 
 Next useful coverage:
 
-- session action decisions without browser history
+- remaining session action decisions without browser history
 - browser visual QA for professional market immersion changes
 
 ## Current Risk

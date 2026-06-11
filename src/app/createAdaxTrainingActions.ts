@@ -1,7 +1,7 @@
 import type { Dispatch, SetStateAction } from "react";
 import { adaxScenarioMeta } from "../data/adaxScenarioMeta";
 import { getAdaxRecordRevisitTarget } from "../domain/adaxRecords";
-import { canAccessAdaxPage, fallbackAdaxPage, normalizeAdaxPage, type AdaxFlowAccessState } from "../domain/adaxFlowGuards";
+import type { AdaxFlowAccessState } from "../domain/adaxFlowGuards";
 import { canSaveRetailReviewRecord, mergeRetailReviewSnapshotMaterials } from "../domain/retailReviewMaterials";
 import { createEmptyRetailTrainingState } from "../domain/retailState";
 import type { RetailSettlementResult, RetailTrainingState } from "../domain/retailTypes";
@@ -9,6 +9,7 @@ import { saveRetailExecutionTrainingRecord, saveRetailReviewTrainingRecord } fro
 import { upsertUserMaterial } from "../services/adaxUserMaterials";
 import type { AdaxPageId, AdaxTrainingMode, AdaxTrainingRecord, UserMaterial } from "../types";
 import { clearAdaxTrainingRecords, saveAdaxUserMaterials } from "../utils/adaxStorage";
+import { createAdaxNavigationActions } from "./createAdaxNavigationActions";
 import type { AdaxRouteWriter } from "./useAdaxBrowserRouteSync";
 
 interface CreateAdaxTrainingActionsParams {
@@ -62,56 +63,17 @@ export function createAdaxTrainingActions({
     setRecordSaved(false);
   }
 
-  function canAccessPage(page: AdaxPageId) {
-    return canAccessAdaxPage(page, flowAccessState);
-  }
-
-  function navigate(page: AdaxPageId) {
-    const normalizedPage = normalizeAdaxPage(page);
-
-    if (normalizedPage === "home" || normalizedPage === "about" || normalizedPage === "records") {
-      setMode(null);
-      resetOutputState();
-      pushRoute(normalizedPage, null);
-      setCurrentPage(normalizedPage);
-      scrollToTop("smooth");
-      return;
-    }
-    if (normalizedPage === "start") {
-      setMode(null);
-      resetOutputState();
-      pushRoute("start", null);
-      setCurrentPage("start");
-      scrollToTop("smooth");
-      return;
-    }
-    if (!mode) {
-      setCurrentPage("home");
-      pushRoute("home", null);
-      scrollToTop("smooth");
-      return;
-    }
-    if ((normalizedPage === "settlement" || normalizedPage === "review") && mode === "review") {
-      setCurrentPage("strategy");
-      pushRoute("strategy", mode);
-      scrollToTop("smooth");
-      return;
-    }
-    if (!canAccessPage(normalizedPage)) {
-      const fallbackPage = fallbackAdaxPage(normalizedPage, flowAccessState);
-      setCurrentPage(fallbackPage);
-      pushRoute(fallbackPage, mode);
-      scrollToTop("smooth");
-      return;
-    }
-    if (normalizedPage === "settlement") {
-      setSettlementViewed(true);
-    }
-    pushRoute(normalizedPage, mode);
-    setCurrentPage(normalizedPage);
-    if (normalizedPage === "strategy") setRecordSaved(false);
-    scrollToTop("smooth");
-  }
+  const { canAccessPage, navigate } = createAdaxNavigationActions({
+    mode,
+    flowAccessState,
+    setCurrentPage,
+    setMode,
+    setSettlementViewed,
+    setRecordSaved,
+    pushRoute,
+    resetOutputState,
+    scrollToTop
+  });
 
   function chooseTrainingMode(nextMode: AdaxTrainingMode) {
     setMode(nextMode);
