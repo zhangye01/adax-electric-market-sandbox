@@ -29,7 +29,7 @@ Out of current implementation scope:
 - real province data
 - backend storage, login, accounts, or external market APIs
 - production trading, filing, or investment-decision use
-- renewable, storage, or thermal implementation without a confirmed startup card
+- renewable, independent-storage, or thermal implementation without a confirmed startup card
 
 ## Current Quality Evidence
 
@@ -106,4 +106,4 @@ Keep Engineering Hardening Hold active.
 
 If continuing autonomously, use `docs/ADAX_CHANGE_GATE_CHECKLIST.md` before each change and keep this audit current when a guardrail, quality gate, source-shape budget, or active risk changes.
 
-Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` until the user explicitly resumes participant expansion. Use `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md` before deciding whether any new participant is ready for code.
+Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md` or `docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md` until the user explicitly resumes participant expansion. Use `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md` before deciding whether any new participant is ready for code.
