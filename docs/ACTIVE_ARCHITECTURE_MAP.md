@@ -354,6 +354,8 @@ Forbidden:
 
 Current no-dependency domain tests live in `tests/domain/retail-domain.test.mjs`.
 
+App-layer action tests live in `tests/app/*.test.mjs`.
+
 Script-level guardrail tests live in `tests/scripts/*.test.mjs`.
 
 Covered:
@@ -387,11 +389,12 @@ Covered:
 - flow guards
 - navigation shell rules
 - app-layer navigation action side effects for product-route reset and review-output guarding
+- app-layer training action decisions for mode reset, execution result/save guards, and node-bound review material saves
 - boundary-checker negative fixtures for component validation imports, domain browser APIs, and real province runtime data
 
 Next useful coverage:
 
-- remaining session action decisions without browser history
+- training-session hook composition and route-sync integration boundaries
 - browser visual QA for professional market immersion changes
 
 ## Current Risk
