@@ -12,6 +12,8 @@ Use `docs/ADAX_RELEASE_PROCESS.md` for GitHub Pages publishing. The current prod
 
 Use `docs/ADAX_CHANGE_GATE_CHECKLIST.md` as the pre-change gate before starting non-trivial work. It defines how to classify requests, when to switch to Project Rescue, where responsibilities belong, and which checks prove completion.
 
+Use `docs/ADAX_ENGINEERING_READINESS_AUDIT.md` as the current maintainability snapshot before changing Engineering Hardening Hold status or resuming feature expansion.
+
 ## Source Boundaries
 
 Active retail flow:

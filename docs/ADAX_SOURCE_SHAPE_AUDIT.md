@@ -16,10 +16,10 @@ npm run check:source-shape
 
 | Metric | Value |
 | --- | --- |
-| Active source files | 221 |
-| Code files | 102 |
+| Active source files | 223 |
+| Code files | 104 |
 | Style files | 119 |
-| Total active source lines | 14717 |
+| Total active source lines | 14810 |
 | Watch line threshold | 220 code / 400 CSS |
 | High line threshold | 300 code / 800 CSS |
 
@@ -31,7 +31,7 @@ npm run check:source-shape
 | `src/components` | 42 | 2800 |
 | `src/domain` | 30 | 2716 |
 | `src/pages` | 7 | 1129 |
-| `src/app` | 5 | 622 |
+| `src/app` | 7 | 715 |
 | `src/data` | 6 | 399 |
 | `src/services` | 4 | 352 |
 | `src/root` | 4 | 207 |
@@ -81,8 +81,8 @@ Fan-in pressure:
 
 | Imported file | Importer count |
 | --- | --- |
-| `src/domain/retailTypes.ts` | 45 |
-| `src/types.ts` | 34 |
+| `src/domain/retailTypes.ts` | 46 |
+| `src/types.ts` | 36 |
 | `src/components/Badge.tsx` | 17 |
 | `src/data/retailMarketData.ts` | 17 |
 | `src/utils/formatters.ts` | 10 |
