@@ -70,6 +70,7 @@ npm run quality
 | --- | --- |
 | Scope and drift | `AGENTS.md`, `docs/ADAX_MVP_STARTER.md`, `docs/ADAX_CHANGE_GATE_CHECKLIST.md` |
 | Long-term execution | `docs/ADAX_LONG_TERM_PLAN.md` |
+| Hardening exit decision | `docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md` |
 | Phase 5 entry | `docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md`, `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md`, `docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md`, `docs/ADAX_PHASE_5_RENEWABLE_ENTRY_DRY_RUN.md`, `docs/ADAX_PHASE_5_STORAGE_ENTRY_DRY_RUN.md`, `docs/ADAX_PHASE_5_THERMAL_ENTRY_DRY_RUN.md`, `scripts/check-engineering-guardrails.mjs`, `tests/scripts/check-engineering-guardrails.test.mjs` |
 | Quality pipeline | `package.json`, `scripts/check-engineering-guardrails.mjs`, `tests/scripts/check-engineering-guardrails.test.mjs` |
 | Source boundaries | `docs/ACTIVE_ARCHITECTURE_MAP.md`, `scripts/check-boundaries.mjs`, `tests/scripts/check-boundaries.test.mjs` |
@@ -109,5 +110,7 @@ Do not enter Phase 5 or implement a new participant until all of these are true:
 Keep Engineering Hardening Hold active.
 
 If continuing autonomously, use `docs/ADAX_CHANGE_GATE_CHECKLIST.md` before each change and keep this audit current when a guardrail, quality gate, source-shape budget, or active risk changes.
+
+Use `docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md` before deciding whether Engineering Hardening Hold can be lifted.
 
 Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md`, `docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md`, or `docs/ADAX_THERMAL_STARTUP_CARD.md` until the user explicitly resumes participant expansion. Use `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md`, `docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md`, and the relevant entry dry run before deciding whether any new participant is ready for code.

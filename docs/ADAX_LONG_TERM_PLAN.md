@@ -212,6 +212,7 @@ Planning Artifacts:
 - Renewable entry dry run created: `docs/ADAX_PHASE_5_RENEWABLE_ENTRY_DRY_RUN.md`.
 - Independent-storage entry dry run created: `docs/ADAX_PHASE_5_STORAGE_ENTRY_DRY_RUN.md`.
 - Thermal entry dry run created: `docs/ADAX_PHASE_5_THERMAL_ENTRY_DRY_RUN.md`.
+- Engineering hardening exit audit created: `docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md`.
 - Status: pending user confirmation. Do not implement renewable, independent-storage, or thermal code until the target startup card is confirmed. Thermal also requires separate confirmation of ten-segment offer rules.
 
 ## Engineering Hardening Hold
@@ -245,7 +246,9 @@ Continue Engineering Hardening Hold.
 
 Current readiness baseline: `docs/ADAX_ENGINEERING_READINESS_AUDIT.md`.
 
-Next recommended task: keep the engineering-readiness audit current and use it with `docs/ADAX_CHANGE_GATE_CHECKLIST.md`, `docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md`, `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md`, and `docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md` before any new feature work. Keep engineering-guardrail, source-shape, domain-contract, boundary-checker, app-action, route-sync decision, session-derivation, and shared-fixture guardrails in the normal quality gate. For code structure work, keep `src/domain/retailTypes.ts` stable under `docs/ADAX_RETAIL_CONTRACT_GOVERNANCE.md` unless a confirmed participant startup card requires shared contracts. If the user chooses renewable, use `docs/ADAX_PHASE_5_RENEWABLE_ENTRY_DRY_RUN.md` before implementation. If the user chooses independent storage, use `docs/ADAX_PHASE_5_STORAGE_ENTRY_DRY_RUN.md` before implementation. If the user chooses thermal, use `docs/ADAX_PHASE_5_THERMAL_ENTRY_DRY_RUN.md` before implementation. Next code-focused hardening should extract app action test harnesses only if more stateful action scenarios are added. Do not enter Phase 5, or review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md`, `docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md`, or `docs/ADAX_THERMAL_STARTUP_CARD.md`, until the user explicitly resumes participant expansion and confirms the target participant startup card.
+Current exit-audit baseline: `docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md`.
+
+Next recommended task: keep the engineering-readiness audit and exit audit current, then wait for an explicit user decision before lifting Engineering Hardening Hold. Use `docs/ADAX_CHANGE_GATE_CHECKLIST.md`, `docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md`, `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md`, and `docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md` before any new feature work. Keep engineering-guardrail, source-shape, domain-contract, boundary-checker, app-action, route-sync decision, session-derivation, and shared-fixture guardrails in the normal quality gate. For code structure work, keep `src/domain/retailTypes.ts` stable under `docs/ADAX_RETAIL_CONTRACT_GOVERNANCE.md` unless a confirmed participant startup card requires shared contracts. If the user chooses renewable, use `docs/ADAX_PHASE_5_RENEWABLE_ENTRY_DRY_RUN.md` before implementation. If the user chooses independent storage, use `docs/ADAX_PHASE_5_STORAGE_ENTRY_DRY_RUN.md` before implementation. If the user chooses thermal, use `docs/ADAX_PHASE_5_THERMAL_ENTRY_DRY_RUN.md` before implementation. Next code-focused hardening should extract app action test harnesses only if more stateful action scenarios are added. Do not enter Phase 5, or review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md`, `docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md`, or `docs/ADAX_THERMAL_STARTUP_CARD.md`, until the user explicitly resumes participant expansion and confirms the target participant startup card.
 
 ## Project Rescue Triggers
 

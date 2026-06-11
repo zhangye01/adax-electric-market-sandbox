@@ -12,6 +12,7 @@ const requiredFiles = [
   "docs/ADAX_CHANGE_GATE_CHECKLIST.md",
   "docs/ACTIVE_ARCHITECTURE_MAP.md",
   "docs/ADAX_ENGINEERING_READINESS_AUDIT.md",
+  "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
   "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
   "docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md",
   "docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md",
@@ -31,6 +32,7 @@ const requiredReferences = [
     file: "AGENTS.md",
     references: [
       "docs/ADAX_ENGINEERING_READINESS_AUDIT.md",
+      "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md",
       "docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md",
@@ -51,6 +53,7 @@ const requiredReferences = [
     file: "docs/ENGINEERING_BASELINE.md",
     references: [
       "docs/ADAX_ENGINEERING_READINESS_AUDIT.md",
+      "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md",
       "docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md",
@@ -63,6 +66,7 @@ const requiredReferences = [
   {
     file: "docs/ADAX_LONG_TERM_PLAN.md",
     references: [
+      "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md",
       "docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md",
@@ -77,6 +81,7 @@ const requiredReferences = [
   {
     file: "docs/ADAX_ENGINEERING_READINESS_AUDIT.md",
     references: [
+      "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "scripts/check-engineering-guardrails.mjs",
       "tests/scripts/check-engineering-guardrails.test.mjs"
@@ -85,6 +90,7 @@ const requiredReferences = [
   {
     file: "docs/ACTIVE_ARCHITECTURE_MAP.md",
     references: [
+      "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "scripts/check-engineering-guardrails.mjs"
     ]
@@ -100,6 +106,14 @@ const requiredReferences = [
 ];
 
 const requiredPhrases = [
+  {
+    file: "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
+    phrases: [
+      "Status: exit audit complete. Engineering Hardening Hold is ready for user decision.",
+      "Phase 5 remains closed.",
+      "Do not resume feature expansion until the user explicitly confirms the project is ready, confirms exactly one participant startup card, and `npm run quality` passes."
+    ]
+  },
   {
     file: "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
     phrases: [

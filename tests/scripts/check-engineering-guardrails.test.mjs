@@ -40,6 +40,7 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
     "package.json": makePackageJson(),
     "AGENTS.md": [
       "docs/ADAX_ENGINEERING_READINESS_AUDIT.md",
+      "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md",
       "docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md",
@@ -57,6 +58,7 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
     ].join("\n"),
     "docs/ENGINEERING_BASELINE.md": [
       "docs/ADAX_ENGINEERING_READINESS_AUDIT.md",
+      "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md",
       "docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md",
@@ -66,6 +68,7 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
       "scripts/check-engineering-guardrails.mjs"
     ].join("\n"),
     "docs/ADAX_LONG_TERM_PLAN.md": [
+      "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md",
       "docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md",
@@ -77,13 +80,20 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
       "docs/ADAX_THERMAL_STARTUP_CARD.md"
     ].join("\n"),
     "docs/ADAX_ENGINEERING_READINESS_AUDIT.md": [
+      "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "scripts/check-engineering-guardrails.mjs",
       "tests/scripts/check-engineering-guardrails.test.mjs"
     ].join("\n"),
     "docs/ACTIVE_ARCHITECTURE_MAP.md": [
+      "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "scripts/check-engineering-guardrails.mjs"
+    ].join("\n"),
+    "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md": [
+      "Status: exit audit complete. Engineering Hardening Hold is ready for user decision.",
+      "Phase 5 remains closed.",
+      "Do not resume feature expansion until the user explicitly confirms the project is ready, confirms exactly one participant startup card, and `npm run quality` passes."
     ].join("\n"),
     "docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md": [
       "Status: rehearsal complete. Phase 5 remains closed.",
@@ -143,6 +153,14 @@ test("engineering guardrail checker rejects missing required docs", () => {
   assert.match(result.stderr, /ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT/);
 });
 
+test("engineering guardrail checker rejects missing hardening exit audit", () => {
+  const result = runGuardrailFixture({}, ["docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md"]);
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /required-engineering-file-missing/);
+  assert.match(result.stderr, /ADAX_ENGINEERING_HARDENING_EXIT_AUDIT/);
+});
+
 test("engineering guardrail checker rejects disconnected entry references", () => {
   const result = runGuardrailFixture({
     "AGENTS.md": "docs/ADAX_ENGINEERING_READINESS_AUDIT.md\n"
@@ -151,6 +169,19 @@ test("engineering guardrail checker rejects disconnected entry references", () =
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /required-engineering-reference-missing/);
   assert.match(result.stderr, /ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT/);
+});
+
+test("engineering guardrail checker rejects accidental hardening exit opening language", () => {
+  const result = runGuardrailFixture({
+    "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md": [
+      "Status: exit audit complete. Engineering Hardening Hold is lifted.",
+      "Phase 5 is open."
+    ].join("\n")
+  });
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /required-phase-gate-phrase-missing/);
+  assert.match(result.stderr, /Phase 5 remains closed/);
 });
 
 test("engineering guardrail checker rejects accidental Phase 5 opening language", () => {
