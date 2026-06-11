@@ -104,4 +104,4 @@ Switch to Project Rescue instead of coding if:
 
 Keep Engineering Hardening Hold active.
 
-If the user says to resume feature expansion, ask them to confirm the target participant startup card first. For the current candidate order, the likely first confirmation target is `docs/ADAX_RENEWABLE_STARTUP_CARD.md`; the independent-storage confirmation target is `docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md`; the thermal confirmation target is `docs/ADAX_THERMAL_STARTUP_CARD.md`.
+If the user says to resume feature expansion, first use `docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md` to select exactly one participant candidate, then ask them to confirm that target participant startup card. For the current candidate order, the likely first confirmation target is `docs/ADAX_RENEWABLE_STARTUP_CARD.md`; the independent-storage confirmation target is `docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md`; the thermal confirmation target is `docs/ADAX_THERMAL_STARTUP_CARD.md`.

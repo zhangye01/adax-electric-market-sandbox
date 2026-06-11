@@ -58,6 +58,8 @@ Candidate entry dry runs:
 
 If the user confirms only one card, implement only that card. Do not opportunistically prepare shared runtime code for the other candidates.
 
+Use `docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md` as the consolidated gate before selecting a candidate for implementation.
+
 ## Selection Rules
 
 1. Keep the retail baseline as the active product until a Phase 5 card is confirmed.

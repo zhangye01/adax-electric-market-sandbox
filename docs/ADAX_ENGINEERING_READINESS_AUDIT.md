@@ -70,7 +70,7 @@ npm run quality
 | --- | --- |
 | Scope and drift | `AGENTS.md`, `docs/ADAX_MVP_STARTER.md`, `docs/ADAX_CHANGE_GATE_CHECKLIST.md` |
 | Long-term execution | `docs/ADAX_LONG_TERM_PLAN.md` |
-| Phase 5 entry | `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md`, `docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md`, `docs/ADAX_PHASE_5_RENEWABLE_ENTRY_DRY_RUN.md`, `docs/ADAX_PHASE_5_STORAGE_ENTRY_DRY_RUN.md`, `docs/ADAX_PHASE_5_THERMAL_ENTRY_DRY_RUN.md` |
+| Phase 5 entry | `docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md`, `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md`, `docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md`, `docs/ADAX_PHASE_5_RENEWABLE_ENTRY_DRY_RUN.md`, `docs/ADAX_PHASE_5_STORAGE_ENTRY_DRY_RUN.md`, `docs/ADAX_PHASE_5_THERMAL_ENTRY_DRY_RUN.md` |
 | Source boundaries | `docs/ACTIVE_ARCHITECTURE_MAP.md`, `scripts/check-boundaries.mjs`, `tests/scripts/check-boundaries.test.mjs` |
 | Central contracts | `docs/ADAX_RETAIL_CONTRACT_GOVERNANCE.md`, `scripts/check-domain-contracts.mjs`, `tests/scripts/check-domain-contracts.test.mjs` |
 | Source shape | `docs/ADAX_SOURCE_SHAPE_AUDIT.md`, `scripts/check-source-shape.mjs`, `tests/scripts/check-source-shape.test.mjs` |
