@@ -117,8 +117,9 @@ Fan-in pressure:
 30. `src/styles/012-retail-results.css` has been reduced to result panel base containers; result-review status chips, output-boundary spacing, empty/missing states, compact hints, result snapshots, and row text styles now have dedicated partitions.
 31. `src/styles/002-app-sidebar-nav.css` has been reduced to navigation container and section structure; navigation item states, status dots, footer notice, and collapsed-navigation layout now have dedicated partitions.
 32. `src/domain/retailCalculations.ts` has been reduced from the only high-pressure TypeScript domain file into a settlement facade; customer, revenue, contract, exposure, and risk-diagnostic calculation helpers now live in dedicated domain modules.
-33. `src/domain/retailTypes.ts` and `src/types.ts` have high fan-in. They are central contracts; changes here should remain conservative and test-backed.
-34. `RetailReviewWorkspace.tsx` and `RetailExecutionWorkspace.tsx` have the highest component fan-out. They should stay composition surfaces and not regain business rules.
+33. `scripts/check-boundaries.mjs` now treats those calculation helper modules as reviewed domain-rule targets, so components and pages cannot bypass the calculation facade without an explicit architecture exception.
+34. `src/domain/retailTypes.ts` and `src/types.ts` have high fan-in. They are central contracts; changes here should remain conservative and test-backed.
+35. `RetailReviewWorkspace.tsx` and `RetailExecutionWorkspace.tsx` have the highest component fan-out. They should stay composition surfaces and not regain business rules.
 
 ## Recommended Refactor Queue
 

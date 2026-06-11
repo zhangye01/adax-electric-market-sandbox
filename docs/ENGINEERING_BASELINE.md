@@ -262,7 +262,7 @@ Do not treat visual inspection as a replacement for domain tests.
 | --- | --- | --- |
 | Scope drift into non-retailer workflows | High | Keep `docs/ADAX_MVP_STARTER.md` as source of truth |
 | Open-ended change requests bypassing architecture judgment | Reduced | Use `docs/ADAX_CHANGE_GATE_CHECKLIST.md` to classify scope, target layer, rescue triggers, and required evidence before editing |
-| Architecture boundary drift going unnoticed | Reduced | `npm run check:boundaries` fails on active legacy imports, forbidden domain dependencies, misplaced localStorage/history writes, network/backend APIs, real-province runtime data, and unreviewed component-level calculation imports |
+| Architecture boundary drift going unnoticed | Reduced | `npm run check:boundaries` fails on active legacy imports, forbidden domain dependencies, misplaced localStorage/history writes, network/backend APIs, real-province runtime data, and unreviewed component-level calculation, validation, and calculation-helper imports |
 | Large files growing without review | Reduced | `npm run audit:source` identifies line pressure and import hotspots; `npm run check:source-shape` fails when new or already-budgeted large active files grow without an audit update |
 | New participant implementation starting before scope confirmation | High | Require a confirmed participant startup card before code; current renewable card is `docs/ADAX_RENEWABLE_STARTUP_CARD.md` and remains pending confirmation |
 | Preview publishing path drifting from source history | Medium | Keep source on `main`, static build on `gh-pages`, and follow `docs/ADAX_RELEASE_PROCESS.md` |

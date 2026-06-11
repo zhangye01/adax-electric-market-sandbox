@@ -78,6 +78,7 @@ Rules:
 - training action implementations stay in `createAdaxTrainingActions.ts`
 - page imports stay in `AdaxPageRenderer.tsx`
 - `useAdaxTrainingSession.ts` should remain a composition hook
+- app orchestration may call the retail calculation facade; React components should not bypass it by importing calculation helper modules directly
 
 ### `src/domain/**`
 
@@ -128,6 +129,12 @@ Not allowed:
 - `window`, `document`, `localStorage`, `Blob`, or DOM APIs
 - direct file import/export
 - UI text layout decisions
+
+Calculation helper rule:
+
+- `retailCalculations.ts` is the compatibility facade for settlement and reviewed calculation exports.
+- `retailCustomerCalculations.ts`, `retailRevenueCalculations.ts`, `retailContractCalculations.ts`, `retailExposureCalculations.ts`, `retailRiskDiagnostics.ts`, and `retailCalculationUtils.ts` are lower-level helpers.
+- Components and pages must not import those lower-level helpers directly without first updating `scripts/check-boundaries.mjs` and documenting the exception.
 
 ### `src/data/**`
 

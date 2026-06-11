@@ -225,6 +225,16 @@ function checkRealProvinceDataBoundary() {
 }
 
 function checkPresentationBusinessBoundaries() {
+  const reviewedDomainRuleTargets = [
+    "src/domain/retailCalculations",
+    "src/domain/retailValidation",
+    "src/domain/retailCustomerCalculations",
+    "src/domain/retailRevenueCalculations",
+    "src/domain/retailContractCalculations",
+    "src/domain/retailExposureCalculations",
+    "src/domain/retailRiskDiagnostics",
+    "src/domain/retailCalculationUtils"
+  ];
   const allowedDomainRuleImports = new Set([
     "src/components/retail/RetailExecutionWorkspace.tsx -> src/domain/retailCalculations",
     "src/components/retail/RetailExecutionWorkspace.tsx -> src/domain/retailValidation",
@@ -246,8 +256,7 @@ function checkPresentationBusinessBoundaries() {
       const resolvedImport = resolveImport(file, importSpec);
       if (!resolvedImport) continue;
 
-      const importsDomainRule =
-        isInside(resolvedImport, "src/domain/retailCalculations") || isInside(resolvedImport, "src/domain/retailValidation");
+      const importsDomainRule = reviewedDomainRuleTargets.some((target) => isInside(resolvedImport, target));
 
       const allowanceKey = `${projectPath} -> ${resolvedImport}`;
       if (importsDomainRule && !allowedDomainRuleImports.has(allowanceKey)) {
