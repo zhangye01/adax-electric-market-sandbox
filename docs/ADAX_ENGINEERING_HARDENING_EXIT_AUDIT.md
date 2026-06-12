@@ -46,6 +46,7 @@ Still closed:
 | Change gate | `docs/ADAX_CHANGE_GATE_CHECKLIST.md` | Non-trivial changes have a pre-edit classification path. |
 | Engineering baseline | `docs/ENGINEERING_BASELINE.md` | Maintainability risks and controls are tracked. |
 | Current readiness | `docs/ADAX_ENGINEERING_READINESS_AUDIT.md` | Hardening hold status and feature-expansion gate are explicit. |
+| User decision packet | `docs/ADAX_HARDENING_DECISION_PACKET.md` | The user-facing choice between continued hardening, one-participant expansion, and Project Rescue is explicit. |
 | Feature resumption decision | `docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md` | Resume-development decisions must be explicit and ordered. |
 | Phase 5 gate | `docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md` | Candidate comparison exists; implementation remains closed. |
 | Phase 5 rehearsal | `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md` | Entry decision can be rehearsed before code. |
@@ -64,8 +65,8 @@ Current recorded handoff evidence:
 
 | Check | Latest evidence |
 | --- | --- |
-| Full quality gate | `npm run quality` on 2026-06-12: passed. |
-| Script tests | 86 tests passed, including engineering guardrail, boundary, source-shape, domain-contract, publishing, domain, app, route-sync, and session-derivation tests. |
+| Full quality gate | `npm run quality` on 2026-06-22: passed. |
+| Script tests | 88 tests passed, including engineering guardrail, boundary, source-shape, domain-contract, publishing, domain, app, route-sync, and session-derivation tests. |
 | Build | `tsc -b && vite build` passed through the quality gate. |
 | Source artifact boundary | `npm run check:engineering-guardrails` verifies that tracked `dist/`, `coverage/`, `.vite/`, and `.test-build/` artifacts are excluded from `main`. |
 | Pages workflow boundary | `npm run check:engineering-guardrails` rejects `.github/workflows/**` under the current local-script Pages strategy. |
@@ -118,6 +119,7 @@ Allowed during Engineering Hardening Hold:
 
 Allowed only after user confirmation:
 
+- present or reread `docs/ADAX_HARDENING_DECISION_PACKET.md`
 - use `docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md`
 - select exactly one Phase 5 participant
 - confirm the relevant startup card

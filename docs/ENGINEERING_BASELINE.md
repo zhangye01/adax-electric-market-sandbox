@@ -16,6 +16,8 @@ Use `docs/ADAX_ENGINEERING_READINESS_AUDIT.md` as the current maintainability sn
 
 Use `docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md` as the exit audit before deciding whether Engineering Hardening Hold can be lifted.
 
+Use `docs/ADAX_HARDENING_DECISION_PACKET.md` as the user-facing decision packet before asking whether to keep hardening, lift Engineering Hardening Hold for one participant, or enter Project Rescue.
+
 Use `docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md` before preparing any feature-expansion implementation plan.
 
 Use `docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md` as the consolidated readiness gate before selecting a Phase 5 participant or leaving Engineering Hardening Hold for participant expansion.

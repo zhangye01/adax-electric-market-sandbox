@@ -39,6 +39,7 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
     "AGENTS.md": [
       "docs/ADAX_ENGINEERING_READINESS_AUDIT.md",
       "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
+      "docs/ADAX_HARDENING_DECISION_PACKET.md",
       "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md",
@@ -58,6 +59,7 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
     "docs/ENGINEERING_BASELINE.md": [
       "docs/ADAX_ENGINEERING_READINESS_AUDIT.md",
       "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
+      "docs/ADAX_HARDENING_DECISION_PACKET.md",
       "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md",
@@ -69,6 +71,7 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
     ].join("\n"),
     "docs/ADAX_LONG_TERM_PLAN.md": [
       "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
+      "docs/ADAX_HARDENING_DECISION_PACKET.md",
       "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md",
@@ -82,6 +85,7 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
     ].join("\n"),
     "docs/ADAX_ENGINEERING_READINESS_AUDIT.md": [
       "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
+      "docs/ADAX_HARDENING_DECISION_PACKET.md",
       "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "scripts/check-engineering-guardrails.mjs",
@@ -89,6 +93,7 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
     ].join("\n"),
     "docs/ACTIVE_ARCHITECTURE_MAP.md": [
       "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
+      "docs/ADAX_HARDENING_DECISION_PACKET.md",
       "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "scripts/check-engineering-guardrails.mjs"
@@ -102,11 +107,20 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
       "Freshness rule: `npm run quality` must be rerun after any later source, guardrail, or release-process change before using this audit to lift the hold.",
       "Engineering Hardening Hold is ready for user decision, but it is not automatically lifted."
     ].join("\n"),
+    "docs/ADAX_HARDENING_DECISION_PACKET.md": [
+      "Status: decision packet active. It does not lift Engineering Hardening Hold.",
+      "If the user only says \"继续\", keep Engineering Hardening Hold active.",
+      "Phase 5 work cannot start from this packet alone.",
+      "Before any new participant code starts, all of these must be true:",
+      "The user selects exactly one participant: 新能源, 独立储能, or 火电.",
+      "Do not interpret a generic \"继续\" as permission to lift the hold, select a participant, or write Phase 5 code."
+    ].join("\n"),
     "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md": [
       "Status: decision checklist active. It does not lift Engineering Hardening Hold.",
       "Phase 5 remains closed until this checklist is completed and the user confirms the selected participant startup card.",
       "Do not write feature code from this checklist alone.",
-      "Exactly one participant may enter implementation in the next wave."
+      "Exactly one participant may enter implementation in the next wave.",
+      "Present or reread `docs/ADAX_HARDENING_DECISION_PACKET.md`."
     ].join("\n"),
     "docs/ADAX_RENEWABLE_STARTUP_CARD.md": [
       "状态：待用户确认。确认前不得实现新能源主体代码。",
@@ -206,6 +220,14 @@ test("engineering guardrail checker rejects missing hardening exit audit", () =>
   assert.match(result.stderr, /ADAX_ENGINEERING_HARDENING_EXIT_AUDIT/);
 });
 
+test("engineering guardrail checker rejects missing hardening decision packet", () => {
+  const result = runGuardrailFixture({}, ["docs/ADAX_HARDENING_DECISION_PACKET.md"]);
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /required-engineering-file-missing/);
+  assert.match(result.stderr, /ADAX_HARDENING_DECISION_PACKET/);
+});
+
 test("engineering guardrail checker rejects missing feature resumption checklist", () => {
   const result = runGuardrailFixture({}, ["docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md"]);
 
@@ -289,6 +311,20 @@ test("engineering guardrail checker rejects stale hardening exit audit evidence"
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /required-phase-gate-phrase-missing/);
   assert.match(result.stderr, /Latest Verification Snapshot/);
+});
+
+test("engineering guardrail checker rejects hardening decision packet as implementation permission", () => {
+  const result = runGuardrailFixture({
+    "docs/ADAX_HARDENING_DECISION_PACKET.md": [
+      "Status: decision packet complete. Engineering Hardening Hold is lifted.",
+      "Phase 5 work can start from this packet.",
+      "If the user only says \"继续\", select a participant automatically."
+    ].join("\n")
+  });
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /required-phase-gate-phrase-missing/);
+  assert.match(result.stderr, /It does not lift Engineering Hardening Hold/);
 });
 
 test("engineering guardrail checker rejects accidental feature resumption approval language", () => {

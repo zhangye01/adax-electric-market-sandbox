@@ -21,14 +21,15 @@ If the user says the product is off, confusing, not professional enough, or drif
 Complete these steps in order:
 
 1. Confirm the user wants to lift Engineering Hardening Hold.
-2. Reread `docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md`.
-3. Run or confirm a fresh `npm run quality` result on the current baseline.
-4. Confirm exactly one target participant.
-5. Reread the matching startup card only after the target participant is selected.
-6. Ask the user to confirm or revise that startup card.
-7. Classify the change with `docs/ADAX_CHANGE_GATE_CHECKLIST.md`.
-8. Prepare a small implementation plan with target files, domain contracts, tests, and rollback.
-9. Start coding only after the startup card is confirmed and no Project Rescue trigger is active.
+2. Present or reread `docs/ADAX_HARDENING_DECISION_PACKET.md`.
+3. Reread `docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md`.
+4. Run or confirm a fresh `npm run quality` result on the current baseline.
+5. Confirm exactly one target participant.
+6. Reread the matching startup card only after the target participant is selected.
+7. Ask the user to confirm or revise that startup card.
+8. Classify the change with `docs/ADAX_CHANGE_GATE_CHECKLIST.md`.
+9. Prepare a small implementation plan with target files, domain contracts, tests, and rollback.
+10. Start coding only after the startup card is confirmed and no Project Rescue trigger is active.
 
 ## Participant Selection Rule
 
