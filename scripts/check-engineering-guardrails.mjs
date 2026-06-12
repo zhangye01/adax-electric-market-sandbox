@@ -122,6 +122,27 @@ const requiredPhrases = [
     ]
   },
   {
+    file: "docs/ADAX_RENEWABLE_STARTUP_CARD.md",
+    phrases: [
+      "状态：待用户确认。确认前不得实现新能源主体代码。",
+      "不把新能源逻辑写进售电公司的 domain、components 或 tests 里。"
+    ]
+  },
+  {
+    file: "docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md",
+    phrases: [
+      "状态：待用户确认。确认前不得实现独立储能主体代码。",
+      "不把独立储能逻辑写进售电公司或新能源的 domain、components 或 tests 里。"
+    ]
+  },
+  {
+    file: "docs/ADAX_THERMAL_STARTUP_CARD.md",
+    phrases: [
+      "状态：待用户确认。确认前不得实现火电主体代码。",
+      "不把火电逻辑写进售电公司、新能源或独立储能的 domain、components 或 tests 里。"
+    ]
+  },
+  {
     file: "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
     phrases: [
       "Status: exit audit complete. Engineering Hardening Hold is ready for user decision.",

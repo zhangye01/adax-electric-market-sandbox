@@ -86,6 +86,7 @@ npm run quality
 | Risk | Level | Current control |
 | --- | --- | --- |
 | New participant implementation starts before scope confirmation | High | Keep Phase 5 closed until user confirms feature expansion and the participant startup card. |
+| Candidate startup cards are accidentally treated as approved | High | `npm run check:engineering-guardrails` fails if renewable, independent-storage, or thermal startup cards lose their pending-user-confirmation statements. |
 | Closed Phase 5 participant runtime files appear silently | High | `npm run check:engineering-guardrails` fails if active source adds renewable, independent-storage, or thermal runtime files while Phase 5 remains closed. |
 | Closed participant id leaks into generated active URLs | Medium | `pathForPage` normalizes generated participant URLs back to `retailer`; `tests/domain/retail-domain.test.mjs` covers closed participant inputs. |
 | Closed participant records or materials enter active localStorage | Medium | `getAdaxTrainingRecords`, `saveAdaxTrainingRecord`, `getAdaxUserMaterials`, `saveAdaxUserMaterials`, and `upsertUserMaterial` keep active persisted data limited to `retailer`; `tests/domain/retail-domain.test.mjs` covers closed participant records and materials. |

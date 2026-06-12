@@ -283,7 +283,7 @@ Every handoff should run:
 - `npm run test`
 - `npm run build`
 
-`npm run quality` runs the engineering guardrail check, boundary check, central contract check, and source-shape budget check before typecheck, tests, and build. The engineering guardrail check also verifies that the package quality pipeline still contains the required commands and script-level tests, and that closed Phase 5 participant runtime files have not appeared in active source.
+`npm run quality` runs the engineering guardrail check, boundary check, central contract check, and source-shape budget check before typecheck, tests, and build. The engineering guardrail check also verifies that the package quality pipeline still contains the required commands and script-level tests, candidate startup cards remain pending user confirmation, and closed Phase 5 participant runtime files have not appeared in active source.
 
 Do not treat visual inspection as a replacement for domain tests.
 
@@ -298,7 +298,7 @@ Do not treat visual inspection as a replacement for domain tests.
 | Large files growing without review | Reduced | `npm run audit:source` identifies line pressure and import hotspots; `npm run check:source-shape` fails when new or already-budgeted large active files grow without an audit update; `tests/scripts/check-source-shape.test.mjs` proves unbudgeted and over-budget fixtures fail |
 | Central contract drift becoming invisible | Reduced | `npm run check:domain-contracts` now checks reviewed export groups and order; contract governance lives in `docs/ADAX_RETAIL_CONTRACT_GOVERNANCE.md`; `tests/scripts/check-domain-contracts.test.mjs` proves unreviewed, reordered, and missing export fixtures fail |
 | Test fixtures drifting through copy-paste | Reduced | Shared retail fixtures live in `tests/support/retail-fixtures.mjs`; shared fake browser storage setup lives in `tests/support/browser-fixtures.mjs` |
-| New participant implementation starting before scope confirmation | High | Require a confirmed participant startup card before code; current candidate cards are `docs/ADAX_RENEWABLE_STARTUP_CARD.md`, `docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md`, and `docs/ADAX_THERMAL_STARTUP_CARD.md`, all pending confirmation |
+| New participant implementation starting before scope confirmation | High | Require a confirmed participant startup card before code; current candidate cards are `docs/ADAX_RENEWABLE_STARTUP_CARD.md`, `docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md`, and `docs/ADAX_THERMAL_STARTUP_CARD.md`, all pending confirmation; `npm run check:engineering-guardrails` fails if those pending statements are removed |
 | Closed participant ids leaking into generated URLs | Reduced | `src/routes/adaxRoutes.ts` normalizes generated participant URLs to `retailer` while Phase 5 is closed; `tests/domain/retail-domain.test.mjs` covers closed participant inputs to `pathForPage` |
 | Closed participant records or materials leaking into active localStorage | Reduced | `src/utils/adaxStorage.ts` and `src/services/adaxUserMaterials.ts` keep active records and user materials limited to `retailer` while Phase 5 is closed; `tests/domain/retail-domain.test.mjs` covers closed participant record read/save and material read/save/upsert behavior |
 | Preview publishing path drifting from source history | Medium | Keep source on `main`, static build on `gh-pages`, and follow `docs/ADAX_RELEASE_PROCESS.md` |

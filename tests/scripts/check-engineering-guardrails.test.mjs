@@ -5,9 +5,6 @@ import { runScriptFixture } from "./script-fixtures.mjs";
 const requiredDocPaths = [
   "docs/ADAX_MVP_STARTER.md",
   "docs/ADAX_CHANGE_GATE_CHECKLIST.md",
-  "docs/ADAX_RENEWABLE_STARTUP_CARD.md",
-  "docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md",
-  "docs/ADAX_THERMAL_STARTUP_CARD.md",
   "docs/ADAX_RELEASE_PROCESS.md",
   "docs/ADAX_RETAIL_CONTRACT_GOVERNANCE.md",
   "docs/ADAX_SOURCE_SHAPE_AUDIT.md"
@@ -106,6 +103,18 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
       "Phase 5 remains closed until this checklist is completed and the user confirms the selected participant startup card.",
       "Do not write feature code from this checklist alone.",
       "Exactly one participant may enter implementation in the next wave."
+    ].join("\n"),
+    "docs/ADAX_RENEWABLE_STARTUP_CARD.md": [
+      "状态：待用户确认。确认前不得实现新能源主体代码。",
+      "不把新能源逻辑写进售电公司的 domain、components 或 tests 里。"
+    ].join("\n"),
+    "docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md": [
+      "状态：待用户确认。确认前不得实现独立储能主体代码。",
+      "不把独立储能逻辑写进售电公司或新能源的 domain、components 或 tests 里。"
+    ].join("\n"),
+    "docs/ADAX_THERMAL_STARTUP_CARD.md": [
+      "状态：待用户确认。确认前不得实现火电主体代码。",
+      "不把火电逻辑写进售电公司、新能源或独立储能的 domain、components 或 tests 里。"
     ].join("\n"),
     "docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md": [
       "Status: rehearsal complete. Phase 5 remains closed.",
@@ -217,6 +226,36 @@ test("engineering guardrail checker rejects accidental feature resumption approv
   assert.match(result.stderr, /required-phase-gate-phrase-missing/);
   assert.match(result.stderr, /Do not write feature code from this checklist alone/);
 });
+
+const startupCardApprovalCases = [
+  {
+    name: "renewable",
+    file: "docs/ADAX_RENEWABLE_STARTUP_CARD.md",
+    expectedPhrase: "状态：待用户确认。确认前不得实现新能源主体代码。"
+  },
+  {
+    name: "independent storage",
+    file: "docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md",
+    expectedPhrase: "状态：待用户确认。确认前不得实现独立储能主体代码。"
+  },
+  {
+    name: "thermal",
+    file: "docs/ADAX_THERMAL_STARTUP_CARD.md",
+    expectedPhrase: "状态：待用户确认。确认前不得实现火电主体代码。"
+  }
+];
+
+for (const { name, file, expectedPhrase } of startupCardApprovalCases) {
+  test(`engineering guardrail checker rejects accidental ${name} startup-card approval language`, () => {
+    const result = runGuardrailFixture({
+      [file]: "状态：已确认。可以开始实现主体代码。\n"
+    });
+
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /required-phase-gate-phrase-missing/);
+    assert.match(result.stderr, new RegExp(expectedPhrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  });
+}
 
 test("engineering guardrail checker rejects accidental Phase 5 opening language", () => {
   const result = runGuardrailFixture({
