@@ -25,7 +25,8 @@ const requiredFiles = [
   "docs/ADAX_THERMAL_STARTUP_CARD.md",
   "docs/ADAX_RELEASE_PROCESS.md",
   "docs/ADAX_RETAIL_CONTRACT_GOVERNANCE.md",
-  "docs/ADAX_SOURCE_SHAPE_AUDIT.md"
+  "docs/ADAX_SOURCE_SHAPE_AUDIT.md",
+  "scripts/publish-pages.mjs"
 ];
 
 const requiredReferences = [
@@ -108,6 +109,16 @@ const requiredReferences = [
   {
     file: "docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md",
     references: ["docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md"]
+  },
+  {
+    file: "docs/ADAX_RELEASE_PROCESS.md",
+    references: [
+      "npm run publish:pages:dry",
+      "npm run publish:pages -- --yes",
+      "scripts/publish-pages.mjs",
+      "main",
+      "gh-pages"
+    ]
   }
 ];
 
@@ -197,6 +208,24 @@ const requiredPhrases = [
       "Do not implement the thermal workflow yet.",
       "| Active code changes allowed now | No |"
     ]
+  },
+  {
+    file: "docs/ADAX_RELEASE_PROCESS.md",
+    phrases: [
+      "不要在源码仓库提交 `dist/`。",
+      "真实发布必须显式传入 `--yes`：",
+      "当前 Pages 发布不依赖 GitHub Actions。",
+      "当前 Pages 发布依赖本地脚本更新 `gh-pages` 分支。"
+    ]
+  },
+  {
+    file: "scripts/publish-pages.mjs",
+    phrases: [
+      "const previewUrl = \"https://zhangye01.github.io/adax-electric-market-sandbox/\";",
+      "fail(\"real publishing requires --yes. Use `npm run publish:pages:dry` first, then `npm run publish:pages -- --yes`.\");",
+      "run(\"npm\", [\"run\", \"quality\"]);",
+      "run(\"git\", [\"push\", \"origin\", \"HEAD:gh-pages\"], { cwd: releaseDir, writes: true });"
+    ]
   }
 ];
 
@@ -206,7 +235,9 @@ const requiredPackageScripts = {
   "check:domain-contracts": "node scripts/check-domain-contracts.mjs",
   "check:source-shape": "node scripts/check-source-shape.mjs",
   "typecheck": "tsc -b",
-  "build": "tsc -b && vite build"
+  "build": "tsc -b && vite build",
+  "publish:pages:dry": "node scripts/publish-pages.mjs --dry-run --allow-dirty",
+  "publish:pages": "node scripts/publish-pages.mjs"
 };
 
 const requiredQualityCommands = [

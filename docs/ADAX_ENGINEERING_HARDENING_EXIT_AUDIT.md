@@ -53,7 +53,7 @@ Still closed:
 | Candidate dry runs | `docs/ADAX_PHASE_5_RENEWABLE_ENTRY_DRY_RUN.md`, `docs/ADAX_PHASE_5_STORAGE_ENTRY_DRY_RUN.md`, `docs/ADAX_PHASE_5_THERMAL_ENTRY_DRY_RUN.md` | Candidate-specific gaps are visible before implementation. |
 | Startup cards | `docs/ADAX_RENEWABLE_STARTUP_CARD.md`, `docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md`, `docs/ADAX_THERMAL_STARTUP_CARD.md` | Future participant scopes exist but remain unconfirmed. |
 | Quality gate | `npm run quality` | Engineering guardrails, boundaries, contracts, source shape, typecheck, tests, and build run as one gate. |
-| Guardrail script | `scripts/check-engineering-guardrails.mjs` | Required governance files, references, package scripts, test targets, Phase 5 closed phrases, and closed participant runtime files are checked. |
+| Guardrail script | `scripts/check-engineering-guardrails.mjs` | Required governance files, references, package scripts, publishing safeguards, test targets, Phase 5 closed phrases, and closed participant runtime files are checked. |
 | Script tests | `tests/scripts/check-engineering-guardrails.test.mjs` | The engineering guardrail behavior has negative fixtures. |
 | Route containment | `src/routes/adaxRoutes.ts` | Generated participant URLs normalize back to retailer while Phase 5 is closed. |
 | Persistence containment | `src/utils/adaxStorage.ts`, `src/services/adaxUserMaterials.ts` | Active records and materials are filtered to retailer while Phase 5 is closed. |

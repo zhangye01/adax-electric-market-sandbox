@@ -5,7 +5,6 @@ import { runScriptFixture } from "./script-fixtures.mjs";
 const requiredDocPaths = [
   "docs/ADAX_MVP_STARTER.md",
   "docs/ADAX_CHANGE_GATE_CHECKLIST.md",
-  "docs/ADAX_RELEASE_PROCESS.md",
   "docs/ADAX_RETAIL_CONTRACT_GOVERNANCE.md",
   "docs/ADAX_SOURCE_SHAPE_AUDIT.md"
 ];
@@ -24,6 +23,8 @@ function makePackageJson(overrides = {}) {
         quality:
           "npm run check:engineering-guardrails && npm run check:boundaries && npm run check:domain-contracts && npm run check:source-shape && npm run typecheck && npm run test && npm run build",
         build: "tsc -b && vite build",
+        "publish:pages:dry": "node scripts/publish-pages.mjs --dry-run --allow-dirty",
+        "publish:pages": "node scripts/publish-pages.mjs",
         ...overrides
       }
     },
@@ -116,6 +117,23 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
       "状态：待用户确认。确认前不得实现火电主体代码。",
       "不把火电逻辑写进售电公司、新能源或独立储能的 domain、components 或 tests 里。"
     ].join("\n"),
+    "docs/ADAX_RELEASE_PROCESS.md": [
+      "npm run publish:pages:dry",
+      "npm run publish:pages -- --yes",
+      "scripts/publish-pages.mjs",
+      "main",
+      "gh-pages",
+      "不要在源码仓库提交 `dist/`。",
+      "真实发布必须显式传入 `--yes`：",
+      "当前 Pages 发布不依赖 GitHub Actions。",
+      "当前 Pages 发布依赖本地脚本更新 `gh-pages` 分支。"
+    ].join("\n"),
+    "scripts/publish-pages.mjs": [
+      "const previewUrl = \"https://zhangye01.github.io/adax-electric-market-sandbox/\";",
+      "fail(\"real publishing requires --yes. Use `npm run publish:pages:dry` first, then `npm run publish:pages -- --yes`.\");",
+      "run(\"npm\", [\"run\", \"quality\"]);",
+      "run(\"git\", [\"push\", \"origin\", \"HEAD:gh-pages\"], { cwd: releaseDir, writes: true });"
+    ].join("\n"),
     "docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md": [
       "Status: rehearsal complete. Phase 5 remains closed.",
       "Do not start Phase 5 implementation yet.",
@@ -190,6 +208,14 @@ test("engineering guardrail checker rejects missing feature resumption checklist
   assert.match(result.stderr, /ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST/);
 });
 
+test("engineering guardrail checker rejects missing publishing script", () => {
+  const result = runGuardrailFixture({}, ["scripts/publish-pages.mjs"]);
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /required-engineering-file-missing/);
+  assert.match(result.stderr, /scripts\/publish-pages\.mjs/);
+});
+
 test("engineering guardrail checker rejects disconnected entry references", () => {
   const result = runGuardrailFixture({
     "AGENTS.md": "docs/ADAX_ENGINEERING_READINESS_AUDIT.md\n"
@@ -225,6 +251,35 @@ test("engineering guardrail checker rejects accidental feature resumption approv
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /required-phase-gate-phrase-missing/);
   assert.match(result.stderr, /Do not write feature code from this checklist alone/);
+});
+
+test("engineering guardrail checker rejects release-process drift", () => {
+  const result = runGuardrailFixture({
+    "docs/ADAX_RELEASE_PROCESS.md": [
+      "npm run publish:pages:dry",
+      "npm run publish:pages -- --yes",
+      "scripts/publish-pages.mjs",
+      "main",
+      "gh-pages"
+    ].join("\n")
+  });
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /required-phase-gate-phrase-missing/);
+  assert.match(result.stderr, /真实发布必须显式传入/);
+});
+
+test("engineering guardrail checker rejects publishing script drift", () => {
+  const result = runGuardrailFixture({
+    "scripts/publish-pages.mjs": [
+      "const previewUrl = \"https://zhangye01.github.io/adax-electric-market-sandbox/\";",
+      "run(\"git\", [\"push\", \"origin\", \"HEAD:gh-pages\"], { cwd: releaseDir, writes: true });"
+    ].join("\n")
+  });
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /required-phase-gate-phrase-missing/);
+  assert.match(result.stderr, /run\("npm", \["run", "quality"\]\)/);
 });
 
 const startupCardApprovalCases = [
@@ -280,6 +335,19 @@ test("engineering guardrail checker rejects missing quality commands", () => {
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /required-quality-command-missing/);
   assert.match(result.stderr, /check:boundaries/);
+});
+
+test("engineering guardrail checker rejects missing publishing commands", () => {
+  const result = runGuardrailFixture({
+    "package.json": makePackageJson({
+      "publish:pages:dry": "node scripts/publish-pages.mjs --dry-run",
+      "publish:pages": "node scripts/publish-pages.mjs --yes"
+    })
+  });
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /required-package-script-mismatch/);
+  assert.match(result.stderr, /publish:pages:dry/);
 });
 
 test("engineering guardrail checker rejects missing script test targets", () => {

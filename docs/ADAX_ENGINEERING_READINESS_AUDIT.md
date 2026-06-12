@@ -79,7 +79,7 @@ npm run quality
 | Source shape | `docs/ADAX_SOURCE_SHAPE_AUDIT.md`, `scripts/check-source-shape.mjs`, `tests/scripts/check-source-shape.test.mjs` |
 | App decisions | `tests/app/adax-training-actions.test.mjs`, `tests/app/adax-route-sync-decisions.test.mjs`, `tests/app/adax-session-derivations.test.mjs` |
 | Shared test setup | `tests/support/retail-fixtures.mjs`, `tests/support/browser-fixtures.mjs` |
-| Publishing | `docs/ADAX_RELEASE_PROCESS.md`, `scripts/publish-pages.mjs` |
+| Publishing | `docs/ADAX_RELEASE_PROCESS.md`, `scripts/publish-pages.mjs`, `scripts/check-engineering-guardrails.mjs` |
 
 ## Remaining Engineering Risks
 
@@ -91,7 +91,7 @@ npm run quality
 | Closed participant id leaks into generated active URLs | Medium | `pathForPage` normalizes generated participant URLs back to `retailer`; `tests/domain/retail-domain.test.mjs` covers closed participant inputs. |
 | Closed participant records or materials enter active localStorage | Medium | `getAdaxTrainingRecords`, `saveAdaxTrainingRecord`, `getAdaxUserMaterials`, `saveAdaxUserMaterials`, and `upsertUserMaterial` keep active persisted data limited to `retailer`; `tests/domain/retail-domain.test.mjs` covers closed participant records and materials. |
 | Engineering status becomes chat-memory-only | Medium | Keep this audit current and link it from `AGENTS.md`, `docs/ENGINEERING_BASELINE.md`, and `docs/ADAX_LONG_TERM_PLAN.md`. |
-| Preview publishing path drifts from source branch | Medium | Use `docs/ADAX_RELEASE_PROCESS.md`; do not touch `gh-pages` or Pages config without an explicit publishing task. |
+| Preview publishing path drifts from source branch | Medium | Use `docs/ADAX_RELEASE_PROCESS.md`; `npm run check:engineering-guardrails` verifies the package publishing commands, release-process gate phrases, and `scripts/publish-pages.mjs` quality/push safeguards. |
 | GitHub workflow files are added without token/workflow-scope confirmation | Medium | Keep `.github/workflows/**` blocked unless the deployment strategy intentionally changes. |
 | Template import/export corrupts session state | Medium | Keep template IO in services and preserve round-trip and invalid-import tests. |
 | UI changes reduce professional market immersion | Medium | Use `docs/ADAX_VISUAL_QA_CHECKLIST.md` and browser QA when changing operation surfaces. |
