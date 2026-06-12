@@ -161,6 +161,8 @@ zhangye01
 
 因此当前不要向远程 `main` 推送 `.github/workflows/**` 文件。若未来需要 GitHub Actions 自动部署，应先刷新 GitHub CLI 授权并加入 `workflow` scope，再单独评估是否切换 Pages source 到 GitHub Actions。
 
+`npm run check:engineering-guardrails` 会拒绝当前源码仓库中的 `.github/workflows/**` 文件，直到发布策略被明确切换。
+
 ## 8. 已知约束
 
 - 当前 Pages 发布不依赖 GitHub Actions。

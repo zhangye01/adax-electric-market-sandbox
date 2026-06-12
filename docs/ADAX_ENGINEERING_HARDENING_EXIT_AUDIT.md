@@ -53,7 +53,7 @@ Still closed:
 | Candidate dry runs | `docs/ADAX_PHASE_5_RENEWABLE_ENTRY_DRY_RUN.md`, `docs/ADAX_PHASE_5_STORAGE_ENTRY_DRY_RUN.md`, `docs/ADAX_PHASE_5_THERMAL_ENTRY_DRY_RUN.md` | Candidate-specific gaps are visible before implementation. |
 | Startup cards | `docs/ADAX_RENEWABLE_STARTUP_CARD.md`, `docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md`, `docs/ADAX_THERMAL_STARTUP_CARD.md` | Future participant scopes exist but remain unconfirmed. |
 | Quality gate | `npm run quality` | Engineering guardrails, boundaries, contracts, source shape, typecheck, tests, and build run as one gate. |
-| Guardrail script | `scripts/check-engineering-guardrails.mjs` | Required governance files, references, package scripts, publishing safeguards, test targets, Phase 5 closed phrases, and closed participant runtime files are checked. Real publishing cannot skip the quality gate. |
+| Guardrail script | `scripts/check-engineering-guardrails.mjs` | Required governance files, references, package scripts, publishing safeguards, source-repository artifacts, GitHub workflow files, test targets, Phase 5 closed phrases, and closed participant runtime files are checked. Real publishing cannot skip the quality gate. |
 | Script tests | `tests/scripts/check-engineering-guardrails.test.mjs` | The engineering guardrail behavior has negative fixtures. |
 | Route containment | `src/routes/adaxRoutes.ts` | Generated participant URLs normalize back to retailer while Phase 5 is closed. |
 | Persistence containment | `src/utils/adaxStorage.ts`, `src/services/adaxUserMaterials.ts` | Active records and materials are filtered to retailer while Phase 5 is closed. |
@@ -65,9 +65,10 @@ Current recorded handoff evidence:
 | Check | Latest evidence |
 | --- | --- |
 | Full quality gate | `npm run quality` on 2026-06-12: passed. |
-| Script tests | 85 tests passed, including engineering guardrail, boundary, source-shape, domain-contract, publishing, domain, app, route-sync, and session-derivation tests. |
+| Script tests | 86 tests passed, including engineering guardrail, boundary, source-shape, domain-contract, publishing, domain, app, route-sync, and session-derivation tests. |
 | Build | `tsc -b && vite build` passed through the quality gate. |
 | Source artifact boundary | `npm run check:engineering-guardrails` verifies that tracked `dist/`, `coverage/`, `.vite/`, and `.test-build/` artifacts are excluded from `main`. |
+| Pages workflow boundary | `npm run check:engineering-guardrails` rejects `.github/workflows/**` under the current local-script Pages strategy. |
 | Runtime scope | Active source remains retail-only; closed Phase 5 participant runtime files are still rejected by guardrail. |
 
 Freshness rule: `npm run quality` must be rerun after any later source, guardrail, or release-process change before using this audit to lift the hold.
@@ -82,6 +83,7 @@ Freshness rule: `npm run quality` must be rerun after any later source, guardrai
 - Closed Phase 5 scope is protected at document, package-script, active source, URL, and localStorage layers.
 - GitHub Pages publishing is documented separately from source development.
 - Generated build, coverage, cache, and test artifacts are excluded from the source repository by the engineering guardrail.
+- GitHub Actions workflow files are excluded while Pages publishing remains a local script pushing `gh-pages`.
 
 ## Exit Criteria Check
 
@@ -104,6 +106,7 @@ Freshness rule: `npm run quality` must be rerun after any later source, guardrai
 | UI drift returns during feature work | Medium | Use browser QA and `docs/ADAX_VISUAL_QA_CHECKLIST.md` before visual handoff. |
 | Publishing is confused with source changes | Medium | Follow `docs/ADAX_RELEASE_PROCESS.md`; keep `main` and `gh-pages` responsibilities separate. |
 | Generated artifacts enter source history | Medium | Keep build, coverage, cache, and test output untracked in `main`; `npm run check:engineering-guardrails` rejects tracked generated artifacts. |
+| GitHub Actions deployment appears without strategy change | Medium | Keep `.github/workflows/**` absent unless authorization and Pages strategy are intentionally changed; `npm run check:engineering-guardrails` rejects workflow files. |
 
 ## Allowed Next Actions
 

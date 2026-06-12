@@ -219,6 +219,7 @@ const requiredPhrases = [
       "不要在源码仓库提交 `dist/`。",
       "真实发布必须显式传入 `--yes`：",
       "`--skip-quality` 只允许用于 dry-run 检查；真实发布会拒绝跳过 `npm run quality`。",
+      "因此当前不要向远程 `main` 推送 `.github/workflows/**` 文件。",
       "当前 Pages 发布不依赖 GitHub Actions。",
       "当前 Pages 发布依赖本地脚本更新 `gh-pages` 分支。"
     ]
@@ -286,6 +287,14 @@ const forbiddenSourceRepositoryArtifactPaths = [
   {
     path: ".test-build",
     detail: "temporary test build output must stay out of the source repository"
+  }
+];
+
+const forbiddenRepositoryWorkflowPaths = [
+  {
+    path: ".github/workflows",
+    detail:
+      "current Pages publishing uses scripts/publish-pages.mjs and gh-pages; do not add GitHub Actions workflows until authorization and deployment strategy intentionally change"
   }
 ];
 
@@ -367,6 +376,12 @@ for (const { path, detail } of forbiddenSourceRepositoryArtifactPaths) {
 
   for (const artifactFile of artifactFiles) {
     addViolation(artifactFile, "source-repository-artifact-forbidden", detail);
+  }
+}
+
+for (const { path, detail } of forbiddenRepositoryWorkflowPaths) {
+  for (const workflowFile of listExistingProjectFilesUnder(path)) {
+    addViolation(workflowFile, "github-workflow-file-forbidden", detail);
   }
 }
 
@@ -466,5 +481,5 @@ if (violations.length > 0) {
 
 log(`${requiredFiles.length} required files checked.`);
 log(
-  "engineering guardrails are connected, source-repository artifacts are excluded, quality and publishing pipelines are intact, active runtime scope is retail-only, and Phase 5 remains closed."
+  "engineering guardrails are connected, source-repository artifacts and GitHub workflow files are excluded, quality and publishing pipelines are intact, active runtime scope is retail-only, and Phase 5 remains closed."
 );

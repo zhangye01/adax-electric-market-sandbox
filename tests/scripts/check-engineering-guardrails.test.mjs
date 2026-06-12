@@ -129,6 +129,7 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
       "不要在源码仓库提交 `dist/`。",
       "真实发布必须显式传入 `--yes`：",
       "`--skip-quality` 只允许用于 dry-run 检查；真实发布会拒绝跳过 `npm run quality`。",
+      "因此当前不要向远程 `main` 推送 `.github/workflows/**` 文件。",
       "当前 Pages 发布不依赖 GitHub Actions。",
       "当前 Pages 发布依赖本地脚本更新 `gh-pages` 分支。"
     ].join("\n"),
@@ -239,6 +240,16 @@ test("engineering guardrail checker rejects source repository generated test art
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /source-repository-artifact-forbidden/);
   assert.match(result.stderr, /\.test-build\/output\.js/);
+});
+
+test("engineering guardrail checker rejects GitHub Actions workflows under the current publishing strategy", () => {
+  const result = runGuardrailFixture({
+    ".github/workflows/pages.yml": "name: deploy\n"
+  });
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /github-workflow-file-forbidden/);
+  assert.match(result.stderr, /\.github\/workflows\/pages\.yml/);
 });
 
 test("engineering guardrail checker rejects disconnected entry references", () => {
