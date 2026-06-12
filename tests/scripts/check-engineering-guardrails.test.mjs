@@ -19,7 +19,7 @@ function makePackageJson(overrides = {}) {
         "check:source-shape": "node scripts/check-source-shape.mjs",
         typecheck: "tsc -b",
         test:
-          "tsc -p tsconfig.test.json && node tests/support/fix-esm-imports.mjs && node --test tests/scripts/check-engineering-guardrails.test.mjs tests/scripts/check-boundaries.test.mjs tests/scripts/check-source-shape.test.mjs tests/scripts/check-domain-contracts.test.mjs",
+          "tsc -p tsconfig.test.json && node tests/support/fix-esm-imports.mjs && node --test tests/scripts/check-engineering-guardrails.test.mjs tests/scripts/check-boundaries.test.mjs tests/scripts/check-source-shape.test.mjs tests/scripts/check-domain-contracts.test.mjs tests/scripts/publish-pages.test.mjs",
         quality:
           "npm run check:engineering-guardrails && npm run check:boundaries && npm run check:domain-contracts && npm run check:source-shape && npm run typecheck && npm run test && npm run build",
         build: "tsc -b && vite build",
@@ -125,12 +125,14 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
       "gh-pages",
       "不要在源码仓库提交 `dist/`。",
       "真实发布必须显式传入 `--yes`：",
+      "`--skip-quality` 只允许用于 dry-run 检查；真实发布会拒绝跳过 `npm run quality`。",
       "当前 Pages 发布不依赖 GitHub Actions。",
       "当前 Pages 发布依赖本地脚本更新 `gh-pages` 分支。"
     ].join("\n"),
     "scripts/publish-pages.mjs": [
       "const previewUrl = \"https://zhangye01.github.io/adax-electric-market-sandbox/\";",
       "fail(\"real publishing requires --yes. Use `npm run publish:pages:dry` first, then `npm run publish:pages -- --yes`.\");",
+      "fail(\"skip quality is only allowed during dry-run checks. Real publishing always runs `npm run quality`.\");",
       "run(\"npm\", [\"run\", \"quality\"]);",
       "run(\"git\", [\"push\", \"origin\", \"HEAD:gh-pages\"], { cwd: releaseDir, writes: true });"
     ].join("\n"),
@@ -273,6 +275,7 @@ test("engineering guardrail checker rejects publishing script drift", () => {
   const result = runGuardrailFixture({
     "scripts/publish-pages.mjs": [
       "const previewUrl = \"https://zhangye01.github.io/adax-electric-market-sandbox/\";",
+      "fail(\"skip quality is only allowed during dry-run checks. Real publishing always runs `npm run quality`.\");",
       "run(\"git\", [\"push\", \"origin\", \"HEAD:gh-pages\"], { cwd: releaseDir, writes: true });"
     ].join("\n")
   });

@@ -163,6 +163,10 @@ function main() {
   log(`source: ${sourceDir}`);
   log(`release: ${releaseDir}`);
 
+  if (skipQuality && !dryRun) {
+    fail("skip quality is only allowed during dry-run checks. Real publishing always runs `npm run quality`.");
+  }
+
   ensurePathExists(resolve(sourceDir, "package.json"), "source package.json");
   ensureGitRepo(sourceDir, "source repository");
   ensureSafeReleaseDirectory();

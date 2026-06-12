@@ -214,6 +214,7 @@ const requiredPhrases = [
     phrases: [
       "不要在源码仓库提交 `dist/`。",
       "真实发布必须显式传入 `--yes`：",
+      "`--skip-quality` 只允许用于 dry-run 检查；真实发布会拒绝跳过 `npm run quality`。",
       "当前 Pages 发布不依赖 GitHub Actions。",
       "当前 Pages 发布依赖本地脚本更新 `gh-pages` 分支。"
     ]
@@ -223,6 +224,7 @@ const requiredPhrases = [
     phrases: [
       "const previewUrl = \"https://zhangye01.github.io/adax-electric-market-sandbox/\";",
       "fail(\"real publishing requires --yes. Use `npm run publish:pages:dry` first, then `npm run publish:pages -- --yes`.\");",
+      "fail(\"skip quality is only allowed during dry-run checks. Real publishing always runs `npm run quality`.\");",
       "run(\"npm\", [\"run\", \"quality\"]);",
       "run(\"git\", [\"push\", \"origin\", \"HEAD:gh-pages\"], { cwd: releaseDir, writes: true });"
     ]
@@ -254,7 +256,8 @@ const requiredTestTargets = [
   "tests/scripts/check-engineering-guardrails.test.mjs",
   "tests/scripts/check-boundaries.test.mjs",
   "tests/scripts/check-source-shape.test.mjs",
-  "tests/scripts/check-domain-contracts.test.mjs"
+  "tests/scripts/check-domain-contracts.test.mjs",
+  "tests/scripts/publish-pages.test.mjs"
 ];
 
 const phase5ClosedForbiddenRuntimePatterns = [
@@ -407,4 +410,4 @@ if (violations.length > 0) {
 }
 
 log(`${requiredFiles.length} required files checked.`);
-log("engineering guardrails are connected, quality pipeline is intact, active runtime scope is retail-only, and Phase 5 remains closed.");
+log("engineering guardrails are connected, quality and publishing pipelines are intact, active runtime scope is retail-only, and Phase 5 remains closed.");

@@ -217,7 +217,7 @@ Current scripts:
 - `check-domain-contracts.mjs`: fails quality when central domain/app contract exports, reviewed groups, or export order change without an explicit review update.
 - `check-source-shape.mjs`: fails quality when new or already-budgeted large active files cross the source-shape budget without an audit update.
 - `check-boundaries.mjs`: validates active source import, IO, network, data, and presentation-layer boundaries.
-- `publish-pages.mjs`: runs the Pages release procedure for the current static preview.
+- `publish-pages.mjs`: runs the Pages release procedure for the current static preview and rejects real publishing when quality is skipped.
 
 Rules:
 
@@ -227,7 +227,7 @@ Rules:
 - engineering guardrail checks may encode required governance files, cross-document references, package quality pipeline requirements, Phase 5 closed-gate phrases, and closed-candidate runtime file patterns; intentional changes require audit and test updates
 - domain-contract checks may encode reviewed central exports from `src/domain/retailTypes.ts` and `src/types.ts`, but any changed export list, group, or order requires audit and test review
 - boundary scripts may encode current allowed exceptions, but new exceptions require architecture review
-- publishing scripts must keep `main` and `gh-pages` responsibilities separated
+- publishing scripts must keep `main` and `gh-pages` responsibilities separated and must not allow real publishing to bypass `npm run quality`
 
 ### `docs/**` and `AGENTS.md`
 
