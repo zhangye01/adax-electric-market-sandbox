@@ -97,7 +97,10 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
       "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
       "Status: exit audit complete. Engineering Hardening Hold is ready for user decision.",
       "Phase 5 remains closed.",
-      "Do not resume feature expansion until the user explicitly confirms the project is ready, confirms exactly one participant startup card, and `npm run quality` passes."
+      "Do not resume feature expansion until the user explicitly confirms the project is ready, confirms exactly one participant startup card, and `npm run quality` passes.",
+      "## Latest Verification Snapshot",
+      "Freshness rule: `npm run quality` must be rerun after any later source, guardrail, or release-process change before using this audit to lift the hold.",
+      "Engineering Hardening Hold is ready for user decision, but it is not automatically lifted."
     ].join("\n"),
     "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md": [
       "Status: decision checklist active. It does not lift Engineering Hardening Hold.",
@@ -259,6 +262,22 @@ test("engineering guardrail checker rejects accidental hardening exit opening la
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /required-phase-gate-phrase-missing/);
   assert.match(result.stderr, /Phase 5 remains closed/);
+});
+
+test("engineering guardrail checker rejects stale hardening exit audit evidence", () => {
+  const result = runGuardrailFixture({
+    "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md": [
+      "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
+      "Status: exit audit complete. Engineering Hardening Hold is ready for user decision.",
+      "Phase 5 remains closed.",
+      "Do not resume feature expansion until the user explicitly confirms the project is ready, confirms exactly one participant startup card, and `npm run quality` passes.",
+      "Engineering Hardening Hold is ready for user decision, but it is not automatically lifted."
+    ].join("\n")
+  });
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /required-phase-gate-phrase-missing/);
+  assert.match(result.stderr, /Latest Verification Snapshot/);
 });
 
 test("engineering guardrail checker rejects accidental feature resumption approval language", () => {

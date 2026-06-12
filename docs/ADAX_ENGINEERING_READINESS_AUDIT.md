@@ -33,6 +33,26 @@ Out of current implementation scope:
 
 ## Current Quality Evidence
 
+Latest full quality command:
+
+```bash
+npm run quality
+```
+
+Result on 2026-06-12: passed.
+
+Latest quality coverage:
+
+| Gate | Latest evidence |
+| --- | --- |
+| Engineering guardrails | 23 required files checked; source-repository artifacts excluded; Phase 5 remains closed. |
+| Boundary check | 104 source files checked. |
+| Domain contracts | `src/domain/retailTypes.ts` exports checked: 33; `src/types.ts` exports checked: 8. |
+| Source shape | 223 source files checked; 1 budgeted pressure file. |
+| Typecheck | `tsc -b` passed. |
+| Tests | 85 tests passed. |
+| Build | `vite build` passed. |
+
 Latest source-shape command:
 
 ```bash
@@ -94,6 +114,7 @@ npm run quality
 | Engineering status becomes chat-memory-only | Medium | Keep this audit current and link it from `AGENTS.md`, `docs/ENGINEERING_BASELINE.md`, and `docs/ADAX_LONG_TERM_PLAN.md`. |
 | Preview publishing path drifts from source branch | Medium | Use `docs/ADAX_RELEASE_PROCESS.md`; `npm run check:engineering-guardrails` verifies the package publishing commands, release-process gate phrases, and `scripts/publish-pages.mjs` quality/push safeguards. `tests/scripts/publish-pages.test.mjs` rejects real publishing when quality is skipped. |
 | Generated build, coverage, or cache output is committed to `main` | Medium | Keep generated output in ignored local directories or the `gh-pages` static release path; `npm run check:engineering-guardrails` rejects tracked `dist/`, `coverage/`, `.vite/`, and `.test-build/` files. |
+| Hardening exit audit becomes stale after later changes | Medium | Keep `docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md` synchronized with the latest quality evidence; `npm run check:engineering-guardrails` rejects removal of its verification snapshot and freshness rule. |
 | GitHub workflow files are added without token/workflow-scope confirmation | Medium | Keep `.github/workflows/**` blocked unless the deployment strategy intentionally changes. |
 | Template import/export corrupts session state | Medium | Keep template IO in services and preserve round-trip and invalid-import tests. |
 | UI changes reduce professional market immersion | Medium | Use `docs/ADAX_VISUAL_QA_CHECKLIST.md` and browser QA when changing operation surfaces. |

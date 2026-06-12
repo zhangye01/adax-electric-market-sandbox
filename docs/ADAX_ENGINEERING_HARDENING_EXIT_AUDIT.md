@@ -58,6 +58,20 @@ Still closed:
 | Route containment | `src/routes/adaxRoutes.ts` | Generated participant URLs normalize back to retailer while Phase 5 is closed. |
 | Persistence containment | `src/utils/adaxStorage.ts`, `src/services/adaxUserMaterials.ts` | Active records and materials are filtered to retailer while Phase 5 is closed. |
 
+## Latest Verification Snapshot
+
+Current recorded handoff evidence:
+
+| Check | Latest evidence |
+| --- | --- |
+| Full quality gate | `npm run quality` on 2026-06-12: passed. |
+| Script tests | 85 tests passed, including engineering guardrail, boundary, source-shape, domain-contract, publishing, domain, app, route-sync, and session-derivation tests. |
+| Build | `tsc -b && vite build` passed through the quality gate. |
+| Source artifact boundary | `npm run check:engineering-guardrails` verifies that tracked `dist/`, `coverage/`, `.vite/`, and `.test-build/` artifacts are excluded from `main`. |
+| Runtime scope | Active source remains retail-only; closed Phase 5 participant runtime files are still rejected by guardrail. |
+
+Freshness rule: `npm run quality` must be rerun after any later source, guardrail, or release-process change before using this audit to lift the hold.
+
 ## Hardening Outcomes
 
 - The project has a documented operating path from entry rules to long-term phase order.
@@ -67,6 +81,7 @@ Still closed:
 - Engineering guardrails are part of the normal quality gate.
 - Closed Phase 5 scope is protected at document, package-script, active source, URL, and localStorage layers.
 - GitHub Pages publishing is documented separately from source development.
+- Generated build, coverage, cache, and test artifacts are excluded from the source repository by the engineering guardrail.
 
 ## Exit Criteria Check
 
@@ -77,7 +92,7 @@ Still closed:
 | Current retail-only scope is protected | Pass | route and storage containment plus engineering guardrail runtime scan |
 | Phase 5 remains closed | Pass | Phase 5 audit, rehearsal, matrix, and dry-run documents |
 | Future participant entry requires user confirmation | Pass | `docs/ADAX_LONG_TERM_PLAN.md`, `docs/ADAX_ENGINEERING_READINESS_AUDIT.md` |
-| Quality gate can prove the baseline | Must rerun on handoff | `npm run quality` |
+| Quality gate can prove the baseline | Pass for current handoff; rerun before lift | Latest verification snapshot; `npm run quality` |
 
 ## Remaining Risks
 

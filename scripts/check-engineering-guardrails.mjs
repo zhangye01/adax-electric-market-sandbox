@@ -159,7 +159,10 @@ const requiredPhrases = [
     phrases: [
       "Status: exit audit complete. Engineering Hardening Hold is ready for user decision.",
       "Phase 5 remains closed.",
-      "Do not resume feature expansion until the user explicitly confirms the project is ready, confirms exactly one participant startup card, and `npm run quality` passes."
+      "Do not resume feature expansion until the user explicitly confirms the project is ready, confirms exactly one participant startup card, and `npm run quality` passes.",
+      "## Latest Verification Snapshot",
+      "Freshness rule: `npm run quality` must be rerun after any later source, guardrail, or release-process change before using this audit to lift the hold.",
+      "Engineering Hardening Hold is ready for user decision, but it is not automatically lifted."
     ]
   },
   {
