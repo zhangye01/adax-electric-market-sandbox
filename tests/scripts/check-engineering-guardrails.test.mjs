@@ -218,6 +218,26 @@ test("engineering guardrail checker rejects missing publishing script", () => {
   assert.match(result.stderr, /scripts\/publish-pages\.mjs/);
 });
 
+test("engineering guardrail checker rejects source repository build artifacts", () => {
+  const result = runGuardrailFixture({
+    "dist/index.html": "<div id=\"root\"></div>\n"
+  });
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /source-repository-artifact-forbidden/);
+  assert.match(result.stderr, /dist\/index\.html/);
+});
+
+test("engineering guardrail checker rejects source repository generated test artifacts", () => {
+  const result = runGuardrailFixture({
+    ".test-build/output.js": "export const generated = true;\n"
+  });
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /source-repository-artifact-forbidden/);
+  assert.match(result.stderr, /\.test-build\/output\.js/);
+});
+
 test("engineering guardrail checker rejects disconnected entry references", () => {
   const result = runGuardrailFixture({
     "AGENTS.md": "docs/ADAX_ENGINEERING_READINESS_AUDIT.md\n"

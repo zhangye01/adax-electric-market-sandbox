@@ -19,6 +19,8 @@ The active app must not import from:
 - `dist/**`
 - external market APIs or real market-data files
 
+The source repository must not track generated output directories such as `dist/`, `coverage/`, `.vite/`, or `.test-build/`. Static build output belongs on `gh-pages` through `scripts/publish-pages.mjs`.
+
 ## Runtime Flow
 
 ```mermaid
@@ -224,7 +226,7 @@ Rules:
 - scripts may coordinate local commands, file copying, release validation, and Git operations
 - scripts must not contain ADAX business rules, settlement math, route logic, or UI behavior
 - scripts must not import from `src/legacy/**`
-- engineering guardrail checks may encode required governance files, cross-document references, package quality pipeline requirements, Phase 5 closed-gate phrases, and closed-candidate runtime file patterns; intentional changes require audit and test updates
+- engineering guardrail checks may encode required governance files, cross-document references, package quality pipeline requirements, source-repository artifact exclusions, Phase 5 closed-gate phrases, and closed-candidate runtime file patterns; intentional changes require audit and test updates
 - domain-contract checks may encode reviewed central exports from `src/domain/retailTypes.ts` and `src/types.ts`, but any changed export list, group, or order requires audit and test review
 - boundary scripts may encode current allowed exceptions, but new exceptions require architecture review
 - publishing scripts must keep `main` and `gh-pages` responsibilities separated and must not allow real publishing to bypass `npm run quality`

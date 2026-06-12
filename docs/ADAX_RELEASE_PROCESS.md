@@ -40,7 +40,8 @@ GitHub Pages 当前配置：
 | `/Users/zhangye/Codex/electric-market-training-sandbox` | 源码仓库，对应远程 `main` |
 | `/Users/zhangye/Codex/adax-static-release` | 静态发布仓库，对应远程 `gh-pages` |
 
-不要在源码仓库提交 `dist/`。  
+不要在源码仓库提交 `dist/`。
+`npm run check:engineering-guardrails` 会拒绝源码仓库中已被 Git 跟踪的构建、覆盖率、缓存和测试临时产物。
 不要在静态发布仓库提交 `src/`、`docs/`、`tests/`、`node_modules/`。
 
 ## 4. 发布前检查
@@ -110,6 +111,7 @@ ADAX_STATIC_RELEASE_DIR=/path/to/release npm run publish:pages:dry
 - `.nojekyll` 必须保留，避免 GitHub Pages 对静态文件做 Jekyll 处理。
 - 源码仓库必须是干净状态；dry-run 可通过 `--allow-dirty` 做本地预演。
 - `--skip-quality` 只允许用于 dry-run 检查；真实发布会拒绝跳过 `npm run quality`。
+- 源码仓库不得跟踪 `dist/`、`coverage/`、`.vite/`、`.test-build/` 等生成产物。
 - 发布目录不能指向源码仓库，也不能包含源码仓库。
 - 静态发布仓库不得包含 `src/`、`docs/`、`tests/`、`node_modules/` 等源码目录。
 - 若静态发布仓库无变化，脚本会跳过提交和推送。

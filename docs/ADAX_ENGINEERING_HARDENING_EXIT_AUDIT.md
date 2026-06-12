@@ -88,6 +88,7 @@ Still closed:
 | Feature pressure bypasses hardening gates | Medium | Start every non-trivial change from `docs/ADAX_CHANGE_GATE_CHECKLIST.md`. |
 | UI drift returns during feature work | Medium | Use browser QA and `docs/ADAX_VISUAL_QA_CHECKLIST.md` before visual handoff. |
 | Publishing is confused with source changes | Medium | Follow `docs/ADAX_RELEASE_PROCESS.md`; keep `main` and `gh-pages` responsibilities separate. |
+| Generated artifacts enter source history | Medium | Keep build, coverage, cache, and test output untracked in `main`; `npm run check:engineering-guardrails` rejects tracked generated artifacts. |
 
 ## Allowed Next Actions
 

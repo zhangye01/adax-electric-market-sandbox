@@ -1,3 +1,4 @@
+import { spawnSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { relative, resolve, sep } from "node:path";
 
@@ -266,6 +267,25 @@ const phase5ClosedForbiddenRuntimePatterns = [
   /^src\/pages\/(?:Renewable|Storage|Thermal)[A-Za-z0-9_-]*\.(?:ts|tsx|js|jsx)$/i
 ];
 
+const forbiddenSourceRepositoryArtifactPaths = [
+  {
+    path: "dist",
+    detail: "Vite build output must stay out of the source repository; publish it through scripts/publish-pages.mjs and gh-pages"
+  },
+  {
+    path: "coverage",
+    detail: "coverage output must stay out of the source repository"
+  },
+  {
+    path: ".vite",
+    detail: "Vite cache output must stay out of the source repository"
+  },
+  {
+    path: ".test-build",
+    detail: "temporary test build output must stay out of the source repository"
+  }
+];
+
 const violations = [];
 
 function log(message = "") {
@@ -309,9 +329,41 @@ function listFiles(directory) {
   });
 }
 
+function listTrackedProjectFiles() {
+  const result = spawnSync("git", ["ls-files"], {
+    cwd: rootDir,
+    encoding: "utf8"
+  });
+
+  if (result.status !== 0) return null;
+
+  return result.stdout.split(/\r?\n/).filter(Boolean);
+}
+
+function isInsideProjectPath(projectPath, boundaryPath) {
+  return projectPath === boundaryPath || projectPath.startsWith(`${boundaryPath}/`);
+}
+
+function listExistingProjectFilesUnder(boundaryPath) {
+  const absolutePath = resolve(rootDir, boundaryPath);
+  return listFiles(absolutePath).map(toProjectPath);
+}
+
 for (const file of requiredFiles) {
   if (!fileExists(file)) {
     addViolation(file, "required-engineering-file-missing", "file does not exist");
+  }
+}
+
+const trackedProjectFiles = listTrackedProjectFiles();
+for (const { path, detail } of forbiddenSourceRepositoryArtifactPaths) {
+  const artifactFiles =
+    trackedProjectFiles === null
+      ? listExistingProjectFilesUnder(path)
+      : trackedProjectFiles.filter((file) => isInsideProjectPath(file, path));
+
+  for (const artifactFile of artifactFiles) {
+    addViolation(artifactFile, "source-repository-artifact-forbidden", detail);
   }
 }
 
@@ -410,4 +462,6 @@ if (violations.length > 0) {
 }
 
 log(`${requiredFiles.length} required files checked.`);
-log("engineering guardrails are connected, quality and publishing pipelines are intact, active runtime scope is retail-only, and Phase 5 remains closed.");
+log(
+  "engineering guardrails are connected, source-repository artifacts are excluded, quality and publishing pipelines are intact, active runtime scope is retail-only, and Phase 5 remains closed."
+);

@@ -74,6 +74,7 @@ npm run quality
 | Feature resumption decision | `docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md` |
 | Phase 5 entry | `docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md`, `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md`, `docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md`, `docs/ADAX_PHASE_5_RENEWABLE_ENTRY_DRY_RUN.md`, `docs/ADAX_PHASE_5_STORAGE_ENTRY_DRY_RUN.md`, `docs/ADAX_PHASE_5_THERMAL_ENTRY_DRY_RUN.md`, `scripts/check-engineering-guardrails.mjs`, `tests/scripts/check-engineering-guardrails.test.mjs` |
 | Quality pipeline | `package.json`, `scripts/check-engineering-guardrails.mjs`, `tests/scripts/check-engineering-guardrails.test.mjs` |
+| Source repository artifacts | `docs/ADAX_RELEASE_PROCESS.md`, `scripts/check-engineering-guardrails.mjs`, `tests/scripts/check-engineering-guardrails.test.mjs` |
 | Source boundaries | `docs/ACTIVE_ARCHITECTURE_MAP.md`, `scripts/check-boundaries.mjs`, `tests/scripts/check-boundaries.test.mjs` |
 | Central contracts | `docs/ADAX_RETAIL_CONTRACT_GOVERNANCE.md`, `scripts/check-domain-contracts.mjs`, `tests/scripts/check-domain-contracts.test.mjs` |
 | Source shape | `docs/ADAX_SOURCE_SHAPE_AUDIT.md`, `scripts/check-source-shape.mjs`, `tests/scripts/check-source-shape.test.mjs` |
@@ -92,6 +93,7 @@ npm run quality
 | Closed participant records or materials enter active localStorage | Medium | `getAdaxTrainingRecords`, `saveAdaxTrainingRecord`, `getAdaxUserMaterials`, `saveAdaxUserMaterials`, and `upsertUserMaterial` keep active persisted data limited to `retailer`; `tests/domain/retail-domain.test.mjs` covers closed participant records and materials. |
 | Engineering status becomes chat-memory-only | Medium | Keep this audit current and link it from `AGENTS.md`, `docs/ENGINEERING_BASELINE.md`, and `docs/ADAX_LONG_TERM_PLAN.md`. |
 | Preview publishing path drifts from source branch | Medium | Use `docs/ADAX_RELEASE_PROCESS.md`; `npm run check:engineering-guardrails` verifies the package publishing commands, release-process gate phrases, and `scripts/publish-pages.mjs` quality/push safeguards. `tests/scripts/publish-pages.test.mjs` rejects real publishing when quality is skipped. |
+| Generated build, coverage, or cache output is committed to `main` | Medium | Keep generated output in ignored local directories or the `gh-pages` static release path; `npm run check:engineering-guardrails` rejects tracked `dist/`, `coverage/`, `.vite/`, and `.test-build/` files. |
 | GitHub workflow files are added without token/workflow-scope confirmation | Medium | Keep `.github/workflows/**` blocked unless the deployment strategy intentionally changes. |
 | Template import/export corrupts session state | Medium | Keep template IO in services and preserve round-trip and invalid-import tests. |
 | UI changes reduce professional market immersion | Medium | Use `docs/ADAX_VISUAL_QA_CHECKLIST.md` and browser QA when changing operation surfaces. |
