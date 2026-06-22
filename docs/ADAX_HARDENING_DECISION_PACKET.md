@@ -38,12 +38,13 @@ The latest hardening evidence is recorded in:
 - `docs/ADAX_ENGINEERING_READINESS_AUDIT.md`
 - `docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md`
 - `docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md`
+- `docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md`
 
 Current quality evidence:
 
 - `npm run quality` passed on 2026-06-22.
 - Engineering guardrails, boundaries, domain contracts, source-shape budgets, typecheck, tests, and build passed as one gate.
-- The test suite currently records 90 passing tests after this packet is wired into the engineering guardrail and Pages dry-run diagnostics.
+- The test suite currently records 92 passing tests after this packet, the feature implementation runbook, and Pages dry-run diagnostics are wired into the engineering guardrail.
 
 Freshness rule: rerun `npm run quality` after any later source, guardrail, or release-process change before using this packet to lift the hold.
 
@@ -65,7 +66,8 @@ Before any new participant code starts, all of these must be true:
 2. The user selects exactly one participant: 新能源, 独立储能, or 火电.
 3. The matching startup card is confirmed or revised by the user.
 4. `npm run quality` passes on the current baseline after any later hardening changes.
-5. No Project Rescue trigger is active.
+5. The first slice follows `docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md`.
+6. No Project Rescue trigger is active.
 
 ## Participant Startup Cards
 

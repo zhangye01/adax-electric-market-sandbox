@@ -41,6 +41,7 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
       "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
       "docs/ADAX_HARDENING_DECISION_PACKET.md",
       "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
+      "docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md",
       "docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md",
@@ -61,6 +62,7 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
       "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
       "docs/ADAX_HARDENING_DECISION_PACKET.md",
       "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
+      "docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md",
       "docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md",
@@ -73,6 +75,7 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
       "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
       "docs/ADAX_HARDENING_DECISION_PACKET.md",
       "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
+      "docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md",
       "docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md",
@@ -87,6 +90,7 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
       "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
       "docs/ADAX_HARDENING_DECISION_PACKET.md",
       "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
+      "docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "scripts/check-engineering-guardrails.mjs",
       "tests/scripts/check-engineering-guardrails.test.mjs"
@@ -95,6 +99,7 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
       "docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md",
       "docs/ADAX_HARDENING_DECISION_PACKET.md",
       "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
+      "docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "scripts/check-engineering-guardrails.mjs"
     ].join("\n"),
@@ -120,7 +125,17 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
       "Phase 5 remains closed until this checklist is completed and the user confirms the selected participant startup card.",
       "Do not write feature code from this checklist alone.",
       "Exactly one participant may enter implementation in the next wave.",
-      "Present or reread `docs/ADAX_HARDENING_DECISION_PACKET.md`."
+      "Present or reread `docs/ADAX_HARDENING_DECISION_PACKET.md`.",
+      "Reread `docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md`.",
+      "Confirmed feature implementation must then follow `docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md`."
+    ].join("\n"),
+    "docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md": [
+      "Status: implementation runbook active. It does not lift Engineering Hardening Hold.",
+      "Use this runbook only after `docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md` is complete and the selected startup card is confirmed.",
+      "Do not write participant runtime code until the selected startup card is confirmed.",
+      "Implement domain and data contracts before pages or components.",
+      "Add or update tests in the same slice before UI wiring is considered complete.",
+      "If execution and review chains diverge, stop and enter Project Rescue."
     ].join("\n"),
     "docs/ADAX_RENEWABLE_STARTUP_CARD.md": [
       "状态：待用户确认。确认前不得实现新能源主体代码。",
@@ -237,6 +252,14 @@ test("engineering guardrail checker rejects missing feature resumption checklist
   assert.match(result.stderr, /ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST/);
 });
 
+test("engineering guardrail checker rejects missing feature implementation runbook", () => {
+  const result = runGuardrailFixture({}, ["docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md"]);
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /required-engineering-file-missing/);
+  assert.match(result.stderr, /ADAX_FEATURE_IMPLEMENTATION_RUNBOOK/);
+});
+
 test("engineering guardrail checker rejects missing publishing script", () => {
   const result = runGuardrailFixture({}, ["scripts/publish-pages.mjs"]);
 
@@ -340,6 +363,20 @@ test("engineering guardrail checker rejects accidental feature resumption approv
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /required-phase-gate-phrase-missing/);
   assert.match(result.stderr, /Do not write feature code from this checklist alone/);
+});
+
+test("engineering guardrail checker rejects feature implementation runbook as scope approval", () => {
+  const result = runGuardrailFixture({
+    "docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md": [
+      "Status: implementation runbook complete. Engineering Hardening Hold is lifted.",
+      "Use this runbook to start participant runtime code before startup-card confirmation.",
+      "Build pages first and add tests later."
+    ].join("\n")
+  });
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /required-phase-gate-phrase-missing/);
+  assert.match(result.stderr, /It does not lift Engineering Hardening Hold/);
 });
 
 test("engineering guardrail checker rejects release-process drift", () => {

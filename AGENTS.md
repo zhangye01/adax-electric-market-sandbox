@@ -28,6 +28,8 @@ Read `docs/ADAX_HARDENING_DECISION_PACKET.md` before asking the user to choose w
 
 Read `docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md` before preparing any feature-expansion implementation plan.
 
+Read `docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md` before writing any confirmed feature-expansion code.
+
 Read `docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md` before selecting any Phase 5 participant candidate or leaving Engineering Hardening Hold for participant expansion.
 
 Read `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md` before entering Phase 5 or implementing any new participant workflow.

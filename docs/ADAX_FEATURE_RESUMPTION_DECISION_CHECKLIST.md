@@ -28,8 +28,9 @@ Complete these steps in order:
 6. Reread the matching startup card only after the target participant is selected.
 7. Ask the user to confirm or revise that startup card.
 8. Classify the change with `docs/ADAX_CHANGE_GATE_CHECKLIST.md`.
-9. Prepare a small implementation plan with target files, domain contracts, tests, and rollback.
-10. Start coding only after the startup card is confirmed and no Project Rescue trigger is active.
+9. Reread `docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md`.
+10. Prepare a small implementation plan with target files, domain contracts, tests, and rollback.
+11. Start coding only after the startup card is confirmed, the runbook order is reflected in the plan, and no Project Rescue trigger is active.
 
 ## Participant Selection Rule
 
@@ -81,3 +82,5 @@ Do not start feature implementation if any of these are true:
 This checklist is a gate, not permission.
 
 Passing this checklist means the project may prepare a feature implementation plan. It does not mean code can start without the user's participant confirmation.
+
+Confirmed feature implementation must then follow `docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md`.
