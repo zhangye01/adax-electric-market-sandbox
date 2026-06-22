@@ -50,7 +50,7 @@ Latest quality coverage:
 | Domain contracts | `src/domain/retailTypes.ts` exports checked: 33; `src/types.ts` exports checked: 8. |
 | Source shape | 223 source files checked; 1 budgeted pressure file. |
 | Typecheck | `tsc -b` passed. |
-| Tests | 88 tests passed. |
+| Tests | 90 tests passed. |
 | Build | `vite build` passed. |
 
 Latest source-shape command:

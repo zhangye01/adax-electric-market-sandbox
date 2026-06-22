@@ -43,7 +43,7 @@ Current quality evidence:
 
 - `npm run quality` passed on 2026-06-22.
 - Engineering guardrails, boundaries, domain contracts, source-shape budgets, typecheck, tests, and build passed as one gate.
-- The test suite currently records 88 passing tests after this packet is wired into the engineering guardrail.
+- The test suite currently records 90 passing tests after this packet is wired into the engineering guardrail and Pages dry-run diagnostics.
 
 Freshness rule: rerun `npm run quality` after any later source, guardrail, or release-process change before using this packet to lift the hold.
 

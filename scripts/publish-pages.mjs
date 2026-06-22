@@ -1,5 +1,5 @@
-import { cpSync, existsSync, mkdirSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { relative, resolve, sep } from "node:path";
 import { spawnSync } from "node:child_process";
 
 const args = new Set(process.argv.slice(2));
@@ -146,6 +146,74 @@ function validateReleaseDirectory() {
   }
 }
 
+function listRelativeFiles(rootPath) {
+  if (!existsSync(rootPath)) return [];
+
+  function collect(directory) {
+    return readdirSync(directory).flatMap((entry) => {
+      if (entry === ".git") return [];
+
+      const path = resolve(directory, entry);
+      const stats = statSync(path);
+      if (stats.isDirectory()) return collect(path);
+      if (!stats.isFile()) return [];
+
+      return [relative(rootPath, path).split(sep).join("/")];
+    });
+  }
+
+  return collect(rootPath).sort();
+}
+
+function expectedReleaseContent(projectPath) {
+  if (projectPath === ".nojekyll") return Buffer.from("");
+  if (projectPath === "404.html") return readFileSync(resolve(distDir, "index.html"));
+  return readFileSync(resolve(distDir, projectPath));
+}
+
+function listDryRunReleaseMismatches() {
+  const expectedFiles = new Set([...listRelativeFiles(distDir), ".nojekyll", "404.html"]);
+  const releaseFiles = new Set(listRelativeFiles(releaseDir));
+  const mismatches = [];
+
+  for (const file of expectedFiles) {
+    const releasePath = resolve(releaseDir, file);
+    if (!existsSync(releasePath)) {
+      mismatches.push(`missing ${file}`);
+      continue;
+    }
+
+    const releaseContent = readFileSync(releasePath);
+    if (!releaseContent.equals(expectedReleaseContent(file))) {
+      mismatches.push(`changed ${file}`);
+    }
+  }
+
+  for (const file of releaseFiles) {
+    if (!expectedFiles.has(file)) {
+      mismatches.push(`unexpected ${file}`);
+    }
+  }
+
+  return mismatches.sort();
+}
+
+function reportDryRunReleaseDelta() {
+  const mismatches = listDryRunReleaseMismatches();
+  if (mismatches.length === 0) {
+    log("dry-run: release directory already matches current dist; real publish would skip commit and push.");
+    return;
+  }
+
+  log("dry-run: release directory differs from current dist; real publish would update gh-pages.");
+  for (const mismatch of mismatches.slice(0, 5)) {
+    log(`dry-run: release diff: ${mismatch}`);
+  }
+  if (mismatches.length > 5) {
+    log(`dry-run: release diff: ${mismatches.length - 5} additional differences omitted.`);
+  }
+}
+
 function commitAndPushRelease() {
   const status = gitStatus(releaseDir);
   if (!status) {
@@ -193,7 +261,11 @@ function main() {
   }
 
   validateReleaseDirectory();
-  commitAndPushRelease();
+  if (dryRun) {
+    reportDryRunReleaseDelta();
+  } else {
+    commitAndPushRelease();
+  }
   runOptional("curl", ["-I", previewUrl]);
 
   log(`preview: ${previewUrl}`);

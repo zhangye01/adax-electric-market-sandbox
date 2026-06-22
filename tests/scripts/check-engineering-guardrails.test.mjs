@@ -151,6 +151,7 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
       "const previewUrl = \"https://zhangye01.github.io/adax-electric-market-sandbox/\";",
       "fail(\"real publishing requires --yes. Use `npm run publish:pages:dry` first, then `npm run publish:pages -- --yes`.\");",
       "fail(\"skip quality is only allowed during dry-run checks. Real publishing always runs `npm run quality`.\");",
+      "log(\"dry-run: release directory differs from current dist; real publish would update gh-pages.\");",
       "run(\"npm\", [\"run\", \"quality\"]);",
       "run(\"git\", [\"push\", \"origin\", \"HEAD:gh-pages\"], { cwd: releaseDir, writes: true });"
     ].join("\n"),
@@ -362,6 +363,7 @@ test("engineering guardrail checker rejects publishing script drift", () => {
     "scripts/publish-pages.mjs": [
       "const previewUrl = \"https://zhangye01.github.io/adax-electric-market-sandbox/\";",
       "fail(\"skip quality is only allowed during dry-run checks. Real publishing always runs `npm run quality`.\");",
+      "log(\"dry-run: release directory differs from current dist; real publish would update gh-pages.\");",
       "run(\"git\", [\"push\", \"origin\", \"HEAD:gh-pages\"], { cwd: releaseDir, writes: true });"
     ].join("\n")
   });
