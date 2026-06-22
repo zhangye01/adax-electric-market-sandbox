@@ -246,6 +246,7 @@ Current entry and gate documents:
 - `docs/ADAX_HARDENING_DECISION_PACKET.md`: user-facing decision packet before keeping hardening, lifting Engineering Hardening Hold for one participant, or entering Project Rescue.
 - `docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md`: required decision sequence before feature-expansion planning.
 - `docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md`: required implementation order after a participant startup card is confirmed; not implementation approval by itself.
+- `docs/ADAX_FEATURE_RESTART_REHEARSAL.md`: no-code rehearsal that confirms the current gates still block unapproved Phase 5 implementation.
 - `docs/ADAX_CHANGE_GATE_CHECKLIST.md`: pre-change classification, rescue gate, layer placement, and test selection.
 - `docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md`: one-page Phase 5 candidate readiness gate; not implementation approval.
 - `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md`: new-participant entry gate rehearsal before Phase 5 implementation.

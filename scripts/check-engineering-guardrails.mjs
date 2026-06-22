@@ -17,6 +17,7 @@ const requiredFiles = [
   "docs/ADAX_HARDENING_DECISION_PACKET.md",
   "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
   "docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md",
+  "docs/ADAX_FEATURE_RESTART_REHEARSAL.md",
   "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
   "docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md",
   "docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md",
@@ -41,6 +42,7 @@ const requiredReferences = [
       "docs/ADAX_HARDENING_DECISION_PACKET.md",
       "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
       "docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md",
+      "docs/ADAX_FEATURE_RESTART_REHEARSAL.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md",
       "docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md",
@@ -65,6 +67,7 @@ const requiredReferences = [
       "docs/ADAX_HARDENING_DECISION_PACKET.md",
       "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
       "docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md",
+      "docs/ADAX_FEATURE_RESTART_REHEARSAL.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md",
       "docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md",
@@ -81,6 +84,7 @@ const requiredReferences = [
       "docs/ADAX_HARDENING_DECISION_PACKET.md",
       "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
       "docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md",
+      "docs/ADAX_FEATURE_RESTART_REHEARSAL.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md",
       "docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md",
@@ -99,6 +103,7 @@ const requiredReferences = [
       "docs/ADAX_HARDENING_DECISION_PACKET.md",
       "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
       "docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md",
+      "docs/ADAX_FEATURE_RESTART_REHEARSAL.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "scripts/check-engineering-guardrails.mjs",
       "tests/scripts/check-engineering-guardrails.test.mjs"
@@ -111,6 +116,7 @@ const requiredReferences = [
       "docs/ADAX_HARDENING_DECISION_PACKET.md",
       "docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md",
       "docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md",
+      "docs/ADAX_FEATURE_RESTART_REHEARSAL.md",
       "docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md",
       "scripts/check-engineering-guardrails.mjs"
     ]
@@ -168,6 +174,17 @@ const requiredPhrases = [
       "Implement domain and data contracts before pages or components.",
       "Add or update tests in the same slice before UI wiring is considered complete.",
       "If execution and review chains diverge, stop and enter Project Rescue."
+    ]
+  },
+  {
+    file: "docs/ADAX_FEATURE_RESTART_REHEARSAL.md",
+    phrases: [
+      "Status: rehearsal complete. It does not lift Engineering Hardening Hold.",
+      "it does not approve renewable implementation.",
+      "This slice is hypothetical only. Do not implement renewable code from this rehearsal.",
+      "Conclusion: feature implementation remains blocked.",
+      "Do not implement renewable, independent-storage, or thermal runtime code from this rehearsal.",
+      "A real implementation still requires an explicit user decision, confirmed startup card, fresh `npm run quality`, and the selected candidate's entry dry run."
     ]
   },
   {

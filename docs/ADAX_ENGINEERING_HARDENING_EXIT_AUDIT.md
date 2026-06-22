@@ -49,6 +49,7 @@ Still closed:
 | User decision packet | `docs/ADAX_HARDENING_DECISION_PACKET.md` | The user-facing choice between continued hardening, one-participant expansion, and Project Rescue is explicit. |
 | Feature resumption decision | `docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md` | Resume-development decisions must be explicit and ordered. |
 | Feature implementation order | `docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md` | Confirmed feature slices have a domain-first, test-backed implementation path. |
+| Feature restart rehearsal | `docs/ADAX_FEATURE_RESTART_REHEARSAL.md` | The current gates have been rehearsed against a hypothetical renewable slice and still block unapproved runtime code. |
 | Phase 5 gate | `docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md` | Candidate comparison exists; implementation remains closed. |
 | Phase 5 rehearsal | `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md` | Entry decision can be rehearsed before code. |
 | Phase 5 scope control | `docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md` | Only one future participant may be selected per wave. |
@@ -67,7 +68,7 @@ Current recorded handoff evidence:
 | Check | Latest evidence |
 | --- | --- |
 | Full quality gate | `npm run quality` on 2026-06-22: passed. |
-| Script tests | 92 tests passed, including engineering guardrail, boundary, source-shape, domain-contract, publishing, domain, app, route-sync, and session-derivation tests. |
+| Script tests | 94 tests passed, including engineering guardrail, boundary, source-shape, domain-contract, publishing, domain, app, route-sync, and session-derivation tests. |
 | Build | `tsc -b && vite build` passed through the quality gate. |
 | Source artifact boundary | `npm run check:engineering-guardrails` verifies that tracked `dist/`, `coverage/`, `.vite/`, and `.test-build/` artifacts are excluded from `main`. |
 | Pages workflow boundary | `npm run check:engineering-guardrails` rejects `.github/workflows/**` under the current local-script Pages strategy. |
@@ -84,6 +85,7 @@ Freshness rule: `npm run quality` must be rerun after any later source, guardrai
 - Engineering guardrails are part of the normal quality gate.
 - Closed Phase 5 scope is protected at document, package-script, active source, URL, and localStorage layers.
 - Confirmed feature expansion now has a documented runbook for domain-first, test-backed, participant-isolated implementation.
+- The feature restart gates have a no-code rehearsal proving a hypothetical renewable slice remains blocked until explicit user confirmation.
 - GitHub Pages publishing is documented separately from source development.
 - Generated build, coverage, cache, and test artifacts are excluded from the source repository by the engineering guardrail.
 - GitHub Actions workflow files are excluded while Pages publishing remains a local script pushing `gh-pages`.
@@ -105,7 +107,7 @@ Freshness rule: `npm run quality` must be rerun after any later source, guardrai
 | --- | --- | --- |
 | User has not selected the next participant | High | Do not resume feature expansion without explicit selection. |
 | Candidate startup cards are not confirmed | High | Show and confirm exactly one startup card before implementation. |
-| Feature pressure bypasses hardening gates | Medium | Start every non-trivial change from `docs/ADAX_CHANGE_GATE_CHECKLIST.md`; after confirmation, follow `docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md`. |
+| Feature pressure bypasses hardening gates | Medium | Start every non-trivial change from `docs/ADAX_CHANGE_GATE_CHECKLIST.md`; use `docs/ADAX_FEATURE_RESTART_REHEARSAL.md` before treating the gates as implementation-ready; after confirmation, follow `docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md`. |
 | UI drift returns during feature work | Medium | Use browser QA and `docs/ADAX_VISUAL_QA_CHECKLIST.md` before visual handoff. |
 | Publishing is confused with source changes | Medium | Follow `docs/ADAX_RELEASE_PROCESS.md`; keep `main` and `gh-pages` responsibilities separate. |
 | Generated artifacts enter source history | Medium | Keep build, coverage, cache, and test output untracked in `main`; `npm run check:engineering-guardrails` rejects tracked generated artifacts. |
@@ -123,6 +125,7 @@ Allowed only after user confirmation:
 
 - present or reread `docs/ADAX_HARDENING_DECISION_PACKET.md`
 - use `docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md`
+- use `docs/ADAX_FEATURE_RESTART_REHEARSAL.md` as the no-code gate rehearsal
 - use `docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md` after the startup card is confirmed
 - select exactly one Phase 5 participant
 - confirm the relevant startup card

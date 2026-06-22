@@ -45,12 +45,12 @@ Latest quality coverage:
 
 | Gate | Latest evidence |
 | --- | --- |
-| Engineering guardrails | 25 required files checked; source-repository artifacts and GitHub workflow files excluded; Phase 5 remains closed. |
+| Engineering guardrails | 26 required files checked; source-repository artifacts and GitHub workflow files excluded; Phase 5 remains closed. |
 | Boundary check | 104 source files checked. |
 | Domain contracts | `src/domain/retailTypes.ts` exports checked: 33; `src/types.ts` exports checked: 8. |
 | Source shape | 223 source files checked; 1 budgeted pressure file. |
 | Typecheck | `tsc -b` passed. |
-| Tests | 92 tests passed. |
+| Tests | 94 tests passed. |
 | Build | `vite build` passed. |
 
 Latest source-shape command:
@@ -94,6 +94,7 @@ npm run quality
 | User hardening decision | `docs/ADAX_HARDENING_DECISION_PACKET.md` |
 | Feature resumption decision | `docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md` |
 | Feature implementation order | `docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md` |
+| Feature restart rehearsal | `docs/ADAX_FEATURE_RESTART_REHEARSAL.md` |
 | Phase 5 entry | `docs/ADAX_PHASE_5_CANDIDATE_READINESS_AUDIT.md`, `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md`, `docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md`, `docs/ADAX_PHASE_5_RENEWABLE_ENTRY_DRY_RUN.md`, `docs/ADAX_PHASE_5_STORAGE_ENTRY_DRY_RUN.md`, `docs/ADAX_PHASE_5_THERMAL_ENTRY_DRY_RUN.md`, `scripts/check-engineering-guardrails.mjs`, `tests/scripts/check-engineering-guardrails.test.mjs` |
 | Quality pipeline | `package.json`, `scripts/check-engineering-guardrails.mjs`, `tests/scripts/check-engineering-guardrails.test.mjs` |
 | Source repository artifacts | `docs/ADAX_RELEASE_PROCESS.md`, `scripts/check-engineering-guardrails.mjs`, `tests/scripts/check-engineering-guardrails.test.mjs` |
@@ -108,7 +109,7 @@ npm run quality
 
 | Risk | Level | Current control |
 | --- | --- | --- |
-| New participant implementation starts before scope confirmation | High | Keep Phase 5 closed until user confirms feature expansion and the participant startup card; after confirmation, require `docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md` before feature code. |
+| New participant implementation starts before scope confirmation | High | Keep Phase 5 closed until user confirms feature expansion and the participant startup card; use `docs/ADAX_FEATURE_RESTART_REHEARSAL.md` to verify the gates still block unapproved code, and after confirmation require `docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md` before feature code. |
 | Candidate startup cards are accidentally treated as approved | High | `npm run check:engineering-guardrails` fails if renewable, independent-storage, or thermal startup cards lose their pending-user-confirmation statements. |
 | Closed Phase 5 participant runtime files appear silently | High | `npm run check:engineering-guardrails` fails if active source adds renewable, independent-storage, or thermal runtime files while Phase 5 remains closed. |
 | Closed participant id leaks into generated active URLs | Medium | `pathForPage` normalizes generated participant URLs back to `retailer`; `tests/domain/retail-domain.test.mjs` covers closed participant inputs. |
@@ -132,6 +133,7 @@ Do not enter Phase 5 or implement a new participant until all of these are true:
 4. No Project Rescue trigger is active.
 5. The new participant has defined scope, data, rules, UI contracts, and tests before code starts.
 6. The first slice follows `docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md`.
+7. The restart gates still pass `docs/ADAX_FEATURE_RESTART_REHEARSAL.md` without unblocking runtime code.
 
 ## Next Recommended Action
 
@@ -146,5 +148,7 @@ Use `docs/ADAX_HARDENING_DECISION_PACKET.md` before asking the user to choose wh
 Use `docs/ADAX_FEATURE_RESUMPTION_DECISION_CHECKLIST.md` before preparing any feature-expansion implementation plan.
 
 Use `docs/ADAX_FEATURE_IMPLEMENTATION_RUNBOOK.md` after a startup card is confirmed and before writing any feature-expansion code.
+
+Use `docs/ADAX_FEATURE_RESTART_REHEARSAL.md` before treating feature-expansion gates as ready for implementation.
 
 Do not review or implement `docs/ADAX_RENEWABLE_STARTUP_CARD.md`, `docs/ADAX_INDEPENDENT_STORAGE_STARTUP_CARD.md`, or `docs/ADAX_THERMAL_STARTUP_CARD.md` until the user explicitly resumes participant expansion. Use `docs/ADAX_PHASE_5_ENTRY_GATE_REHEARSAL.md`, `docs/ADAX_PHASE_5_SCOPE_CONTROL_MATRIX.md`, and the relevant entry dry run before deciding whether any new participant is ready for code.
