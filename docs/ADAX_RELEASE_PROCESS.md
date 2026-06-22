@@ -163,7 +163,32 @@ zhangye01
 
 `npm run check:engineering-guardrails` 会拒绝当前源码仓库中的 `.github/workflows/**` 文件，直到发布策略被明确切换。
 
-## 8. 已知约束
+## 8. 源码远端同步恢复
+
+如果源码仓库提交已经完成但 `git push origin main` 因 GitHub HTTPS 传输失败、空响应或连接超时失败，先判断本地和远端状态，不要修改历史。
+
+推荐检查命令：
+
+```bash
+git status --short --branch
+git rev-list --left-right --count origin/main...HEAD
+git ls-remote origin HEAD
+```
+
+判断规则：
+
+- 如果 `main...origin/main [ahead 1]`，说明本地提交尚未同步到远端。
+- 如果 `git rev-list --left-right --count origin/main...HEAD` 输出 `0 1`，说明本地比远端领先 1 个提交。
+- 如果 `git ls-remote origin HEAD` 仍显示旧提交，说明中断的 push 没有到达远端。
+
+恢复规则：
+
+- 网络恢复后重试 `git push origin main`。
+- 不要用 `git reset --hard` 或强推 `main` 来处理普通推送失败。
+- 不要把源码同步失败和 Pages 发布失败混在一起处理；`main` 与 `gh-pages` 的职责仍然分开。
+- 如果 SSH 不可用、`gh` 不可用、HTTPS 写入连续失败，保留本地提交并明确报告 `main` 领先远端几个提交。
+
+## 9. 已知约束
 
 - 当前 Pages 发布不依赖 GitHub Actions。
 - 当前 Pages 发布依赖本地脚本更新 `gh-pages` 分支。
@@ -171,7 +196,7 @@ zhangye01
 - 浏览器端应用天然会向访问者提供构建后的 JS/CSS 文件；公开 Pages 链接不等于隐藏前端运行代码。
 - 训练记录和复盘材料仍只存在访问者自己的浏览器 localStorage 中，不会被上传到 GitHub。
 
-## 9. 回退方式
+## 10. 回退方式
 
 若一次发布出错：
 

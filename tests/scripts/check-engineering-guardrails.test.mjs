@@ -172,6 +172,10 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
       "真实发布必须显式传入 `--yes`：",
       "`--skip-quality` 只允许用于 dry-run 检查；真实发布会拒绝跳过 `npm run quality`。",
       "因此当前不要向远程 `main` 推送 `.github/workflows/**` 文件。",
+      "git rev-list --left-right --count origin/main...HEAD",
+      "git ls-remote origin HEAD",
+      "不要用 `git reset --hard` 或强推 `main` 来处理普通推送失败。",
+      "不要把源码同步失败和 Pages 发布失败混在一起处理；`main` 与 `gh-pages` 的职责仍然分开。",
       "当前 Pages 发布不依赖 GitHub Actions。",
       "当前 Pages 发布依赖本地脚本更新 `gh-pages` 分支。"
     ].join("\n"),
