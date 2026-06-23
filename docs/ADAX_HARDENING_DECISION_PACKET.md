@@ -43,9 +43,9 @@ The latest hardening evidence is recorded in:
 
 Current quality evidence:
 
-- `npm run quality` passed on 2026-06-23 after source `main` synchronized to `8bfa7f7`.
+- `npm run quality` passed on 2026-06-23 after the latest engineering guardrail update.
 - Engineering guardrails, boundaries, domain contracts, source-shape budgets, typecheck, tests, and build passed as one gate.
-- The test suite currently records 94 passing tests after this packet, the feature implementation runbook, the feature restart rehearsal, and Pages dry-run diagnostics are wired into the engineering guardrail.
+- The test suite currently records 95 passing tests after this packet, the feature implementation runbook, the feature restart rehearsal, Pages dry-run diagnostics, and unwired-test-file detection are wired into the engineering guardrail.
 
 Freshness rule: rerun `npm run quality` after any later source, guardrail, or release-process change before using this packet to lift the hold.
 

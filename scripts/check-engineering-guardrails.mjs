@@ -420,6 +420,12 @@ function listExistingProjectFilesUnder(boundaryPath) {
   return listFiles(absolutePath).map(toProjectPath);
 }
 
+function listExistingTestFiles() {
+  return listExistingProjectFilesUnder("tests")
+    .filter((file) => file.endsWith(".test.mjs"))
+    .sort();
+}
+
 for (const file of requiredFiles) {
   if (!fileExists(file)) {
     addViolation(file, "required-engineering-file-missing", "file does not exist");
@@ -504,6 +510,12 @@ if (fileExists("package.json")) {
       for (const target of requiredTestTargets) {
         if (!testScript.includes(target)) {
           addViolation("package.json", "required-test-target-missing", `test missing ${target}`);
+        }
+      }
+
+      for (const testFile of listExistingTestFiles()) {
+        if (!testScript.includes(testFile)) {
+          addViolation("package.json", "unwired-test-file", `test script does not run ${testFile}`);
         }
       }
     }

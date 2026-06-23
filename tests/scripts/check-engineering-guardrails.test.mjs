@@ -9,6 +9,18 @@ const requiredDocPaths = [
   "docs/ADAX_SOURCE_SHAPE_AUDIT.md"
 ];
 
+const fixtureTestTargets = [
+  "tests/domain/retail-domain.test.mjs",
+  "tests/app/adax-training-actions.test.mjs",
+  "tests/app/adax-route-sync-decisions.test.mjs",
+  "tests/app/adax-session-derivations.test.mjs",
+  "tests/scripts/check-engineering-guardrails.test.mjs",
+  "tests/scripts/check-boundaries.test.mjs",
+  "tests/scripts/check-source-shape.test.mjs",
+  "tests/scripts/check-domain-contracts.test.mjs",
+  "tests/scripts/publish-pages.test.mjs"
+];
+
 function makePackageJson(overrides = {}) {
   return `${JSON.stringify(
     {
@@ -18,8 +30,7 @@ function makePackageJson(overrides = {}) {
         "check:domain-contracts": "node scripts/check-domain-contracts.mjs",
         "check:source-shape": "node scripts/check-source-shape.mjs",
         typecheck: "tsc -b",
-        test:
-          "tsc -p tsconfig.test.json && node tests/support/fix-esm-imports.mjs && node --test tests/scripts/check-engineering-guardrails.test.mjs tests/scripts/check-boundaries.test.mjs tests/scripts/check-source-shape.test.mjs tests/scripts/check-domain-contracts.test.mjs tests/scripts/publish-pages.test.mjs",
+        test: `tsc -p tsconfig.test.json && node tests/support/fix-esm-imports.mjs && node --test ${fixtureTestTargets.join(" ")}`,
         quality:
           "npm run check:engineering-guardrails && npm run check:boundaries && npm run check:domain-contracts && npm run check:source-shape && npm run typecheck && npm run test && npm run build",
         build: "tsc -b && vite build",
@@ -222,6 +233,7 @@ function runGuardrailFixture(overrides = {}, omitted = []) {
   };
 
   for (const path of requiredDocPaths) files[path] = `${path}\n`;
+  for (const path of fixtureTestTargets) files[path] = `${path}\n`;
   for (const path of omitted) delete files[path];
 
   return runScriptFixture("scripts/check-engineering-guardrails.mjs", {
@@ -527,6 +539,16 @@ test("engineering guardrail checker rejects missing script test targets", () => 
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /required-test-target-missing/);
   assert.match(result.stderr, /check-engineering-guardrails\.test\.mjs/);
+});
+
+test("engineering guardrail checker rejects unwired test files", () => {
+  const result = runGuardrailFixture({
+    "tests/domain/unwired-domain.test.mjs": "import test from 'node:test';\n"
+  });
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /unwired-test-file/);
+  assert.match(result.stderr, /tests\/domain\/unwired-domain\.test\.mjs/);
 });
 
 test("engineering guardrail checker rejects closed Phase 5 runtime files", () => {

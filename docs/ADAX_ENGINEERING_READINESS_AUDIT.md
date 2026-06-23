@@ -39,7 +39,7 @@ Latest full quality command:
 npm run quality
 ```
 
-Result on 2026-06-23: passed after source `main` synchronized to `8bfa7f7`.
+Result on 2026-06-23: passed after the latest engineering guardrail update.
 
 Latest quality coverage:
 
@@ -50,7 +50,7 @@ Latest quality coverage:
 | Domain contracts | `src/domain/retailTypes.ts` exports checked: 33; `src/types.ts` exports checked: 8. |
 | Source shape | 223 source files checked; 1 budgeted pressure file. |
 | Typecheck | `tsc -b` passed. |
-| Tests | 94 tests passed. |
+| Tests | 95 tests passed. |
 | Build | `vite build` passed. |
 
 Latest source-shape command:
