@@ -67,7 +67,7 @@ Current recorded handoff evidence:
 
 | Check | Latest evidence |
 | --- | --- |
-| Full quality gate | `npm run quality` on 2026-06-22: passed. |
+| Full quality gate | `npm run quality` on 2026-06-23 after source `main` synchronized to `8bfa7f7`: passed. |
 | Script tests | 94 tests passed, including engineering guardrail, boundary, source-shape, domain-contract, publishing, domain, app, route-sync, and session-derivation tests. |
 | Build | `tsc -b && vite build` passed through the quality gate. |
 | Source artifact boundary | `npm run check:engineering-guardrails` verifies that tracked `dist/`, `coverage/`, `.vite/`, and `.test-build/` artifacts are excluded from `main`. |
