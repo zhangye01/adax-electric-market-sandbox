@@ -859,6 +859,31 @@ test("retail execution template round-trips and rejects invalid values", () => {
   assert.equal(parsed.ok, true, parsed.errors.join("; "));
   assert.deepEqual(parsed.data, state);
 
+  const missingTypeParsed = parseRetailExecutionTemplate(
+    JSON.stringify({
+      version: "0.1",
+      state
+    })
+  );
+  assert.equal(missingTypeParsed.ok, false);
+  assert.ok(missingTypeParsed.errors.some((error) => error.includes("模板类型")));
+
+  const withExtraFields = structuredClone(state);
+  withExtraFields.customerContracts.unreviewedField = 100;
+  withExtraFields.annualBilateral.unreviewedField = "extra";
+  withExtraFields.monthlyAuctions.march.unreviewedField = true;
+  const normalizedParsed = parseRetailExecutionTemplate(
+    JSON.stringify({
+      exportType: "ADAX_RETAIL_EXECUTION_TEMPLATE",
+      version: "0.1",
+      state: withExtraFields
+    })
+  );
+  assert.equal(normalizedParsed.ok, true, normalizedParsed.errors.join("; "));
+  assert.deepEqual(normalizedParsed.data, state);
+  assert.equal(Object.hasOwn(normalizedParsed.data.customerContracts, "unreviewedField"), false);
+  assert.equal(Object.hasOwn(normalizedParsed.data.monthlyAuctions.march, "unreviewedField"), false);
+
   const invalid = structuredClone(state);
   invalid.customerContracts.industrialStableMwh = -1;
   const invalidParsed = parseRetailExecutionTemplate(

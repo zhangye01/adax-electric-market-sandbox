@@ -1,6 +1,6 @@
 # ADAX Source Shape Audit
 
-日期：2026-06-11
+日期：2026-06-24
 状态：当前工程化保持期基线。
 
 本审计用于量化源码体积、导入热点和后续重构优先级。它不是功能验收报告，也不是业务范围扩展依据。
@@ -16,10 +16,10 @@ npm run check:source-shape
 
 | Metric | Value |
 | --- | --- |
-| Active source files | 223 |
-| Code files | 104 |
+| Active source files | 224 |
+| Code files | 105 |
 | Style files | 119 |
-| Total active source lines | 14810 |
+| Total active source lines | 14896 |
 | Watch line threshold | 220 code / 400 CSS |
 | High line threshold | 300 code / 800 CSS |
 
@@ -33,10 +33,10 @@ npm run check:source-shape
 | `src/pages` | 7 | 1129 |
 | `src/app` | 7 | 715 |
 | `src/data` | 6 | 399 |
-| `src/services` | 4 | 352 |
+| `src/services` | 5 | 423 |
 | `src/root` | 4 | 207 |
-| `src/utils` | 4 | 173 |
-| `src/routes` | 1 | 56 |
+| `src/utils` | 4 | 184 |
+| `src/routes` | 1 | 60 |
 
 ## Largest Files
 
@@ -45,9 +45,9 @@ npm run check:source-shape
 | `src/domain/retailTypes.ts` | 257 | `src/domain` |
 | `src/pages/HomePage.tsx` | 219 | `src/pages` |
 | `src/domain/retailSettlementDisplay.ts` | 214 | `src/domain` |
+| `src/services/retailExecutionTemplateState.ts` | 207 | `src/services` |
 | `src/pages/RolePage.tsx` | 199 | `src/pages` |
 | `src/app/createAdaxTrainingActions.ts` | 193 | `src/app` |
-| `src/services/retailExecutionTemplates.ts` | 184 | `src/services` |
 | `src/components/retail/RetailMonthlyAuctionNode.tsx` | 178 | `src/components` |
 | `src/components/retail/RetailReviewWorkspace.tsx` | 177 | `src/components` |
 | `src/components/layout/AppSidebar.tsx` | 174 | `src/components` |
@@ -81,7 +81,7 @@ Fan-in pressure:
 
 | Imported file | Importer count |
 | --- | --- |
-| `src/domain/retailTypes.ts` | 46 |
+| `src/domain/retailTypes.ts` | 47 |
 | `src/types.ts` | 36 |
 | `src/components/Badge.tsx` | 17 |
 | `src/data/retailMarketData.ts` | 17 |
@@ -140,6 +140,7 @@ Fan-in pressure:
 44. `src/app/useAdaxBrowserRouteSync.ts` now delegates output-page fallback and settlement-viewed decisions to `src/app/adaxRouteSyncDecisions.ts`, with direct tests in `tests/app/adax-route-sync-decisions.test.mjs`.
 45. `src/app/useAdaxTrainingSession.ts` now delegates validation-gated settlement and flow-access-state derivation to `src/app/adaxSessionDerivations.ts`, with direct tests in `tests/app/adax-session-derivations.test.mjs`.
 46. Repeated retail test setup now lives in `tests/support/retail-fixtures.mjs`, and fake browser storage setup now lives in `tests/support/browser-fixtures.mjs`; domain/app tests should reuse these instead of copying complete retail state or localStorage harnesses.
+47. Retail execution template import now keeps JSON envelope parsing in `src/services/retailExecutionTemplates.ts` and imported-state normalization in `src/services/retailExecutionTemplateState.ts`; this prevents the template IO boundary from crossing the watch threshold while ensuring imported JSON is reconstructed as a clean `RetailTrainingState`.
 
 ## Recommended Refactor Queue
 

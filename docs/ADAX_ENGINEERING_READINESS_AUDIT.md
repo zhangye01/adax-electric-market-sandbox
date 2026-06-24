@@ -39,16 +39,16 @@ Latest full quality command:
 npm run quality
 ```
 
-Result on 2026-06-23: passed after the latest engineering guardrail update.
+Result on 2026-06-24: passed after template import normalization hardening.
 
 Latest quality coverage:
 
 | Gate | Latest evidence |
 | --- | --- |
 | Engineering guardrails | 26 required files checked; source-repository artifacts and GitHub workflow files excluded; Phase 5 remains closed. |
-| Boundary check | 104 source files checked. |
+| Boundary check | 105 source files checked. |
 | Domain contracts | `src/domain/retailTypes.ts` exports checked: 33; `src/types.ts` exports checked: 8. |
-| Source shape | 223 source files checked; 1 budgeted pressure file. |
+| Source shape | 224 source files checked; 1 budgeted pressure file. |
 | Typecheck | `tsc -b` passed. |
 | Tests | 95 tests passed. |
 | Build | `vite build` passed. |
@@ -65,10 +65,10 @@ Current source-shape snapshot:
 
 | Metric | Value |
 | --- | --- |
-| Active source files | 223 |
-| Code files | 104 |
+| Active source files | 224 |
+| Code files | 105 |
 | Style files | 119 |
-| Total active source lines | 14810 |
+| Total active source lines | 14896 |
 | Watch line threshold | 220 code / 400 CSS |
 | High line threshold | 300 code / 800 CSS |
 
@@ -119,7 +119,7 @@ npm run quality
 | Generated build, coverage, or cache output is committed to `main` | Medium | Keep generated output in ignored local directories or the `gh-pages` static release path; `npm run check:engineering-guardrails` rejects tracked `dist/`, `coverage/`, `.vite/`, and `.test-build/` files. |
 | Hardening exit audit becomes stale after later changes | Medium | Keep `docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md` synchronized with the latest quality evidence; `npm run check:engineering-guardrails` rejects removal of its verification snapshot and freshness rule. |
 | GitHub workflow files are added without token/workflow-scope confirmation | Reduced | Keep `.github/workflows/**` blocked unless the deployment strategy intentionally changes; `npm run check:engineering-guardrails` rejects workflow files under the current local-script Pages strategy. |
-| Template import/export corrupts session state | Medium | Keep template IO in services and preserve round-trip and invalid-import tests. |
+| Template import/export corrupts session state | Reduced | Keep template IO in services, normalize imported JSON into a clean retail state before applying it, and preserve round-trip, missing-type, extra-field, and invalid-import tests. |
 | UI changes reduce professional market immersion | Medium | Use `docs/ADAX_VISUAL_QA_CHECKLIST.md` and browser QA when changing operation surfaces. |
 | App action tests grow repetitive | Low | Extract shared app action harnesses only if more stateful scenarios are added. |
 

@@ -168,6 +168,7 @@ IO-facing application services.
 
 Current modules:
 
+- `retailExecutionTemplateState.ts`
 - `retailExecutionTemplates.ts`
 - `adaxTrainingRecords.ts`
 - `adaxTrainingRecordExports.ts`
@@ -176,6 +177,7 @@ Current modules:
 Allowed:
 
 - local template parsing and export preparation
+- normalized retail execution template state construction before imported data enters session state
 - localStorage record/material coordination
 - training-record export JSON preparation
 - runtime validation before applying imported templates

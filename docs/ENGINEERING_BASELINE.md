@@ -70,6 +70,7 @@ Active retail flow:
 - `src/data/retailMarketData.ts`
 - `src/data/retailCurves.ts`
 - `src/data/retailTrainingNodes.ts`
+- `src/services/retailExecutionTemplateState.ts`
 - `src/services/retailExecutionTemplates.ts`
 - `src/components/retail/RetailMarketSituationBoard.tsx`
 - `src/components/retail/RetailSettlementSignalBoard.tsx`
@@ -320,7 +321,7 @@ Do not treat visual inspection as a replacement for domain tests.
 | Retail execution workspace regrowing mixed validation and UI chrome | Reduced | Node validation routing now lives in `src/domain/retailNodeValidation.ts`, and execution context/footer chrome lives in dedicated retail components |
 | Legacy prototype mixing into ADAX flow | Reduced | Legacy photovoltaic and old ADAX scenario prototypes are isolated under `src/legacy/**` and excluded from active build |
 | Global CSS coupling | Reduced | Styles are split by responsibility; sidebar, home, about, records, cockpit controls, shared flow lists, step indicator, retail review surfaces, and retail result-review surfaces now have separate shell/collapse/brand/mode/market/hero/panel/section/list/input/action/template/data/step/helper/prompt/material/progress/status/boundary/snapshot/empty/verdict/insight/diagnostic partitions, and obsolete review-cockpit/workspace-context/output CSS has been removed; continue avoiding cross-page selectors |
-| Template import corrupting state | Medium | Runtime parser validation and import tests |
+| Template import corrupting state | Reduced | Runtime parser validation, normalized imported state construction, and import tests |
 | Financial-looking results being misunderstood | Reduced | Shared model-boundary contract and result-surface notice |
 | Review mode becoming a generic material cabinet | Reduced | Review material scope and record snapshots are node-bound in `src/domain/retailReviewMaterials.ts` |
 | Review mode being confused with execution result review | Reduced | Shared mode-boundary contract in `src/domain/adaxModeBoundary.ts` |
