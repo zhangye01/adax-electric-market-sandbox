@@ -39,7 +39,7 @@ Latest full quality command:
 npm run quality
 ```
 
-Result on 2026-06-25: passed after moving template IO tests to the service boundary.
+Result on 2026-06-25: passed after moving route tests to the route boundary.
 
 Latest quality coverage:
 
