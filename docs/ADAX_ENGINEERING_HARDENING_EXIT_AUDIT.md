@@ -67,8 +67,8 @@ Current recorded handoff evidence:
 
 | Check | Latest evidence |
 | --- | --- |
-| Full quality gate | `npm run quality` on 2026-06-24 after template import normalization hardening: passed. |
-| Script tests | 95 tests passed, including engineering guardrail, boundary, source-shape, domain-contract, publishing, domain, app, route-sync, and session-derivation tests. |
+| Full quality gate | `npm run quality` on 2026-06-25 after moving template IO tests to the service boundary: passed. |
+| Script tests | 95 tests passed, including engineering guardrail, boundary, source-shape, domain-contract, publishing, domain, service, app, route-sync, and session-derivation tests. |
 | Build | `tsc -b && vite build` passed through the quality gate. |
 | Source artifact boundary | `npm run check:engineering-guardrails` verifies that tracked `dist/`, `coverage/`, `.vite/`, and `.test-build/` artifacts are excluded from `main`. |
 | Pages workflow boundary | `npm run check:engineering-guardrails` rejects `.github/workflows/**` under the current local-script Pages strategy. |

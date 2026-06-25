@@ -39,7 +39,7 @@ Latest full quality command:
 npm run quality
 ```
 
-Result on 2026-06-24: passed after template import normalization hardening.
+Result on 2026-06-25: passed after moving template IO tests to the service boundary.
 
 Latest quality coverage:
 
@@ -119,7 +119,7 @@ npm run quality
 | Generated build, coverage, or cache output is committed to `main` | Medium | Keep generated output in ignored local directories or the `gh-pages` static release path; `npm run check:engineering-guardrails` rejects tracked `dist/`, `coverage/`, `.vite/`, and `.test-build/` files. |
 | Hardening exit audit becomes stale after later changes | Medium | Keep `docs/ADAX_ENGINEERING_HARDENING_EXIT_AUDIT.md` synchronized with the latest quality evidence; `npm run check:engineering-guardrails` rejects removal of its verification snapshot and freshness rule. |
 | GitHub workflow files are added without token/workflow-scope confirmation | Reduced | Keep `.github/workflows/**` blocked unless the deployment strategy intentionally changes; `npm run check:engineering-guardrails` rejects workflow files under the current local-script Pages strategy. |
-| Template import/export corrupts session state | Reduced | Keep template IO in services, normalize imported JSON into a clean retail state before applying it, and preserve round-trip, missing-type, extra-field, and invalid-import tests. |
+| Template import/export corrupts session state | Reduced | Keep template IO in services, normalize imported JSON into a clean retail state before applying it, and preserve service-level round-trip, missing-type, extra-field, and invalid-import tests. |
 | UI changes reduce professional market immersion | Medium | Use `docs/ADAX_VISUAL_QA_CHECKLIST.md` and browser QA when changing operation surfaces. |
 | App action tests grow repetitive | Low | Extract shared app action harnesses only if more stateful scenarios are added. |
 

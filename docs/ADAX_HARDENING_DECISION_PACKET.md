@@ -1,6 +1,6 @@
 # ADAX Hardening Decision Packet
 
-Date: 2026-06-24
+Date: 2026-06-25
 
 Status: decision packet active. It does not lift Engineering Hardening Hold.
 
@@ -43,7 +43,7 @@ The latest hardening evidence is recorded in:
 
 Current quality evidence:
 
-- `npm run quality` passed on 2026-06-24 after template import normalization hardening.
+- `npm run quality` passed on 2026-06-25 after moving template IO tests to the service boundary.
 - Engineering guardrails, boundaries, domain contracts, source-shape budgets, typecheck, tests, and build passed as one gate.
 - The test suite currently records 95 passing tests after this packet, the feature implementation runbook, the feature restart rehearsal, Pages dry-run diagnostics, and unwired-test-file detection are wired into the engineering guardrail.
 

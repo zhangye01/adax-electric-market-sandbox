@@ -141,6 +141,7 @@ Fan-in pressure:
 45. `src/app/useAdaxTrainingSession.ts` now delegates validation-gated settlement and flow-access-state derivation to `src/app/adaxSessionDerivations.ts`, with direct tests in `tests/app/adax-session-derivations.test.mjs`.
 46. Repeated retail test setup now lives in `tests/support/retail-fixtures.mjs`, and fake browser storage setup now lives in `tests/support/browser-fixtures.mjs`; domain/app tests should reuse these instead of copying complete retail state or localStorage harnesses.
 47. Retail execution template import now keeps JSON envelope parsing in `src/services/retailExecutionTemplates.ts` and imported-state normalization in `src/services/retailExecutionTemplateState.ts`; this prevents the template IO boundary from crossing the watch threshold while ensuring imported JSON is reconstructed as a clean `RetailTrainingState`.
+48. Retail execution template import tests now live in `tests/services/retail-execution-templates.test.mjs`, reducing `tests/domain/retail-domain.test.mjs` from a mixed domain/service catch-all and keeping template IO evidence near the service boundary.
 
 ## Recommended Refactor Queue
 
