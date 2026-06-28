@@ -39,7 +39,7 @@ Latest full quality command:
 npm run quality
 ```
 
-Result on 2026-06-28: passed after moving localStorage tests to the utility persistence boundary.
+Result on 2026-06-29: passed after moving navigation action tests to the app boundary.
 
 Latest quality coverage:
 
@@ -101,7 +101,7 @@ npm run quality
 | Source boundaries | `docs/ACTIVE_ARCHITECTURE_MAP.md`, `scripts/check-boundaries.mjs`, `tests/scripts/check-boundaries.test.mjs` |
 | Central contracts | `docs/ADAX_RETAIL_CONTRACT_GOVERNANCE.md`, `scripts/check-domain-contracts.mjs`, `tests/scripts/check-domain-contracts.test.mjs` |
 | Source shape | `docs/ADAX_SOURCE_SHAPE_AUDIT.md`, `scripts/check-source-shape.mjs`, `tests/scripts/check-source-shape.test.mjs` |
-| App decisions | `tests/app/adax-training-actions.test.mjs`, `tests/app/adax-route-sync-decisions.test.mjs`, `tests/app/adax-session-derivations.test.mjs` |
+| App decisions | `tests/app/adax-navigation-actions.test.mjs`, `tests/app/adax-training-actions.test.mjs`, `tests/app/adax-route-sync-decisions.test.mjs`, `tests/app/adax-session-derivations.test.mjs` |
 | Shared test setup | `tests/support/retail-fixtures.mjs`, `tests/support/browser-fixtures.mjs` |
 | Publishing | `docs/ADAX_RELEASE_PROCESS.md`, `scripts/publish-pages.mjs`, `scripts/check-engineering-guardrails.mjs` |
 

@@ -136,7 +136,7 @@ Fan-in pressure:
 40. `src/app/createAdaxTrainingActions.ts` has been reduced from a budgeted action-orchestration pressure file to the training/material/record action boundary. Page navigation, flow fallback, and output-state route coordination now live in `src/app/createAdaxNavigationActions.ts`.
 41. `src/components/retail/RetailExecutionWorkspace.tsx` has been reduced from a budgeted workspace pressure file to a 147-line composition surface. Execution context bar and node footer rendering now live in dedicated retail components, while active-node validation mapping lives in `src/domain/retailNodeValidation.ts`.
 42. `RetailReviewWorkspace.tsx` and `RetailExecutionWorkspace.tsx` have the highest component fan-out. They should stay composition surfaces and not regain business rules.
-43. `src/app/createAdaxTrainingActions.ts` now has direct app-layer tests for mode reset, execution result/save guards, and node-bound review material saves in `tests/app/adax-training-actions.test.mjs`, so these session decisions are not protected only by browser navigation behavior.
+43. `src/app/createAdaxNavigationActions.ts` and `src/app/createAdaxTrainingActions.ts` now have direct app-layer tests in `tests/app/adax-navigation-actions.test.mjs` and `tests/app/adax-training-actions.test.mjs`, so route-reset and training-action decisions are not protected only by broad domain tests or browser navigation behavior.
 44. `src/app/useAdaxBrowserRouteSync.ts` now delegates output-page fallback and settlement-viewed decisions to `src/app/adaxRouteSyncDecisions.ts`, with direct tests in `tests/app/adax-route-sync-decisions.test.mjs`.
 45. `src/app/useAdaxTrainingSession.ts` now delegates validation-gated settlement and flow-access-state derivation to `src/app/adaxSessionDerivations.ts`, with direct tests in `tests/app/adax-session-derivations.test.mjs`.
 46. Repeated retail test setup now lives in `tests/support/retail-fixtures.mjs`, and fake browser storage setup now lives in `tests/support/browser-fixtures.mjs`; domain/app tests should reuse these instead of copying complete retail state or localStorage harnesses.
@@ -144,6 +144,7 @@ Fan-in pressure:
 48. Retail execution template import tests now live in `tests/services/retail-execution-templates.test.mjs`, reducing `tests/domain/retail-domain.test.mjs` from a mixed domain/service catch-all and keeping template IO evidence near the service boundary.
 49. Route parsing and URL-normalization tests now live in `tests/routes/adax-routes.test.mjs`, reducing `tests/domain/retail-domain.test.mjs` from a mixed domain/route catch-all and keeping route evidence near the route boundary.
 50. Training-record and review-material localStorage tests now live in `tests/utils/adax-storage.test.mjs`, reducing `tests/domain/retail-domain.test.mjs` from a mixed domain/persistence catch-all and keeping storage evidence near the utility persistence boundary.
+51. App navigation action tests now live in `tests/app/adax-navigation-actions.test.mjs`, reducing `tests/domain/retail-domain.test.mjs` from a mixed domain/app-orchestration catch-all and keeping navigation-action evidence near the app boundary.
 
 ## Recommended Refactor Queue
 
