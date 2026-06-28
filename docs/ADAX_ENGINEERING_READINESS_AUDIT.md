@@ -39,7 +39,7 @@ Latest full quality command:
 npm run quality
 ```
 
-Result on 2026-06-25: passed after moving route tests to the route boundary.
+Result on 2026-06-28: passed after moving localStorage tests to the utility persistence boundary.
 
 Latest quality coverage:
 
@@ -113,7 +113,7 @@ npm run quality
 | Candidate startup cards are accidentally treated as approved | High | `npm run check:engineering-guardrails` fails if renewable, independent-storage, or thermal startup cards lose their pending-user-confirmation statements. |
 | Closed Phase 5 participant runtime files appear silently | High | `npm run check:engineering-guardrails` fails if active source adds renewable, independent-storage, or thermal runtime files while Phase 5 remains closed. |
 | Closed participant id leaks into generated active URLs | Medium | `pathForPage` normalizes generated participant URLs back to `retailer`; `tests/domain/retail-domain.test.mjs` covers closed participant inputs. |
-| Closed participant records or materials enter active localStorage | Medium | `getAdaxTrainingRecords`, `saveAdaxTrainingRecord`, `getAdaxUserMaterials`, `saveAdaxUserMaterials`, and `upsertUserMaterial` keep active persisted data limited to `retailer`; `tests/domain/retail-domain.test.mjs` covers closed participant records and materials. |
+| Closed participant records or materials enter active localStorage | Reduced | `getAdaxTrainingRecords`, `saveAdaxTrainingRecord`, `getAdaxUserMaterials`, `saveAdaxUserMaterials`, and `upsertUserMaterial` keep active persisted data limited to `retailer`; `tests/utils/adax-storage.test.mjs` covers closed participant records and materials. |
 | Engineering status becomes chat-memory-only | Medium | Keep this audit current and link it from `AGENTS.md`, `docs/ENGINEERING_BASELINE.md`, and `docs/ADAX_LONG_TERM_PLAN.md`. |
 | Preview publishing path drifts from source branch | Medium | Use `docs/ADAX_RELEASE_PROCESS.md`; `npm run check:engineering-guardrails` verifies the package publishing commands, release-process gate phrases, and `scripts/publish-pages.mjs` quality/push safeguards. `tests/scripts/publish-pages.test.mjs` rejects real publishing when quality is skipped. |
 | Generated build, coverage, or cache output is committed to `main` | Medium | Keep generated output in ignored local directories or the `gh-pages` static release path; `npm run check:engineering-guardrails` rejects tracked `dist/`, `coverage/`, `.vite/`, and `.test-build/` files. |

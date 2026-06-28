@@ -143,6 +143,7 @@ Fan-in pressure:
 47. Retail execution template import now keeps JSON envelope parsing in `src/services/retailExecutionTemplates.ts` and imported-state normalization in `src/services/retailExecutionTemplateState.ts`; this prevents the template IO boundary from crossing the watch threshold while ensuring imported JSON is reconstructed as a clean `RetailTrainingState`.
 48. Retail execution template import tests now live in `tests/services/retail-execution-templates.test.mjs`, reducing `tests/domain/retail-domain.test.mjs` from a mixed domain/service catch-all and keeping template IO evidence near the service boundary.
 49. Route parsing and URL-normalization tests now live in `tests/routes/adax-routes.test.mjs`, reducing `tests/domain/retail-domain.test.mjs` from a mixed domain/route catch-all and keeping route evidence near the route boundary.
+50. Training-record and review-material localStorage tests now live in `tests/utils/adax-storage.test.mjs`, reducing `tests/domain/retail-domain.test.mjs` from a mixed domain/persistence catch-all and keeping storage evidence near the utility persistence boundary.
 
 ## Recommended Refactor Queue
 
