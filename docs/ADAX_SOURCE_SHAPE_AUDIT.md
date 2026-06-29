@@ -145,6 +145,7 @@ Fan-in pressure:
 49. Route parsing and URL-normalization tests now live in `tests/routes/adax-routes.test.mjs`, reducing `tests/domain/retail-domain.test.mjs` from a mixed domain/route catch-all and keeping route evidence near the route boundary.
 50. Training-record and review-material localStorage tests now live in `tests/utils/adax-storage.test.mjs`, reducing `tests/domain/retail-domain.test.mjs` from a mixed domain/persistence catch-all and keeping storage evidence near the utility persistence boundary.
 51. App navigation action tests now live in `tests/app/adax-navigation-actions.test.mjs`, reducing `tests/domain/retail-domain.test.mjs` from a mixed domain/app-orchestration catch-all and keeping navigation-action evidence near the app boundary.
+52. ADAX common domain tests now live in `tests/domain/adax-domain.test.mjs`, reducing `tests/domain/retail-domain.test.mjs` from a mixed ADAX-shell/retail-domain catch-all and keeping flow guard, mode boundary, navigation shell, mode decision, and model-boundary evidence near the ADAX domain modules.
 
 ## Recommended Refactor Queue
 

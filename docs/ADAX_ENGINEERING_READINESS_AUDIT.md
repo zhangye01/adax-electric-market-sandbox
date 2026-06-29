@@ -39,7 +39,7 @@ Latest full quality command:
 npm run quality
 ```
 
-Result on 2026-06-29: passed after moving navigation action tests to the app boundary.
+Result on 2026-06-29: passed after moving ADAX common domain tests to their own domain boundary.
 
 Latest quality coverage:
 
